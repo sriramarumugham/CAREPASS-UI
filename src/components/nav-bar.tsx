@@ -15,6 +15,7 @@ import Facebook from '../assets/facebook.svg';
 import ArrowDown from '../assets/arrow-down.svg'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 import classNames from 'classnames';
@@ -169,7 +170,11 @@ const Navbar = () => {
     return (
         <>
             <div className=" w-full py-3  md:py-6   px-5 md:px-[80px]   flex  items-center justify-between  ">
-                <img src={Logosvg} className={'w-[66px] h-[14px]  md:h-[32px] md:w-[143px]'} />
+                <Link to="/">
+
+                    <img src={Logosvg} className={'w-[66px] h-[14px]  md:h-[32px] md:w-[143px]'} />
+                </Link>
+
 
                 <ul className="hidden lg:flex space-x-4 text-deepPurple">
                     <li><a href="#" className=" font-light focus:font-bold focus:underline-offset-4  focus:underline">Home</a></li>

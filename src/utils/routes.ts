@@ -6,4 +6,5 @@ export const ROUTES = {
     CART: '/cart',
     CHECKOUT: '/checkout',
     PROFILE: '/profile',
+    PAYMENT_DETAILS: '/payment-details/:paymentId',
 };

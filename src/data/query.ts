@@ -12,4 +12,35 @@ const createUserApi = async (data: CreateUserBodyType) => {
 const getProductsApi = async () => {
     return await client.get(API_ENDPOINTS.GET_PRODUCT);
 };
-export { createUserApi, getProductsApi };
+
+const postFormDataApi = async (formData: any) => {
+    return await client.post(API_ENDPOINTS.PURCHASE, formData);
+};
+
+const fetchTransactionDetails = async (transactionId: string) => {
+    return await client.get(
+        `${API_ENDPOINTS.GET_TRANSACTION}/${transactionId}`
+    );
+};
+
+const fetchActivePlans = async () => {
+    return await client.get(API_ENDPOINTS.ACTIVE_PLANS);
+};
+
+const fetchPurchaseHistory = async () => {
+    return await client.get(API_ENDPOINTS.PURCHASE_HISTORY);
+};
+
+const updateUserApi = async (userId: string, formData: any) => {
+    return await client.put(`${API_ENDPOINTS.USER}/${userId}`, formData);
+};
+
+export {
+    createUserApi,
+    getProductsApi,
+    postFormDataApi,
+    fetchTransactionDetails,
+    fetchActivePlans,
+    fetchPurchaseHistory,
+    updateUserApi,
+};

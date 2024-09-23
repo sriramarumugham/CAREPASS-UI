@@ -19,7 +19,7 @@ type ValidationSchemaType = z.infer<typeof schema>;
 
 const LoginModal = ({ handleClose }: { handleClose: () => void }) => {
 
-    const { updateUser, user } = useUserStore();
+    const { updateUser } = useUserStore();
 
 
 
@@ -33,6 +33,7 @@ const LoginModal = ({ handleClose }: { handleClose: () => void }) => {
     const createUser = async (data: ValidationSchemaType) => {
         setLoading(true);
         await createUserApi(data).then((response: any) => {
+            console.log("RESPONSE__", response)
             if (response) {
                 updateUser(response);
                 handleClose();

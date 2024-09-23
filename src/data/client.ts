@@ -1,43 +1,45 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { BASE_URL } from './api-endpoints';
+import { useUserStore } from '../store/user-store';
 
 // Create an Axios instance
 const client = axios.create({
     baseURL: BASE_URL,
 });
 
-// Request interceptor
-// client.interceptors.request.use(
-//     (config: AxiosRequestConfig) => {
-//         const state = useUserStore.getState();
-//         const userState = state?.user;
+client.interceptors.request.use(
+    (config: AxiosRequestConfig) => {
+        // Access Zustand store state directly
+        const state = useUserStore.getState();
+        const userState = state?.user;
 
-//         // Check if user state has an auth token
-//         if (userState && userState.auth) {
-//             const token = userState.auth;
-//             if (token) {
-//                 config.headers = config.headers || {};
-//                 config.headers.Authorization = `Bearer ${token}`;
-//             }
-//         }
+        // Check if the user state has an auth token
+        if (userState && state.getAuth()) {
+            const token = state.getAuth();
+            if (token) {
+                // Ensure headers exist, then attach the token
+                config.headers = config.headers || {};
+                config.headers.Authorization = `Bearer ${token}`;
+            }
+        }
 
-//         return config;
-//     },
-//     (error: AxiosError) => {
-//         return Promise.reject(error);
-//     }
-// );
+        return config;
+    },
+    (error: AxiosError) => {
+        return Promise.reject(error);
+    }
+);
 
-// // Response interceptor
-// client.interceptors.response.use(
-//     (response: AxiosResponse) => {
-//         // You can handle successful responses here
-//         return response.data;
-//     },
-//     (error: AxiosError) => {
-//         // Handle error responses here
-//         return Promise.reject(error?.response?.data || error.message);
-//     }
-// );
+// Response interceptor
+client.interceptors.response.use(
+    (response: AxiosResponse) => {
+        // You can handle successful responses here
+        return response.data;
+    },
+    (error: AxiosError) => {
+        // Handle error responses here
+        return Promise.reject(error?.response?.data || error.message);
+    }
+);
 
 export default client;

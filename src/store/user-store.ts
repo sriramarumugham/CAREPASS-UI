@@ -10,12 +10,20 @@ export enum UserStatus {
 const userSchema = Type.Object({
     userId: Type.String(),
     fullName: Type.String(),
+    pin: Type.Optional(Type.String()),
     email: Type.String(),
     phoneNumber: Type.Optional(Type.String()),
     createdAt: Type.String({ format: 'date-time' }),
     modifiedAt: Type.String({ format: 'date-time' }),
     status: Type.Enum(UserStatus),
     token: Type.Union([Type.String(), Type.Null()]),
+    annualIncome: Type.Optional(Type.String()), // Optional
+    area: Type.Optional(Type.String()), // Optional
+    city: Type.Optional(Type.String()), // Optional
+    dateOfBirth: Type.Optional(Type.String()), // Optional
+    gender: Type.Optional(Type.String()), // Optional with specific values
+    isSalaried: Type.Optional(Type.Boolean()), // Optional
+    smoking: Type.Optional(Type.Boolean()), // Optional
 });
 
 type UserType = Static<typeof userSchema>;

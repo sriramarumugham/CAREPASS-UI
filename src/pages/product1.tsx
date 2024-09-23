@@ -15,7 +15,7 @@ const Product1 = () => {
         {
             queryKey: ['products'],
             queryFn: async () => {
-                const { data } = await getProductsApi();
+                const data = await getProductsApi();
                 console.log("data___", data);
                 return data.products; // Return the products directly
             },
