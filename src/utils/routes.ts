@@ -3,8 +3,13 @@ export const ROUTES = {
     PRODUCT1: '/product1',
     PRODUCT2: '/product2',
     PRODUCT3: '/product3',
+    TAX_SAVER: '/tax-saver',
+    SILVER_PLAN: '/silver-plan',
+    GOLD_PLAN: '/gold-plan',
+    SUPER_TOPUP: '/super-top-up',
     CART: '/cart',
     CHECKOUT: '/checkout',
     PROFILE: '/profile',
     PAYMENT_DETAILS: '/payment-details/:paymentId',
+    RAZORPAY: '/razorpay',
 };

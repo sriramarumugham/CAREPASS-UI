@@ -22,6 +22,7 @@ interface CartStore {
     decreaseQuantity: (productId: string) => void;
     getQuantity: (productId: string) => number;
     getTotalPriceForProduct: (productId: string) => number;
+    clearCart: () => void;
 }
 
 const useCartStore = create(
@@ -99,6 +100,13 @@ const useCartStore = create(
                     cart: get().cart.filter(
                         (item) => item.productId !== productId
                     ),
+                });
+                updateCartTotals(set);
+            },
+            clearCart: () => {
+                // Clear cart function
+                set({
+                    cart: [],
                 });
                 updateCartTotals(set);
             },

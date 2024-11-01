@@ -6,4 +6,8 @@ export const API_ENDPOINTS = {
     ACTIVE_PLANS: '/user/active-plans',
     PURCHASE_HISTORY: '/user/active-plans',
 };
-export const BASE_URL = `${import.meta.env.VITE_API_ENDPOINT}/carepass/api/v1`;
+export const BASE_URL = `${import.meta.env.VITE_API_ENDPOINT}`;
+export const CALLBACK_BASE_URL = `${import.meta.env.VITE_CALLBACK_URL}`;
+export const RAZORPAY_SECRET_KEY = `${
+    import.meta.env.VITE_RAZORPAY_SECRET_KEY
+}`;
