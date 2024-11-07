@@ -43,7 +43,7 @@ const renderField = (field: Field, fieldName: string, register: any, control: an
                         type={field.type}
                         className="w-full p-2 border"
                     />
-                    <span className="text-red-500">{field.errors?.[fieldName]?.message}</span>
+                    <span className="text-red-500">{field?.errors?.[fieldName]?.message}</span>
                 </div>
             );
         case 'select':

@@ -12,3 +12,6 @@ batch
 know more
 font and size
 animation
+
+removed things
+<!-- "build": "tsc -b && vite build", -->
