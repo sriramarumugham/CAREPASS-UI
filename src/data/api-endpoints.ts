@@ -8,6 +8,4 @@ export const API_ENDPOINTS = {
 };
 export const BASE_URL = `${import.meta.env.VITE_API_ENDPOINT}`;
 export const CALLBACK_BASE_URL = `${import.meta.env.VITE_CALLBACK_URL}`;
-export const RAZORPAY_SECRET_KEY = `${
-    import.meta.env.VITE_RAZORPAY_SECRET_KEY
-}`;
+export const RAZORPAY_ID = `${import.meta.env.VITE_RAZORPAY_ID}`;

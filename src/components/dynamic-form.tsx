@@ -10,7 +10,7 @@ import { useUserStore } from '../store/user-store';
 import { Modal } from './ui/modal/modal';
 import LoginModal from './ui/modal/login';
 import { openPayModal } from '../utils/razorpay';
-import { BASE_URL, RAZORPAY_SECRET_KEY } from '../data/api-endpoints';
+import { BASE_URL, RAZORPAY_ID } from '../data/api-endpoints';
 
 
 interface Field {
@@ -154,7 +154,7 @@ export const Checkout = () => {
         onSuccess: (response: any) => {
             const razorpayOrderDetails = response.data;
             const options = {
-                key: RAZORPAY_SECRET_KEY,
+                key: RAZORPAY_ID,
                 amount: 100,
                 name: 'Carepass',
                 order_id: razorpayOrderDetails.order_id,
