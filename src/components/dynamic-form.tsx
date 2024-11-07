@@ -153,8 +153,10 @@ export const Checkout = () => {
         },
         onSuccess: (response: any) => {
             const razorpayOrderDetails = response.data;
+            console.log("razorpay_order_detilas---", razorpayOrderDetails);
+            console.log("razorPay_id", RAZORPAY_ID)
             const options = {
-                key: RAZORPAY_ID,
+                key: "rzp_test_wyq9rnIM0s8LOR",
                 amount: 100,
                 name: 'Carepass',
                 order_id: razorpayOrderDetails.order_id,
