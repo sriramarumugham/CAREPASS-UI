@@ -46,18 +46,29 @@ export const ProductDetail = ({ productId }: { productId: string }) => {
         addToCart({ productId, productName, price });
         navigate(ROUTES.CART, { relative: 'path' })
     };
+    const handleAddToCart = () => {
+        addToCart({ productId, productName, price });
+    }
 
     return (
         <div className="bg-white p-5 rounded-3xl  shadow-lg min-w-96">
             <h2 className="text-xl font-semibold mb-4">{productName}</h2>
             <p className="text-gray-600 mb-4">{productDescription}</p>
             <p className="text-lg font-bold text-deepPurple">Price: ₹{price}</p>
-            <button
-                onClick={handleBuyNow}
-                className="mt-4 p-3 px-4  bg-deepPurple text-white rounded-md  hover:bg-purple-700 transition"
-            >
-                Buy Now
-            </button>
+            <div className="flex  items-center justify-between mt-4 " >
+
+
+
+                <a role="button" className="underline text-deepPurple"
+                    onClick={handleAddToCart}
+                >Add to cart</a>
+                <button
+                    onClick={handleBuyNow}
+                    className=" p-3 px-4  bg-deepPurple text-white rounded-md  hover:bg-purple-700 transition"
+                >
+                    Buy Now
+                </button>
+            </div>
         </div>
     );
 };

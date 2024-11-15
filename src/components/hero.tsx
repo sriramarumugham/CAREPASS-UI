@@ -34,7 +34,7 @@ const AnimatedBenifites = () => {
     ]
 
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [fade, setFade] = useState('opacity-0');
+    const [fade, setFade] = useState('');
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -42,7 +42,7 @@ const AnimatedBenifites = () => {
             setTimeout(() => {
                 setCurrentIndex((prevIndex) => (prevIndex + 1) % Benifits.length);
                 setFade('opacity-100');
-            }, 500);
+            }, 1000);
         }, 1000);
         return () => clearInterval(interval);
     }, [Benifits.length]);

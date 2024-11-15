@@ -2,7 +2,7 @@
 import Facebook from '../assets/facebook.svg';
 import Instagram from '../assets/instagram.svg';
 import Youtube from '../assets/youtube.svg';
-import CarePassFooter from '../assets/carepassfooter.svg';
+import CarePassFooter from '../assets/carepass-footer-logo.svg';
 
 const FooterSection = () => {
     return (

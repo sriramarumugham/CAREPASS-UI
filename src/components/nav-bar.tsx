@@ -155,7 +155,7 @@ function ProductListDesktop() {
 
     return (
         <Popover className="relative  ">
-            <PopoverButton >
+            <PopoverButton className="focus:outline-none" >
                 <div className='flex gap-2'>
                     <a className="font-light focus:font-bold  active:outline-none   outline-none "> Products   </a><img className='flex' src={ArrowDown}></img>
                 </div>
