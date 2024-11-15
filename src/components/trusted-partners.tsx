@@ -32,19 +32,21 @@ const TrustedPartnersSection = () => {
 
 
     return (
-        <div className="flex flex-col p-3 md:p-7 gap-[32px] bg-white justify-center items-center">
-            <p className="text-lg md:text-3xl font-bold">Trusted Partners</p>
-            <ul className="flex flex-wrap gap-5 md:gap-8 justify-center items-center   max-w-[70%]">
-                {partners.map((partner, index) => (
-                    <li key={index} className="flex items-center justify-center ">
-                        <img
-                            src={partner.logo}
-                            alt={partner.alt}
-                            className="w-[100%] h-auto md:w-[150%] md:scale-150 m-[5px]  md:m-[30px] object-contain"
-                        />
-                    </li>
-                ))}
-            </ul>
+        <div className='max-w-[1200px] px-[20px] flex   m-auto  items-center justify-center'>
+            <div className="flex flex-col p-3 md:p-7 gap-[32px] bg-white justify-center items-center">
+                <p className="text-lg md:text-3xl font-bold">Trusted Partners</p>
+                <ul className="flex flex-wrap gap-5 md:gap-8 justify-center items-center">
+                    {partners.map((partner, index) => (
+                        <li key={index} className="flex items-center justify-center ">
+                            <img
+                                src={partner.logo}
+                                alt={partner.alt}
+                                className="w-[100%] h-auto md:w-[150%] md:scale-150 m-[5px]  md:m-[30px] object-contain"
+                            />
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };

@@ -154,10 +154,10 @@ function ProductListDesktop() {
     }
 
     return (
-        <Popover className="relative">
+        <Popover className="relative  ">
             <PopoverButton >
                 <div className='flex gap-2'>
-                    <a className="font-light focus:font-bold  focus:underline-offset-4  focus:underline"> Products   </a><img className='flex' src={ArrowDown}></img>
+                    <a className="font-light focus:font-bold  active:outline-none   outline-none "> Products   </a><img className='flex' src={ArrowDown}></img>
                 </div>
 
             </PopoverButton>
@@ -166,7 +166,7 @@ function ProductListDesktop() {
                     {products.map((product, index: number) => (
                         <>
 
-                            <div className='gap-[4px]'
+                            <div className='gap-[4px] cursor-pointer'
                                 onClick={() => handleNavigation(product.route)}
                             >
                                 <p className='text-deepPurple text-sm'>{product.name}</p>

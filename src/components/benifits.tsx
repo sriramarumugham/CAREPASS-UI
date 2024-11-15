@@ -48,14 +48,14 @@ const BenifitsList = ({ benifits }: { benifits: string[] }) => {
     );
 };
 const BenifitsSection = () => {
-    return (<>
-        <div className='flex  flex-col md:flex-row gap-4 md:gap-6 items-center justify-center md:py-[100px] '>
+    return (<div className='w-full px-[20px] flex items-center justify-center'>
+        <div className='flex  max-w-[1200px]   flex-col md:flex-row gap-4 md:gap-6 items-center justify-center md:py-[100px] '>
             <BenifitsHeader />
             <BenifitsList benifits={healthBenefits} />
             <BenifitsList benifits={additionalBenefits} />
 
         </div>
-    </>)
+    </div>)
 
 }
 

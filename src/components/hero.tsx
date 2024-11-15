@@ -8,7 +8,7 @@ import PercentageSvg from '../assets/percentage.svg';
 import RewardSvg from '../assets/reward.svg'
 import { Button } from '@headlessui/react'
 import { useEffect, useState } from "react";
-
+import MascotGif from '../assets/mascot.gif';
 
 const AnimatedBenifites = () => {
 
@@ -61,35 +61,38 @@ const AnimatedBenifites = () => {
 const HeroSection = () => {
     return (
         <div
-            className="w-full px-[5px] py-[16px]  min-h-[450px] h-auto bg-cover bg-center flex flex-col lg:flex-row items-center justify-evenly gap-5 mg:gap-0 "
-            style={{ backgroundImage: `url(${Gradient})` }}
+            className="w-full h-auto min-h-[450px] bg-cover bg-center bg-no-repeat "
+            style={{
+                backgroundImage: `url(${Gradient})`,
+            }}
         >
-            <div className="relative ">
-                <img
-                    src={hero}
-                    className="w-full max-w-[663px] max-h-[521px] md:w-auto md:max-w-[663px]"
-                    alt="Hero Image"
-                />
-                <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 md:bottom-10 md:right-10 md:transform-none">
-                    <AnimatedBenifites />
+            <div className="max-w-[1200px] flex flex-col lg:flex-row items-center justify-between gap-5 mg:gap-0">
+                <div className="relative lg:ml-32">
+                    <img
+                        src={MascotGif}
+                        className="w-full max-w-[663px] max-h-[521px] md:w-auto md:max-w-[663px]"
+                        alt="Hero Image"
+                    />
+                    <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 md:bottom-20 md:right-10 md:transform-none">
+                        <AnimatedBenifites />
+                    </div>
+                </div>
+
+                <div className="bg-white rounded-xl max-w-[521px] px-[8px] py-[13px]  lg:p-9 flex flex-col gap-[10px] h-fit " >
+                    <div className="border border-1 border-[#A689B0] rounded-[25px]  px-[10px] font-light w-fit">
+                        <p className="text-[#A689B0]">CarePass Tax Saver</p>
+                    </div>
+                    <div className="flex flex-col gap-[20px]">
+                        <p className="text-2xl font-bold text-deepPurple">Pay just ₹ 5,000 and receive benefits valued at ₹ 17,000 </p>
+                        <p className="font-light text-[#A689B0]">
+                            Elevate Wellness Offering and Maximize Tax Benefits
+                        </p>
+                        <Button className="inline-flex items-center gap-2 rounded-3xl justify-center  w-full lg:w-fit px-9 bg-deepPurple  py-2 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-purple-950 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
+                            Know more
+                        </Button>
+                    </div>
                 </div>
             </div>
-
-            <div className="bg-white rounded-xl max-w-[521px] px-[8px] py-[13px]  lg:p-9 flex flex-col gap-[10px] h-fit " >
-                <div className="border border-1 border-[#A689B0] rounded-[25px]  px-[10px] font-light w-fit">
-                    <p className="text-[#A689B0]">CarePass Tax Saver</p>
-                </div>
-                <div className="flex flex-col gap-[20px]">
-                    <p className="text-2xl font-bold text-deepPurple">Pay just ₹ 5,000 and receive benefits valued at ₹ 17,000 </p>
-                    <p className="font-light text-[#A689B0]">
-                        Elevate Wellness Offering and Maximize Tax Benefits
-                    </p>
-                    <Button className="inline-flex items-center gap-2 rounded-3xl justify-center  w-full lg:w-fit px-9 bg-deepPurple  py-2 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-purple-950 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
-                        Know more
-                    </Button>
-                </div>
-            </div>
-
         </div>
     );
 }
