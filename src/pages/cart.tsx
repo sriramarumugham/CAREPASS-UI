@@ -1,7 +1,6 @@
 import FooterSection from "../components/footer";
 import Navbar from "../components/nav-bar";
 import useCartStore, { CartItem } from "../store/cart-store";
-import EditSvg from '../assets/edit.svg';
 import TrashSvg from '../assets/trash.svg'
 import PharmacySvg from '../assets/pharmacy-purchase.svg'
 import { Disclosure } from "@headlessui/react";
@@ -9,14 +8,14 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import classNames from "classnames";
 import { Modal } from "../components/ui/modal/modal";
 import PersonalInformationForm from "../components/ui/modal/primary-details";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useUserStore } from "../store/user-store";
 import LoginModal from "../components/ui/modal/login";
 import { useNavigate } from 'react-router-dom';
 
 import { ROUTES } from "../utils/routes";
 
-const Cart = ({ openLogin, openPersonalInformation }: { openLogin: () => void, openPersonalInformation: () => void }) => {
+const Cart = ({ openLogin }: { openLogin: () => void, openPersonalInformation?: () => void }) => {
     const { cart, totalPrice } = useCartStore();
     const { getUser } = useUserStore();
     const userDetails = getUser();
@@ -36,11 +35,11 @@ const Cart = ({ openLogin, openPersonalInformation }: { openLogin: () => void, o
             openLogin();
             return
         }
-        else if (!userDetails?.user?.pin) {
-            openPersonalInformation();
-            return;
+        // else if (!userDetails?.user?.pin) {
+        //     openPersonalInformation();
+        //     return;
 
-        }
+        // }
         console.log("CARTHINGS ")
         navigate(ROUTES.CHECKOUT, { relative: "path" });
         return;
@@ -123,14 +122,14 @@ const Cart = ({ openLogin, openPersonalInformation }: { openLogin: () => void, o
 };
 
 
-const ProductDetails = ({ openPersonalInformation }: { openPersonalInformation: () => void, closePersonalInformation?: () => void }) => {
+const ProductDetails = () => {
 
     const { cart, increaseQuantity, decreaseQuantity, removeFromCart } = useCartStore(); // Get cart data and actions
 
-    const { user } = useUserStore();
+    // const { user } = useUserStore();
     return (
-        <div className="flex flex-col w-[80vw] md:min-w[60vw] max-w-[400px] md:max-w-[500px] gap-5 pb-40">
-            {user?.user?.userId && (<div className="border border-1 border-[#EDE4FF] p-4 flex flex-col gap-4">
+        <div className="flex flex-col w-[80vw] md:min-w[60vw] max-w-[400px] md:max-w-[500px] gap-5 pb-40 rounded-xl">
+            {/* {user?.user?.userId && (<div className="border border-1 border-[#EDE4FF] p-4 flex flex-col gap-4 rounded-xl">
                 <div className="flex flex-row justify-between items-center">
                     <p className="font-semibold">Personal information</p>
                     <img src={EditSvg} alt="Edit" onClick={openPersonalInformation} />
@@ -140,24 +139,27 @@ const ProductDetails = ({ openPersonalInformation }: { openPersonalInformation: 
                         <p>Please enter your personal detilas</p>
                     }
                 </p>
-            </div>)}
+            </div>)
+            } */}
 
-            {cart.map((item) => (
-                <div key={item.productId} className="border border-1 border-[#EDE4FF] p-4 flex flex-row gap-4 items-center justify-between">
-                    <div className="flex flex-row gap-6 items-center">
-                        <img src={PharmacySvg} alt="Pharmacy" />
-                        <p>{item.productName}</p>
+            {
+                cart.map((item) => (
+                    <div key={item.productId} className="rounded-xl border border-1 border-[#EDE4FF] p-4 flex flex-row gap-4 items-center justify-between">
+                        <div className="flex flex-row gap-6 items-center">
+                            <img src={PharmacySvg} alt="Pharmacy" />
+                            <p>{item.productName}</p>
+                        </div>
+                        <div className="flex flex-row items-center gap-4">
+                            <button onClick={() => decreaseQuantity(item.productId)}>-</button>
+                            <p>{item.quantity}</p>
+                            <button onClick={() => increaseQuantity(item.productId)}>+</button>
+                            <p>{item.price * item.quantity}</p>
+                            <img src={TrashSvg} alt="Remove" onClick={() => removeFromCart(item.productId)} className="cursor-pointer" />
+                        </div>
                     </div>
-                    <div className="flex flex-row items-center gap-4">
-                        <button onClick={() => decreaseQuantity(item.productId)}>-</button>
-                        <p>{item.quantity}</p>
-                        <button onClick={() => increaseQuantity(item.productId)}>+</button>
-                        <p>{item.price * item.quantity}</p>
-                        <img src={TrashSvg} alt="Remove" onClick={() => removeFromCart(item.productId)} className="cursor-pointer" />
-                    </div>
-                </div>
-            ))}
-        </div>
+                ))
+            }
+        </div >
     );
 }
 
@@ -182,6 +184,8 @@ export const CartPage = () => {
 
     return (
         <>
+
+            {/* dont need this one  */}
             <Modal open={open} setOpen={() => setOpen(false)} >
                 <PersonalInformationForm handleClose={() => setOpen(false)} />
             </Modal>
@@ -201,8 +205,8 @@ export const CartPage = () => {
                     </p>
 
                     <div className="flex flex-row  max-w-5xl gap-6 mx-auto  ">
-                        <ProductDetails openPersonalInformation={openPersonalInformation} closePersonalInformation={closePersonalInformation} />
-                        <Cart openLogin={handleopenLogin} openPersonalInformation={openPersonalInformation} />
+                        <ProductDetails />
+                        <Cart openLogin={handleopenLogin} />
                     </div>
                 </div>
                 <div className="hidden lg:block">

@@ -7,6 +7,7 @@ import Navbar from '../components/nav-bar';
 import FooterSection from '../components/footer';
 import { useEffect, useState } from 'react';
 import { ROUTES } from '../utils/routes';
+import useCartStore from '../store/cart-store';
 
 
 type CountdownProps = {
@@ -43,6 +44,11 @@ const SuccessScreen = ({ amount }: { amount: number }) => {
         navigate(ROUTES.PROFILE);
     };
 
+    const { clearCart } = useCartStore();
+
+    useEffect(() => {
+        clearCart();
+    }, [])
     return (
         <header className="header justify-center items-stretch shadow-2xl bg-white flex max-w-[328px] lg:max-w-[460px] flex-col px-8 py-10 rounded-xl">
             <img

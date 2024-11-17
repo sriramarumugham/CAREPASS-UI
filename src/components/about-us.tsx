@@ -9,6 +9,7 @@ const AboutUsSection = () => {
             style={{
                 background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)',
             }}
+            id='about-us'
         >
             <div
                 className="flex flex-col max-w-[1200px]    py-[30px]  md:py-[30px]  gap-4 md:gap-12"

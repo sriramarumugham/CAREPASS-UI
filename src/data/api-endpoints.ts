@@ -1,5 +1,7 @@
 export const API_ENDPOINTS = {
     USER: '/user',
+    GET_OTP: '/user/get-otp',
+    VALIDATE_OTP: '/user/validate-otp',
     GET_PRODUCT: '/master/product',
     PURCHASE: '/purchase',
     GET_TRANSACTION: '/transaction',

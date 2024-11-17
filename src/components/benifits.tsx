@@ -1,6 +1,9 @@
 
 import HeartGrafti from '../assets/hert-grafti.svg';
 import TickSvg from '../assets/tick.svg'
+import { motion } from 'framer-motion';
+
+
 
 const healthBenefits = [
     "Preventive Health Check ups",
@@ -32,21 +35,32 @@ const BenifitsHeader = () => {
     )
 }
 
-
 const BenifitsList = ({ benifits }: { benifits: string[] }) => {
     return (
-        <div className='border border-1 border-[#A689B0] px-5 rounded-xl py-6 w-[340px] h-fit md:h-[430px]'>
-            <ul className='flex flex-col gap-6'>
+        <motion.div
+            className="border border-1 border-[#A689B0] px-5 rounded-xl py-6 w-[340px] h-fit md:h-[430px]"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+        >
+            <motion.ul className="flex flex-col gap-6">
                 {benifits.map((benefit, index) => (
-                    <li key={index} className='flex gap-3 items-center'>
+                    <motion.li
+                        key={index}
+                        className="flex gap-3 items-center"
+                        variants={itemVariants}
+                    >
                         <img src={TickSvg} alt="Tick" />
-                        <p className='font-normal'>{benefit}</p>
-                    </li>
+                        <p className="font-normal">{benefit}</p>
+                    </motion.li>
                 ))}
-            </ul>
-        </div>
+            </motion.ul>
+        </motion.div>
     );
 };
+
+
+
 const BenifitsSection = () => {
     return (<div className='w-full px-[20px] flex items-center justify-center'>
         <div className='flex  max-w-[1200px]   flex-col md:flex-row gap-4 md:gap-6 items-center justify-center md:py-[100px] '>
@@ -60,3 +74,20 @@ const BenifitsSection = () => {
 }
 
 export default BenifitsSection
+
+
+
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.2, // Delays each child animation
+        },
+    },
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 120 } },
+};

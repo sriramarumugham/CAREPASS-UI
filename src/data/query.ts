@@ -9,6 +9,14 @@ export interface CreateUserBodyType {
 const createUserApi = async (data: CreateUserBodyType) => {
     return await client.post(API_ENDPOINTS.USER, data);
 };
+
+const getOtp = async (data: { email: string }) => {
+    return await client.post(API_ENDPOINTS.GET_OTP, data);
+};
+const validateOTP = async (data: { email: string; otp: number }) => {
+    return await client.post(API_ENDPOINTS.VALIDATE_OTP, data);
+};
+
 const getProductsApi = async () => {
     return await client.get(API_ENDPOINTS.GET_PRODUCT);
 };
@@ -43,4 +51,6 @@ export {
     fetchActivePlans,
     fetchPurchaseHistory,
     updateUserApi,
+    getOtp,
+    validateOTP,
 };

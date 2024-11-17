@@ -19,7 +19,6 @@ import PageWrapper from './utils/framer-motion'
 
 function App() {
 
-
   return (
     <>
       <PageWrapper>
@@ -38,9 +37,6 @@ function App() {
           </Routes>
         </BrowserRouter>
       </PageWrapper>
-
-
-
     </>
   )
 }

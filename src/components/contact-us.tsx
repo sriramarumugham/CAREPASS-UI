@@ -21,6 +21,7 @@ const ContactUsSection = () => {
             style={{
                 background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)',
             }}
+            id='contact-us'
         >
 
             <div className='flex flex-col gap-3 items-center justify-between'>

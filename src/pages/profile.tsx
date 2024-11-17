@@ -70,8 +70,8 @@ type ActivePlansProps = {
 
 const ActivePlans: React.FC<ActivePlansProps> = ({ plans }) => {
     return (
-        <div className="w-full p-3 bg-gray-100">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="w-full p-4  min-h-svh  bg-gray-100">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
                 {plans?.map((plan) => (
                     <div
                         key={plan.planId}
@@ -131,46 +131,46 @@ const ActivePlans: React.FC<ActivePlansProps> = ({ plans }) => {
 
 const OrderHistory: React.FC<ActivePlansProps> = ({ plans }) => {
     return (
-        <div className="w-full p-4 bg-gray-100">
+        <div className="w-full p-4 bg-gray-100 min-h-screen">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 {plans?.map((plan) => (
                     <div
                         key={plan.transactionId}
-                        className="bg-white p-4 rounded-lg shadow-md flex flex-col gap-2"
+                        className="bg-white p-6 rounded-lg shadow-md flex flex-col gap-4"
                     >
-                        <div className="flex justify-between">
+                        <div className="flex justify-between gap-4">
                             <div className="flex-1">
-                                <p className="font-semibold">Purchase Date:</p>
-                                <p>{new Date(plan.purchasedDate).toLocaleDateString()}</p>
+                                <p className="font-semibold text-sm text-gray-600">Purchase Date:</p>
+                                <p className="text-gray-800">{new Date(plan.purchasedDate).toLocaleDateString()}</p>
                             </div>
                             <div className="flex-1">
-                                <p className="font-semibold">Transaction ID:</p>
-                                <p>{plan.transactionId}</p>
-                            </div>
-                        </div>
-
-                        <div className="flex justify-between">
-                            <div className="flex-1">
-                                <p className="font-semibold">Primary User:</p>
-                                <p>{plan.userDetails.fullName}</p>
-                            </div>
-                            <div className="flex-1">
-                                <p className="font-semibold">Plan ID:</p>
-                                <p>{plan.planId}</p>
+                                <p className="font-semibold text-sm text-gray-600">Transaction ID:</p>
+                                <p className="text-gray-800">{plan.transactionId}</p>
                             </div>
                         </div>
 
-                        <div className="p-3 rounded-md">
-                            <p className="font-semibold">Product Name:</p>
-                            <p>{plan.productName}</p> {/* Display product name */}
+                        <div className="flex justify-between gap-4">
+                            <div className="flex-1">
+                                <p className="font-semibold text-sm text-gray-600">Primary User:</p>
+                                <p className="text-gray-800">{plan.userDetails.fullName}</p>
+                            </div>
+                            <div className="flex-1">
+                                <p className="font-semibold text-sm text-gray-600">Plan ID:</p>
+                                <p className="text-gray-800">{plan.planId}</p>
+                            </div>
                         </div>
 
-                        <div className="flex flex-col gap-2">
-                            <p className="font-semibold">Price Details:</p>
+                        <div className="pt-4  border-t border-gray-300 mt-4">
+                            <p className="font-semibold text-sm text-gray-600">Product Name:</p>
+                            <p className="text-gray-800">{plan.productName}</p>
+                        </div>
+
+                        <div className="flex flex-col gap-4 mt-4  border-t border-gray-300">
+                            <p className="font-semibold text-sm mt-4  text-gray-600">Price Details:</p>
                             {plan.priceDetails.map((priceDetail, index) => (
-                                <div key={index} className="bg-teal-200 p-2 rounded-md">
-                                    <p className="font-semibold">Price:</p>
-                                    <p>{`₹${priceDetail.price}`}</p>
+                                <div key={index} className="bg-teal-100  rounded-md shadow-sm">
+                                    <p className="font-semibold text-sm text-gray-600">Price:</p>
+                                    <p className="text-gray-800">{`₹${priceDetail.price}`}</p>
                                 </div>
                             ))}
                         </div>
@@ -180,6 +180,7 @@ const OrderHistory: React.FC<ActivePlansProps> = ({ plans }) => {
         </div>
     );
 };
+
 
 // Add similar changes to other parts of the Profile component
 

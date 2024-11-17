@@ -162,7 +162,7 @@ export const Checkout = () => {
                 order_id: razorpayOrderDetails.order_id,
                 description: 'complete your order',
                 image: 'https://cdn.razorpay.com/logos/7K3b6d18wHwKzL_medium.png',
-                callback_url: `${BASE_URL}/payment-callback/`,
+                callback_url: `${BASE_URL}/payment-callback`,
                 handler: function (response) {
                     console.log("REPONSE_FROM_RAXORPAY__", response)
                 },

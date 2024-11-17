@@ -15,7 +15,8 @@ import Facebook from '../assets/facebook.svg';
 import ArrowDown from '../assets/arrow-down.svg'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
 import { useState } from 'react';
-import { Link, Route, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { NavHashLink } from 'react-router-hash-link';
 
 
 import classNames from 'classnames';
@@ -204,15 +205,15 @@ const Navbar = () => {
 
 
                 <ul className="hidden lg:flex space-x-4 text-deepPurple">
-                    <li><a href="/" className=" font-light focus:font-bold focus:underline-offset-4  focus:underline">Home</a></li>
-                    <li><a href="#" className="font-light focus:font-bold  focus:underline-offset-4  focus:underline">About Us</a></li>
+                    <li><NavHashLink to="/" className=" font-light focus:font-bold focus:underline-offset-4  focus:underline">Home</NavHashLink></li>
+                    <li><NavHashLink to="/#about-us" className="font-light focus:font-bold  focus:underline-offset-4  focus:underline">About Us</NavHashLink></li>
 
                     <li>
                         <ProductListDesktop />
                     </li>
 
-                    <li><a href="#" className="font-light focus:font-bold focus:underline-offset-4  focus:underline">FAQ</a></li>
-                    <li><a href="#" className="font-light focus:font-bold focus:underline-offset-4  focus:underline ">Contact Us</a></li>
+                    <li><NavHashLink to="#" className="font-light focus:font-bold focus:underline-offset-4  focus:underline">FAQ</NavHashLink></li>
+                    <li><NavHashLink to="/#contact-us" className="font-light focus:font-bold focus:underline-offset-4  focus:underline ">Contact Us</NavHashLink></li>
                 </ul>
 
                 <div className='hidden   items-center justify-center lg:flex gap-3'>
