@@ -3,6 +3,7 @@ import TopRightSvg from '../assets/top-right.svg';
 import AboutUseMobilePng from '../assets/about-us-mobile.png';
 import AboutUseDesktopPng from '../assets/about-us-desktop.png'
 
+import Oldagepeople from '../assets/oldageprople.svg';
 
 const AboutUsSection = () => {
     return (
@@ -19,8 +20,8 @@ const AboutUsSection = () => {
                 <p className="font-bold text-xl md:text-4xl mx-auto  ">About Us</p>
                 <div>
                     <div className="flex flex-col md:flex-row gap-4 md:gap-9">
-                        <img src={AboutUseMobilePng} className="md:hidden w-auto max-w-full" />
-                        <img src={AboutUseDesktopPng} className="hidden md:block w-auto max-w-full" />
+                        <img src={Oldagepeople} className="md:hidden w-auto max-w-full" />
+                        <img src={Oldagepeople} className="hidden md:block w-auto max-w-full" />
                         <div className='flex flex-col gap-3'>
 
                             <p className="text-[#A689B0] font-light md:leading-9">Streamlining your</p>
