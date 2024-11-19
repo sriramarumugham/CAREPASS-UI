@@ -12,12 +12,13 @@ import Gradient from '../assets/gradient.png'
 import { ROUTES } from "../utils/routes";
 
 export const ProductDetail = ({ productId }: { productId: string }) => {
+
+    console.log("productId__", productId)
     const navigate = useNavigate()
     const { addToCart } = useCartStore();
-    const { setProducts, products } = useProductStore();
     const { data, error, isLoading } = useQuery<{ products: ProductType[] }>(
         {
-            queryKey: ['products'],
+            queryKey: ['products', "productId"],
             queryFn: async () => {
                 const data = await getProductsApi();
                 return data.products; // Return the products directly
@@ -32,13 +33,11 @@ export const ProductDetail = ({ productId }: { productId: string }) => {
         console.error("Error fetching products:", error);
         return <div>Error fetching products</div>;
     }
-    if (data && products.length == 0) {
-        setProducts(data);
-    };
+
     const getProductById = (productId: string, products: ProductType[]) => {
         return products.find(product => product.productId === productId);
     };
-    const product = getProductById(productId, products);
+    const product = getProductById(productId, data);
 
     const { productName, productDescription, price } = product as ProductType;
 

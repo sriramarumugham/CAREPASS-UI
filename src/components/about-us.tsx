@@ -3,6 +3,7 @@ import TopRightSvg from '../assets/top-right.svg';
 import AboutUseMobilePng from '../assets/about-us-mobile.png';
 import AboutUseDesktopPng from '../assets/about-us-desktop.png'
 
+
 const AboutUsSection = () => {
     return (
         <div className='px-[20px] flex items-center justify-center'
@@ -15,7 +16,6 @@ const AboutUsSection = () => {
                 className="flex flex-col max-w-[1200px]    py-[30px]  md:py-[30px]  gap-4 md:gap-12"
 
             >
-
                 <p className="font-bold text-xl md:text-4xl mx-auto  ">About Us</p>
                 <div>
                     <div className="flex flex-col md:flex-row gap-4 md:gap-9">
@@ -27,14 +27,13 @@ const AboutUsSection = () => {
 
                             <p className="text-deepPurple text-2xl md:text-3xl font-light md:leading-9">Health Plan Management</p>
 
-                            <p className="leading-9">
-                                Streamlining your Health Plan Management through our standardized, measurable health plans to build a happy, healthy, and secured lifestyle!!
-                                Welcome to a new era of flexible, floater, and digitalized health & financial cover for your healthcare needs with CarePass.
+                            <p className="leading-9 mt-4">
+                                At CarePass, we believe that healthcare should be proactive, comprehensive, and affordable. Our mission is to transform the way individuals and families manage their health by offering a solution that not only covers emergencies but also emphasizes preventive care.
                             </p>
                             <br />
                             <p className="leading-9">
-                                Our tailored health plan packages are designed to meet your needs at every level. From comprehensive wellness checks and tax advantages to financial support through insurance cover during illness and hospitalization, we’ve crafted solutions that empower you to take control of your health and future, all while providing unparalleled value.
-                                Explore how our innovative products can help transform your approach to wellbeing and financial protection, ensuring you get the best for yourself and your loved ones.
+                                We’re driven by the goal of making health management simple, accessible, and effective. Our plans cater to diverse healthcare needs, from routine check-ups to critical illness coverage, ensuring peace of mind for you and your loved ones.
+
                             </p>
 
                             <button
@@ -52,3 +51,5 @@ const AboutUsSection = () => {
 }
 
 export default AboutUsSection
+
+

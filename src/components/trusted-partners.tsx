@@ -34,7 +34,7 @@ const TrustedPartnersSection = () => {
     return (
         <div className='max-w-[1200px] px-[20px] flex   m-auto  items-center justify-center'>
             <div className="flex flex-col p-3 md:p-7 gap-[32px] bg-white justify-center items-center">
-                <p className="text-lg md:text-3xl font-bold">Trusted Partners</p>
+                <p className="text-lg md:text-3xl font-bold">Our Esteemed Partners</p>
                 <ul className="flex flex-wrap gap-5 md:gap-8 justify-center items-center">
                     {partners.map((partner, index) => (
                         <li key={index} className="flex items-center justify-center ">

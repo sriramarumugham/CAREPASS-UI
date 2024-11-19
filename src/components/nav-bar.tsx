@@ -1,5 +1,6 @@
 
-import Logosvg from '../assets/logo.svg';
+import LogoPng1 from '../assets/Carepass1png.png';
+
 import HamMenuSvg from '../assets/ham-menu.svg';
 import CartSvg from '../assets/cart.svg';
 import ProfileSvg from '../assets/profile.svg';
@@ -197,10 +198,10 @@ const Navbar = () => {
 
     return (
         <>
-            <div className=" w-full py-3  md:py-6   px-5 md:px-[80px]   flex  items-center justify-between  ">
+            <div className=" max-w-[1200px] m-auto  px-[20px]   md:px-[5px]     w-full py-3  md:py-6    flex  items-center justify-between  ">
                 <Link to="/">
 
-                    <img src={Logosvg} className={'w-[66px] h-[14px]  md:h-[32px] md:w-[143px]'} />
+                    <img src={LogoPng1} className={'w-[66px] mt-[5px] h-[14px]  md:h-[32px] md:w-[143px]'} />
                 </Link>
 
 
@@ -236,9 +237,21 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <div className='  h-[40px] w-[40px]  rounded-full  flex lg:hidden items-center justify-center bg-slate-200 '
-                >
-                    <img src={HamMenuSvg} onClick={toggle} />
+                <div className='flex gap-4 items-center justify-center'>
+                    <Link to="/cart" className="relative  md:hidden ">
+                        <img src={CartSvg} width={25} height={25} />
+                        {itemCount > 0 && (
+                            <span className="absolute -top-1 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                                {itemCount}
+                            </span>
+                        )}
+
+                    </Link>
+
+                    <div className='  h-[40px] w-[40px]  rounded-full  flex lg:hidden items-center justify-center bg-slate-200 '
+                    >
+                        <img src={HamMenuSvg} onClick={toggle} />
+                    </div>
                 </div>
             </div>
             <Sidebar open={openSidebar} setOpen={toggle} >
