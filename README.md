@@ -5,7 +5,7 @@ https://medium.com/@praizjosh/how-to-import-svg-files-as-react-components-in-vit
 
 #bugs
 
-Cursor pointer not wokrinig
+Cursor pointer not wokrinig;
 Click issue in menu bar
 side bar change to any package
 batch
@@ -14,4 +14,5 @@ font and size
 animation
 
 removed things
+
 <!-- "build": "tsc -b && vite build", -->
