@@ -9,21 +9,22 @@ const healthBenefits = [
     "Preventive Health Check ups",
     "Unlimited Doctor Consults",
     "Secured Medical Expenses",
-    "Diagnostics",
+    "Vision Care",
     "Dental care",
     "Critical illness cover",
-    "Accidental cover",
-    "Comprehensive cover for IP care"
+    "Health cover",
+    "Comprehensive IPD cover"
 ];
 
 const additionalBenefits = [
     "Get access to App",
+    "Diagnostics",
     "Discounts on Health Checks",
-    "Discounts on Pharmacy Purchase",
-    "Doctor consults",
+    "Exclusive discounts on pharmacy",
     "Discounted Gym Memberships",
     "Nutrition & Wellness Coaching",
-    "Healthy Eating Habits"
+    "Healthy Eating Habits",
+    "Free Diet Plan"
 ];
 
 const BenifitsHeader = () => {

@@ -110,9 +110,7 @@ const GoldPlan = () => {
                 />
             </div>
 
-
             <ResponsiveGrid />
-
 
             <TableTemplate
                 columns={columns}

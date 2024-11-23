@@ -40,7 +40,6 @@ const SuccessScreen = ({ amount }: { amount: number }) => {
     const navigate = useNavigate();
 
     const handleRedirect = () => {
-        console.log("Redirecting to profile...");
         navigate(ROUTES.PROFILE);
     };
 

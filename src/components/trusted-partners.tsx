@@ -12,8 +12,6 @@ import Radcliffe from '../assets/insurance/radclif.svg';
 import Agilus from '../assets/insurance/agilus.svg';
 import TataOneMg from '../assets/insurance/tata1mg.svg';
 
-
-
 const TrustedPartnersSection = () => {
     const partners = [
         { logo: ApolloHospitalsSvg, alt: "Apollo Hospitals" },

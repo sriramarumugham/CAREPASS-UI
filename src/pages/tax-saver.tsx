@@ -16,13 +16,10 @@ import tag from '../assets/GOLD/tag.svg';
 import { ReusableTable } from "../components/tables/table"
 import { ColumnDef } from "@tanstack/react-table";
 import FourDoctor from '../assets/fourDoctors.svg';
-import useCartStore from "../store/cart-store"
-import { useNavigate } from "react-router-dom"
-import { ROUTES } from "../utils/routes"
-
-
-
-
+import useCartStore from "../store/cart-store";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../utils/routes";
+import './Hero.css';
 
 const TaxSaverPage = () => {
     const themeColors = {
@@ -76,10 +73,7 @@ const TaxSaverPage = () => {
     );
 };
 
-
 export default TaxSaverPage
-
-
 
 interface GridItemProps {
     iconSrc: string;
@@ -88,7 +82,10 @@ interface GridItemProps {
 
 const GridItem: FC<GridItemProps> = ({ iconSrc, description }) => {
     return (
-        <div className="bg-white max-h-[280px] max-w-[220px]  p-6 rounded-lg shadow-sm flex flex-col items-center space-y-4">
+        <div className="bg-white max-h-[280px] max-w-[220px] p-6 rounded-lg shadow-sm flex flex-col items-center space-y-4 animated-border"
+        style={{
+            width: '100%',
+        }}>
             <img src={iconSrc} alt="icon" className="w-[60px] h-[60px] " />
             <p className="text-sm text-center">{description}</p>
         </div>

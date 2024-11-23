@@ -6,10 +6,10 @@ import { motion } from 'framer-motion'
 
 const Statistics = () => {
     const stats = [
-        { logo: Stetescope, number: 8000, description: 'Online Teleconsultations' },
-        { logo: Medicine, number: 35000, description: 'Physical pharmacies & fulfilment' },
-        { logo: Lab, number: 400, description: 'Serviceable Home Sample Collection' },
-        { logo: Dumbell, number: 5500, description: 'Gym & Fitness Centre network' }
+        { logo: Stetescope, number: '25,000', description: 'Doctors for in-clinic consultations' },
+        { logo: Medicine, number: '35,000', description: 'Pharmacies' },
+        { logo: Lab, number: '8,000', description: 'Diagnostic Partners in 400+ cities' },
+        { logo: Dumbell, number: '5,500', description: 'Gym & Fitness Centre network' }
     ];
 
     return (
