@@ -4,8 +4,8 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import useCartStore, { CartItem } from '../store/cart-store';
 import { ProductType, useProductStore } from '../store/product-store';
-import { useMutation } from '@tanstack/react-query';
-import { postFormDataApi } from '../data/query';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { getProductsApi, postFormDataApi } from '../data/query';
 import { useUserStore } from '../store/user-store';
 import { Modal } from './ui/modal/modal';
 import LoginModal from './ui/modal/login';
@@ -145,9 +145,25 @@ export const Checkout = () => {
     const { control, register, handleSubmit, watch } = useForm();
     const formData = watch();
     const { cart } = useCartStore();
-    const { products } = useProductStore();
+    // const { products } = useProductStore();
 
-    const { mutate, error, isLoading } = useMutation({
+    const { data, isLoading: productLoading } = useQuery<{ products: ProductType[] }>(
+        {
+            queryKey: ['products'],
+            queryFn: async () => {
+                const data = await getProductsApi();
+                console.log("data___", data);
+                return data?.products; // Return the products directly
+            },
+        }
+    );
+
+
+    const products = data;
+
+
+
+    const { mutate, } = useMutation({
         mutationFn: async (formData: any) => {
             return await postFormDataApi(formData);
         },
@@ -277,7 +293,7 @@ export const Checkout = () => {
                         </div>
 
                         <div className=" lg:flex flex-col lg:justify-start fixed lg:relative bottom-0 left-0 w-full lg:w-[300px]  p-4 m-0">
-                            <TotalPrice products={cart} formData={formData} productData={products} />
+                            {/* <TotalPrice products={cart} formData={formData} productData={products} /> */}
                             <button type="submit" className="p-2 bg-deepPurple text-white w-full rounded hover:bg-purple-700 transition">
                                 Submit
                             </button>
@@ -285,12 +301,12 @@ export const Checkout = () => {
                     </form>
 
                     {/* Fixed Submit Button for Mobile */}
-                    {/* <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white">
+                    <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white">
                         <TotalPrice products={cart} formData={formData} productData={products} />
                         <button onClick={handleSubmit(onSubmit)} className="p-2 bg-deepPurple text-white w-full rounded hover:bg-purple-700 transition">
                             Submit
                         </button>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </>
@@ -299,13 +315,13 @@ export const Checkout = () => {
 
 const calculateTotalPrice = (products, formData, productData) => {
     return products.reduce((total, product) => {
-        const productDetails = productData.find(p => p.productId === product.productId) || {};
+        const productDetails = productData?.find(p => p.productId === product.productId) || {};
         const quantity = product.quantity || 1;
 
         // Get the form data for the current product (array of beneficiaries)
         // const productFormData = formData[product.productId] || [];
 
-        const beneficiariesCount = formData && Array.isArray(formData[product.productId])
+        const beneficiariesCount = formData && Array.isArray(formData[product?.productId])
             ? formData[product.productId].reduce((count, item) => {
                 return count + (Array.isArray(item.beneficiaries) ? item.beneficiaries.length : 0);
             }, 0)
