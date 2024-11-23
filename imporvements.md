@@ -54,3 +54,16 @@ remove the cart after then things
    8 know more animation in the page
    9 login / sign up changes
    10
+
+#demo imporvements
+
+1. 360\* image animtaion
+2. heart image static details
+3. contact and email id and the
+4. hilghting the things
+   5 table things
+
+buyer change it to
+toggle for himself or the other
+gender and name in benificieriers
+submit
