@@ -9,6 +9,8 @@ import { ColumnDef } from "@tanstack/react-table";
 import { ROUTES } from "../utils/routes";
 import useCartStore from "../store/cart-store";
 import { useNavigate } from "react-router-dom";
+import platinum_image from '../assets/carepass_platinum.png';
+import { goldPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
 
 
 const SuperTopUpPage = () => {
@@ -25,7 +27,7 @@ const SuperTopUpPage = () => {
         {
             accessorKey: "feature",
             header: "Feature/Aspect",
-            cell: (info) => info.getValue(),
+            cell: (info) => <p className="font-bold">{info.getValue()}</p>,
         },
         {
             accessorKey: "carePass",
@@ -105,13 +107,17 @@ const SuperTopUpPage = () => {
                     ageLimit="18-60 years"
                     validity="1 year"
                     themeColors={themeColors}
-                    imgSrc={SilverHeart}
+                    imgSrc={platinum_image}
                     onBuyNow={handleBuyNow}
 
                 />
 
 
             </div>
+
+            <ResponsiveGrid gridItems={goldPlanGrid} heading='CarePass Platinum Plan' />
+
+
             <TableTemplate
                 columns={columns}
                 data={data}

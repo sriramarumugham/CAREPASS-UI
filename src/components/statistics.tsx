@@ -2,14 +2,15 @@ import Stetescope from '../assets/stetescope.svg';
 import Medicine from '../assets/medicine.svg';
 import Lab from '../assets/lab.svg';
 import Dumbell from '../assets/dumbell.svg';
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
+import CountUp from 'react-countup'
 
 const Statistics = () => {
     const stats = [
-        { logo: Stetescope, number: '25,000', description: 'Doctors for in-clinic consultations' },
-        { logo: Medicine, number: '35,000', description: 'Pharmacies' },
-        { logo: Lab, number: '8,000', description: 'Diagnostic Partners in 400+ cities' },
-        { logo: Dumbell, number: '5,500', description: 'Gym & Fitness Centre network' }
+        { logo: Stetescope, number: 25000, description: 'Doctors for in-clinic consultations' },
+        { logo: Medicine, number: 35000, description: 'Pharmacies' },
+        { logo: Lab, number: 8000, description: 'Diagnostic Partners in 400+ cities' },
+        { logo: Dumbell, number: 5500, description: 'Gym & Fitness Centre network' }
     ];
 
     return (
@@ -34,7 +35,11 @@ const Statistics = () => {
                             />
                         </div>
                         <div className="flex flex-col h-fit gap-[5px] shrink">
-                            <div className="font-bold text-2xl md:text-[16px]">{stat.number} +</div>
+
+                            <div className="font-bold text-2xl md:text-[16px]">
+                                <CountUp start={0} end={stat.number} duration={2} separator="," />+
+                            </div>
+
                             <div className="text-[#333333] text-xs md:text-[16px]">{stat.description}</div>
                         </div>
                     </motion.div>

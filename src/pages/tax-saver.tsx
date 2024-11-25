@@ -3,16 +3,7 @@ import ContactUsSection from "../components/contact-us"
 import FooterSection from "../components/footer"
 import Navbar from "../components/nav-bar"
 import Gradient from '../assets/gradient.png'
-import HeartPatient from '../assets/pain-heartburn-old-senior-asian-grandfather-patient-uniform-suffer-from-body-problem-health-ideas-concept 1.png'
 import { FC } from "react"
-import Pharmacy from '../assets/GOLD/Pharmacy.svg';
-import Rewards from '../assets/GOLD/Rewards.svg';
-import Tax from '../assets/GOLD/Tax.svg';
-import Wallet from '../assets/GOLD/Wallet.svg';
-import discound from '../assets/GOLD/discound.svg';
-import haeadpone from '../assets/GOLD/haeadpone.svg';
-import hand from '../assets/GOLD/hand.svg';
-import tag from '../assets/GOLD/tag.svg';
 import { ReusableTable } from "../components/tables/table"
 import { ColumnDef } from "@tanstack/react-table";
 import FourDoctor from '../assets/fourDoctors.svg';
@@ -20,6 +11,9 @@ import useCartStore from "../store/cart-store";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../utils/routes";
 import './Hero.css';
+import HeartPatient from '../assets/family-gold.png'
+import { goldPlanGrid, ResponsiveGrid } from "../utils/plan-benifits"
+
 
 const TaxSaverPage = () => {
     const themeColors = {
@@ -34,7 +28,7 @@ const TaxSaverPage = () => {
 
 
     const productId = "product1";
-    const productName = "CarePass Tax Save";
+    const productName = "CarePass Tax Saver";
     const price = 5000;
 
     const handleBuyNow = () => {
@@ -65,6 +59,9 @@ const TaxSaverPage = () => {
                 />
             </div>
 
+            <ResponsiveGrid gridItems={goldPlanGrid} heading='CarePass Tax Saver' />
+
+
 
             <TrustedPartnersSection />
             <ContactUsSection />
@@ -75,57 +72,7 @@ const TaxSaverPage = () => {
 
 export default TaxSaverPage
 
-interface GridItemProps {
-    iconSrc: string;
-    description: string;
-}
 
-const GridItem: FC<GridItemProps> = ({ iconSrc, description }) => {
-    return (
-        <div className="bg-white max-h-[280px] max-w-[220px] p-6 rounded-lg shadow-sm flex flex-col items-center space-y-4 animated-border"
-        style={{
-            width: '100%',
-        }}>
-            <img src={iconSrc} alt="icon" className="w-[60px] h-[60px] " />
-            <p className="text-sm text-center">{description}</p>
-        </div>
-    );
-};
-const gridItems = [
-    { iconSrc: Wallet, description: "₹5000 for PHC" },
-    { iconSrc: haeadpone, description: "Unlimited Tele-consultation" },
-    { iconSrc: Rewards, description: "Earn Rewards and TRU coins" },
-    { iconSrc: Tax, description: "Tax benefit under 80D" },
-    { iconSrc: Pharmacy, description: "Discounts on Pharmacy Purchase" },
-    { iconSrc: discound, description: "Follow up HC for dependents up to 60% Discounts" },
-    { iconSrc: tag, description: "PHC at 60% lesser price" },
-    { iconSrc: hand, description: "Tax benefit under 80D" }
-];
-export const ResponsiveGrid: FC = () => {
-    return (
-        <div className="w-full max-w-[1200px] px-[20px] mx-auto py-10 bg-white pt-[70px] pb-[30px] flex justify-center">
-            <div className="max-w-[1200px] w-full">
-                {/* Header Section */}
-                <div className="text-center mb-8">
-                    <p className="text-2xl sm:text-3xl font-semibold text-deepPurple">
-                        CarePass Gold
-                    </p>
-                </div>
-
-                {/* Grid Section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 justify-items-center">
-                    {gridItems.map((item, index) => (
-                        <GridItem
-                            key={index}
-                            iconSrc={item.iconSrc}
-                            description={item.description}
-                        />
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
-};
 
 interface PlanDetailsProps {
     heading: string;
@@ -157,11 +104,11 @@ export const PlanDetails: FC<PlanDetailsProps> = ({
 }) => {
     return (
         <div
-            className={`flex flex-col mt-[20px] items-center md:items-start md:flex-row w-full max-w-[1200px] ${themeColors.background} m-auto`}
+            className={`flex flex-col mt-[20px] items-center md:flex-row w-full max-w-[1200px] ${themeColors.background} m-auto`}
         >
             <img
                 src={imgSrc}
-                className="max-w-[400px] w-full object-cover"
+                className="max-w-[400px] w-full object-cover "
                 alt="Plan Illustration"
             />
             <div className="p-[40px]">
@@ -242,7 +189,7 @@ export const TableTemplate = <T,>({ heading, data, columns, sharedValues }: Tabl
         >
             <h2 className="text-2xl font-bold text-deepPurple mb-4 text-center">{heading}</h2>
 
-            <div className="max-w-[1200px] mx-auto w-full p-[20px] flex  flex-col md:flex-row items-center justify-center md:items-start ">
+            <div className=" max-w-[1200px] mx-auto w-full p-[20px] flex  flex-col md:flex-row items-center justify-center md:items-center ">
 
 
                 {/* Left Section with Image */}

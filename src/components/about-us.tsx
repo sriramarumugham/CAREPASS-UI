@@ -1,8 +1,5 @@
 
 import TopRightSvg from '../assets/top-right.svg';
-import AboutUseMobilePng from '../assets/about-us-mobile.png';
-import AboutUseDesktopPng from '../assets/about-us-desktop.png'
-
 import Oldagepeople from '../assets/oldageprople.svg';
 
 const AboutUsSection = () => {

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { fetchActivePlans, fetchPurchaseHistory } from "../data/query";
 import { useQuery } from "@tanstack/react-query";
 import { useUserStore } from "../store/user-store";
+import Cart from '../assets/cart-large-4-svgrepo-com.svg';
 
 interface Tab {
     title: string;
@@ -71,7 +72,11 @@ type ActivePlansProps = {
 const ActivePlans: React.FC<ActivePlansProps> = ({ plans }) => {
     return (
         <div className="w-full p-4  min-h-svh  bg-gray-100">
+
+            {plans?.length == 0 && <EmptyList />}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
+
+
                 {plans?.map((plan) => (
                     <div
                         key={plan.planId}
@@ -132,6 +137,9 @@ const ActivePlans: React.FC<ActivePlansProps> = ({ plans }) => {
 const OrderHistory: React.FC<ActivePlansProps> = ({ plans }) => {
     return (
         <div className="w-full p-4 bg-gray-100 min-h-screen">
+
+
+            {plans?.length == 0 && <EmptyList />}
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 {plans?.map((plan) => (
                     <div
@@ -208,11 +216,10 @@ const Profile = () => {
     });
 
     const { user } = useUserStore();
-    console.log("User___", user);
 
     return (
         <>
-            <div className="w-full max-w-6xl mx-auto bg-gray-100"> {/* Added background color */}
+            <div className="w-full  mx-auto bg-gray-100"> {/* Added background color */}
                 <div className="w-full px-2 py-6 flex flex-col justify-between items-center">
                     {/* Section 1 - Left */}
                     <div className="flex flex-row items-center gap-4 w-full px-4">
@@ -267,7 +274,7 @@ const ProfilePage = () => {
         <>
             <div className="flex flex-col min-h-screen">
                 <Navbar />
-                <div className="flex-grow flex w-full">
+                <div className="flex-grow flex w-full max-w-[1200px] mx-auto ">
                     <Profile />
                 </div>
                 <FooterSection />
@@ -275,3 +282,12 @@ const ProfilePage = () => {
         </>)
 }
 export default ProfilePage
+
+
+export const EmptyList = () => {
+    return (
+        < div className="min-h-[600px] w-full h-full m-auto flex  items-center justify-center" >
+            <img src={Cart} className="max-w-[200px]" />
+        </div >
+    )
+}

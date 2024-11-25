@@ -10,6 +10,7 @@ import Gradient from '../assets/gradient.png'
 import useCartStore from "../store/cart-store"
 import { useNavigate } from "react-router-dom"
 import { ROUTES } from "../utils/routes"
+import { goldPlanGrid, ResponsiveGrid } from "../utils/plan-benifits"
 
 const SilverPlanPage = () => {
 
@@ -38,7 +39,7 @@ const SilverPlanPage = () => {
         {
             accessorKey: "feature",
             header: "Feature/Aspect",
-            cell: (info) => info.getValue(),
+            cell: (info) => <p className="font-bold">{info.getValue()}</p>,
         },
         {
             accessorKey: "carePass",
@@ -87,6 +88,10 @@ const SilverPlanPage = () => {
 
                 />
             </div>
+
+
+            <ResponsiveGrid gridItems={goldPlanGrid} heading='CarePass Silver Plan' />
+
 
             <TableTemplate
                 columns={columns}

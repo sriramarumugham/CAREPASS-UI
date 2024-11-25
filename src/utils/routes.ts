@@ -12,4 +12,5 @@ export const ROUTES = {
     PROFILE: '/profile',
     PAYMENT_DETAILS: '/payment-details/:paymentId',
     RAZORPAY: '/razorpay',
+    CONTACT_US: '/contact-us',
 };

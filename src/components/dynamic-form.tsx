@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
@@ -11,6 +11,7 @@ import { Modal } from './ui/modal/modal';
 import LoginModal from './ui/modal/login';
 import { openPayModal } from '../utils/razorpay';
 import { BASE_URL, RAZORPAY_ID } from '../data/api-endpoints';
+import toast from 'react-hot-toast';
 
 
 interface Field {
@@ -131,11 +132,15 @@ const FieldArraySection: React.FC<{
             <button
                 type="button"
                 onClick={appendBeneficiary}
-                className={`p-2 border border-1 rounded px-4 transition ${fields.length >= field?.maxCount ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'border-deepPurple text-deepPurple bg-white hover:bg-purple-700'}`}
+                className={`p-2 border rounded px-4 transition 
+    ${fields.length >= field?.maxCount ?
+                        'bg-gray-300 text-gray-500 cursor-not-allowed' :
+                        'border-deepPurple text-deepPurple bg-white hover:bg-deepPurple hover:text-white'}`}
                 disabled={fields.length >= field?.maxCount}
             >
                 + Add Beneficiary
             </button>
+
         </div>
     );
 };
@@ -179,8 +184,8 @@ export const Checkout = () => {
                 description: 'complete your order',
                 image: 'https://cdn.razorpay.com/logos/7K3b6d18wHwKzL_medium.png',
                 callback_url: `${BASE_URL}/payment-callback`,
-                handler: function (response) {
-                    console.log("REPONSE_FROM_RAXORPAY__", response)
+                handler: function () {
+
                 },
                 prefill: {
                     name: 'testuser',
@@ -260,12 +265,12 @@ export const Checkout = () => {
 
             <div className="h-fit w-full px-4">
                 <div className="mx-auto w-full max-w-2xl lg:max-w-4xl divide-y divide-gray-200 rounded-xl bg-white">
-                    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col lg:flex-row py-4 mb-28 md:mb-2">
-                        <div className="flex-grow pb-28 lg:pb-5">
-                            {cart.map((item) => {
+                    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col lg:flex-row py-4 mb-28 md:mb-2 ">
+                        <div className="flex-grow pb-28 lg:pb-9 md:max-h-svh  md:overflow-y-auto scrollbar scrollbar-thumb-deepPurple scrollbar-track-gray-200 ">
+                            {products?.length && cart?.map((item) => {
                                 const filteredProd = products?.find(prod => prod.productId === item.productId);
                                 return (
-                                    <Disclosure as="div" className="p-6 shadow-md my-4" key={item.productId}>
+                                    <Disclosure as="div" className="p-6 shadow-md my-4" key={item.productId} defaultOpen={true} >
                                         {({ open }) => (
                                             <>
                                                 <DisclosureButton className="group flex w-full items-center justify-between">
@@ -293,18 +298,19 @@ export const Checkout = () => {
                         </div>
 
                         <div className=" lg:flex flex-col lg:justify-start fixed lg:relative bottom-0 left-0 w-full lg:w-[300px]  p-4 m-0">
-                            {/* <TotalPrice products={cart} formData={formData} productData={products} /> */}
+                            <TotalPrice products={cart} formData={formData} productData={products} />
                             <button type="submit" className="p-2 bg-deepPurple text-white w-full rounded hover:bg-purple-700 transition">
-                                Submit
+                                Proceed to Pay
                             </button>
                         </div>
                     </form>
+
 
                     {/* Fixed Submit Button for Mobile */}
                     <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white">
                         <TotalPrice products={cart} formData={formData} productData={products} />
                         <button onClick={handleSubmit(onSubmit)} className="p-2 bg-deepPurple text-white w-full rounded hover:bg-purple-700 transition">
-                            Submit
+                            Proceed to Pay
                         </button>
                     </div>
                 </div>
@@ -347,11 +353,24 @@ const TotalPrice: React.FC<{
     formData: any;
     productData: ProductType[];
 }> = ({ products, formData, productData }) => {
-    const [totalPrice, setTotalPrice] = useState(0);
 
+    const cartTotalPrice = useCartStore((state) => state.totalPrice); // Cart store total price
+
+    const [totalPrice, setTotalPrice] = useState(cartTotalPrice);
+
+    const priceChangeRef = useRef<number>(cartTotalPrice); // Ref to store the last known price
     useEffect(() => {
         const total = calculateTotalPrice(products, formData, productData);
+
+
+        if (total > priceChangeRef.current) {
+            const difference = total - priceChangeRef.current;
+            toast.success(` Praise raised by ${difference}, and total price is ${total}`, { id: total })
+            priceChangeRef.current = total;
+        }
+
         setTotalPrice(total);
+
     }, [products, formData, productData]);
 
     return (
@@ -365,7 +384,7 @@ const TotalPrice: React.FC<{
                             </span>
                             <ChevronDownIcon className={`size-5 fill-gray-600 transition-transform ${open ? 'rotate-180' : ''}`} />
                         </Disclosure.Button>
-                        <Disclosure.Panel className="mt-2 text-sm text-gray-700 bg-gray-100 p-4 rounded-md">
+                        <Disclosure.Panel className="mt-2 text-sm text-gray-700 bg-gray-100 p-4 rounded-md" >
                             {products.map((product) => {
                                 const productTotal = calculateTotalPrice([product], formData, productData);
                                 return (

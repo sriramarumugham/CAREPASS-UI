@@ -1,5 +1,5 @@
 
-import LogoPng1 from '../assets/Carepass1png.png';
+import LogoPng1 from '../assets/Untitled-5-01.png';
 
 import HamMenuSvg from '../assets/ham-menu.svg';
 import CartSvg from '../assets/cart.svg';
@@ -30,10 +30,10 @@ import useCartStore from '../store/cart-store';
 
 
 const products = [
-    { name: 'CarePass Tax Saver', description: "A preventive health check product with tax", img: TaxSaverSvg, route: ROUTES.TAX_SAVER },
-    { name: 'CarePass Silver Plan', description: "A preventive health check product with tax", img: SilverPlan, route: ROUTES.SILVER_PLAN },
-    { name: 'CarePass Gold Plan', description: "A preventive health check product with tax", img: GoldPlan, route: ROUTES.GOLD_PLAN },
-    { name: 'CarePasss Platinum Plan', description: "A preventive health check product with tax", img: GoldPlan, route: ROUTES.SUPER_TOPUP }
+    { name: 'Tax Saver', description: "A preventive health check product with tax", img: TaxSaverSvg, route: ROUTES.TAX_SAVER },
+    { name: 'Silver Plan', description: "A preventive health check product with tax", img: SilverPlan, route: ROUTES.SILVER_PLAN },
+    { name: 'Gold Plan', description: "A preventive health check product with tax", img: GoldPlan, route: ROUTES.GOLD_PLAN },
+    { name: 'Gold + Super topup', description: "A preventive health check product with tax", img: GoldPlan, route: ROUTES.SUPER_TOPUP }
 ];
 
 const ProductsListMobile = () => {
@@ -149,6 +149,8 @@ function ProductListDesktop() {
 
     const navigate = useNavigate()
 
+
+
     const handleNavigation = (route: string) => {
         navigate(route, { relative: 'path' })
     }
@@ -199,7 +201,7 @@ const Navbar = () => {
             <div className=" max-w-[1200px] m-auto  px-[20px]   md:px-[5px]     w-full py-3  md:py-6    flex  items-center justify-between  ">
                 <Link to="/">
 
-                    <img src={LogoPng1} className={'w-[66px] h-[14px]  md:h-[32px] md:w-[143px]'} />
+                    <img src={LogoPng1} className={'w-[66px] mt-[5px] h-[14px]  md:h-[32px] md:w-[143px]'} />
                 </Link>
 
 
@@ -212,7 +214,7 @@ const Navbar = () => {
                     </li>
 
                     <li><NavHashLink to="#" className="font-light focus:font-bold focus:underline-offset-4  focus:underline">FAQ</NavHashLink></li>
-                    <li><NavHashLink to="/#contact-us" className="font-light focus:font-bold focus:underline-offset-4  focus:underline ">Contact Us</NavHashLink></li>
+                    <li><NavHashLink to="/contact-us" className="font-light focus:font-bold focus:underline-offset-4  focus:underline ">Contact Us</NavHashLink></li>
                 </ul>
 
                 <div className='hidden   items-center justify-center lg:flex gap-3'>

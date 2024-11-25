@@ -1,15 +1,17 @@
 
-import { PlanDetails, ResponsiveGrid, TableTemplate } from './tax-saver'
+import { PlanDetails, TableTemplate } from './tax-saver'
 import TrustedPartnersSection from '../components/trusted-partners'
 import ContactUsSection from '../components/contact-us'
 import FooterSection from '../components/footer'
 import Gradient from '../assets/gradient.png'
 import Navbar from '../components/nav-bar'
-import SilverHeart from '../assets/family-gold.png'
 import { ColumnDef } from '@tanstack/react-table'
 import { ROUTES } from '../utils/routes'
 import useCartStore from '../store/cart-store'
 import { useNavigate } from 'react-router-dom'
+
+import SilverHeart from '../assets/pain-heartburn-old-senior-asian-grandfather-patient-uniform-suffer-from-body-problem-health-ideas-concept 1.png'
+import { goldPlanGrid, ResponsiveGrid } from '../utils/plan-benifits'
 
 
 const themeColors = {
@@ -23,8 +25,8 @@ const themeColors = {
 const columns: ColumnDef<any>[] = [
     {
         accessorKey: "feature",
-        header: "Feature/Aspect",
-        cell: (info) => info.getValue(),
+        header: "Feature / Aspect",
+        cell: (info) => <p className="font-bold">{info.getValue()}</p>,
     },
     {
         accessorKey: "carePass",
@@ -110,7 +112,7 @@ const GoldPlan = () => {
                 />
             </div>
 
-            <ResponsiveGrid />
+            <ResponsiveGrid gridItems={goldPlanGrid} heading='CarePass Gold Plan' />
 
             <TableTemplate
                 columns={columns}
@@ -127,4 +129,6 @@ const GoldPlan = () => {
     )
 }
 
-export default GoldPlan
+export default GoldPlan;
+
+
