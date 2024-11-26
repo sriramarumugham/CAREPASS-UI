@@ -2,7 +2,7 @@
 import Facebook from '../assets/facebook.svg';
 import Instagram from '../assets/instagram.svg';
 import Youtube from '../assets/youtube.svg';
-import CarepassPng from '../assets/Carepass1png.png';
+import LogoPng1 from '../assets/Untitled-5-01.png';
 
 
 const FooterSection = () => {
@@ -12,7 +12,7 @@ const FooterSection = () => {
                 <div className='flex justify-between items-center' >
                     <div className='p-2 bg-white rounded-md'>
 
-                        <img src={CarepassPng} className="w-auto   h-[13px] md:h-[21px] object-contain" />
+                        <img src={LogoPng1} className="w-auto   h-[13px] md:h-[21px] object-contain" />
                     </div>
                     <p className='text-white hidden md:block text-sm font-light text-center'>Copyright © 2024 CAREPASS. All rights reserved.</p>
                     <div className='flex items-center justify-center gap-5'>

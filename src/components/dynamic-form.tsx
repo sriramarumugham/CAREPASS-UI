@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
+import { Disclosure, DisclosureButton, DisclosurePanel, Switch } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import useCartStore, { CartItem } from '../store/cart-store';
 import { ProductType, useProductStore } from '../store/product-store';
@@ -26,9 +26,12 @@ interface DynamicFormProps {
     product: ProductType;
     register: any;
     control: any;
+    formIndex: any;
+    setValue: any
+
 }
 
-const renderField = (field: Field, fieldName: string, register: any, control: any) => {
+const renderField = (field: Field, fieldName: string, register: any, control: any, isSelf?: boolean, setIsSelf?: any) => {
     switch (field.type) {
         case 'text':
         case 'email':
@@ -75,13 +78,59 @@ const renderField = (field: Field, fieldName: string, register: any, control: an
                     fieldName={fieldName}
                 />
             );
+        case 'switch':
+            return (
+                <div className="mb-4 flex flex-col gap-3">
+
+                    <label className="mr-4">Are you applying for yourself?</label>
+                    <div className='flex items-center gap-3'>
+
+                        <span className="text-sm">{"Other"}</span>
+                        <div
+                            onClick={() => setIsSelf(!isSelf)}
+                            className={`flex h-6 w-14 cursor-pointer rounded-full transition-colors    items-center   duration-200 ${isSelf ? "bg-deep-purple-500" : "bg-gray-300"
+                                }`}
+                        >
+                            <span
+                                className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-lg ring-0 transition-transform duration-200 ${isSelf ? "translate-x-7" : "translate-x-0"
+                                    }`}
+                            />
+                        </div>
+                        <span className="text-sm">{"Self"}</span>
+                    </div>
+                </div>
+            );
         default:
             return null;
     }
 };
 
 
-const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, formIndex }) => {
+const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, formIndex, setValue }) => {
+
+
+
+    const [isSelf, setIsSelf] = useState(false);
+
+
+    const { getUser } = useUserStore();
+
+    const userDetails = getUser() as { user?: { fullName: string, email: string, phoneNumber: string } };
+
+    console.log("userDetails___", userDetails)
+
+    useEffect(() => {
+        if (isSelf) {
+            setValue(`${product.productId}.${formIndex}.fullName`, userDetails?.user?.fullName);
+            setValue(`${product.productId}.${formIndex}.primaryEmail`, userDetails?.user?.email);
+            setValue(`${product.productId}.${formIndex}.primaryMobile`, userDetails?.user?.phoneNumber);
+        } else {
+            setValue(`${product.productId}.${formIndex}.fullName`, "");
+            setValue(`${product.productId}.${formIndex}.primaryEmail`, "");
+            setValue(`${product.productId}.${formIndex}.primaryMobile`, "");
+        }
+    }, [isSelf, product.productId, formIndex, setValue]);
+
     return (
         <>
             <h2>{product.productName}</h2>
@@ -89,7 +138,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
                 <div key={section.sectionTitle} className='flex flex-col gap-2  '>
                     <h3 className=''>{section.sectionTitle}</h3>
                     {section.fields.map((field) =>
-                        renderField(field, `${product.productId}.${formIndex}.${field.name}`, register, control) // Updated field name
+                        renderField(field, `${product.productId}.${formIndex}.${field.name}`, register, control, isSelf, setIsSelf) // Updated field name
                     )}
                 </div>
             ))}
@@ -147,7 +196,7 @@ const FieldArraySection: React.FC<{
 
 
 export const Checkout = () => {
-    const { control, register, handleSubmit, watch } = useForm();
+    const { control, register, handleSubmit, watch, setValue } = useForm();
     const formData = watch();
     const { cart } = useCartStore();
     // const { products } = useProductStore();
@@ -287,6 +336,7 @@ export const Checkout = () => {
                                                             register={register}
                                                             control={control}
                                                             formIndex={index} // Pass the index
+                                                            setValue={setValue}
                                                         />
                                                     ))}
                                                 </DisclosurePanel>
@@ -297,9 +347,9 @@ export const Checkout = () => {
                             })}
                         </div>
 
-                        <div className=" lg:flex flex-col lg:justify-start fixed lg:relative bottom-0 left-0 w-full lg:w-[300px]  p-4 m-0">
+                        <div className=" lg:flex flex-col lg:justify-start fixed lg:relative bottom-0 left-0 w-full lg:w-[300px]  p-4 m-0  ">
                             <TotalPrice products={cart} formData={formData} productData={products} />
-                            <button type="submit" className="p-2 bg-deepPurple text-white w-full rounded hover:bg-purple-700 transition">
+                            <button type="submit" className="p-2 bg-deepPurple text-white w-full rounded hover:bg-purple-700 transition mt-2">
                                 Proceed to Pay
                             </button>
                         </div>
@@ -307,7 +357,7 @@ export const Checkout = () => {
 
 
                     {/* Fixed Submit Button for Mobile */}
-                    <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white">
+                    <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white ">
                         <TotalPrice products={cart} formData={formData} productData={products} />
                         <button onClick={handleSubmit(onSubmit)} className="p-2 bg-deepPurple text-white w-full rounded hover:bg-purple-700 transition">
                             Proceed to Pay
@@ -389,7 +439,7 @@ const TotalPrice: React.FC<{
                                 const productTotal = calculateTotalPrice([product], formData, productData);
                                 return (
                                     <div key={product.productId} className="flex justify-between my-2">
-                                        <span>{product.productId} (x{product.quantity}):</span>
+                                        <span>{product.productName} (x{product.quantity}):</span>
                                         <span>₹{productTotal}</span>
                                     </div>
                                 );
@@ -407,7 +457,7 @@ const TotalPrice: React.FC<{
                     const productTotal = calculateTotalPrice([product], formData, productData);
                     return (
                         <div key={product.productId} className="flex justify-between my-2">
-                            <span>{product.productId} (x{product.quantity}):</span>
+                            <span>{product.productName} (x{product.quantity}):</span>
                             <span>₹{productTotal}</span>
                         </div>
                     );
