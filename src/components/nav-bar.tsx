@@ -1,5 +1,5 @@
 
-import LogoPng1 from '../assets/Untitled-5-01.png';
+import LogoPng1 from '../assets/logo.png';
 
 import HamMenuSvg from '../assets/ham-menu.svg';
 import CartSvg from '../assets/cart.svg';
@@ -125,11 +125,21 @@ const SideBarContent = () => {
             <SignupSigning />
 
             <div className='flex flex-col gap-[8px] w-full mt-5'>
-                <p className='text-#535763 '>About us</p>
+                <p className='text-#535763 '>
+                <NavHashLink to="/" className="font-light focus:font-bold  focus:underline-offset-4  focus:underline">Home</NavHashLink>
+                </p>
+                <p className='text-#535763 '>
+                <NavHashLink to="/about-us" className="font-light focus:font-bold  focus:underline-offset-4  focus:underline">About Us</NavHashLink>
+                </p>
                 <Border />
                 <ProductsListMobile />
                 <Border />
-                <p className=''>FAQ</p>
+                <p className='text-#535763 '>
+                <NavHashLink to="/faq" className="font-light focus:font-bold  focus:underline-offset-4  focus:underline">FAQ</NavHashLink>
+                </p>
+                <p className='text-#535763 mb-3'>
+                <NavHashLink to="/contact-us" className="font-light focus:font-bold  focus:underline-offset-4  focus:underline">Contact Us</NavHashLink>
+                </p>
             </div>
 
             {/* keep this at the bottom  */}
@@ -159,7 +169,7 @@ function ProductListDesktop() {
         <Popover className="relative  ">
             <PopoverButton className="focus:outline-none" >
                 <div className='flex gap-2'>
-                    <a className="font-light focus:font-bold  active:outline-none   outline-none "> Products   </a><img className='flex' src={ArrowDown}></img>
+                    <a className="font-light focus:font-bold  active:outline-none   outline-none ">Products</a><img className='flex' src={ArrowDown}></img>
                 </div>
 
             </PopoverButton>

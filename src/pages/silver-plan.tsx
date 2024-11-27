@@ -3,7 +3,7 @@ import FooterSection from "../components/footer"
 import Navbar from "../components/nav-bar"
 import TrustedPartnersSection from "../components/trusted-partners"
 import { PlanDetails, TableTemplate } from "./tax-saver"
-import SilverHeart from '../assets/insurance/silber-heart.png'
+import SilverHeart from '../assets/insurance/silver-plan.png'
 import { ColumnDef } from "@tanstack/react-table"
 
 import Gradient from '../assets/gradient.png'
