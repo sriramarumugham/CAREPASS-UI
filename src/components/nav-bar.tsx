@@ -33,7 +33,7 @@ const products = [
     { name: 'CarePass Tax Saver', description: "A preventive health check product with tax", img: TaxSaverSvg, route: ROUTES.TAX_SAVER },
     { name: 'CarePass Silver Plan', description: "A preventive health check product with tax", img: SilverPlan, route: ROUTES.SILVER_PLAN },
     { name: 'CarePass Gold Plan', description: "A preventive health check product with tax", img: GoldPlan, route: ROUTES.GOLD_PLAN },
-    { name: 'CarePass Platinum plan', description: "A preventive health check product with tax", img: GoldPlan, route: ROUTES.SUPER_TOPUP }
+    { name: 'CarePass Platinum Plan', description: "A preventive health check product with tax", img: GoldPlan, route: ROUTES.SUPER_TOPUP }
 ];
 
 const ProductsListMobile = () => {
@@ -198,26 +198,25 @@ const Navbar = () => {
 
     return (
         <>
-            <div className=" max-w-[1200px] m-auto  px-[20px]   md:px-[5px]     w-full py-3  md:py-6    flex  items-center justify-between  ">
+            <div className="max-w-[1200px] m-auto px-[20px] md:px-[5px] w-full py-3 md:py-6 flex items-center justify-between  ">
                 <Link to="/">
-
                     <img src={LogoPng1} className={'w-[66px] mt-[5px] h-[14px]  md:h-[32px] md:w-[143px]'} />
                 </Link>
 
 
                 <ul className="hidden lg:flex space-x-4 text-deepPurple">
                     <li><NavHashLink to="/" className=" font-light focus:font-bold focus:underline-offset-4  focus:underline">Home</NavHashLink></li>
-                    <li><NavHashLink to="/#about-us" className="font-light focus:font-bold  focus:underline-offset-4  focus:underline">About Us</NavHashLink></li>
+                    <li><NavHashLink to="/about-us" className="font-light focus:font-bold  focus:underline-offset-4  focus:underline">About Us</NavHashLink></li>
 
                     <li>
                         <ProductListDesktop />
                     </li>
 
-                    <li><NavHashLink to="#" className="font-light focus:font-bold focus:underline-offset-4  focus:underline">FAQ</NavHashLink></li>
+                    <li><NavHashLink to="/faq" className="font-light focus:font-bold focus:underline-offset-4  focus:underline">FAQ</NavHashLink></li>
                     <li><NavHashLink to="/contact-us" className="font-light focus:font-bold focus:underline-offset-4  focus:underline ">Contact Us</NavHashLink></li>
                 </ul>
 
-                <div className='hidden   items-center justify-center lg:flex gap-3'>
+                <div className='hidden items-center justify-center lg:flex gap-3'>
                     <Link to="/cart" className="relative">
                         <img src={CartSvg} width={25} height={25} />
                         {itemCount > 0 && (
@@ -227,7 +226,6 @@ const Navbar = () => {
                         )}
 
                     </Link>
-
 
                     <SignupSigning />
 

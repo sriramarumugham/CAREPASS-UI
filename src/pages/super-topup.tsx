@@ -10,7 +10,7 @@ import { ROUTES } from "../utils/routes";
 import useCartStore from "../store/cart-store";
 import { useNavigate } from "react-router-dom";
 import platinum_image from '../assets/carepass_platinum.png';
-import { goldPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
+import { platinumPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
 
 
 const SuperTopUpPage = () => {
@@ -115,7 +115,7 @@ const SuperTopUpPage = () => {
 
             </div>
 
-            <ResponsiveGrid gridItems={goldPlanGrid} heading='CarePass Platinum Plan' />
+            <ResponsiveGrid gridItems={platinumPlanGrid} heading='CarePass Platinum Plan' />
 
 
             <TableTemplate

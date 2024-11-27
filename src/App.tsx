@@ -4,7 +4,6 @@ import './App.css'
 import { Route, Routes, BrowserRouter } from "react-router-dom"
 import Home from './pages/home'
 import { ROUTES } from './utils/routes'
-import Product1 from './pages/product1'
 import { CheckoutPage } from './pages/checkout';
 import PaymentStatusPage from './pages/payment-status'
 import ProfilePage from './pages/profile'
@@ -16,6 +15,8 @@ import SuperTopUpPage from './pages/super-topup'
 import PageWrapper from './utils/framer-motion'
 import { Toaster } from 'react-hot-toast';
 import ContactUs from './pages/contact-us'
+import AboutUs from './pages/about-us'
+import FAQPage from './pages/faq';
 
 
 
@@ -27,7 +28,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path={ROUTES.HOME} element={<Home />} />
-            <Route path={ROUTES.PRODUCT1} element={<Product1 />} />
+            <Route path={ROUTES.ABOUT} element={<AboutUs />} />
+            <Route path={ROUTES.FAQ} element={<FAQPage />} />
             <Route path={ROUTES.CONTACT_US} element={<ContactUs />} />
             <Route path={ROUTES.CHECKOUT} element={<CheckoutPage />} />
             <Route path={`${ROUTES.PAYMENT_DETAILS}/*`} element={<PaymentStatusPage />} />

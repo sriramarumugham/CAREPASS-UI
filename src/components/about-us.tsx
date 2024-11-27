@@ -1,20 +1,21 @@
 
 import TopRightSvg from '../assets/top-right.svg';
 import Oldagepeople from '../assets/oldageprople.svg';
+import { NavHashLink } from 'react-router-hash-link';
 
-const AboutUsSection = () => {
+const AboutUsSection = ({showViewMore}) => {
     return (
         <div className='px-[20px] flex items-center justify-center'
             style={{
-                background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)',
+                background: '#FCF9FF',
             }}
             id='about-us'
         >
             <div
-                className="flex flex-col max-w-[1200px]    py-[30px]  md:py-[30px]  gap-4 md:gap-12"
+                className="flex flex-col max-w-[1200px] py-[30px] md:py-[30px] gap-4 md:gap-12"
 
             >
-                <p className="font-bold text-xl md:text-4xl mx-auto  ">About Us</p>
+                <p className="font-bold text-xl md:text-4xl mx-auto">About Us</p>
                 <div>
                     <div className="flex flex-col md:flex-row gap-4 md:gap-9">
                         <img src={Oldagepeople} className="md:hidden w-auto max-w-full" />
@@ -33,12 +34,16 @@ const AboutUsSection = () => {
                                 We’re driven by the goal of making health management simple, accessible, and effective. Our plans cater to diverse healthcare needs, from routine check-ups to critical illness coverage, ensuring peace of mind for you and your loved ones.
 
                             </p>
-
+                            {showViewMore ? 
                             <button
-                                className="gap-2 px-3 py-2  w-fit  border border-1 border-deepPurple rounded-3xl  mt-[20px] mx-auto md:m-0 flex items-center">
-                                <img src={TopRightSvg} />
-                                <p className='text-deepPurple text-sm '>View more</p>
-                            </button>
+                            className="gap-2 px-3 py-2 w-fit border border-1 border-deepPurple rounded-3xl mt-[20px] mx-auto md:m-0 flex items-center">
+                            <img src={TopRightSvg} />
+                            <p className='text-deepPurple text-sm'>
+                            <NavHashLink to="/about-us" className="font-light focus:font-bold focus:underline-offset-4 focus:underline">View more</NavHashLink>    
+                            </p>
+                        </button> :
+                        ''}
+                            
                         </div>
                     </div>
                 </div>
