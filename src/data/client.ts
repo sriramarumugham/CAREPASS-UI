@@ -1,7 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { BASE_URL } from './api-endpoints';
 import { useUserStore } from '../store/user-store';
-
 // Create an Axios instance
 const client = axios.create({
     baseURL: BASE_URL,
@@ -37,6 +36,10 @@ client.interceptors.response.use(
         return response.data;
     },
     (error: AxiosError) => {
+        if (error.status == 401) {
+            const state = useUserStore.getState();
+            state.clearStore();
+        }
         // Handle error responses here
         return Promise.reject(error?.response?.data || error.message);
     }

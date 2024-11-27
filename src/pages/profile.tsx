@@ -1,10 +1,12 @@
 import FooterSection from "../components/footer"
 import Navbar from "../components/nav-bar"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchActivePlans, fetchPurchaseHistory } from "../data/query";
 import { useQuery } from "@tanstack/react-query";
 import { useUserStore } from "../store/user-store";
 import Cart from '../assets/cart-large-4-svgrepo-com.svg';
+import { Modal } from "../components/ui/modal/modal";
+import LoginModal from "../components/ui/modal/login";
 
 interface Tab {
     title: string;
@@ -270,6 +272,21 @@ const Profile = () => {
 
 
 const ProfilePage = () => {
+
+
+
+    const { getUser } = useUserStore();
+
+    const userDetails = getUser() as { user?: { fullName: string, email: string, phoneNumber: string } };
+    const [open, setOpen] = useState(false)
+
+
+    useEffect(() => {
+        if (!userDetails) {
+            setOpen(true);
+        }
+
+    }, [userDetails])
     return (
         <>
             <div className="flex flex-col min-h-screen">
@@ -279,6 +296,14 @@ const ProfilePage = () => {
                 </div>
                 <FooterSection />
             </div>
+
+
+            {open ? (
+                <Modal open={open} setOpen={() => setOpen(false)}>
+                    <LoginModal handleClose={() => setOpen(false)} />
+                </Modal>
+            ) : null}
+
         </>)
 }
 export default ProfilePage
