@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Pharmacy from '../assets/GOLD/pharmacy.svg';
+import Pharmacy from '../assets/GOLD/Pharmacy.svg';
 import Rewards from '../assets/GOLD/rewards.svg';
 import Tax from '../assets/GOLD/tax.svg';
 import Wallet from '../assets/GOLD/wallet.svg';
@@ -20,7 +20,7 @@ export const goldPlanGrid = [
     { iconSrc: Tax, description: "₹25 Lacs Critical Illness Cover", icon: true, iconName: MdHealthAndSafety },
     { iconSrc: Pharmacy, description: "Scan & Pay Option", icon: true, iconName: BsQrCodeScan },
     { iconSrc: discount, description: "Premium Hospital Discounts", icon: true, iconName: FaHospital },
-    { iconSrc: tag, description: "Gym Membership Discounts", icon: true, iconName: GiWeightLiftingUp  },
+    { iconSrc: tag, description: "Gym Membership Discounts", icon: true, iconName: GiWeightLiftingUp },
     { iconSrc: hand, description: "Wellness App Benefits", icon: true, iconName: MdOutlineMobileFriendly }
 ];
 
@@ -73,9 +73,9 @@ const GridItem: FC<GridItemProps> = ({ iconSrc, description, icon, iconName }) =
                 width: '100%',
             }}>
             {icon ? <div className="w-[60px] h-[60px] flex items-center justify-center">
-                    <IconComponent style={{ width: '60px', height: '60px', color: '#3E2E5F' }} /> {/* Apply inline styles */}
-                </div> : 
-            <img src={iconSrc} alt="icon" className="w-[60px] h-[60px] " />}
+                <IconComponent style={{ width: '60px', height: '60px', color: '#3E2E5F' }} /> {/* Apply inline styles */}
+            </div> :
+                <img src={iconSrc} alt="icon" className="w-[60px] h-[60px] " />}
             <p className="text-sm text-center">{description}</p>
         </div>
     );
