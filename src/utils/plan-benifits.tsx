@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import Pharmacy from '../assets/GOLD/Pharmacy.svg';
-import Rewards from '../assets/GOLD/rewards.svg';
-import Tax from '../assets/GOLD/tax.svg';
-import Wallet from '../assets/GOLD/wallet.svg';
+import Rewards from '../assets/GOLD/Rewards.svg';
+import Tax from '../assets/GOLD/Tax.svg';
+import Wallet from '../assets/GOLD/Wallet.svg';
 import discount from '../assets/GOLD/discount.svg';
 import headphone from '../assets/GOLD/headphone.svg';
 import hand from '../assets/GOLD/hand.svg';
