@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { fetchActivePlans, fetchPurchaseHistory } from "../data/query";
 import { useQuery } from "@tanstack/react-query";
 import { useUserStore } from "../store/user-store";
-import Cart from '../assets/cart-large-4-svgrepo-com.svg';
 import { Modal } from "../components/ui/modal/modal";
 import LoginModal from "../components/ui/modal/login";
+import { useNavigate } from "react-router-dom";
 
 interface Tab {
     title: string;
@@ -75,7 +75,7 @@ const ActivePlans: React.FC<ActivePlansProps> = ({ plans }) => {
     return (
         <div className="w-full p-4  min-h-svh  bg-gray-100">
 
-            {plans?.length == 0 && <EmptyList />}
+            {plans?.length == 0 || !plans && <EmptyList heading="No active plan" />}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
 
 
@@ -141,7 +141,7 @@ const OrderHistory: React.FC<ActivePlansProps> = ({ plans }) => {
         <div className="w-full p-4 bg-gray-100 min-h-screen">
 
 
-            {plans?.length == 0 && <EmptyList />}
+            {plans?.length == 0 || !plans && <EmptyList heading="No orders history found!" />}
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 {plans?.map((plan) => (
                     <div
@@ -217,7 +217,14 @@ const Profile = () => {
         },
     });
 
-    const { user } = useUserStore();
+    const { user, clearStore } = useUserStore();
+    const navigate = useNavigate();
+
+
+    function onClickLogout() {
+        clearStore();
+        navigate("/");
+    }
 
     return (
         <>
@@ -237,6 +244,7 @@ const Profile = () => {
                     <div className="flex flex-row-reverse items-center gap-4 w-full px-4">
                         <div>
                             <p>Account created on: {new Date(user?.user?.createdAt).toLocaleDateString()}</p>
+                            <p className="text-deepPurple font-bold underline cursor-pointer" onClick={onClickLogout} >Logout</p>
                         </div>
                     </div>
                 </div>
@@ -309,10 +317,10 @@ const ProfilePage = () => {
 export default ProfilePage
 
 
-export const EmptyList = () => {
+export const EmptyList = ({ heading }: { heading: string }) => {
     return (
         < div className="min-h-[600px] w-full h-full m-auto flex  items-center justify-center" >
-            <img src={Cart} className="max-w-[200px]" />
+            <p className="text-lg md:text-3xl text-center">{heading}</p>
         </div >
     )
 }
