@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import Pharmacy from '../assets/GOLD/Pharmacy.svg';
-import Rewards from '../assets/GOLD/Rewards.svg';
-import Tax from '../assets/GOLD/Tax.svg';
-import Wallet from '../assets/GOLD/Wallet.svg';
-import discound from '../assets/GOLD/discound.svg';
-import haeadpone from '../assets/GOLD/haeadpone.svg';
+import Pharmacy from '../assets/GOLD/pharmacy.svg';
+import Rewards from '../assets/GOLD/rewards.svg';
+import Tax from '../assets/GOLD/tax.svg';
+import Wallet from '../assets/GOLD/wallet.svg';
+import discount from '../assets/GOLD/discount.svg';
+import headphone from '../assets/GOLD/headphone.svg';
 import hand from '../assets/GOLD/hand.svg';
 import tag from '../assets/GOLD/tag.svg';
 import { MdOutlineMobileFriendly, MdHealthAndSafety } from "react-icons/md";
@@ -15,22 +15,22 @@ import { GiWeightLiftingUp } from "react-icons/gi";
 
 export const goldPlanGrid = [
     { iconSrc: Wallet, description: "E-Wallet ₹10,000", icon: false },
-    { iconSrc: haeadpone, description: "₹5,000 Preventive Health Checks", icon: false },
+    { iconSrc: headphone, description: "₹5,000 Preventive Health Checks", icon: false },
     { iconSrc: Rewards, description: "Tax Benefits (80D)", icon: false },
     { iconSrc: Tax, description: "₹25 Lacs Critical Illness Cover", icon: true, iconName: MdHealthAndSafety },
     { iconSrc: Pharmacy, description: "Scan & Pay Option", icon: true, iconName: BsQrCodeScan },
-    { iconSrc: discound, description: "Premium Hospital Discounts", icon: true, iconName: FaHospital },
+    { iconSrc: discount, description: "Premium Hospital Discounts", icon: true, iconName: FaHospital },
     { iconSrc: tag, description: "Gym Membership Discounts", icon: true, iconName: GiWeightLiftingUp  },
     { iconSrc: hand, description: "Wellness App Benefits", icon: true, iconName: MdOutlineMobileFriendly }
 ];
 
 export const taxSaverGrid = [
     { iconSrc: Wallet, description: "E-Wallet ₹5000", icon: false },
-    { iconSrc: haeadpone, description: "Unlimited Tele-Consults", icon: false },
+    { iconSrc: headphone, description: "Unlimited Tele-Consults", icon: false },
     { iconSrc: Rewards, description: "Tax Benefits", icon: false },
     { iconSrc: Tax, description: "Exclusive Discounts", icon: false },
     { iconSrc: Pharmacy, description: "Floater Benefits", icon: false },
-    { iconSrc: discound, description: "Premium Hospital Choice", icon: true, iconName: FaHospital },
+    { iconSrc: discount, description: "Premium Hospital Choice", icon: true, iconName: FaHospital },
     { iconSrc: tag, description: "Gym Membership Discounts", icon: true, iconName: GiWeightLiftingUp },
     { iconSrc: hand, description: "Wellness App Benefits", icon: true, iconName: MdOutlineMobileFriendly }
 ];
@@ -47,7 +47,7 @@ export const silverPlanGrid = [
 
 export const platinumPlanGrid = [
     { iconSrc: Wallet, description: "E-Wallet ₹10,000", icon: false },
-    { iconSrc: haeadpone, description: "₹5,000 Preventive Health Checks", icon: false },
+    { iconSrc: headphone, description: "₹5,000 Preventive Health Checks", icon: false },
     { iconSrc: Rewards, description: "Tax Benefits (80D)", icon: false },
     { iconSrc: Tax, description: "₹25 Lacs Critical Illness Cover", icon: true, iconName: MdHealthAndSafety },
     { iconSrc: Tax, description: "Base Insurance Cover (₹3L/₹5L)", icon: true, iconName: FaUserShield },

@@ -10,7 +10,7 @@ import { ROUTES } from '../utils/routes'
 import useCartStore from '../store/cart-store'
 import { useNavigate } from 'react-router-dom'
 
-import SilverHeart from '../assets/pain-heartburn-old-senior-asian-grandfather-patient-uniform-suffer-from-body-problem-health-ideas-concept 1.png'
+import SilverHeart from '../assets/gold-plan.png'
 import { goldPlanGrid, ResponsiveGrid } from '../utils/plan-benifits'
 
 
