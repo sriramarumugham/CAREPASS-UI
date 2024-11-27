@@ -1,11 +1,11 @@
-import AboutUsSection from "../components/about-us"
-import BenifitsSection from "../components/benifits"
-import ContactUsSection from "../components/contact-us"
-import FooterSection from "../components/footer"
-import HeroSection from "../components/hero"
-import Navbar from "../components/nav-bar"
-import Statistics from "../components/statistics"
-import TrustedPartnersSection from "../components/trusted-partners"
+import AboutUsSection from "../components/about-us";
+import BenifitsSection from "../components/benifits";
+import ContactUsSection from "../components/contact-us";
+import FooterSection from "../components/footer";
+import HeroSection from "../components/hero";
+import Navbar from "../components/nav-bar";
+import Statistics from "../components/statistics";
+import TrustedPartnersSection from "../components/trusted-partners";
 
 const Home = () => {
     return (
@@ -14,7 +14,7 @@ const Home = () => {
             <HeroSection />
             <Statistics />
             <BenifitsSection />
-            <AboutUsSection />
+            <AboutUsSection showViewMore={true} />
             <TrustedPartnersSection />
             <ContactUsSection />
             <FooterSection />
@@ -22,4 +22,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Home;

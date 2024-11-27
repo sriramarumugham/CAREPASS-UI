@@ -29,7 +29,7 @@ const additionalBenefits = [
 
 const BenifitsHeader = () => {
     return (
-        <div className=" p-[30px] gap-[10px] md:gap-[44px] flex md:flex-col items-center justify-between">
+        <div className="p-[30px] gap-[10px] md:gap-[44px] flex md:flex-col items-center justify-between">
             <p className="text-xl md:text-3xl">Health Plan Benefits for End Users</p>
             <img src={HeartGrafti} className='md:w-[310px] md:h-[270px]' />
         </div>
@@ -63,16 +63,15 @@ const BenifitsList = ({ benifits }: { benifits: string[] }) => {
 
 
 const BenifitsSection = () => {
-    return (<div className='w-full px-[20px] flex items-center justify-center'>
-        <div className='flex  max-w-[1200px]   flex-col md:flex-row gap-4 md:gap-6 items-center justify-center md:py-[100px] '>
+    return (
+    <div className='w-full px-[20px] flex items-center justify-center'>
+        <div className='flex  max-w-[1200px] flex-col md:flex-row gap-4 md:gap-6 items-center justify-center md:py-[100px]'>
             <BenifitsHeader />
             <BenifitsList benifits={healthBenefits} />
             <BenifitsList benifits={additionalBenefits} />
-
         </div>
-    </div>)
-
-}
+    </div>
+    )}
 
 export default BenifitsSection
 

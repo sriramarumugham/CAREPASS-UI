@@ -1,8 +1,7 @@
 export const ROUTES = {
     HOME: '',
-    PRODUCT1: '/product1',
-    PRODUCT2: '/product2',
-    PRODUCT3: '/product3',
+    ABOUT: '/about-us',
+    FAQ: '/faq',
     TAX_SAVER: '/tax-saver',
     SILVER_PLAN: '/silver-plan',
     GOLD_PLAN: '/gold-plan',

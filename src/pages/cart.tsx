@@ -27,9 +27,6 @@ const Cart = ({ openLogin }: { openLogin: () => void, openPersonalInformation?: 
         return null;
     }
     const handleCheckout = () => {
-        // console.log("userDteilas", userDetails)
-
-        console.log("USER_DETAIL__", userDetails)
         if (!userDetails || !userDetails?.user?.userId) {
             console.log('oepn the login things')
             openLogin();
@@ -40,7 +37,6 @@ const Cart = ({ openLogin }: { openLogin: () => void, openPersonalInformation?: 
         //     return;
 
         // }
-        console.log("CARTHINGS ")
         navigate(ROUTES.CHECKOUT, { relative: "path" });
         return;
     };

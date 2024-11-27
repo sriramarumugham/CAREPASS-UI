@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../utils/routes";
 import './Hero.css';
 import HeartPatient from '../assets/family-gold.png'
-import { goldPlanGrid, ResponsiveGrid } from "../utils/plan-benifits"
+import { taxSaverGrid, ResponsiveGrid } from "../utils/plan-benifits"
 
 
 const TaxSaverPage = () => {
@@ -59,9 +59,7 @@ const TaxSaverPage = () => {
                 />
             </div>
 
-            <ResponsiveGrid gridItems={goldPlanGrid} heading='CarePass Tax Saver' />
-
-
+            <ResponsiveGrid gridItems={taxSaverGrid} heading='CarePass Tax Saver' />
 
             <TrustedPartnersSection />
             <ContactUsSection />

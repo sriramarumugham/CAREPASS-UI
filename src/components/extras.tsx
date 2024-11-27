@@ -1,5 +1,6 @@
 import HeartGrafti from '../assets/hert-grafti.svg';
-
+import AboutUsThree from '../assets/about-us-3.png';
+import { FaIdCard } from "react-icons/fa6";
 import TopRightSvg from '../assets/top-right.svg';
 
 export const Section2 = () => {
@@ -10,7 +11,7 @@ export const Section2 = () => {
         >
             <div className="flex flex-col md:flex-row justify-start  gap-8 px-[20px] ">
                 {/* Image Section */}
-                <div className="md:w-1/3 flex justify-center  w-fit">
+                <div className="md:w-1/3 flex justify-center w-fit">
                     <img
                         src="https://via.placeholder.com/400" // Replace with your image URL
                         alt="Health Protection"
@@ -40,40 +41,32 @@ export const Section2 = () => {
     );
 };
 
-export const Section3 = () => {
+export const AboutSection4 = () => {
     return (
-        <div
-            className=" py-12 md:py-16 flex items-center justify-center px-[20px]"
-            id="section-2"
-            style={{
-                background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)',
-            }}
-        >
+        <div className=" py-12 md:py-16 flex items-center justify-center px-[20px]">
             <div className="flex flex-col md:flex-row w-full max-w-[1200px] gap-8">
                 {/* Text Section */}
-                <div className="flex flex-col md:w-1/2 gap-4">
+                <div className="flex justify-center flex-col md:w-1/2 gap-4">
                     <p className="text-deepPurple text-2xl font-light md:text-3xl md:leading-8">
-                        Simplifying Health & Wellness Like Never Before
+                    Join Us Today
                     </p>
 
                     <p className="text-base md:text-lg leading-7">
-                        CarePass offers an all-in-one digital health solution to ensure you’re prepared for preventive care and unexpected health challenges. Gain financial ease and peace of mind—all in one plan.
+                    Take control of your health with a plan that’s built to last.
                     </p>
 
-                    {/* Bullet points list */}
-                    <ul className="list-disc pl-6 mt-4 space-y-2 text-sm md:text-base">
-                        <li>Comprehensive Health Management</li>
-                        <li>Financial Security with coverage up to ₹25,00,000</li>
-                        <li>Preventive Health Focus</li>
-                    </ul>
+                    <p className="text-base md:text-md leading-7">
+                    Explore our plans from our products section and start your journey towards a healthier future.
+                    </p>
+
                 </div>
 
                 {/* Image Section */}
                 <div className="md:w-1/2 flex justify-center">
                     <img
-                        src="https://via.placeholder.com/400" // Replace with your image URL
+                        src={AboutUsThree}
                         alt="Health & Wellness"
-                        className="w-full max-w-[300px] object-cover"
+                        className="w-full max-w-[300px]"
                     />
                 </div>
             </div>
@@ -81,20 +74,19 @@ export const Section3 = () => {
     );
 };
 
-export const Section4 = () => {
+export const AboutSection3 = () => {
     return (
         <div
             className="px-6 py-10 flex items-center justify-center bg-white"
             id="section-4"
-        // style={{
-        //     background: 'linear-gradient(180deg, #FFFFFF 0%, #FCF9FF 100%)',
-        // }}
+        style={{
+            background: '#FCF9FF',
+        }}
         >
             <div className="flex flex-col md:flex-row max-w-[1200px] gap-8">
-                {/* Image Section */}
                 <div className="md:w-1/3 flex justify-center">
                     <img
-                        src={HeartGrafti} // Replace with your image URL
+                        src={HeartGrafti}
                         alt="Care Across India"
                         className="w-full object-fit max-w-[300px]"
                     />
@@ -103,27 +95,27 @@ export const Section4 = () => {
                 {/* Text Section */}
                 <div className="flex flex-col md:w-1/2 gap-4">
                     <p className="text-deepPurple text-2xl font-light md:text-3xl md:leading-8">
-                        Comprehensive Care Across India
+                        Why Choose CarePass?
                     </p>
 
-                    <p className="text-base md:text-lg leading-7">
-                        CarePass offers extensive healthcare support across India, ensuring that no matter where you are, you have access to top-notch medical services.
+                    <p className="text-base md:text-md leading-7">
+                        <span className="text-deepPurple">Comprehensive Coverage: </span> From preventive care to critical illness protection, we've got you covered.
                     </p>
 
-                    {/* Bullet points list */}
-                    <ul className="list-disc pl-6 mt-4 space-y-2 text-sm md:text-base">
-                        <li>21,000+ Doctors for in-clinic consultations</li>
-                        <li>8,000+ Doctors for online teleconsultation</li>
-                        <li>5,500+ Gyms for fitness and wellness</li>
-                        <li>8,000+ Diagnostic Centers for home sample collection</li>
-                        <li>5,000+ Dentists for comprehensive dental care</li>
-                        <li>35,000+ Pharmacies for easy access to medication</li>
-                        <li>300+ Vision Care Stores for eye health services</li>
-                        <li>Coverage across 400+ cities</li>
-                    </ul>
+                    <p className="text-base md:text-md leading-7">
+                        <span className="text-deepPurple">Financial Peace of Mind: </span> Unmatched coverage at affordable premiums with tax-saving benefits.
+                    </p>
 
-                    <p className="text-base md:text-lg leading-7 mt-4">
-                        CarePass is supported by an extensive network across 30,000+ pin codes in India.
+                    <p className="text-base md:text-md leading-7">
+                        <span className="text-deepPurple">User-Friendly Experience: </span> Our Wellness Corner App simplifies health management with digital wallets, health records, and easy access to medical services.
+                    </p>
+
+                    <p className="text-base md:text-md leading-7">
+                        <span className="text-deepPurple">24/7 Support: </span> Expert support whenever you need it, ensuring you're never alone in your health journey.
+                    </p>
+
+                    <p className="text-base md:text-md leading-7 mt-4">
+                    At CarePass, we’re not just offering health insurance; we’re providing a complete healthcare solution that's tailored to your unique needs.
                     </p>
                 </div>
             </div>
@@ -136,9 +128,6 @@ export const Section6 = () => {
         <div
             className=" py-10 md:py-16 flex items-center justify-center bg-white"
             id="section-6"
-        // style={{
-        //     background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)',
-        // }}
         >
             <div className="flex flex-col md:flex-row  item-start w-full max-w-[1200px] gap-8 px-[20px]">
                 {/* Text Section */}
