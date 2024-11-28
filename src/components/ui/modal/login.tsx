@@ -5,7 +5,7 @@ import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
 import { useUserStore } from '../../../store/user-store';
 import { createUserApi, getOtp, validateOTP } from '../../../data/query';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const schema = z.object({
     fullName: z.string().min(3, { message: 'Name must be at least 3 characters' }),
@@ -52,24 +52,36 @@ const LoginModal = ({ handleClose }: LoginModalProps) => {
 
     const [step, setStep] = useState<LoginStep>("register");
 
-    const goToStep = (stepName: LoginStep) => {
+    const goToStep = useCallback((stepName: LoginStep) => {
         setStep(stepName);
-    };
+    }, []);
 
     const [email, setEmail] = useState("");
 
 
-    const handleGetOTP = (data: { email: string }) => {
-        getOtp(data).then((response: any) => {
-            console.log("OTP sent successfully!", response);
-            if (step != "enterOtp") {
-                goToStep("enterOtp");
-                setEmail(data?.email);
-            }
-        }).catch((error: any) => {
-            console.error("Failed to get OTP", error);
-        });
-    };
+    const [loading, setLoading] = useState(false);
+
+    console.log("loading___", loading)
+
+    const handleGetOTP = useCallback((data: { email: string }) => {
+        if (loading) return;
+        setLoading(true);
+
+        getOtp(data)
+            .then((response: any) => {
+                console.log("OTP sent successfully!", response);
+                if (step !== "enterOtp") {
+                    goToStep("enterOtp");
+                    setEmail(data?.email);
+                }
+            })
+            .catch((error: any) => {
+                console.error("Failed to get OTP", error);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, [loading, step, goToStep, setEmail]);
 
 
     return (
@@ -77,7 +89,7 @@ const LoginModal = ({ handleClose }: LoginModalProps) => {
 
 
             {step == 'register' && <RegisterUser createUser={createUser} goToStep={goToStep} />}
-            {step == 'getOtp' && <GetOtp setEmail={setEmail} getOtp={handleGetOTP} />}
+            {step == 'getOtp' && <GetOtp getOtp={handleGetOTP} loading={loading} />}
             {step == 'enterOtp' && < EnterOtp handleClose={handleClose} email={email} resentOTP={handleGetOTP} />}
 
 
@@ -227,19 +239,20 @@ const LoginwithGoogle = ({ createUser }: LoginModalProps) => {
 
 }
 
-const GetOtp = ({ getOtp }: any) => {
+const GetOtp = ({ getOtp, loading }: any) => {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(z.object({
-            email: z.string().email("Invalid email").nonempty("Email is required")
+            email: z.string().email("Invalid email").nonempty("Email is required"),
         })),
     });
-    const onSubmit = (data: { email: string }) => {
-        getOtp(data)
+
+
+    const onSubmit = async (data: { email: string }) => {
+        await getOtp(data); // Call the OTP function
     };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="px-4 py-4 w-[80vw] max-w-[550px]">
-
             <h2 className="text-2xl font-bold mb-4 text-deepPurple text-center">Login</h2>
 
             <div className="mb-4 w-full">
@@ -261,14 +274,15 @@ const GetOtp = ({ getOtp }: any) => {
             <div className="flex justify-center w-full mt-10">
                 <button
                     type="submit"
-                    className="bg-deepPurple hover:bg-purple-900 text-white font-bold py-2 px-4 rounded-3xl w-full sm:px-8"
+                    className="bg-deepPurple hover:bg-purple-900 text-white font-bold py-2 px-4 rounded-3xl w-full sm:px-8 disabled:opacity-50"
                 >
-                    Get OTP
+                    {loading ? "Loading..." : "Get OTP "}
                 </button>
             </div>
         </form>
     );
 };
+
 
 const EnterOtp = ({ handleClose, email, resentOTP }: { handleClose: () => void, email: string, resentOTP: () => void }) => {
     const { register, handleSubmit, formState: { errors } } = useForm({
