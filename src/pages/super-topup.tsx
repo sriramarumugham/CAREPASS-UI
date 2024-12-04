@@ -101,7 +101,7 @@ const SuperTopUpPage = () => {
                 style={{ backgroundImage: `url(${Gradient})` }}
             >
                 <PlanDetails
-                    heading="CarePass Platinum"
+                    heading="CarePass Platinum: Comprehensive Health and Financial Protection, Elevated"
                     description="Experience unparalleled protection and care with CarePass Platinum, a cohesive product combining the benefits of Tax Saver, Silver, and Gold, enhanced with a super top-up."
                     pay="₹15,000"
                     values="₹28,00,000"
