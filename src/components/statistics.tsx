@@ -7,7 +7,7 @@ import CountUp from 'react-countup'
 
 const Statistics = () => {
     const stats = [
-        { logo: Stetescope, number: 25000, description: 'Doctors for in-clinic consultations' },
+        { logo: Stetescope, number: 25000, description: 'Doctors Network for in-clinic consultations' },
         { logo: Medicine, number: 35000, description: 'Pharmacies' },
         { logo: Lab, number: 8000, description: 'Diagnostic Partners in 400+ cities' },
         { logo: Dumbell, number: 5500, description: 'Gym & Fitness Centre network' }

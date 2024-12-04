@@ -13,6 +13,7 @@ import { ROUTES } from "../utils/routes";
 import './Hero.css';
 import HeartPatient from '../assets/family-gold.png'
 import { taxSaverGrid, ResponsiveGrid } from "../utils/plan-benifits"
+import { BenefitsBreakdownTaxSaver, BreakdownofBenefitsTaxSaver, CarePassBenefitsTaxSaver, HealthcareEcosystem, HowItWorksTaxSaver, WhyChooseCarePassTaxSaver } from "../components/extras"
 
 
 const TaxSaverPage = () => {
@@ -60,7 +61,11 @@ const TaxSaverPage = () => {
             </div>
 
             <ResponsiveGrid gridItems={taxSaverGrid} heading='CarePass Tax Saver' />
-
+            <CarePassBenefitsTaxSaver />
+            <HealthcareEcosystem />
+            <BenefitsBreakdownTaxSaver onBuyNow={handleBuyNow} />
+            <WhyChooseCarePassTaxSaver />
+            <HowItWorksTaxSaver onBuyNow={handleBuyNow} />
             <TrustedPartnersSection />
             <ContactUsSection />
             <FooterSection />
@@ -182,7 +187,7 @@ export const TableTemplate = <T,>({ heading, data, columns, sharedValues }: Tabl
     return (
         <div className="pt-[100px]"
             style={{
-                background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)',
+                background: '#FCF9FF',
             }}
         >
             <h2 className="text-2xl font-bold text-deepPurple mb-4 text-center">{heading}</h2>

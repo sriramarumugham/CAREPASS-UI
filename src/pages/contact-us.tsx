@@ -78,11 +78,11 @@ const ContactUs = () => {
                 />
             </div>
 
-            <VisitSection
+            {/* <VisitSection
                 heading="Visit Us"
                 description="If you prefer to speak with us in person or want to visit our office, you can find us at:"
                 visitItems={visitItems}
-            />
+            /> */}
 
             <div
                 className="w-100%"

@@ -1,5 +1,4 @@
 import Gradient from "../assets/gradient.png";
-
 import TaxBefnifitsSvg from '../assets/tax-benifits-hero.svg';
 import PharmacyBenifitsSvg from '../assets/pharmacy-purchase.svg';
 import PhoneSvg from '../assets/pohone.svg';
@@ -13,7 +12,6 @@ import silver_image from '../assets/carepass_silver.png';
 import gold_image from '../assets/carepass_gold.png';
 import platinum_image from '../assets/carepass_platinum.png';
 import { Carousel } from "@material-tailwind/react";
-import { PlanDetails } from "../pages/tax-saver";
 import useCartStore from "../store/cart-store";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../utils/routes";
@@ -188,7 +186,7 @@ const HeroSection = () => {
                         <p className="text-[#A689B0]">CarePass Gold</p>
                     </div>
                     <div className="flex flex-col gap-[20px] mb-5">
-                        <p className="text-2xl font-bold text-deepPurple">Pay just ₹ 10,000 and receive benefits valued at ₹25,00,000 </p>
+                        <p className="text-2xl font-bold text-deepPurple">Pay just ₹ 10,000 and receive benefits valued at ₹3,00,000+ </p>
                         <p className="font-light text-[#A689B0]">
                         Experience unmatched peace of mind with CarePass Gold, the ultimate healthcare solution for you and your loved ones. This premium product seamlessly integrates the benefits of Tax Saver and Silver, with an added layer of critical illness coverage.
                         </p>
@@ -219,7 +217,7 @@ const HeroSection = () => {
                         <p className="text-[#A689B0]">CarePass Platinum</p>
                     </div>
                     <div className="flex flex-col gap-[20px] mb-5">
-                        <p className="text-2xl font-bold text-deepPurple">Pay just ₹ 15,000 and receive benefits valued at ₹55,00,000 </p>
+                        <p className="text-2xl font-bold text-deepPurple">Pay just ₹ 15,000 and receive benefits valued at ₹28,00,000 </p>
                         <p className="font-light text-[#A689B0]">
                         Experience unparalleled protection and care with CarePass Platinum, a cohesive product combining the benefits of Tax Saver, Silver, and Gold, enhanced with a super top-up.
                         </p>
@@ -243,6 +241,8 @@ const HeroSection = () => {
                 className="rounded-xl max-w-[1200px] m-auto"
                 onPointerEnterCapture={() => { }}
                 onPointerLeaveCapture={() => { }}
+                autoplay='true'
+                loop='true'
             >
                 <Plan1 />
                 <Plan2 />
