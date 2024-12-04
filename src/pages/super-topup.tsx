@@ -11,6 +11,7 @@ import useCartStore from "../store/cart-store";
 import { useNavigate } from "react-router-dom";
 import platinum_image from '../assets/carepass_platinum.png';
 import { platinumPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
+import { BenefitsBreakdownPlatinum, HealthcareEcosystem, HowItWorksPlatinum } from "../components/extras";
 
 
 const SuperTopUpPage = () => {
@@ -44,36 +45,37 @@ const SuperTopUpPage = () => {
 
     const data = [
         {
-            feature: "Cost",
-            carePass: "₹15,000",
-            others: "Premiums are often higher or offer less comprehensive coverage at a similar price.",
+          feature: "You Pay",
+          carePass: "₹15,000",
+          others: "Premiums are often higher or offer less comprehensive coverage at a similar price.",
         },
         {
-            feature: "Coverage",
-            carePass: "Extensive coverage including preventive care, primary care services, critical illness, and super top-up coverage with base coverage.",
-            others: "No similar product with this extensive range is available in the market.",
+          feature: "Coverage",
+          carePass: "Extensive coverage including preventive care, primary care services, critical illness, and super top-up coverage with base coverage.",
+          others: "No similar product with this extensive range is available in the market.",
         },
         {
-            feature: "Extended Financial Protection",
-            carePass: "Up to ₹25 lakhs for major medical expenses and critical illnesses.",
-            others: "Typically lower sum insured (SI) or higher premiums for additional coverage.",
+          feature: "Extended Financial Protection",
+          carePass: "Up to ₹2.5 lakhs for major medical expenses and critical illnesses.",
+          others: "Typically lower sum insured (SI) or higher premiums for additional coverage.",
         },
         {
-            feature: "Peace of Mind",
-            carePass: "Consolidates multiple benefits into one plan, simplifying management.",
-            others: "Requires managing multiple policies, leading to more complexity.",
+          feature: "Peace of Mind",
+          carePass: "Consolidates multiple benefits into one plan, simplifying management.",
+          others: "Requires managing multiple policies, leading to more complexity.",
         },
         {
-            feature: "Flexibility & Customization",
-            carePass: "Offers flexible top-up limits, wide network access, and customizable service options.",
-            others: "Limited flexibility, often fewer customization options.",
+          feature: "Flexibility & Customization",
+          carePass: "Offers flexible top-up limits, wide network access, and customizable service options.",
+          others: "Limited flexibility, often fewer customization options.",
         },
         {
-            feature: "Cost-Effectiveness",
-            carePass: "Combines numerous benefits into one affordable, value-packed plan.",
-            others: "Less cost-effective when purchasing separate products.",
+          feature: "Cost-Effectiveness",
+          carePass: "Combines numerous benefits into one affordable, value-packed plan.",
+          others: "Less cost-effective when purchasing separate products.",
         },
-    ];
+      ];
+      
 
 
     const { addToCart } = useCartStore();
@@ -102,7 +104,7 @@ const SuperTopUpPage = () => {
                     heading="CarePass Platinum"
                     description="Experience unparalleled protection and care with CarePass Platinum, a cohesive product combining the benefits of Tax Saver, Silver, and Gold, enhanced with a super top-up."
                     pay="₹15,000"
-                    values="₹55,00,000"
+                    values="₹28,00,000"
                     price="₹15,000"
                     ageLimit="18-60 years"
                     validity="1 year"
@@ -116,8 +118,6 @@ const SuperTopUpPage = () => {
             </div>
 
             <ResponsiveGrid gridItems={platinumPlanGrid} heading='CarePass Platinum Plan' />
-
-
             <TableTemplate
                 columns={columns}
                 data={data}
@@ -125,8 +125,10 @@ const SuperTopUpPage = () => {
                 heading="Why Choose CarePass Platinum?
 "
             />
-
+            <HealthcareEcosystem />
+            <BenefitsBreakdownPlatinum onBuyNow={handleBuyNow} />
             <TrustedPartnersSection />
+            <HowItWorksPlatinum onBuyNow={handleBuyNow} />
             <ContactUsSection />
             <FooterSection />
         </>

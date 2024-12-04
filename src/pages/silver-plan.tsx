@@ -11,6 +11,7 @@ import useCartStore from "../store/cart-store"
 import { useNavigate } from "react-router-dom"
 import { ROUTES } from "../utils/routes"
 import { silverPlanGrid, ResponsiveGrid } from "../utils/plan-benifits"
+import { BenefitsBreakdownSilver, CarePassBenefitsSilver, CarePassSilverSteps, HealthcareEcosystem } from "../components/extras"
 
 const SilverPlanPage = () => {
 
@@ -55,13 +56,41 @@ const SilverPlanPage = () => {
 
 
     const data = [
-        { feature: "Cost", carePass: "₹5000", others: "Pricing is often similar or higher, with less extensive coverage" },
-        { feature: "Coverage", carePass: "Up to ₹10,000 for primary care services (doctor consultations, diagnostics, pharmacy, dental, vision care)", others: "Coverage limits tend to be lower, and fewer service categories are typically included" },
-        { feature: "Accessibility", carePass: "E-wallet benefits with scan and pay functionality", others: "Customers are provided physical coupons, which can be inconvenient to carry, especially in emergency situations" },
-        { feature: "Digital Experience", carePass: "Access to a web and mobile wellness app, featuring a digital locker and wallet", others: "Digital access may be limited or unavailable" },
-        { feature: "Bundled Services", carePass: "₹10,000 for consultations, ₹5,000 for diagnostics, ₹5,000 for pharmacy, ₹3,000 for dental, ₹2,000 for vision care", others: "Bundled offerings are often less comprehensive and cover fewer categories" },
-        { feature: "Additional Offerings", carePass: "Access to a wider range of services and products through our Wellness App", others: "Generally limited to basic OPD benefits, with fewer additional services" },
-        { feature: "Customer Support", carePass: "24/7 support via chat, phone, and email, ensuring assistance is available even during emergencies", others: "Support is typically limited to business hours, with slower response times in urgent situations" },
+        {
+            feature: "Cost",
+            carePass: "₹5000",
+            others: "Pricing is often similar or higher, with less extensive coverage"
+        },
+        {
+            feature: "Coverage",
+            carePass: "Up to ₹10,000 for primary care services, including doctor consultations, diagnostics, pharmacy, dental, and vision care",
+            others: "Coverage limits tend to be lower, and fewer service categories are typically included"
+        },
+        {
+            feature: "Accessibility",
+            carePass: "E-wallet benefits with scan and pay functionality",
+            others: "Customers are provided physical coupons, which can be inconvenient to carry, especially in emergency situations"
+        },
+        {
+            feature: "Digital Experience",
+            carePass: "Users receive access to a web and mobile wellness app, featuring a digital locker and wallet",
+            others: "Digital access may be limited or unavailable"
+        },
+        {
+            feature: "Bundled Services",
+            carePass: "Comprehensive bundle: ₹10,000 for consultations, ₹5,000 for diagnostics, ₹5,000 for pharmacy, ₹3,000 for dental, ₹2,000 for vision care",
+            others: "Bundled offerings are often less comprehensive and cover fewer categories"
+        },
+        {
+            feature: "Additional Offerings",
+            carePass: "Access to a wider range of services and products through our Wellness App",
+            others: "Generally limited to basic OPD benefits, with fewer additional services"
+        },
+        {
+            feature: "Customer Support",
+            carePass: "24/7 support via chat, phone, and email, ensuring assistance is available even during emergencies",
+            others: "Support is typically limited to business hours, with slower response times in urgent situations"
+        }
     ];
 
     return (
@@ -99,7 +128,11 @@ const SilverPlanPage = () => {
                 sharedValues={[]}
                 heading="Why Choose CarePass Silver?"
             />
+            <HealthcareEcosystem />
+            <CarePassBenefitsSilver />
+            <BenefitsBreakdownSilver onBuyNow={handleBuyNow} />
             <TrustedPartnersSection />
+            <CarePassSilverSteps />
             <ContactUsSection />
             <FooterSection />
 

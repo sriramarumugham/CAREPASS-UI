@@ -71,6 +71,66 @@ const FAQPage = () => {
         { title: 'Who is covered under CarePass Silver Plan?', content: 'Self, spouse, and up to 2 dependents are covered.' },
     ];
 
+    const goldPlanfaqs = [
+        {
+            title: 'Why choose CarePass Gold Plan?',
+            content: (
+                <div>
+                    The CarePass Gold Plan offers comprehensive health and financial protection, providing benefits worth ₹3,00,000+ for just ₹10,000. This plan includes:
+                    <ul className="list-decimal list-inside mt-2 space-y-1">
+                        <li>Preventive care</li>
+                        <li>Primary care services</li>
+                        <li>Critical illness coverage</li>
+                        <li>Financial benefits</li>
+                    </ul>
+                    Making it an excellent value proposition for individuals and families seeking comprehensive healthcare coverage.
+                </div>
+            ),
+        },
+        { 
+            title: 'Will I get an Income Tax rebate for CarePass Gold Plan?', 
+            content: 'Yes, you are eligible for an Income Tax rebate under Section 80D of the Income Tax Act, 1961, for the premium paid towards the CarePass Gold Plan, up to ₹10,000.' 
+        },
+        { 
+            title: 'What is the difference between CarePass Silver and CarePass Gold Plan?', 
+            content: 'The CarePass Silver Plan is designed to provide tax benefits under Section 80D, with benefits worth ₹30,000+ for just ₹5,000. In contrast, the CarePass Gold Plan offers a more comprehensive range of benefits, including preventive care, primary care services, critical illness coverage, and financial benefits, with benefits worth ₹3,00,000+ for ₹10,000.' 
+        },
+        { 
+            title: 'Who is covered under CarePass Gold Plan?', 
+            content: 'The CarePass Gold Plan covers the policyholder, their spouse, and up to two dependent children. The plan is available for individuals aged 18-60 years.' 
+        },
+    ];
+
+    const platinumPlanfaqs = [
+        {
+            title: 'Why choose CarePass Platinum Plan?',
+            content: (
+                <div>
+                    The CarePass Platinum Plan offers comprehensive health and financial protection, providing benefits worth ₹28,00,000+ for just ₹15,000. This plan includes:
+                    <ul className="list-decimal list-inside mt-2 space-y-1">
+                        <li>Extensive coverage, including preventive care</li>
+                        <li>Primary care services</li>
+                        <li>Critical illness coverage</li>
+                        <li>Super top-up coverage</li>
+                    </ul>
+                    Making it an excellent value proposition for individuals and families seeking comprehensive healthcare coverage.
+                </div>
+            ),
+        },
+        { 
+            title: 'Will I get an Income Tax rebate for CarePass Platinum Plan?', 
+            content: 'Yes, you are eligible for an Income Tax rebate under Section 80D of the Income Tax Act, 1961, for the premium paid towards the CarePass Platinum Plan, up to ₹15,000.' 
+        },
+        { 
+            title: 'What is the difference between CarePass Gold and CarePass Platinum Plan?', 
+            content: 'The main difference between the two plans is the scope of benefits and coverage. The CarePass Gold Plan offers benefits worth ₹3,00,000+ for ₹10,000, while the CarePass Platinum Plan offers more comprehensive benefits worth ₹28,00,000+ for ₹15,000, including higher critical illness coverage, super top-up coverage, and health insurance benefits.' 
+        },
+        { 
+            title: 'Who is covered under CarePass Platinum Plan?', 
+            content: 'The CarePass Platinum Plan covers the policyholder, their spouse, and up to two dependent children. The plan is available for individuals aged 18-60 years.' 
+        },
+    ];
+
     const walletfaqs = [
         {
             title: 'Where can I use my wallet amount?',
@@ -95,6 +155,8 @@ const FAQPage = () => {
             <Faqs heading="CarePass Membership FAQs" content={memberShipfaqs} />
             <Faqs heading="CarePass Tax Saver Product" content={taxSaverfaqs} />
             <Faqs heading="CarePass Silver Plan" content={silverPlanfaqs} />
+            <Faqs heading="CarePass Gold Plan" content={goldPlanfaqs} />
+            <Faqs heading="CarePass Platinum Plan" content={platinumPlanfaqs} />
             <Faqs heading="Wallet Usage" content={walletfaqs} />
             <ContactUsSection />
             <FooterSection />

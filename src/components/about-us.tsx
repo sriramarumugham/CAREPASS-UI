@@ -27,7 +27,7 @@ const AboutUsSection = ({showViewMore}) => {
                             <p className="text-deepPurple text-2xl md:text-3xl font-light md:leading-9">Health Plan Management</p>
 
                             <p className="leading-9 mt-4">
-                                At CarePass, we believe that healthcare should be proactive, comprehensive, and affordable. Our mission is to transform the way individuals and families manage their health by offering a solution that not only covers emergencies but also emphasizes preventive care.
+                            At CarePass, we believe that healthcare should be proactive, comprehensive, and affordable. Our mission is to transform the way individuals and families manage their health by offering a solution that not only covers emergencies but also emphasizes preventive care.
                             </p>
                             <br />
                             <p className="leading-9">

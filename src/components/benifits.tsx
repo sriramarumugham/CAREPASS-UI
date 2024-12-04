@@ -23,14 +23,13 @@ const additionalBenefits = [
     "Exclusive discounts on pharmacy",
     "Discounted Gym Memberships",
     "Nutrition & Wellness Coaching",
-    "Healthy Eating Habits",
     "Free Diet Plan"
 ];
 
 const BenifitsHeader = () => {
     return (
         <div className="p-[30px] gap-[10px] md:gap-[44px] flex md:flex-col items-center justify-between">
-            <p className="text-xl md:text-3xl">Health Plan Benefits for End Users</p>
+            <p className="text-xl md:text-3xl">CarePass Benefits for End Users</p>
             <img src={HeartGrafti} className='md:w-[310px] md:h-[270px]' />
         </div>
     )

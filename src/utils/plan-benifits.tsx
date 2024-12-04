@@ -12,6 +12,12 @@ import { FaHospital, FaUserShield } from "react-icons/fa";
 import { BsQrCodeScan } from "react-icons/bs";
 import { FaPersonCircleCheck } from "react-icons/fa6";
 import { GiWeightLiftingUp } from "react-icons/gi";
+import { RiDiscountPercentLine } from "react-icons/ri";
+import { TfiCup } from "react-icons/tfi";
+import { BsHeartPulse } from "react-icons/bs";
+import { TbPigMoney } from "react-icons/tb";
+import { GiHealthNormal } from "react-icons/gi";
+
 
 export const goldPlanGrid = [
     { iconSrc: Wallet, description: "E-Wallet ₹10,000", icon: false },
@@ -20,7 +26,13 @@ export const goldPlanGrid = [
     { iconSrc: Tax, description: "₹25 Lacs Critical Illness Cover", icon: true, iconName: MdHealthAndSafety },
     { iconSrc: Pharmacy, description: "Scan & Pay Option", icon: true, iconName: BsQrCodeScan },
     { iconSrc: discount, description: "Premium Hospital Discounts", icon: true, iconName: FaHospital },
+    { iconSrc: tag, description: "Discounted Health Check Packages", icon: true, iconName: RiDiscountPercentLine },
     { iconSrc: tag, description: "Gym Membership Discounts", icon: true, iconName: GiWeightLiftingUp },
+    { iconSrc: tag, description: "₹3,00,000+ in benefits for just ₹10,000", icon: true, iconName: TfiCup },
+    { iconSrc: tag, description: "Enhanced critical illness coverage", icon: true, iconName: BsHeartPulse },
+    { iconSrc: tag, description: "Comprehensive family protection", icon: true, iconName: FaUserShield },
+    { iconSrc: tag, description: "Tax benefits and savings", icon: true, iconName: TbPigMoney },
+    { iconSrc: tag, description: "Access to India's largest healthcare ecosystem", icon: true, iconName: GiHealthNormal },
     { iconSrc: hand, description: "Wellness App Benefits", icon: true, iconName: MdOutlineMobileFriendly }
 ];
 
@@ -31,8 +43,10 @@ export const taxSaverGrid = [
     { iconSrc: Tax, description: "Exclusive Discounts", icon: false },
     { iconSrc: Pharmacy, description: "Floater Benefits", icon: false },
     { iconSrc: discount, description: "Premium Hospital Choice", icon: true, iconName: FaHospital },
+    { iconSrc: tag, description: "Discounted Health Check Packages", icon: true, iconName: RiDiscountPercentLine },
     { iconSrc: tag, description: "Gym Membership Discounts", icon: true, iconName: GiWeightLiftingUp },
-    { iconSrc: hand, description: "Wellness App Benefits", icon: true, iconName: MdOutlineMobileFriendly }
+    { iconSrc: hand, description: "Wellness App Benefits", icon: true, iconName: MdOutlineMobileFriendly },
+    { iconSrc: Pharmacy, description: "Scan & Pay Option", icon: true, iconName: BsQrCodeScan }
 ];
 
 export const silverPlanGrid = [
@@ -41,6 +55,7 @@ export const silverPlanGrid = [
     { iconSrc: Pharmacy, description: "Floater Benefits", icon: false },
     { iconSrc: Tax, description: "Scan & Pay Option", icon: true, iconName: BsQrCodeScan },
     { iconSrc: Pharmacy, description: "Premium Hospital Discounts", icon: true, iconName: FaHospital },
+    { iconSrc: tag, description: "Discounted Health Check Packages", icon: true, iconName: RiDiscountPercentLine },
     { iconSrc: tag, description: "Gym Membership Discounts", icon: true, iconName: GiWeightLiftingUp },
     { iconSrc: hand, description: "Wellness App Benefits", icon: true, iconName: MdOutlineMobileFriendly }
 ];
@@ -54,6 +69,7 @@ export const platinumPlanGrid = [
     { iconSrc: Tax, description: "Super Top-Up Cover (₹15 Lacs/₹25 Lacs)", icon: true, iconName: FaPersonCircleCheck },
     { iconSrc: Pharmacy, description: "Scan & Pay Option", icon: true, iconName: BsQrCodeScan },
     { iconSrc: Tax, description: "Premium Hospital Discounts", icon: false },
+    { iconSrc: tag, description: "Discounted Health Check Packages", icon: true, iconName: RiDiscountPercentLine },
     { iconSrc: tag, description: "Gym Membership Discounts", icon: true, iconName: GiWeightLiftingUp },
     { iconSrc: hand, description: "Wellness App Benefits", icon: true, iconName: MdOutlineMobileFriendly }
 ];
