@@ -183,7 +183,7 @@ const HeroSection = () => {
     
                 <div className="bg-white rounded-xl max-w-[521px] px-[20px] md:px-[10px] py-[13px] lg:p-9 flex flex-col gap-[10px] h-fit">
                     <div className="border border-1 border-[#A689B0] rounded-[25px]  px-[10px] font-light w-fit">
-                        <p className="text-[#A689B0]">CarePass Gold</p>
+                        <p className="text-[#A689B0]">CarePass Gold: Comprehensive Family Care, Enhanced with Critical Illness Coverage</p>
                     </div>
                     <div className="flex flex-col gap-[20px] mb-5">
                         <p className="text-2xl font-bold text-deepPurple">Pay just ₹ 10,000 and receive benefits valued at ₹3,00,000+ </p>
@@ -214,7 +214,7 @@ const HeroSection = () => {
     
                 <div className="bg-white rounded-xl max-w-[521px] px-[20px] md:px-[10px] py-[13px]  lg:p-9 flex flex-col gap-[10px] h-fit" >
                     <div className="border border-1 border-[#A689B0] rounded-[25px]  px-[10px] font-light w-fit">
-                        <p className="text-[#A689B0]">CarePass Platinum</p>
+                        <p className="text-[#A689B0]">CarePass Platinum: Comprehensive Health and Financial Protection, Elevated</p>
                     </div>
                     <div className="flex flex-col gap-[20px] mb-5">
                         <p className="text-2xl font-bold text-deepPurple">Pay just ₹ 15,000 and receive benefits valued at ₹28,00,000 </p>

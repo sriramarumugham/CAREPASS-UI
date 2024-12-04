@@ -99,7 +99,7 @@ const GoldPlan = () => {
 
 
                 <PlanDetails
-                    heading="CarePass Gold"
+                    heading="CarePass Gold: Comprehensive Family Care, Enhanced with Critical Illness Coverage"
                     description="Experience unmatched peace of mind with CarePass Gold, the ultimate healthcare solution for you and your loved ones. This premium product seamlessly integrates the benefits of Tax Saver and Silver, with an added layer of critical illness coverage."
                     pay="₹10000"
                     values=" ₹3,00,000"

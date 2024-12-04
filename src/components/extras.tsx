@@ -891,7 +891,7 @@ export const WhyChooseCarePass = () => {
       },
       {
         title: "Critical Illness Coverage",
-        description: "Activate ₹25,00,000 coverage",
+        description: "Activate ₹2,50,000 coverage",
       },
       {
         title: "Avail Services",
