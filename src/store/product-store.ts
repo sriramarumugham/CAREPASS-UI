@@ -29,6 +29,7 @@ export const ProductSchema = Type.Object({
                             })
                         )
                     ),
+                    pricePerMember: Type.Optional(Type.Number()),
                     maxCount: Type.Optional(Type.Number()),
                     fields: Type.Optional(
                         Type.Array(

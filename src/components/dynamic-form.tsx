@@ -110,7 +110,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
 
 
 
-    const [isSelf, setIsSelf] = useState(false);
+    const [isSelf, setIsSelf] = useState(true);
 
 
     const { getUser } = useUserStore();
@@ -217,6 +217,12 @@ export const Checkout = () => {
 
 
 
+
+    const { getUser } = useUserStore();
+
+    const userDetails = getUser() as { user?: { fullName: string, email: string, phoneNumber: string } };
+
+
     const { mutate, } = useMutation({
         mutationFn: async (formData: any) => {
             return await postFormDataApi(formData);
@@ -237,9 +243,9 @@ export const Checkout = () => {
 
                 },
                 prefill: {
-                    name: 'testuser',
-                    contact: '9999999999',
-                    email: 'demo@demo.com',
+                    name: userDetails.user?.fullName,
+                    contact: userDetails.user?.phoneNumber ?? "",
+                    email: userDetails.user?.email,
                 },
                 notes: {
                     address: 'some address',
@@ -379,7 +385,7 @@ const calculateTotalPrice = (products, formData, productData) => {
 
         const beneficiariesCount = formData && Array.isArray(formData[product?.productId])
             ? formData[product.productId].reduce((count, item) => {
-                return count + (Array.isArray(item.beneficiaries) ? item.beneficiaries.length : 0);
+                return count + (Array.isArray(item.criticalIllnessBeneficiary) ? item.criticalIllnessBeneficiary.length : 0);
             }, 0)
             : 0;
 
@@ -388,7 +394,7 @@ const calculateTotalPrice = (products, formData, productData) => {
         const price = Number(productDetails.price) || 0;
 
         // Price per beneficiary
-        const pricePerBeneficiary = Number(productDetails.pricePerBeneficiary) || 0;
+        const pricePerBeneficiary = Number(productDetails.pricePerCriticalIllnessBeneficiary) || 0;
 
         // Calculate the total cost for this product
         const productTotal = (price * quantity) + (beneficiariesCount * pricePerBeneficiary);
@@ -477,7 +483,8 @@ const transformFormData = (formData, productData, cart) => {
 
         const quantity = product.quantity || 1;
         const price = Number(productInfo.price) || 0;
-        const pricePerBeneficiary = Number(productInfo.pricePerBeneficiary) || 0;
+
+        const pricePerBeneficiary = Number(productInfo.pricePerCriticalIllnessBeneficiary) || 0;
 
         // Calculate total price for the current product
         const productTotal = price * quantity; // Base product total
@@ -486,7 +493,7 @@ const transformFormData = (formData, productData, cart) => {
         const productFormData = formData[product.productId] || [];
 
         productFormData.forEach(item => {
-            const beneficiariesCount = Array.isArray(item.beneficiaries) ? item.beneficiaries.length : 0;
+            const beneficiariesCount = Array.isArray(item.criticalIllnessBeneficiary) ? item.criticalIllnessBeneficiary.length : 0;
             const totalBeneficiaryCost = beneficiariesCount * pricePerBeneficiary; // Only add for this user
 
             // Add price details for each user
@@ -501,7 +508,7 @@ const transformFormData = (formData, productData, cart) => {
 
         // Accumulate total price
         totalPrice += productTotal + (productFormData.reduce((sum, item) => {
-            return sum + (Array.isArray(item.beneficiaries) ? item.beneficiaries.length * pricePerBeneficiary : 0);
+            return sum + (Array.isArray(item.criticalIllnessBeneficiary) ? item.criticalIllnessBeneficiary.length * pricePerBeneficiary : 0);
         }, 0));
     });
 
