@@ -117,13 +117,19 @@ const HeroSection = () => {
     
                 <div className="bg-white rounded-xl max-w-[521px] px-[20px] md:px-[10px] py-[13px]  lg:p-9 flex flex-col gap-[10px] h-fit">
                     <div className="border border-1 border-[#A689B0] rounded-[25px]  px-[10px] font-light w-fit">
-                        <p className="text-[#A689B0]">CarePass Tax Saver Plan: Healthier Life, Lower Taxes</p>
+                        <p className="text-[#A689B0]">CarePass Tax Saver Plan</p>
                     </div>
                     <div className="flex flex-col gap-[20px] mb-5">
-                        <p className="text-2xl font-bold text-deepPurple">Pay just ₹ 5,000 and receive benefits valued at ₹17,400 </p>
-                        <p className="font-light text-[#A689B0]">
-                            Streamline Your Health Plan Management with Flexible, Digitalized Solutions for a Happy, Healthy, and Secured Lifestyle
-                        </p>
+                        <p className="text-2xl font-bold text-deepPurple">Package Price: ₹5,000 <br />
+Actual Value of Benefits: ₹17,000+
+</p>
+<p className="font-light text-[#A689B0]">
+  Annual Health Checks (₹8,000)<br />
+  Unlimited Tele-consultation (₹2,400)<br />
+  Application Access (₹2,000)<br />
+  Tax Benefit under 80D (₹5,000)<br />
+  Discounts on Pharmacy (up to 18%)
+</p>
                         <Button onClick={() => handleNavigation(ROUTES.TAX_SAVER)} className="inline-flex items-center gap-2 rounded-3xl justify-center  w-full lg:w-fit px-9 bg-deepPurple  py-2 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-purple-950 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
                             Know more
                         </Button>
@@ -150,10 +156,10 @@ const HeroSection = () => {
     
                 <div className="bg-white rounded-xl max-w-[521px] px-[20px] md:px-[10px] py-[13px] lg:p-9 flex flex-col gap-[10px] h-fit">
                     <div className="border border-1 border-[#A689B0] rounded-[25px]  px-[10px] font-light w-fit">
-                        <p className="text-[#A689B0]">CarePass Silver: Comprehensive Family Care, Simplified</p>
+                        <p className="text-[#A689B0]">CarePass Silver</p>
                     </div>
                     <div className="flex flex-col gap-[20px] mb-5">
-                        <p className="text-2xl font-bold text-deepPurple">Pay just ₹ 5,000 and receive benefits valued at ₹30,000 + </p>
+                        <p className="text-2xl font-bold text-deepPurple">Pay just ₹5,000 and receive benefits valued at ₹30,000 + </p>
                         <p className="font-light text-[#A689B0]">
                         Unlock ₹30,000+ in Benefits for Just ₹5,000! Protect Your Loved Ones with Our Primary Care Services and Flexible Digital Wallet
                         </p>
@@ -183,10 +189,10 @@ const HeroSection = () => {
     
                 <div className="bg-white rounded-xl max-w-[521px] px-[20px] md:px-[10px] py-[13px] lg:p-9 flex flex-col gap-[10px] h-fit">
                     <div className="border border-1 border-[#A689B0] rounded-[25px]  px-[10px] font-light w-fit">
-                        <p className="text-[#A689B0]">CarePass Gold: Comprehensive Family Care, Enhanced with Critical Illness Coverage</p>
+                        <p className="text-[#A689B0]">CarePass Gold</p>
                     </div>
                     <div className="flex flex-col gap-[20px] mb-5">
-                        <p className="text-2xl font-bold text-deepPurple">Pay just ₹ 10,000 and receive benefits valued at ₹3,00,000+ </p>
+                        <p className="text-2xl font-bold text-deepPurple">Pay just ₹10,000 and receive benefits valued at ₹3,00,000+ </p>
                         <p className="font-light text-[#A689B0]">
                         Experience unmatched peace of mind with CarePass Gold, the ultimate healthcare solution for you and your loved ones. This premium product seamlessly integrates the benefits of Tax Saver and Silver, with an added layer of critical illness coverage.
                         </p>
@@ -214,10 +220,10 @@ const HeroSection = () => {
     
                 <div className="bg-white rounded-xl max-w-[521px] px-[20px] md:px-[10px] py-[13px]  lg:p-9 flex flex-col gap-[10px] h-fit" >
                     <div className="border border-1 border-[#A689B0] rounded-[25px]  px-[10px] font-light w-fit">
-                        <p className="text-[#A689B0]">CarePass Platinum: Comprehensive Health and Financial Protection, Elevated</p>
+                        <p className="text-[#A689B0]">CarePass Platinum</p>
                     </div>
                     <div className="flex flex-col gap-[20px] mb-5">
-                        <p className="text-2xl font-bold text-deepPurple">Pay just ₹ 15,000 and receive benefits valued at ₹28,00,000 </p>
+                        <p className="text-2xl font-bold text-deepPurple">Pay just ₹15,000 and receive benefits valued at ₹28,00,000 </p>
                         <p className="font-light text-[#A689B0]">
                         Experience unparalleled protection and care with CarePass Platinum, a cohesive product combining the benefits of Tax Saver, Silver, and Gold, enhanced with a super top-up.
                         </p>
@@ -241,8 +247,6 @@ const HeroSection = () => {
                 className="rounded-xl max-w-[1200px] m-auto"
                 onPointerEnterCapture={() => { }}
                 onPointerLeaveCapture={() => { }}
-                autoplay='true'
-                loop='true'
             >
                 <Plan1 />
                 <Plan2 />

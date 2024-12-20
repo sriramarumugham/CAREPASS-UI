@@ -3,14 +3,22 @@ import Medicine from '../assets/medicine.svg';
 import Lab from '../assets/lab.svg';
 import Dumbell from '../assets/dumbell.svg';
 import { motion } from 'framer-motion';
-import CountUp from 'react-countup'
+import CountUp from 'react-countup';
+import { MdHealthAndSafety } from "react-icons/md";
+import { FaUserDoctor, FaTooth } from "react-icons/fa6";
+import { FaClinicMedical, FaMapMarkerAlt } from "react-icons/fa";
+import { IoGlasses } from "react-icons/io5";
 
 const Statistics = () => {
     const stats = [
-        { logo: Stetescope, number: 25000, description: 'Doctors Network for in-clinic consultations' },
-        { logo: Medicine, number: 35000, description: 'Pharmacies' },
-        { logo: Lab, number: 8000, description: 'Diagnostic Partners in 400+ cities' },
-        { logo: Dumbell, number: 5500, description: 'Gym & Fitness Centre network' }
+        { logo: Stetescope, number: 25000, description: 'Doctors for in-clinic consultations', icon: false },
+        { logo: Stetescope, number: 8000, description: 'Doctors for online teleconsultation', icon: true, iconName: FaUserDoctor },
+        { logo: Dumbell, number: 5500, description: 'Gyms for fitness and wellness', icon: false },
+        { logo: Dumbell, number: 8000, description: 'Diagnostic Centers for home sample collection', icon: true, iconName: FaClinicMedical },
+        { logo: Stetescope, number: 5000, description: 'Dentists for comprehensive dental care', icon: true, iconName: FaTooth },
+        { logo: Medicine, number: 35000, description: 'Pharmacies for easy access to medication', icon: false },
+        { logo: Lab, number: 300, description: 'Vision Care Stores for eye health services', icon: true, iconName: IoGlasses },
+        { logo: Dumbell, number: 400, description: 'cities coverage across India', icon: true, iconName: FaMapMarkerAlt }
     ];
 
     return (
@@ -28,11 +36,15 @@ const Statistics = () => {
                         variants={itemVariants}
                     >
                         <div className="bg-deepPurple min-w-[30px] min-h-[30px] md:min-w-[70px] md:min-h-[70px] rounded-full flex items-center justify-center">
+                        {stat.icon ? (
+                            <stat.iconName className="w-[16px] h-[16px] md:w-[36px] md:h-[36px] text-white" />
+                        ) : (
                             <img
                                 src={stat.logo}
                                 className="w-[16px] h-[16px] md:w-[36px] md:h-[36px]"
                                 alt={stat.description}
                             />
+                        )}
                         </div>
                         <div className="flex flex-col h-fit gap-[5px] shrink">
 

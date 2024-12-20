@@ -13,7 +13,7 @@ import { ROUTES } from "../utils/routes";
 import './Hero.css';
 import HeartPatient from '../assets/family-gold.png'
 import { taxSaverGrid, ResponsiveGrid } from "../utils/plan-benifits"
-import { BenefitsBreakdownTaxSaver, BreakdownofBenefitsTaxSaver, CarePassBenefitsTaxSaver, HealthcareEcosystem, HowItWorksTaxSaver, WhyChooseCarePassTaxSaver } from "../components/extras"
+import { BenefitsBreakdownTaxSaver, CarePassBenefitsTaxSaver, HealthcareEcosystem, HowItWorksTaxSaver, WhyChooseCarePassTaxSaver } from "../components/extras"
 
 
 const TaxSaverPage = () => {
