@@ -1,6 +1,6 @@
 import Navbar from "../components/nav-bar";
 import { PlanDetails, TableTemplate } from "./tax-saver";
-import SilverHeart from '../assets/insurance/silber-heart.png'
+import { FaCheckCircle, FaHeartbeat, FaLaptopMedical, FaPrescriptionBottleAlt, FaUserShield } from "react-icons/fa";
 import TrustedPartnersSection from "../components/trusted-partners";
 import ContactUsSection from "../components/contact-us";
 import FooterSection from "../components/footer";
@@ -12,6 +12,13 @@ import { useNavigate } from "react-router-dom";
 import platinum_image from '../assets/carepass_platinum.png';
 import { platinumPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
 import { BenefitsBreakdownPlatinum, HealthcareEcosystem, HowItWorksPlatinum } from "../components/extras";
+import { FaClinicMedical, FaTooth } from "react-icons/fa";
+import { IoGlasses } from "react-icons/io5";
+import { FaUserDoctor, FaShieldHeart } from "react-icons/fa6";
+import { RiDiscountPercentFill } from "react-icons/ri";
+import { MdOutlineMobileFriendly, MdHealthAndSafety } from "react-icons/md";
+import { GiMedicines } from "react-icons/gi";
+import { TbHealthRecognition } from "react-icons/tb";
 
 
 const SuperTopUpPage = () => {
@@ -75,12 +82,9 @@ const SuperTopUpPage = () => {
           others: "Less cost-effective when purchasing separate products.",
         },
       ];
-      
-
 
     const { addToCart } = useCartStore();
     const navigate = useNavigate();
-
 
     const productId = "product4";
     const productName = "CarePass Platinum";
@@ -91,30 +95,38 @@ const SuperTopUpPage = () => {
         navigate(ROUTES.CART, { relative: 'path' })
     };
 
-
     return (
         <>
             <Navbar />
-
             <div
                 className={`w-full  px-[20px] rounded-md   py-[50px] min-h-[450px] h-auto ${themeColors.sectionBg} flex flex-col lg:flex-row items-center justify-evenly gap-5`}
                 style={{ backgroundImage: `url(${Gradient})` }}
             >
                 <PlanDetails
-                    heading="CarePass Platinum: Comprehensive Health and Financial Protection, Elevated"
-                    description="Experience unparalleled protection and care with CarePass Platinum, a cohesive product combining the benefits of Tax Saver, Silver, and Gold, enhanced with a super top-up."
+                    heading="CarePass Platinum"
+                    description={[
+                      { text: 'Preventive Health Check: ₹8,000', icon: <FaHeartbeat /> },
+                      { text: "Doctor Consultation: ₹12,400", icon: <FaUserDoctor /> },
+                      { text: "App Access: ₹2,000", icon: <MdOutlineMobileFriendly /> },
+                      { text: "Medicines: ₹6,000 ", icon: <GiMedicines /> },
+                      { text: 'Diagnostic: ₹7,000', icon: <FaClinicMedical /> },
+                      { text: 'Dental Care: ₹4,200', icon: <FaTooth /> },
+                      { text: 'Vision Care: ₹2,800', icon: <IoGlasses /> },
+                      { text: 'Critical Illness: ₹2,50,000', icon: <FaShieldHeart /> },
+                      { text: 'Health Insurance Benefits', icon: <MdHealthAndSafety /> },
+                      { text: 'Super Top-Up: ₹15,00,000/ ₹25,00,000', icon: <FaCheckCircle /> },
+                      { text: 'Health Insurance: ₹3,00,000/₹5,00,000', icon: <TbHealthRecognition /> },
+                      { text: 'Tax Benefits Under 80D: ₹15,000', icon: <RiDiscountPercentFill /> },
+                  ]}
                     pay="₹15,000"
-                    values="₹28,00,000"
+                    values="₹28,00,000+"
                     price="₹15,000"
                     ageLimit="18-60 years"
                     validity="1 year"
                     themeColors={themeColors}
                     imgSrc={platinum_image}
                     onBuyNow={handleBuyNow}
-
                 />
-
-
             </div>
 
             <ResponsiveGrid gridItems={platinumPlanGrid} heading='CarePass Platinum Plan' />

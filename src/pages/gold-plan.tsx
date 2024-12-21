@@ -13,7 +13,12 @@ import { useNavigate } from 'react-router-dom'
 import SilverHeart from '../assets/gold-plan.png'
 import { goldPlanGrid, ResponsiveGrid } from '../utils/plan-benifits'
 import { BenefitsBreakdownGold, HealthcareEcosystem, HowItWorksGold, WellnessApp } from '../components/extras'
-
+import { FaHeartbeat, FaClinicMedical, FaTooth } from "react-icons/fa";
+import { IoGlasses } from "react-icons/io5";
+import { FaUserDoctor, FaShieldHeart } from "react-icons/fa6";
+import { RiDiscountPercentFill } from "react-icons/ri";
+import { MdOutlineMobileFriendly } from "react-icons/md";
+import { GiMedicines } from "react-icons/gi";
 
 const themeColors = {
     primary: "text-deepPurple",
@@ -87,23 +92,30 @@ const GoldPlan = () => {
         navigate(ROUTES.CART, { relative: 'path' })
     };
 
-
     return (
         <>
             <Navbar />
 
             <div
-                className={`w-full  px-[20px] rounded-md   py-[50px] min-h-[450px] h-auto ${themeColors.sectionBg} flex flex-col lg:flex-row items-center justify-evenly gap-5`}
+                className={`w-full  px-[20px] rounded-md py-[50px] min-h-[450px] h-auto ${themeColors.sectionBg} flex flex-col lg:flex-row items-center justify-evenly gap-5`}
                 style={{ backgroundImage: `url(${Gradient})` }}
             >
-
-
                 <PlanDetails
-                    heading="CarePass Gold: Comprehensive Family Care, Enhanced with Critical Illness Coverage"
-                    description="Experience unmatched peace of mind with CarePass Gold, the ultimate healthcare solution for you and your loved ones. This premium product seamlessly integrates the benefits of Tax Saver and Silver, with an added layer of critical illness coverage."
-                    pay="₹10000"
-                    values=" ₹3,00,000"
-                    price="₹10000"
+                    heading="CarePass Gold"
+                    description={[
+                        { text: 'Preventive Health Check: ₹8,000', icon: <FaHeartbeat /> },
+                        { text: "Doctor Consultation: ₹12,400", icon: <FaUserDoctor /> },
+                        { text: "App Access: ₹2,000", icon: <MdOutlineMobileFriendly /> },
+                        { text: "Medicines: ₹6,000 ", icon: <GiMedicines /> },
+                        { text: 'Diagnostic: ₹7,000', icon: <FaClinicMedical /> },
+                        { text: 'Dental Care: ₹4,200', icon: <FaTooth /> },
+                        { text: 'Vision Care: ₹2,800', icon: <IoGlasses /> },
+                        { text: 'Critical Illness: ₹2,50,000', icon: <FaShieldHeart /> },
+                        { text: 'Tax Benefits Under 80D: ₹10,000', icon: <RiDiscountPercentFill /> },
+                    ]}
+                    pay="₹10,000"
+                    values=" ₹3,00,000+"
+                    price="₹10,000"
                     ageLimit="18-60 years"
                     validity="1 year"
                     themeColors={themeColors}

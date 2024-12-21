@@ -12,7 +12,11 @@ import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../utils/routes";
 import './Hero.css';
 import HeartPatient from '../assets/family-gold.png'
-import { taxSaverGrid, ResponsiveGrid } from "../utils/plan-benifits"
+import { FaHeartbeat, FaLaptopMedical } from "react-icons/fa";
+import { MdOutlineMobileFriendly } from "react-icons/md";
+import { GiMedicines } from "react-icons/gi";
+import { RiDiscountPercentFill } from "react-icons/ri";
+import { taxSaverGrid, ResponsiveGrid } from "../utils/plan-benifits";
 import { BenefitsBreakdownTaxSaver, CarePassBenefitsTaxSaver, HealthcareEcosystem, HowItWorksTaxSaver, WhyChooseCarePassTaxSaver } from "../components/extras"
 
 
@@ -46,17 +50,23 @@ const TaxSaverPage = () => {
             >
 
                 <PlanDetails
-                    heading="CarePass Tax Saver Plan: Healthier Life, Lower Taxes"
-                    pay="₹5000"
-                    values="₹17,400"
-                    description="Streamline Your Health Plan Management with Flexible, Digitalized Solutions for a Happy, Healthy, and Secured Lifestyle"
-                    price="₹5000"
-                    ageLimit="18-60 years"
-                    validity="1 year"
-                    themeColors={themeColors}
-                    imgSrc={HeartPatient}
-                    onBuyNow={handleBuyNow}
-
+                heading="CarePass Tax Saver Plan"
+                pay="₹5,000"
+                values="₹17,000+"
+                description={[
+                    { text: "Annual Health checks (₹8,000)", icon: <FaHeartbeat /> },
+                    { text: "Unlimited Tele-consultation (₹2,400)", icon: <FaLaptopMedical /> },
+                    { text: "Application Access (₹2,000)", icon: <MdOutlineMobileFriendly /> },
+                    { text: "Tax Benefit under 80D (₹5,000)", icon: <RiDiscountPercentFill /> },
+                    { text: "Discounts on Pharmacy (up to 18%)", icon: <GiMedicines /> },
+                ]}
+                price="₹5,000"
+                ageLimit="18-60 years"
+                validity="1 year"
+                themeColors={themeColors}
+                imgSrc={HeartPatient}
+                onBuyNow={handleBuyNow}
+                isTaxSaver={true}
                 />
             </div>
 
@@ -91,6 +101,7 @@ interface PlanDetailsProps {
     };
     imgSrc: string;
     onBuyNow: () => void;
+    isTaxSaver: boolean;
 }
 
 export const PlanDetails: FC<PlanDetailsProps> = ({
@@ -103,77 +114,99 @@ export const PlanDetails: FC<PlanDetailsProps> = ({
     validity,
     themeColors,
     imgSrc,
-    onBuyNow
-}) => {
+    onBuyNow,
+    isTaxSaver,
+  }) => {
     return (
-        <div
-            className={`flex flex-col mt-[20px] items-center md:flex-row w-full max-w-[1200px] ${themeColors.background} m-auto`}
+      <div
+        className={`flex flex-col mt-8 items-center md:flex-row w-full max-w-[1200px] ${themeColors.background} m-auto shadow-lg rounded-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl`}
+      >
+        {/* Buy Now button for mobile - moved above the image */}
+        <button
+          onClick={onBuyNow}
+          className="w-full mb-4 block md:hidden max-w-[600px] inline-flex items-center gap-2 rounded-full justify-center px-8 py-3 bg-deepPurple text-white font-semibold text-base shadow-md hover:bg-purple-700 focus:outline-none order-1"
         >
-            <img
-                src={imgSrc}
-                className="max-w-[400px] w-full object-cover "
-                alt="Plan Illustration"
-            />
-            <div className="p-[40px]">
-                {/* Content */}
-                <div className="flex flex-col items-center">
-                    <p className="text-xl font-bold md:text-3xl text-center text-deepPurple">
-                        {heading}
-                    </p>
-
-                    {/* Pay and Receive Benefits */}
-                    <div className="flex justify-center items-center gap-4 mt-4">
-                        <div
-                            className={`${themeColors.cardBg} rounded-lg p-4 border border-1 border-[#EDE4FF] w-full md:w-[250px] flex flex-col justify-between`}
-                        >
-                            <p>Pay just</p>
-                            <p className="font-bold text-2xl md:text-3xl text-deepPurple">
-                                {pay}
-                            </p>
-                        </div>
-
-                        <p className="text-xl font-semibold">&</p>
-
-                        <div
-                            className={`${themeColors.cardBg} rounded-lg p-4 border border-1 border-deepPurple w-full md:w-[250px] flex flex-col justify-between`}
-                        >
-                            <p className="font-bold">Receive benefits</p>
-                            <p className="font-bold text-2xl">
-                                valued{" "}
-                                <span className="font-bold text-2xl md:text-3xl text-deepPurple">
-                                    {values}
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Description */}
-                    <p className="mt-6 text-center text-sm">{description}</p>
-
-                    {/* Price, Age Limit, Validity */}
-                    <div className="flex flex-col md:flex-row mt-6 gap-4 text-base md:text-lg">
-                        <p className="font-semibold">
-                            Price: <span className="text-deepPurple">{price}</span>
-                        </p>
-                        <p className="font-semibold">
-                            Age Limit: <span className="text-deepPurple">{ageLimit}</span>
-                        </p>
-                        <p className="font-semibold">
-                            Validity: <span className="text-deepPurple">{validity}</span>
-                        </p>
-                    </div>
-
-                    <button
-                        onClick={onBuyNow}
-                        className="w-full mt-5 max-w-[600px] inline-flex items-center gap-2 rounded-full justify-center px-8 py-3 bg-deepPurple text-white font-semibold text-base shadow-md hover:bg-purple-700 focus:outline-none"
-                    >
-                        Buy Now
-                    </button>
-                </div>
+          Buy Now
+        </button>
+  
+        <img
+          src={imgSrc}
+          className="max-w-[400px] w-full object-cover"
+          alt="Plan Illustration"
+        />
+  
+        <div className="p-[40px] flex flex-col items-center w-full">
+          {/* Content */}
+          <div className="flex flex-col items-center w-full">
+            <p className="text-xl font-bold md:text-3xl text-center text-deepPurple">
+              {heading}
+            </p>
+  
+            {/* Pay and Receive Benefits */}
+            <div className="flex justify-center items-center gap-4 mt-4">
+              <div
+                className={`${themeColors.cardBg} rounded-lg p-4 border border-1 border-[#EDE4FF] w-full md:w-[250px] flex flex-col justify-between`}
+              >
+                <p>Pay just</p>
+                <p className="font-bold text-2xl md:text-3xl text-deepPurple">
+                  {pay}
+                </p>
+              </div>
+  
+              <p className="text-xl font-semibold">&</p>
+  
+              <div
+                className={`${themeColors.cardBg} rounded-lg p-4 border border-1 border-deepPurple w-full md:w-[280px] flex flex-col justify-between`}
+              >
+                <p className="font-bold">Receive benefits</p>
+                <p className="font-bold text-2xl">
+                  upto{" "}
+                  <span className="font-bold text-2xl md:text-3xl text-deepPurple">
+                    {values}
+                  </span>
+                </p>
+              </div>
             </div>
+  
+            {/* Description as a simple two-column grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+              {description.map((item, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <div className="text-deepPurple">{item.icon}</div>
+                  <p className="text-gray-700">{item.text}</p>
+                </div>
+              ))}
+            </div>
+  
+            {/* Price, Age Limit, Validity */}
+            <div className="flex flex-col md:flex-row mt-6 gap-4 text-base md:text-lg">
+              <p className="font-semibold">
+                Price: <span className="text-deepPurple">{price}</span>
+              </p>
+              {!isTaxSaver && (
+                <p className="font-semibold">
+                  Age Limit: <span className="text-deepPurple">{ageLimit}</span>
+                </p>
+              )}
+              <p className="font-semibold">
+                Validity: <span className="text-deepPurple">{validity}</span>
+              </p>
+            </div>
+  
+            {/* Buy Now button for larger screens */}
+            <button
+              onClick={onBuyNow}
+              className="w-full mt-5 hidden md:block max-w-[600px] inline-flex items-center gap-2 rounded-full justify-center px-8 py-3 bg-deepPurple text-white font-semibold text-base shadow-md hover:bg-purple-700 focus:outline-none"
+            >
+              Buy Now
+            </button>
+          </div>
         </div>
+      </div>
     );
-};
+  };
+  
+  
 
 
 interface TableTemplateProps<T> {

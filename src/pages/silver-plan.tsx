@@ -1,17 +1,20 @@
-import ContactUsSection from "../components/contact-us"
-import FooterSection from "../components/footer"
-import Navbar from "../components/nav-bar"
-import TrustedPartnersSection from "../components/trusted-partners"
-import { PlanDetails, TableTemplate } from "./tax-saver"
-import SilverHeart from '../assets/insurance/silver-plan.png'
-import { ColumnDef } from "@tanstack/react-table"
-
-import Gradient from '../assets/gradient.png'
-import useCartStore from "../store/cart-store"
-import { useNavigate } from "react-router-dom"
-import { ROUTES } from "../utils/routes"
-import { silverPlanGrid, ResponsiveGrid } from "../utils/plan-benifits"
-import { BenefitsBreakdownSilver, CarePassBenefitsSilver, CarePassSilverSteps, HealthcareEcosystem } from "../components/extras"
+import ContactUsSection from "../components/contact-us";
+import FooterSection from "../components/footer";
+import Navbar from "../components/nav-bar";
+import TrustedPartnersSection from "../components/trusted-partners";
+import { PlanDetails, TableTemplate } from "./tax-saver";
+import SilverHeart from '../assets/insurance/silver-plan.png';
+import { ColumnDef } from "@tanstack/react-table";
+import Gradient from '../assets/gradient.png';
+import useCartStore from "../store/cart-store";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../utils/routes";
+import { silverPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
+import { BenefitsBreakdownSilver, CarePassBenefitsSilver, CarePassSilverSteps, HealthcareEcosystem } from "../components/extras";
+import { FaUserDoctor } from "react-icons/fa6";
+import { GiMedicines } from "react-icons/gi";
+import { FaClinicMedical, FaTooth } from "react-icons/fa";
+import { IoGlasses } from "react-icons/io5";
 
 const SilverPlanPage = () => {
 
@@ -98,17 +101,21 @@ const SilverPlanPage = () => {
             <Navbar />
 
             <div
-                className={`w-full  px-[20px] rounded-md   py-[50px] min-h-[450px] h-auto ${themeColors.sectionBg} flex flex-col lg:flex-row items-center justify-evenly gap-5`}
+                className={`w-full px-[20px] rounded-md py-[50px] min-h-[450px] h-auto ${themeColors.sectionBg} flex flex-col lg:flex-row items-center justify-evenly gap-5`}
                 style={{ backgroundImage: `url(${Gradient})` }}
             >
-
-
                 <PlanDetails
-                    heading="CarePass Silver: Comprehensive Family Care, Simplified"
-                    description="Unlock ₹30,000+ in Benefits for Just ₹5,000! Protect Your Loved Ones with Our Primary Care Services and Flexible Digital Wallet"
-                    pay="₹5000"
+                    heading="CarePass Silver"
+                    description={[
+                        { text: "Doctor Consultations (In-clinic & Online): ₹10,000", icon: <FaUserDoctor /> },
+                        { text: 'Medicines: ₹6,000', icon: <GiMedicines /> },
+                        { text: 'Diagnostics: ₹7,000', icon: <FaClinicMedical /> },
+                        { text: "Dental Care: ₹4,200", icon: <FaTooth /> },
+                        { text: 'Vision Care: ₹2,800', icon: <IoGlasses /> },
+                    ]}
+                    pay="₹5,000"
                     values="₹30,000+"
-                    price="₹5000"
+                    price="₹5,000"
                     ageLimit="18-60 years"
                     validity="1 year"
                     themeColors={themeColors}
@@ -118,9 +125,7 @@ const SilverPlanPage = () => {
                 />
             </div>
 
-
             <ResponsiveGrid gridItems={silverPlanGrid} heading='CarePass Silver Plan' />
-
 
             <TableTemplate
                 columns={columns}
