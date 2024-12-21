@@ -1,6 +1,15 @@
 import HeartGrafti from '../assets/hert-grafti.svg';
 import AboutUsThree from '../assets/about-us-3.png';
+import DownloadApp from '../assets/download_app.png';
 import TopRightSvg from '../assets/top-right.svg';
+import { GiWeightLiftingUp } from "react-icons/gi";
+import { CiDiscount1, CiMobile1 } from "react-icons/ci";
+import { RiDiscountPercentFill } from "react-icons/ri";
+import { TbReceiptTax } from "react-icons/tb";
+import { FaUserDoctor } from "react-icons/fa6";
+import { BsHouseHeartFill } from "react-icons/bs";
+import { MdHealthAndSafety, MdOutlineSupportAgent, MdOutlineMedicalServices, MdOutlineFamilyRestroom, MdOutlineSavings } from "react-icons/md";
+import { FaUsers, FaUserMd, FaDollarSign, FaClipboardList, FaTag, FaStethoscope, FaHeartbeat, FaAppleAlt, FaBookMedical } from 'react-icons/fa'; // Example icons from react-icons
 
 export const Section2 = () => {
     return (
@@ -178,8 +187,6 @@ export const HomePageSection1 = () => {
       </div>
     );
   };
-  
-  
 
 export const AboutSection4 = () => {
     return (
@@ -214,7 +221,7 @@ export const AboutSection4 = () => {
     );
 };
 
-export const AboutSection3 = () => {
+export const AboutSection322 = () => {
     return (
         <div
             className="px-6 py-10 flex items-center justify-center bg-white"
@@ -261,6 +268,88 @@ export const AboutSection3 = () => {
             </div>
         </div>
     );
+};
+
+export const AboutSection3 = () => {
+  const features = [
+    {
+      icon: MdOutlineFamilyRestroom,
+      title: "Comprehensive Family Coverage",
+      description: "Our floater plans cover your entire family, including spouse, children, and parents, under one plan."
+    },
+    {
+      icon: RiDiscountPercentFill,
+      title: "Health Benefits and Exclusive Savings",
+      description: "Enjoy exclusive savings on annual health checks, diagnostic tests from premium hospitals, and more."
+    },
+    {
+      icon: CiMobile1,
+      title: "User-Friendly Digital Platform",
+      description: "Experience a seamless healthcare management experience with our user-friendly digital platform, featuring automated confirmations, secure wallet, and easy document storage on our app."
+    },
+    {
+      icon: MdHealthAndSafety,
+      title: "Easy Health Management",
+      description: "Manage your health and wellness with ease using our app, where you can schedule appointments, access your digital wallet, store health records, and more."
+    },
+    {
+      icon: MdOutlineSavings,
+      title: "Unbeatable Value",
+      description: "Get the lowest premiums with maximum value with our Gold and Platinum plans, offering unmatched benefits and coverage."
+    },
+    {
+      icon: TbReceiptTax,
+      title: "Tax Benefits",
+      description: "Take advantage of tax benefits under Section 80D, providing additional savings on your healthcare costs."
+    }
+  ];
+
+  return (
+    <div className="px-6 py-10 flex items-center justify-center" style={{
+      background: '#FCF9FF',
+  }}>
+      <div className="flex flex-col md:flex-row max-w-[1200px] gap-8">
+        <div className="md:w-1/3 flex justify-center">
+        <img
+                        src={HeartGrafti}
+                        alt="Care Across India"
+                        className="w-full object-fit max-w-[300px]"
+                    />
+        </div>
+
+        <div className="flex flex-col md:w-2/3 gap-6">
+          <h2 className="text-purple-900 text-2xl font-light md:text-3xl md:leading-8">
+            Why Choose CarePass?
+          </h2>
+
+          <div className="space-y-6">
+            {features.map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <div key={index} className="flex items-start gap-4">
+                  <div className="mt-1">
+                    <IconComponent className="w-6 h-6 text-purple-900" />
+                  </div>
+                  <div>
+                    <p className="text-base md:text-md leading-7">
+                      <span className="text-purple-900 font-semibold">
+                        {feature.title}:{' '}
+                      </span>
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <p className="text-base md:text-md leading-7 mt-4">
+          At CarePass, we’re not just offering health insurance; we’re providing a complete healthcare solution that’s tailored to your unique needs.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export const Section6 = () => {
@@ -346,87 +435,134 @@ export const Section7 = () => {
         </div>
     );
 };
-
-export const WhyChooseCarePass = () => {
-    const benefits = [
-      {
-        title: "Complete Family Coverage",
-        description: "Plans for your spouse, children, and parents.",
-      },
-      {
-        title: "Personalized Health Plans",
-        description: "Tailored to your individual health needs.",
-      },
-      {
-        title: "Lowest Premiums",
-        description: "Exceptional value with Gold and Platinum plans at the most competitive rates.",
-      },
-      {
-        title: "Simple Health Management",
-        description: "Manage appointments, wallets, and health records through one app.",
-      },
-      {
-        title: "Exclusive Savings",
-        description: "Unlock tax benefits under Section 80D and secure financial protection.",
-      },
-    ];
   
+  const benefits = [
+    {
+      text: "Discounted Health checks, medicines and gym memberships",
+      icon: GiWeightLiftingUp,
+    },
+    {
+      text: "AI-powered personalized diet plans",
+      icon: FaAppleAlt,
+    },
+    {
+      text: "Access to digital health records and assessments",
+      icon: MdHealthAndSafety,
+    },
+    {
+      text: "In-person & online doctor consultations",
+      icon: FaStethoscope,
+    },
+    {
+      text: "24/7 access to mental health professionals",
+      icon: FaHeartbeat,
+    },
+    {
+      text: "Live expert support available 24/7 through chat, phone, or email",
+      icon: MdOutlineSupportAgent,
+    },
+  ];
+  
+  export const WellnessAppBenefits = () => {
     return (
-      <div className="py-12 px-4 md:px-12">
-        <h1 className="text-3xl font-bold text-center text-deepPurple mb-8">
-          Why Choose CarePass?
-        </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {benefits.map((benefit, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-md p-6 flex flex-col justify-between"
-            >
-              <h2 className="text-xl font-semibold text-deepPurple mb-4">
-                {benefit.title}
-              </h2>
-              <p className="text-gray-700">{benefit.description}</p>
-            </div>
-          ))}
-        </div>
+      <div className='px-[20px] flex items-center justify-center' style={{ background: '#FCF9FF', }}>
+          <div className="flex flex-col max-w-[1200px] py-[30px] md:py-[30px] gap-4 md:gap-12">
+              <p className="font-bold text-xl md:text-4xl mx-auto">Wellness App Benefits</p>
+              <div>
+                  <div className="flex flex-col md:flex-row gap-4 md:gap-12">
+                      <img 
+                          src={DownloadApp} 
+                          alt="Wellness App" 
+                          className="w-full max-w-xs object-contain rounded-lg mb-6 md:mb-0"
+                      />
+                      <div className='flex flex-col gap-3'>
+                          <ul className="space-y-6">
+                              {benefits.map((benefit, index) => (
+                                  <li key={index} className="flex items-center space-x-4 text-lg text-gray-700">
+                                      <benefit.icon className="text-deepPurple text-2xl" />
+                                      <span>{benefit.text}</span>
+                                  </li>
+                              ))}
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+              <p className="text-lg text-gray-800 text-center">
+                  Download the <span className="font-semibold text-deepPurple">Wellness Corner App</span> to get started.
+              </p>
+          </div>
       </div>
     );
   };
 
-  export const WellnessAppBenefits = () => {
+  export const WhyChooseCarePass = () => {
+    const benefits = [
+      {
+        title: "Complete Family Coverage:",
+        description: "Plans for your spouse, children, and parents.",
+        icon: <FaUsers className="text-deepPurple text-3xl" />,
+      },
+      {
+        title: "Personalized Health Plans:",
+        description: "Tailored to your individual health needs.",
+        icon: <FaUserMd className="text-deepPurple text-3xl" />,
+      },
+      {
+        title: "Lowest Premiums:",
+        description: "Exceptional value with Gold and Platinum plans at the most competitive rates.",
+        icon: <FaDollarSign className="text-deepPurple text-3xl" />,
+      },
+      {
+        title: "Simple Health Management:",
+        description: "Manage appointments, wallets, and health records through one app.",
+        icon: <FaClipboardList className="text-deepPurple text-3xl" />,
+      },
+      {
+        title: "Health Benefits and Exclusive Savings:",
+        description: "Enjoy exclusive savings on annual health checks, diagnostic tests from premium hospitals, and more.",
+        icon: <FaTag className="text-deepPurple text-3xl" />,
+      },
+      {
+        title: "Tax Benefits:",
+        description: "Take advantage of tax benefits under Section 80D, providing additional savings on your healthcare costs.",
+        icon: <RiDiscountPercentFill className="text-deepPurple text-3xl" />,
+      },
+    ];
+  
     return (
-      <div className="py-12 px-4 md:px-12 text-center">
-        <h1 className="text-3xl font-bold text-deepPurple mb-8">
-          Wellness App Benefits
-        </h1>
-        <div className="mx-auto max-w-xl text-left">
-          <ul className="list-disc list-inside text-lg text-gray-700 space-y-4">
-            <li>
-              <span className="font-semibold text-deepPurple">24/7 access</span> to mental health professionals
-            </li>
-            <li>
-              AI-powered personalized diet plans
-            </li>
-            <li>
-              Access to digital health records and assessments
-            </li>
-            <li>
-              In-person & online doctor consultations
-            </li>
-            <li>
-              Discounted medicines and gym memberships
-            </li>
-            <li>
-              Live expert support available 24/7 through chat, phone, or email
-            </li>
-          </ul>
-          <p className="mt-6 text-lg text-gray-800">
-            Download the <span className="font-semibold text-deepPurple">Wellness Corner App</span> to get started.
+      <div className="px-[20px] flex items-center justify-center">
+        <div className="flex flex-col max-w-[1200px] py-[30px] md:py-[30px] gap-4 md:gap-12">
+          <p className="font-bold text-xl md:text-4xl mx-auto">
+            Why Choose CarePass?
           </p>
+          <div>
+            <div className="flex flex-col md:flex-row gap-4 md:gap-12">
+              <div className="flex flex-col gap-3">
+                <ul className="space-y-6">
+                  {benefits.map((benefit, index) => (
+                    <li key={index} className="flex items-center space-x-4">
+                      <span>{benefit.icon}</span>
+                      <div>
+                        <h2 className="text-xl font-semibold text-deepPurple">
+                          {benefit.title}
+                        </h2>
+                        <p className="text-gray-700">{benefit.description}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <img 
+                      src={DownloadApp} 
+                      alt="Wellness App" 
+                      className="w-full max-w-xs object-contain rounded-lg mb-6 md:mb-0"
+                  />
+            </div>
+          </div>
         </div>
       </div>
     );
-};
+  };
 
   export const HealthControlCTA = () => {
     return (
@@ -1267,7 +1403,7 @@ export const WhyChooseCarePass = () => {
     );
   };
 
-  export const AboutUsOurWellnessApp = () => {
+  export const AboutUsOurWellnessApp22 = () => {
     const features = [
       "Personalized Wellness Plans: Get AI-powered customized diet plans and access to expert dieticians for a healthier you.",
       "Seamless Doctor Consultations: Enjoy in-person and online consultations with doctors for convenient healthcare management.",
@@ -1294,6 +1430,74 @@ export const WhyChooseCarePass = () => {
                 <span>{feature}</span>
               </li>
             ))}
+          </ul>
+        </div>
+  
+        <div className="text-center mt-8">
+          <p className="text-lg text-gray-800 font-semibold">
+            Healthy. Happy. Covered.
+          </p>
+        </div>
+      </div>
+    );
+  };
+
+  export const AboutUsOurWellnessApp = () => {
+    const features = [
+      {
+        icon: MdHealthAndSafety,
+        text: "Comprehensive Healthcare Network: Access our extensive network of doctors, hospitals, clinics, and diagnostic facilities for complete healthcare coverage."
+      },
+      {
+        icon: FaHeartbeat,
+        text: "Personalized Wellness Plans: Get AI-powered customized diet plans and access to expert dieticians for a healthier you."
+      },
+      {
+        icon: FaUserDoctor,
+        text: "Doctor Consultations: Enjoy in-person and online consultations with doctors for convenient healthcare management."
+      },
+      {
+        icon: GiWeightLiftingUp,
+        text: "Fitness Made Easy: Access discounted gym memberships to kickstart your fitness journey."
+      },
+      {
+        icon: FaBookMedical,
+        text: "Knowledge at Your Fingertips: Explore our knowledge hubs, webinars, and more to stay updated on the latest health and wellness trends."
+      },
+      {
+        icon: RiDiscountPercentFill,
+        text: "Exclusive Discounts: Avail exclusive discounts on pharmacy, diagnostics, and health checks to save on your healthcare expenses."
+      },
+      {
+        icon: BsHouseHeartFill,
+        text: "Digital Health Management: Store and manage your digital health records, track your progress with personalized health assessments, and stay on top of your health with our intuitive trackers."
+      }
+    ];
+  
+    return (
+      <div 
+        className="py-12 px-6 md:px-12"
+                style={{
+            background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)',
+        }}
+      >
+        <h1 className="text-3xl md:text-4xl font-bold text-center text-purple-900 mb-8">
+          About Our Wellness App
+        </h1>
+  
+        <div className="space-y-8 max-w-4xl mx-auto">
+          <ul className="space-y-6">
+            {features.map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <li key={index} className="flex items-start gap-4">
+                  <div className="mt-1">
+                    <IconComponent className="w-6 h-6 text-purple-900" />
+                  </div>
+                  <span className="text-lg text-gray-700">{feature.text}</span>
+                </li>
+              );
+            })}
           </ul>
         </div>
   
@@ -1353,75 +1557,92 @@ export const Section8 = () => {
 };
 
 export const ProductCards = () => {
-    const products = [
-      {
-        title: "Tax Saver",
-        description: [
-          "Preventive health check-ups and consultations with ₹5,000 digital wallet.",
-          "Unlock benefits worth over ₹17,000+.",
-        ],
-        link: "/tax-saver",
-      },
-      {
-        title: "Silver Plan",
-        description: [
-          "Comprehensive primary care services with a ₹10,000 digital wallet for doctor consultations, diagnostics, pharmacy, and more.",
-          "Unlock benefits worth over ₹30,000+.",
-        ],
-        link: "/silver-plan",
-      },
-      {
-        title: "Gold Plan",
-        description: [
-          "Includes critical illness coverage of ₹2,50,000 and a ₹15,000 digital wallet for preventive health and primary care services.",
-          "Unlock benefits worth over ₹2,50,000+.",
-        ],
-        link: "/gold-plan",
-      },
-      {
-        title: "Platinum Plan",
-        description: [
-          "The ultimate protection plan with ₹2,50,000 critical illness coverage, ₹15,000 digital wallet, base health coverage, and super top-up coverage of ₹25,00,000.",
-          "Unlock benefits worth over ₹28,00,000+.",
-        ],
-        link: "/super-top-up",
-      },
-    ];
-  
-    return (
-      <div className="py-12 px-4 md:px-12"
-      style={{
-        background: '#FCF9FF',
-    }}>
-        <h1 className="text-3xl font-bold text-center text-deepPurple mb-8">
-          Explore Our Products
-        </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product, index) => (
+  const products = [
+    {
+      title: "Tax Saver",
+      description: [
+        "Preventive health check-ups and consultations with ₹5,000 digital wallet.",
+        "Unlock benefits worth over ₹17,000+.",
+      ],
+      link: "/tax-saver",
+      Icon: CiDiscount1
+    },
+    {
+      title: "Silver Plan",
+      description: [
+        "Comprehensive primary care services with a ₹10,000 digital wallet for doctor consultations, diagnostics, pharmacy, and more.",
+        "Unlock benefits worth over ₹30,000+.",
+      ],
+      link: "/silver-plan",
+      Icon: MdHealthAndSafety
+    },
+    {
+      title: "Gold Plan",
+      description: [
+        "Includes critical illness coverage of ₹2,50,000 and a ₹15,000 digital wallet for preventive health and primary care services.",
+        "Unlock benefits worth over ₹2,50,000+.",
+      ],
+      link: "/gold-plan",
+      Icon: FaHeartbeat
+    },
+    {
+      title: "Platinum Plan",
+      description: [
+        "The ultimate protection plan with ₹2,50,000 critical illness coverage, ₹15,000 digital wallet, base health coverage, and super top-up coverage of ₹25,00,000.",
+        "Unlock benefits worth over ₹28,00,000+.",
+      ],
+      link: "/super-top-up",
+      Icon: MdOutlineMedicalServices
+    },
+  ];
+
+  return (
+    <div className="py-12 px-4 md:px-12" style={{
+      background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)',
+  }}>
+      <h1 className="text-3xl font-bold text-center text-purple-900 mb-8">
+        Explore Our Products
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {products.map((product, index) => {
+          const IconComponent = product.Icon;
+          return (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between"
+              className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between relative overflow-hidden group hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
-              <h2 className="text-xl font-bold text-deepPurple mb-4">
+              {/* Background Icon */}
+              <div className="absolute top-0 right-0 w-full h-full flex justify-end items-center opacity-15 group-hover:opacity-40 transition-opacity duration-300">
+                <IconComponent className="w-32 h-32 text-purple-900 mr-4" />
+              </div>
+              
+              <h2 className="text-xl font-bold text-purple-900 mb-4 relative z-10">
                 {product.title}
               </h2>
-              <div className="text-gray-700 space-y-2 mb-6">
+              
+              <div className="text-gray-700 space-y-2 mb-6 relative z-10">
                 {product.description.map((line, i) => (
                   <p key={i}>{line}</p>
                 ))}
               </div>
+              
               <a
                 href={product.link}
-                className="text-deepPurple font-semibold underline hover:text-purple-700 transition"
+                className="text-purple-900 font-semibold underline hover:text-purple-700 transition relative z-10"
               >
                 Know More
               </a>
+              
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-70 transition-opacity duration-300 rounded-lg" />
             </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
-    );
-  };
+    </div>
+  );
+};
+
 
 export const Section5 = () => {
     return (

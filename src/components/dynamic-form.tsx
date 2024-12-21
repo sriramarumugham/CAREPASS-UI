@@ -421,7 +421,7 @@ const TotalPrice: React.FC<{
 
         if (total > priceChangeRef.current) {
             const difference = total - priceChangeRef.current;
-            toast.success(` Praise raised by ${difference}, and total price is ${total}`, { id: total })
+            toast.success(`Price raised by ${difference}, and total price is ${total}`, { id: total })
             priceChangeRef.current = total;
         }
 

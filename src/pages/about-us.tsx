@@ -3,13 +3,16 @@ import ContactUsSection from "../components/contact-us";
 import FooterSection from "../components/footer";
 import Navbar from "../components/nav-bar";
 import HeartGrafti from '../assets/about-us-2.png';
-import { AboutSection3, AboutSection4, AboutUsOurWellnessApp } from '../components/extras'
+import { AboutSection3, AboutSection4, AboutUsOurWellnessApp } from '../components/extras';
+import Statistics from "../components/statistics";
 
 const AboutUsPage = () => {
     return (
         <>
             <Navbar />
             <AboutUsSection showViewMore={false} />
+            <Statistics />
+            <AboutSection3 />
             <div className=" py-12 md:py-16 flex items-center justify-center px-[20px]">
                 <div className="flex flex-col md:flex-row w-full max-w-[1200px] gap-8">
                     {/* Text Section */}
@@ -32,9 +35,8 @@ const AboutUsPage = () => {
                     </div>
                 </div>
             </div>
-            <AboutSection3 />
             <AboutUsOurWellnessApp />
-            <AboutSection4 />
+            {/* <AboutSection4 /> */}
             <ContactUsSection />
             <FooterSection />
         </>

@@ -30,10 +30,10 @@ import useCartStore from '../store/cart-store';
 
 
 const products = [
-    { name: 'CarePass Tax Saver', description: "A preventive health check product with tax", img: TaxSaverSvg, route: ROUTES.TAX_SAVER },
-    { name: 'CarePass Silver Plan', description: "A preventive health check product with tax", img: SilverPlan, route: ROUTES.SILVER_PLAN },
-    { name: 'CarePass Gold Plan', description: "A preventive health check product with tax", img: GoldPlan, route: ROUTES.GOLD_PLAN },
-    { name: 'CarePass Platinum Plan', description: "A preventive health check product with tax", img: GoldPlan, route: ROUTES.SUPER_TOPUP }
+    { name: 'CarePass Tax Saver', img: TaxSaverSvg, route: ROUTES.TAX_SAVER },
+    { name: 'CarePass Silver Plan', img: SilverPlan, route: ROUTES.SILVER_PLAN },
+    { name: 'CarePass Gold Plan', img: GoldPlan, route: ROUTES.GOLD_PLAN },
+    { name: 'CarePass Platinum Plan', img: GoldPlan, route: ROUTES.SUPER_TOPUP }
 ];
 
 const ProductsListMobile = () => {

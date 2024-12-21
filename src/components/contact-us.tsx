@@ -9,9 +9,6 @@ import Arrowleft from '../assets/contact-us-arrow-left.svg';
 
 
 const ContactUsSection = () => {
-
-
-
     return (
         <div className="w-full flex items-center justify-center px-[20px] "
             style={{
