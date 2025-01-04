@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom'
 
 import SilverHeart from '../assets/gold-plan.png'
 import { goldPlanGrid, ResponsiveGrid } from '../utils/plan-benifits'
-import { BenefitsBreakdownGold, HealthcareEcosystem, HowItWorksGold, WellnessApp } from '../components/extras'
+import { BenefitsBreakdownGold, HealthcareEcosystem, HowItWorksGold, WellnessApp, PlanComparison } from '../components/extras'
 import { FaHeartbeat, FaClinicMedical, FaTooth } from "react-icons/fa";
 import { IoGlasses } from "react-icons/io5";
 import { FaUserDoctor, FaShieldHeart } from "react-icons/fa6";
@@ -92,12 +92,40 @@ const GoldPlan = () => {
         navigate(ROUTES.CART, { relative: 'path' })
     };
 
+    const features = [
+        { 
+          name: 'You Pay', 
+          main: 'Just ₹10,000', 
+          other: 'Higher premiums, less coverage' 
+        },
+        { 
+          name: 'Coverage', 
+          main: 'Comprehensive, preventive, critical illness coverage', 
+          other: 'No Similar product in the market' 
+        },
+        { 
+          name: 'Financial Security', 
+          main: 'Critical illness, expense control', 
+          other: 'Limited to hospitalization/conditions' 
+        },
+        { 
+          name: 'Network Access', 
+          main: 'Large network via Wellness App', 
+          other: 'Smaller, less integrated' 
+        },
+        { 
+          name: 'Cost-Effectiveness', 
+          main: '​​Unmatched, all-inclusive coverage​ ', 
+          other: 'Limited or less comprehensive' 
+        }
+      ];
+
     return (
         <>
             <Navbar />
 
             <div
-                className={`w-full  px-[20px] rounded-md py-[50px] min-h-[450px] h-auto ${themeColors.sectionBg} flex flex-col lg:flex-row items-center justify-evenly gap-5`}
+                className={`w-full px-[20px] rounded-md py-[50px] min-h-[450px] h-auto ${themeColors.sectionBg} flex flex-col lg:flex-row items-center justify-evenly gap-5`}
                 style={{ backgroundImage: `url(${Gradient})` }}
             >
                 <PlanDetails
@@ -127,11 +155,16 @@ const GoldPlan = () => {
 
             <ResponsiveGrid gridItems={goldPlanGrid} heading='CarePass Gold Plan' />
 
-            <TableTemplate
+            {/* <TableTemplate
                 columns={columns}
                 data={data}
                 sharedValues={[]}
                 heading="Why Choose CarePass Gold?"
+            /> */}
+            <PlanComparison 
+              features={features}
+              heading="Why Choose CarePass Gold?"
+              title="Our CarePass Gold Plan"
             />
             <HealthcareEcosystem />
             <WellnessApp />

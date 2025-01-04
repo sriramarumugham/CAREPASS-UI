@@ -13,7 +13,7 @@ const AboutUsPage = () => {
             <AboutUsSection showViewMore={false} />
             <Statistics />
             <AboutSection3 />
-            <div className=" py-12 md:py-16 flex items-center justify-center px-[20px]">
+            <div className="py-12 md:py-16 flex items-center justify-center px-[20px]">
                 <div className="flex flex-col md:flex-row w-full max-w-[1200px] gap-8">
                     {/* Text Section */}
                     <div className="flex items-center justify-center flex-col md:w-1/2 gap-4">

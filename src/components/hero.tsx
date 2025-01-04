@@ -15,8 +15,14 @@ import { Carousel } from "@material-tailwind/react";
 import useCartStore from "../store/cart-store";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../utils/routes";
-
-
+import { FaHeartbeat, FaLaptopMedical } from "react-icons/fa";
+import { MdOutlineMobileFriendly, MdHealthAndSafety } from "react-icons/md";
+import { GiMedicines } from "react-icons/gi";
+import { RiDiscountPercentFill } from "react-icons/ri";
+import { FaUserDoctor, FaShieldHeart } from "react-icons/fa6";
+import { FaClinicMedical, FaTooth, FaCheckCircle } from "react-icons/fa";
+import { IoGlasses } from "react-icons/io5";
+import { TbHealthRecognition } from "react-icons/tb";
 
 const AnimatedBenifites = () => {
 
@@ -121,21 +127,31 @@ const HeroSection = () => {
                     </div>
                     <div className="flex flex-col gap-[20px] mb-5">
                         <p className="text-2xl font-bold text-deepPurple">Package Price: ₹5,000 <br />
-Actual Value of Benefits: ₹17,000+
-</p>
-<p className="font-light text-[#A689B0]">
-  Annual Health Checks (₹8,000)<br />
-  Unlimited Tele-consultation (₹2,400)<br />
-  Application Access (₹2,000)<br />
-  Tax Benefit under 80D (₹5,000)<br />
-  Discounts on Pharmacy (up to 18%)
-</p>
+                        Actual Value of Benefits: ₹17,000+
+                        </p>
+                        <p className="font-light text-[#A689B0]">
+                            <span className="flex items-center gap-2">
+                                <FaHeartbeat /> Annual Health Checks (₹8,000)
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <FaLaptopMedical /> Unlimited Tele-consultation (₹2,400)
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <MdOutlineMobileFriendly /> Application Access (₹2,000)
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <RiDiscountPercentFill /> Tax Benefit under 80D (₹5,000)
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <GiMedicines /> Discounts on Pharmacy (up to 18%)
+                            </span>
+                        </p>
+
                         <Button onClick={() => handleNavigation(ROUTES.TAX_SAVER)} className="inline-flex items-center gap-2 rounded-3xl justify-center  w-full lg:w-fit px-9 bg-deepPurple  py-2 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-purple-950 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
                             Know more
                         </Button>
                     </div>
                 </div>
-    
             </div>
     
         )
@@ -161,7 +177,21 @@ Actual Value of Benefits: ₹17,000+
                     <div className="flex flex-col gap-[20px] mb-5">
                         <p className="text-2xl font-bold text-deepPurple">Pay just ₹5,000 and receive benefits valued at ₹30,000 + </p>
                         <p className="font-light text-[#A689B0]">
-                        Unlock ₹30,000+ in Benefits for Just ₹5,000! Protect Your Loved Ones with Our Primary Care Services and Flexible Digital Wallet
+                            <span className="flex items-center gap-2">
+                                <FaUserDoctor /> Doctor Consultations (In-clinic & Online): ₹10,000
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <GiMedicines /> Medicines: ₹6,000
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <FaClinicMedical /> Diagnostics: ₹7,000
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <FaTooth /> Dental Care: ₹4,200
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <IoGlasses /> Vision Care: ₹2,800
+                            </span>
                         </p>
                         <Button onClick={() => handleNavigation(ROUTES.SILVER_PLAN)} className="inline-flex items-center gap-2 rounded-3xl justify-center  w-full lg:w-fit px-9 bg-deepPurple  py-2 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-purple-950 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
                             Know more
@@ -194,7 +224,33 @@ Actual Value of Benefits: ₹17,000+
                     <div className="flex flex-col gap-[20px] mb-5">
                         <p className="text-2xl font-bold text-deepPurple">Pay just ₹10,000 and receive benefits valued at ₹3,00,000+ </p>
                         <p className="font-light text-[#A689B0]">
-                        Experience unmatched peace of mind with CarePass Gold, the ultimate healthcare solution for you and your loved ones. This premium product seamlessly integrates the benefits of Tax Saver and Silver, with an added layer of critical illness coverage.
+                            <span className="flex items-center gap-2">
+                                <FaHeartbeat /> Preventive Health Check: ₹8,000
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <FaUserDoctor /> Doctor Consultation: ₹12,400
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <MdOutlineMobileFriendly /> App Access: ₹2,000
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <GiMedicines /> Medicines: ₹6,000
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <FaClinicMedical /> Diagnostic: ₹7,000
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <FaTooth /> Dental Care: ₹4,200
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <IoGlasses /> Vision Care: ₹2,800
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <FaShieldHeart /> Critical Illness: ₹2,50,000
+                            </span>
+                            <span className="flex items-center gap-2">
+                                <RiDiscountPercentFill /> Tax Benefits Under 80D: ₹10,000
+                            </span>
                         </p>
                         <Button onClick={() => handleNavigation(ROUTES.GOLD_PLAN)} className="inline-flex items-center gap-2 rounded-3xl justify-center  w-full lg:w-fit px-9 bg-deepPurple  py-2 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-purple-950 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
                             Know more
@@ -208,6 +264,20 @@ Actual Value of Benefits: ₹17,000+
     }
 
     const Plan4 = () => {
+        const benefits = [
+            { text: 'Preventive Health Check: ₹8,000', icon: <FaHeartbeat /> },
+            { text: "Doctor Consultation: ₹12,400", icon: <FaUserDoctor /> },
+            { text: "App Access: ₹2,000", icon: <MdOutlineMobileFriendly /> },
+            { text: "Medicines: ₹6,000 ", icon: <GiMedicines /> },
+            { text: 'Diagnostic: ₹7,000', icon: <FaClinicMedical /> },
+            { text: 'Dental Care: ₹4,200', icon: <FaTooth /> },
+            { text: 'Vision Care: ₹2,800', icon: <IoGlasses /> },
+            { text: 'Critical Illness: ₹2,50,000', icon: <FaShieldHeart /> },
+            { text: 'Health Insurance Benefits', icon: <MdHealthAndSafety /> },
+            { text: 'Super Top-Up: ₹15,00,000/ ₹25,00,000', icon: <FaCheckCircle /> },
+            { text: 'Health Insurance: ₹3,00,000/₹5,00,000', icon: <TbHealthRecognition /> },
+            { text: 'Tax Benefits Under 80D: ₹15,000', icon: <RiDiscountPercentFill /> },
+          ];
         return (
             <div className="px-[20px] mt-[45px] py-[20px] flex flex-col lg:flex-row items-center justify-center gap-2 ">
                 <div className="relative">
@@ -225,7 +295,12 @@ Actual Value of Benefits: ₹17,000+
                     <div className="flex flex-col gap-[20px] mb-5">
                         <p className="text-2xl font-bold text-deepPurple">Pay just ₹15,000 and receive benefits valued at ₹28,00,000 </p>
                         <p className="font-light text-[#A689B0]">
-                        Experience unparalleled protection and care with CarePass Platinum, a cohesive product combining the benefits of Tax Saver, Silver, and Gold, enhanced with a super top-up.
+                        {benefits.map((benefit, index) => (
+                            <span key={index} className="flex items-center gap-1">
+                            {benefit.icon} {benefit.text}
+                            {index < benefits.length - 1 && <br />}
+                            </span>
+                        ))}
                         </p>
                         <Button onClick={() => handleNavigation(ROUTES.SUPER_TOPUP)} className="inline-flex items-center gap-2 rounded-3xl justify-center  w-full lg:w-fit px-9 bg-deepPurple  py-2 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-purple-950 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
                             Know more

@@ -17,7 +17,7 @@ import { MdOutlineMobileFriendly } from "react-icons/md";
 import { GiMedicines } from "react-icons/gi";
 import { RiDiscountPercentFill } from "react-icons/ri";
 import { taxSaverGrid, ResponsiveGrid } from "../utils/plan-benifits";
-import { BenefitsBreakdownTaxSaver, CarePassBenefitsTaxSaver, HealthcareEcosystem, HowItWorksTaxSaver, WhyChooseCarePassTaxSaver } from "../components/extras"
+import { BenefitsBreakdownTaxSaver, CarePassBenefitsTaxSaver, HealthcareEcosystem, HowItWorksTaxSaver, PlanComparison, WhyChooseCarePassTaxSaver } from "../components/extras"
 
 
 const TaxSaverPage = () => {
@@ -40,6 +40,44 @@ const TaxSaverPage = () => {
         addToCart({ productId, productName, price });
         navigate(ROUTES.CART, { relative: 'path' })
     };
+
+    const features = [
+      { 
+        name: 'Cost', 
+        main: 'Access to India"s largest healthcare network', 
+        other: 'Higher pricing, limited network' 
+      },
+      { 
+        name: 'Coverage', 
+        main: 'Comprehensive health checks + Teleconsultations', 
+        other: 'Basic services only' 
+      },
+      { 
+        name: 'Accessibility', 
+        main: 'Digital e-wallet with flexible plans', 
+        other: 'Physical coupons required' 
+      },
+      { 
+        name: 'Digital Platform', 
+        main: 'Full web & App functionality', 
+        other: 'Limited digital features' 
+      },
+      { 
+        name: 'Family Benefits', 
+        main: 'Extended family coverage', 
+        other: 'Individual plans only' 
+      },
+      { 
+        name: 'Value Adds', 
+        main: 'Multi-category discounts (tests, pharmacy, AHC)', 
+        other: 'Few or no discounts' 
+      },
+      { 
+        name: 'Support', 
+        main: '24/7 omni-channel support', 
+        other: 'Limited communication channels' 
+      }
+    ];
 
     return (
         <>
@@ -72,6 +110,14 @@ const TaxSaverPage = () => {
 
             <ResponsiveGrid gridItems={taxSaverGrid} heading='CarePass Tax Saver' />
             <CarePassBenefitsTaxSaver />
+            {/* <ReusableTableComponent111122
+                title="Why Choose CarePass Tax Saver?"
+                tableData={tableData}/> */}
+            <PlanComparison 
+              features={features}
+              heading="Why Choose CarePass Tax Saver?"
+              title="CarePass Tax Saver (₹5,000)"
+            />
             <HealthcareEcosystem />
             <BenefitsBreakdownTaxSaver onBuyNow={handleBuyNow} />
             <WhyChooseCarePassTaxSaver />
@@ -204,30 +250,33 @@ export const PlanDetails: FC<PlanDetailsProps> = ({
         </div>
       </div>
     );
-  };
-  
-  
-
+};
 
 interface TableTemplateProps<T> {
-    heading: string;
-    data: T[];
-    columns: ColumnDef<T, any>[];
-    sharedValues?: any[]; // Optional shared values
+  heading: string;
+  data: T[];
+  columns: ColumnDef<T, any>[];
+  sharedValues?: any[];
 }
+
+const tableData = {
+  headers: ["Feature", "Others", "CarePass Tax Saver (₹5,000)"],
+  rows: [
+    ["Cost", "Higher pricing, limited network", "Access to India's largest healthcare network"],
+    ["Coverage", "Basic services only", "Comprehensive health checks + Teleconsultations"],
+    ["Accessibility", "Physical coupons required", "Digital e-wallet with flexible plans"],
+    ["Digital Platform", "Limited digital features", "Full web & App functionality"],
+    ["Family Benefits", "Individual plans only", "Extended family coverage"],
+    ["Value Adds", "Few or no discounts", "Multi-category discounts (tests, pharmacy, AHC)"],
+    ["Support", "Limited communication channels", "24/7 omni-channel support"],
+  ],
+};
 
 export const TableTemplate = <T,>({ heading, data, columns, sharedValues }: TableTemplateProps<T>) => {
     return (
-        <div className="pt-[100px]"
-            style={{
-                background: '#FCF9FF',
-            }}
-        >
+        <div className="pt-[100px]" style={{ background: '#FCF9FF', }}>
             <h2 className="text-2xl font-bold text-deepPurple mb-4 text-center">{heading}</h2>
-
             <div className=" max-w-[1200px] mx-auto w-full p-[20px] flex  flex-col md:flex-row items-center justify-center md:items-center ">
-
-
                 {/* Left Section with Image */}
                 <div className="max-w-[412px] w-full flex-shrink-0">
                     <img
@@ -236,7 +285,6 @@ export const TableTemplate = <T,>({ heading, data, columns, sharedValues }: Tabl
                         className="w-full object-cover rounded-lg"
                     />
                 </div>
-
                 {/* Right Section with Table */}
                 <div className="flex-1 w-full">
                     <ReusableTable
