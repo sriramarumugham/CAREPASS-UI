@@ -9,7 +9,10 @@ import { TbReceiptTax } from "react-icons/tb";
 import { FaUserDoctor } from "react-icons/fa6";
 import { BsHouseHeartFill } from "react-icons/bs";
 import { MdHealthAndSafety, MdOutlineSupportAgent, MdOutlineMedicalServices, MdOutlineFamilyRestroom, MdOutlineSavings } from "react-icons/md";
-import { FaUsers, FaUserMd, FaDollarSign, FaClipboardList, FaTag, FaStethoscope, FaHeartbeat, FaAppleAlt, FaBookMedical } from 'react-icons/fa'; // Example icons from react-icons
+import { FaUsers, FaUserMd, FaDollarSign, FaClipboardList, FaTag, FaStethoscope, FaHeartbeat, FaAppleAlt, FaBookMedical } from 'react-icons/fa';
+import { FiShield } from "react-icons/fi";
+import { useState } from 'react';
+import FourDoctor from '../assets/fourDoctors.svg';
 
 export const Section2 = () => {
     return (
@@ -496,6 +499,7 @@ export const Section7 = () => {
   };
 
   export const WhyChooseCarePass = () => {
+    const [isExpanded, setIsExpanded] = useState(false);
     const benefits = [
       {
         title: "Complete Family Coverage:",
@@ -519,7 +523,7 @@ export const Section7 = () => {
       },
       {
         title: "Health Benefits and Exclusive Savings:",
-        description: "Enjoy exclusive savings on annual health checks, diagnostic tests from premium hospitals, and more.",
+        description: "Enjoy exclusive savings on Annual Health checks, Pharmacy purchases, diagnostic tests from premium hospitals, and more.",
         icon: <FaTag className="text-deepPurple text-3xl" />,
       },
       {
@@ -552,14 +556,34 @@ export const Section7 = () => {
                   ))}
                 </ul>
               </div>
-              <img 
-                      src={DownloadApp} 
-                      alt="Wellness App" 
-                      className="w-full max-w-xs object-contain rounded-lg mb-6 md:mb-0"
-                  />
+              <div className="border-2 border-gray-200 rounded-md overflow-hidden cursor-pointer hover:border-gray-400 transition-colors">
+                <iframe 
+                  src="https://drive.google.com/file/d/1bF6cerGu_0Gh-_PsySWyQg1yECQcLs_F/preview"
+                  className="w-full h-[480px] rounded-lg border-2 border-gray-200 cursor-pointer hover:border-gray-300 transition-colors"
+                  allow="autoplay"
+                  onClick={() => setIsExpanded(true)}
+                />
+              </div>
             </div>
           </div>
         </div>
+        {isExpanded && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="relative w-full max-w-4xl">
+            <button 
+              onClick={() => setIsExpanded(false)}
+              className="absolute -top-10 right-0 text-white hover:text-gray-200"
+            >
+              <X size={24} />
+            </button>
+            <iframe 
+              src="https://drive.google.com/file/d/1bF6cerGu_0Gh-_PsySWyQg1yECQcLs_F/preview"
+              className="w-full h-[600px] rounded-lg"
+              allow="autoplay"
+            />
+          </div>
+        </div>
+      )}
       </div>
     );
   };
@@ -1186,61 +1210,101 @@ export const Section7 = () => {
 
   export const CarePassBenefitsTaxSaver = () => {
     const benefits = [
-        {
-          category: "Unique Advantages",
-          items: [
-            "Family Protection: Comprehensive coverage for loved ones",
-            "Flexibility: Book, reschedule, and customize consultations",
-            "Tax Savings: Maximize benefits under Section 80D",
-            "Digital Convenience: User-friendly app and secure storage",
-            "Unbeatable Discounts: Save big on health services and products",
-          ],
-        },
-        {
-          category: "Expert Support",
-          items: [
-            "Dedicated Team: Personalized care from passionate professionals",
-            "24/7 Help & Support: Seamless connectivity via phone, email, and chat",
-          ],
-        },
-        {
-          category: "Limitless Wellness",
-          items: [
-            "Wellness App: Access a vast network of health services and products",
-          ],
-        },
-      ];
+      {
+        category: "Unique Advantages benefits",
+        icon: <FiShield className="w-8 h-8 text-purple-600" />,
+        items: [
+          {
+            text: "Family Protection: Comprehensive coverage for loved ones",
+            icon: <FaUsers className="w-5 h-5 text-purple-500" />
+          },
+          {
+            text: "Flexibility: Book, reschedule, and customize consultations",
+            icon: <FaUsers className="w-5 h-5 text-purple-500" />
+          },
+          {
+            text: "Tax Savings: Maximize benefits under Section 80D",
+            icon: <FaUsers className="w-5 h-5 text-purple-500" />
+          },
+          {
+            text: "Digital Convenience: User-friendly app and secure storage",
+            icon: <FaUsers className="w-5 h-5 text-purple-500" />
+          },
+          {
+            text: "Unbeatable Discounts: Save big on health services and products",
+            icon: <FaUsers className="w-5 h-5 text-purple-500" />
+          },
+        ],
+      },
+      {
+        category: "Expert Support",
+        icon: <FaUsers className="w-8 h-8 text-purple-600" />,
+        items: [
+          {
+            text: "Dedicated Team: Personalized care from passionate professionals",
+            icon: <FaUsers className="w-5 h-5 text-purple-500" />
+          },
+          {
+            text: "24/7 Help & Support: Seamless connectivity via phone, email, and chat",
+            icon: <FaUsers className="w-5 h-5 text-purple-500" />
+          },
+        ],
+      },
+      {
+        category: "Limitless Wellness",
+        icon: <FaUsers className="w-8 h-8 text-purple-600" />,
+        items: [
+          {
+            text: "Wellness App: Access a vast network of health services and products",
+            icon: <FaUsers className="w-5 h-5 text-purple-500" />
+          },
+        ],
+      },
+    ];
+  
     return (
-      <div className="py-12 px-6 md:px-12"
-      style={{
-        background: '#FCF9FF',
-    }}>
-        <h1 className="text-3xl md:text-4xl font-bold text-center text-deepPurple mb-8">
-            Unlock a healthier tomorrow with exclusive benefits
-        </h1>
+      <div className="py-16 px-6 md:px-12 bg-gradient-to-br from-purple-50 to-white">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-4xl font-bold text-center text-purple-800 mb-12 transition-all hover:scale-105 duration-300">
+            Unlock a healthier tomorrow with exclusive benefits of CarePass
+          </h1>
   
-        <div className="space-y-12 max-w-4xl mx-auto">
-          {benefits.map((benefit, index) => (
-            <div key={index}>
-              <h2 className="text-2xl font-semibold text-deepPurple mb-4">
-                {benefit.category}
-              </h2>
-              <ul className="list-disc list-inside space-y-2 text-lg text-gray-700">
-                {benefit.items.map((item, idx) => (
-                  <li key={idx} className="flex items-start">
-                    <span className="mr-2">-</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+          <div className="space-y-16">
+            {benefits.map((benefit, index) => (
+              <div 
+                key={index}
+                className="transform transition-all duration-300 hover:translate-x-2"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  {benefit.icon}
+                  <h2 className="text-2xl font-semibold text-purple-800">
+                    {benefit.category}
+                  </h2>
+                </div>
+                <div className="grid gap-4">
+                  {benefit.items.map((item, idx) => (
+                    <div 
+                      key={idx} 
+                      className="flex items-center gap-4 group transition-all duration-300"
+                    >
+                      <div className="flex-shrink-0 transform transition-all duration-300 group-hover:scale-110">
+                        {item.icon}
+                      </div>
+                      <span className="text-gray-700 text-lg group-hover:text-purple-800 transition-colors duration-300">
+                        {item.text}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
   
-        <div className="text-center mt-8">
-            <p className="text-xl font-semibold text-deepPurple">
-            Join the CarePass Family Today!
+          <div className="text-center mt-16">
+            <p className="text-2xl font-semibold text-purple-800 transform transition-all duration-300 hover:scale-110">
+              Join the CarePass Family Today!
             </p>
+          </div>
         </div>
       </div>
     );
@@ -1283,6 +1347,197 @@ export const Section7 = () => {
               Get Started Now
             </p>
           </div>
+        </div>
+      </div>
+    );
+  };
+
+  export const ReusableTableComponent111122 = ({ title, tableData }) => {
+    return (
+      <div className="py-12 px-6 md:px-12 max-w-5xl mx-auto">
+        {/* Title */}
+        <h1 className="text-3xl md:text-4xl font-bold text-center text-deepPurple mb-8">
+          {title}
+        </h1>
+  
+        {/* Table */}
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse border border-gray-300 rounded-lg shadow-md">
+            <thead>
+              <tr className="bg-deepPurple text-white">
+                {tableData.headers.map((header, index) => (
+                  <th key={index} className="py-4 px-6 text-left font-semibold">
+                    {header}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {tableData.rows.map((row, rowIndex) => (
+                <tr
+                  key={rowIndex}
+                  className={`hover:bg-gray-100 ${
+                    rowIndex % 2 === 0 ? "bg-white" : "bg-gray-50"
+                  }`}
+                >
+                  {row.map((cell, cellIndex) => (
+                    <td key={cellIndex} className="py-4 px-6 border-t border-gray-300">
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  };
+
+  export const PlanComparison = ({features, heading, title}) => {  
+    return (
+      <div className="pt-[50px] pb-[50px]" style={{ background: '#FCF9FF' }}>
+        <h2 className="text-2xl font-bold text-deepPurple mb-8 text-center">{heading}</h2>
+        <div className="max-w-[1200px] mx-auto w-full p-[20px] flex flex-col md:flex-row items-center justify-center md:items-start gap-12">
+          {/* Left Section with Image */}
+          <div className="max-w-[300px] w-full flex-shrink-0 flex items-center justify-center pt-[50px]">
+            <img
+              src={FourDoctor}
+              alt="Table Image"
+              className="w-full object-cover rounded-lg"
+            />
+          </div>
+  
+          {/* Right Section with Table */}
+          
+            <div className="flex justify-center items-start gap-1">
+              {/* Feature Names Column */}
+              <div className="w-1/3 border border-gray-200 rounded-lg bg-white">
+                <div className="h-16 flex items-center p-4 border-b border-gray-200">
+                  <h3 className="font-medium text-gray-600">Feature/Aspect</h3>
+                </div>
+                {features.map((feature, index) => (
+                  <div 
+                    key={index} 
+                    className={`h-20 flex items-center p-4 ${
+                      index !== features.length - 1 ? 'border-b border-gray-200' : ''
+                    }`}
+                  >
+                    <p className="text-gray-600">{feature.name}</p>
+                  </div>
+                ))}
+              </div>
+  
+              {/* Main Plan Column */}
+              <div className="w-1/3 transform transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl rounded-lg bg-white border-2 border-deepPurple">
+                <div className="h-16 flex flex-col items-center justify-center bg-deepPurple rounded-t-lg transition-colors duration-300 hover:bg-indigo-800">
+                  <div className="flex items-center gap-2">
+                    <span className="text-white animate-pulse">★</span>
+                    <h3 className="font-bold text-white">Most popular</h3>
+                    <span className="text-white animate-pulse">★</span>
+                  </div>
+                  <p className="font-medium text-white">{title}</p>
+                </div>
+                {features.map((feature, index) => (
+                  <div 
+                    key={index} 
+                    className={`h-20 flex items-center justify-center p-4 text-center transition-colors duration-300 hover:bg-indigo-50 ${
+                      index !== features.length - 1 ? 'border-b border-gray-200' : ''
+                    }`}
+                  >
+                    <p className="text-gray-800">{feature.main}</p>
+                  </div>
+                ))}
+              </div>
+  
+              {/* Other Column */}
+              <div className="w-1/3 border border-gray-200 rounded-lg bg-white">
+                <div className="h-16 flex items-center p-4 border-b border-gray-200">
+                  <h3 className="font-medium text-gray-600">Other</h3>
+                </div>
+                {features.map((feature, index) => (
+                  <div 
+                    key={index} 
+                    className={`h-20 flex items-center p-4 ${
+                      index !== features.length - 1 ? 'border-b border-gray-200' : ''
+                    }`}
+                  >
+                    <p className="text-gray-600">{feature.other}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    );
+  };
+
+  export const BenefitsCard = ({
+    payment,
+    benefitsWorth,
+    healthcareServices,
+    insuranceDetails,
+    validity,
+    ageLimit,
+    coverage,
+  }) => {
+    return (
+      <div className="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg">
+        <h2 className="text-3xl font-bold text-center mb-8">Breakdown of Benefits</h2>
+  
+        <div className="flex justify-around items-center mb-8">
+          <div className="text-center">
+            <div className="bg-purple-100 text-purple-700 font-bold text-lg py-2 px-4 rounded-full">You Pay</div>
+            <div className="text-2xl font-semibold mt-2">₹{payment}</div>
+          </div>
+          <div className="text-center">
+            <div className="bg-purple-100 text-purple-700 font-bold text-lg py-2 px-4 rounded-full">Get Benefits Worth</div>
+            <div className="text-2xl font-semibold mt-2">₹{benefitsWorth}+</div>
+          </div>
+        </div>
+  
+        <div className="mb-8">
+          <h3 className="text-xl font-semibold mb-4">Healthcare Services</h3>
+          <table className="w-full border border-gray-200 rounded-lg overflow-hidden">
+            <tbody>
+              {healthcareServices.map((service, index) => (
+                <tr
+                  key={index}
+                  className={`border-t ${index === 0 ? "border-t-0" : "border-gray-200"} bg-gray-${index % 2 === 0 ? "50" : "100"}`}
+                >
+                  <td className="p-4 text-gray-700 font-medium">{service.name}</td>
+                  <td className="p-4 text-gray-700 font-medium text-right">₹{service.amount}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+  
+        <div className="mb-8">
+          <h3 className="text-xl font-semibold mb-4">Healthcare Services</h3>
+          <table className="w-full border border-gray-200 rounded-lg overflow-hidden">
+            <tbody>
+              {insuranceDetails.map((detail, index) => (
+                <tr
+                  key={index}
+                  className={`border-t ${index === 0 ? "border-t-0" : "border-gray-200"} bg-gray-${index % 2 === 0 ? "50" : "100"}`}
+                >
+                  <td className="p-4 text-gray-700 font-medium">{detail.name}</td>
+                  <td className="p-4 text-gray-700 font-medium text-right">₹{detail.amount}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+  
+        <div className="flex justify-between items-center bg-purple-50 p-4 rounded-lg">
+          <div className="text-gray-700">
+            <div>Validity: <span className="font-medium">{validity}</span></div>
+            <div>Age Limit: <span className="font-medium">{ageLimit}</span></div>
+            <div>Coverage: <span className="font-medium">{coverage}</span></div>
+          </div>
+          <button className="bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg hover:bg-purple-800">Buy Now</button>
         </div>
       </div>
     );
@@ -1403,112 +1658,79 @@ export const Section7 = () => {
     );
   };
 
-  export const AboutUsOurWellnessApp22 = () => {
-    const features = [
-      "Personalized Wellness Plans: Get AI-powered customized diet plans and access to expert dieticians for a healthier you.",
-      "Seamless Doctor Consultations: Enjoy in-person and online consultations with doctors for convenient healthcare management.",
-      "Fitness Made Easy: Access discounted gym memberships to kickstart your fitness journey.",
-      "Knowledge at Your Fingertips: Explore our knowledge hubs, webinars, and more to stay updated on the latest health and wellness trends.",
-      "Exclusive Discounts: Avail exclusive discounts on pharmacy, diagnostics, and health checks to save on your healthcare expenses.",
-      "Digital Health Management: Store and manage your digital health records, track your progress with personalized health assessments, and stay on top of your health with our intuitive trackers.",
-    ];
-  
-    return (
-      <div className="py-12 px-6 md:px-12"
-      style={{
-            background: 'linear-gradient(180deg, #FFFFFF 0%, #FCF9FF 100%)',
-        }}>
-        <h1 className="text-3xl md:text-4xl font-bold text-center text-deepPurple mb-8">
-          About Our Wellness App
-        </h1>
-  
-        <div className="space-y-8 max-w-4xl mx-auto">
-          <ul className="list-disc list-inside space-y-4 text-lg text-gray-700">
-            {features.map((feature, index) => (
-              <li key={index} className="flex items-start">
-                <span className="mr-2">-</span>
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-  
-        <div className="text-center mt-8">
-          <p className="text-lg text-gray-800 font-semibold">
-            Healthy. Happy. Covered.
-          </p>
-        </div>
-      </div>
-    );
-  };
+export const AboutUsOurWellnessApp = () => {
+  const features = [
+    {
+      icon: FaHeartbeat,
+      text: "Personalized Wellness Plans: Get AI-powered customized diet plans and access to expert dieticians for a healthier you."
+    },
+    {
+      icon: FaUserDoctor,
+      text: "Doctor Consultations: Enjoy in-person and online consultations with doctors for convenient healthcare management."
+    },
+    {
+      icon: GiWeightLiftingUp,
+      text: "Fitness Made Easy: Access discounted gym memberships to kickstart your fitness journey."
+    },
+    {
+      icon: FaBookMedical,
+      text: "Knowledge at Your Fingertips: Explore our knowledge hubs, webinars, and more to stay updated on the latest health and wellness trends."
+    },
+    {
+      icon: RiDiscountPercentFill,
+      text: "Exclusive Discounts: Avail exclusive discounts on pharmacy, diagnostics, and health checks to save on your healthcare expenses."
+    },
+    {
+      icon: BsHouseHeartFill,
+      text: "Digital Health Management: Store and manage your digital health records, track your progress with personalized health assessments, and stay on top of your health with our intuitive trackers."
+    }
+  ];
 
-  export const AboutUsOurWellnessApp = () => {
-    const features = [
-      {
-        icon: MdHealthAndSafety,
-        text: "Comprehensive Healthcare Network: Access our extensive network of doctors, hospitals, clinics, and diagnostic facilities for complete healthcare coverage."
-      },
-      {
-        icon: FaHeartbeat,
-        text: "Personalized Wellness Plans: Get AI-powered customized diet plans and access to expert dieticians for a healthier you."
-      },
-      {
-        icon: FaUserDoctor,
-        text: "Doctor Consultations: Enjoy in-person and online consultations with doctors for convenient healthcare management."
-      },
-      {
-        icon: GiWeightLiftingUp,
-        text: "Fitness Made Easy: Access discounted gym memberships to kickstart your fitness journey."
-      },
-      {
-        icon: FaBookMedical,
-        text: "Knowledge at Your Fingertips: Explore our knowledge hubs, webinars, and more to stay updated on the latest health and wellness trends."
-      },
-      {
-        icon: RiDiscountPercentFill,
-        text: "Exclusive Discounts: Avail exclusive discounts on pharmacy, diagnostics, and health checks to save on your healthcare expenses."
-      },
-      {
-        icon: BsHouseHeartFill,
-        text: "Digital Health Management: Store and manage your digital health records, track your progress with personalized health assessments, and stay on top of your health with our intuitive trackers."
-      }
-    ];
-  
-    return (
-      <div 
-        className="py-12 px-6 md:px-12"
-                style={{
-            background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)',
-        }}
-      >
-        <h1 className="text-3xl md:text-4xl font-bold text-center text-purple-900 mb-8">
-          About Our Wellness App
-        </h1>
-  
-        <div className="space-y-8 max-w-4xl mx-auto">
-          <ul className="space-y-6">
-            {features.map((feature, index) => {
-              const IconComponent = feature.icon;
-              return (
-                <li key={index} className="flex items-start gap-4">
-                  <div className="mt-1">
-                    <IconComponent className="w-6 h-6 text-purple-900" />
-                  </div>
-                  <span className="text-lg text-gray-700">{feature.text}</span>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-  
-        <div className="text-center mt-8">
-          <p className="text-lg text-gray-800 font-semibold">
-            Healthy. Happy. Covered.
-          </p>
-        </div>
+  return (
+    <div className="py-12 px-6 md:px-12" style={{ background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)' }}>
+      <h1 className="text-3xl md:text-4xl font-bold text-center text-purple-900 mb-8">
+        About Our Wellness App
+      </h1>
+      <div className="py-12 md:py-16 flex items-center justify-center px-[20px]">
+      <div className="flex flex-col md:flex-row w-full max-w-[1200px] gap-8">
+          {/* Text Section */}
+          <div className="flex items-center justify-center flex-col md:w-1/2 gap-4">
+            <ul className="space-y-6">
+              {features.map((feature, index) => {
+                const IconComponent = feature.icon;
+                const [boldText, restText] = feature.text.split(':');
+                return (
+                  <li key={index} className="flex items-start gap-4">
+                    <div className="mt-1">
+                      <IconComponent className="w-6 h-6 text-purple-900" />
+                    </div>
+                    <span className="text-lg text-gray-700">
+                      <strong>{boldText}:</strong> {restText}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          {/* Image Section */}
+          <div className="md:w-1/2 flex justify-center items-center">
+              <img
+                  src={HeartGrafti}
+                  alt="Health & Wellness"
+                  className="w-full max-w-[500px]"
+              />
+          </div>
       </div>
-    );
-  };
+      </div>
+      <div className="text-center mt-8">
+        <p className="text-lg text-gray-800 font-semibold">
+          Healthy. Happy. Covered.
+        </p>
+      </div>
+    </div>
+  );
+};
 
 export const Section8 = () => {
     return (
@@ -1561,7 +1783,7 @@ export const ProductCards = () => {
     {
       title: "Tax Saver",
       description: [
-        "Preventive health check-ups and consultations with ₹5,000 digital wallet.",
+        "Annual health check-ups and Unlimited Tele-Consultations with ₹5,000 digital wallet.",
         "Unlock benefits worth over ₹17,000+.",
       ],
       link: "/tax-saver",
@@ -1579,7 +1801,7 @@ export const ProductCards = () => {
     {
       title: "Gold Plan",
       description: [
-        "Includes critical illness coverage of ₹2,50,000 and a ₹15,000 digital wallet for preventive health and primary care services.",
+        "Includes Critical illness coverage of ₹2,50,000 and a ₹15,000 digital wallet for Annual Health Checks and Primary Care services.",
         "Unlock benefits worth over ₹2,50,000+.",
       ],
       link: "/gold-plan",
@@ -1589,7 +1811,7 @@ export const ProductCards = () => {
       title: "Platinum Plan",
       description: [
         "The ultimate protection plan with ₹2,50,000 critical illness coverage, ₹15,000 digital wallet, base health coverage, and super top-up coverage of ₹25,00,000.",
-        "Unlock benefits worth over ₹28,00,000+.",
+        "Unlock benefits worth over ₹30,00,000+.",
       ],
       link: "/super-top-up",
       Icon: MdOutlineMedicalServices
@@ -1643,7 +1865,6 @@ export const ProductCards = () => {
   );
 };
 
-
 export const Section5 = () => {
     return (
         <div
@@ -1670,3 +1891,13 @@ export const Section5 = () => {
         </div>
     );
 };
+
+export const ComparisonDemo = () => {
+  return (
+    <ComparisonTable 
+      planTitle="CarePass Platinum Plan"
+      price="15,000"
+      data={features} // Reusing features array
+    />
+  );
+}

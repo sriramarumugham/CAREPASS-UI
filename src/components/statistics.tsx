@@ -18,8 +18,8 @@ const Statistics = () => {
         { logo: Stetescope, number: 5000, description: 'Dentists for comprehensive dental care', icon: true, iconName: FaTooth },
         { logo: Medicine, number: 35000, description: 'Pharmacies for easy access to medication', icon: false },
         { logo: Lab, number: 300, description: 'Vision Care Stores for eye health services', icon: true, iconName: IoGlasses },
-        { logo: Dumbell, number: 400, description: 'cities coverage across India', icon: true, iconName: FaMapMarkerAlt }
-    ];
+        { logo: Dumbell, number: 400, description: 'Coverage across 400+ cities', icon: true, iconName: FaMapMarkerAlt }
+      ];      
 
     return (
         <div className="bg-[#FCFAFE] flex items-center justify-center w-full px-[20px]">

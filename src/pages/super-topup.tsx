@@ -11,7 +11,7 @@ import useCartStore from "../store/cart-store";
 import { useNavigate } from "react-router-dom";
 import platinum_image from '../assets/carepass_platinum.png';
 import { platinumPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
-import { BenefitsBreakdownPlatinum, HealthcareEcosystem, HowItWorksPlatinum } from "../components/extras";
+import { BenefitsBreakdownPlatinum, HealthcareEcosystem, HowItWorksPlatinum, PlanComparison, BenefitsCard } from "../components/extras";
 import { FaClinicMedical, FaTooth } from "react-icons/fa";
 import { IoGlasses } from "react-icons/io5";
 import { FaUserDoctor, FaShieldHeart } from "react-icons/fa6";
@@ -83,68 +83,107 @@ const SuperTopUpPage = () => {
         },
       ];
 
-    const { addToCart } = useCartStore();
-    const navigate = useNavigate();
+  const features = [
+    { name: 'You Pay', main: '₹15,000 Only', other: 'Higher premiums, less coverage' },
+    { name: 'Coverage', main: 'Preventive, primary, critical, top-up', other: 'Barely cover basic needs' },
+    { name: 'Extended Financial Protection', main: '₹2.5L+ for major expenses', other: 'Lower SI or higher premiums' },
+    { name: 'Peace of Mind', main: 'All-in-one, simplified plan', other: 'Multiple policies, complex management' },
+    { name: 'Flexibility & Customization', main: 'Customizable, flexible top-ups', other: 'Limited flexibility, fewer options' },
+    { name: 'Cost-Effectiveness', main: 'Affordable, value-packed benefits', other: 'Less value for separate products' }
+  ];
 
-    const productId = "product4";
-    const productName = "CarePass Platinum";
-    const price = 15000;
+  const { addToCart } = useCartStore();
+  const navigate = useNavigate();
 
-    const handleBuyNow = () => {
-        addToCart({ productId, productName, price });
-        navigate(ROUTES.CART, { relative: 'path' })
-    };
+  const productId = "product4";
+  const productName = "CarePass Platinum";
+  const price = 15000;
 
-    return (
-        <>
-            <Navbar />
-            <div
-                className={`w-full  px-[20px] rounded-md   py-[50px] min-h-[450px] h-auto ${themeColors.sectionBg} flex flex-col lg:flex-row items-center justify-evenly gap-5`}
-                style={{ backgroundImage: `url(${Gradient})` }}
-            >
-                <PlanDetails
-                    heading="CarePass Platinum"
-                    description={[
-                      { text: 'Preventive Health Check: ₹8,000', icon: <FaHeartbeat /> },
-                      { text: "Doctor Consultation: ₹12,400", icon: <FaUserDoctor /> },
-                      { text: "App Access: ₹2,000", icon: <MdOutlineMobileFriendly /> },
-                      { text: "Medicines: ₹6,000 ", icon: <GiMedicines /> },
-                      { text: 'Diagnostic: ₹7,000', icon: <FaClinicMedical /> },
-                      { text: 'Dental Care: ₹4,200', icon: <FaTooth /> },
-                      { text: 'Vision Care: ₹2,800', icon: <IoGlasses /> },
-                      { text: 'Critical Illness: ₹2,50,000', icon: <FaShieldHeart /> },
-                      { text: 'Health Insurance Benefits', icon: <MdHealthAndSafety /> },
-                      { text: 'Super Top-Up: ₹15,00,000/ ₹25,00,000', icon: <FaCheckCircle /> },
-                      { text: 'Health Insurance: ₹3,00,000/₹5,00,000', icon: <TbHealthRecognition /> },
-                      { text: 'Tax Benefits Under 80D: ₹15,000', icon: <RiDiscountPercentFill /> },
-                  ]}
-                    pay="₹15,000"
-                    values="₹28,00,000+"
-                    price="₹15,000"
-                    ageLimit="18-60 years"
-                    validity="1 year"
-                    themeColors={themeColors}
-                    imgSrc={platinum_image}
-                    onBuyNow={handleBuyNow}
-                />
-            </div>
+  const healthcareServices = [
+    { name: "Preventive Health Check", amount: 8000 },
+    { name: "App Access", amount: 2000 },
+    { name: "Doctor-Prescribed Medicines", amount: 6000 },
+    { name: "Doctor-Prescribed Diagnostics", amount: 7000 },
+    { name: "Dental Care", amount: 4200 },
+    { name: "Vision Care", amount: 2800 },
+    { name: "Critical Illness", amount: 2250000 },
+  ];
 
-            <ResponsiveGrid gridItems={platinumPlanGrid} heading='CarePass Platinum Plan' />
-            <TableTemplate
-                columns={columns}
-                data={data}
-                sharedValues={[]}
-                heading="Why Choose CarePass Platinum?
+  const insuranceDetails = [
+    { name: "Super Top-Up for Hospitalization", amount: "15,00,000 / 25,00,000" },
+    { name: "Health Insurance", amount: "3,00,000 / 5,00,000" },
+    { name: "Tax Benefits Under 80D", amount: 15000 },
+  ];
+
+  const handleBuyNow = () => {
+      addToCart({ productId, productName, price });
+      navigate(ROUTES.CART, { relative: 'path' })
+  };
+
+  return (
+      <>
+          <Navbar />
+          <div
+              className={`w-full  px-[20px] rounded-md   py-[50px] min-h-[450px] h-auto ${themeColors.sectionBg} flex flex-col lg:flex-row items-center justify-evenly gap-5`}
+              style={{ backgroundImage: `url(${Gradient})` }}
+          >
+              <PlanDetails
+                  heading="CarePass Platinum"
+                  description={[
+                    { text: 'Preventive Health Check: ₹8,000', icon: <FaHeartbeat /> },
+                    { text: "Doctor Consultation: ₹12,400", icon: <FaUserDoctor /> },
+                    { text: "App Access: ₹2,000", icon: <MdOutlineMobileFriendly /> },
+                    { text: "Medicines: ₹6,000 ", icon: <GiMedicines /> },
+                    { text: 'Diagnostic: ₹7,000', icon: <FaClinicMedical /> },
+                    { text: 'Dental Care: ₹4,200', icon: <FaTooth /> },
+                    { text: 'Vision Care: ₹2,800', icon: <IoGlasses /> },
+                    { text: 'Critical Illness: ₹2,50,000', icon: <FaShieldHeart /> },
+                    { text: 'Health Insurance Benefits', icon: <MdHealthAndSafety /> },
+                    { text: 'Super Top-Up: ₹15,00,000/ ₹25,00,000', icon: <FaCheckCircle /> },
+                    { text: 'Health Insurance: ₹3,00,000/₹5,00,000', icon: <TbHealthRecognition /> },
+                    { text: 'Tax Benefits Under 80D: ₹15,000', icon: <RiDiscountPercentFill /> },
+                ]}
+                  pay="₹15,000"
+                  values="₹28,00,000+"
+                  price="₹15,000"
+                  ageLimit="18-60 years"
+                  validity="1 year"
+                  themeColors={themeColors}
+                  imgSrc={platinum_image}
+                  onBuyNow={handleBuyNow}
+              />
+          </div>
+
+          <ResponsiveGrid gridItems={platinumPlanGrid} heading='CarePass Platinum Plan' />
+          {/* <TableTemplate
+              columns={columns}
+              data={data}
+              sharedValues={[]}
+              heading="Why Choose CarePass Platinum?
 "
-            />
-            <HealthcareEcosystem />
-            <BenefitsBreakdownPlatinum onBuyNow={handleBuyNow} />
-            <TrustedPartnersSection />
-            <HowItWorksPlatinum onBuyNow={handleBuyNow} />
-            <ContactUsSection />
-            <FooterSection />
-        </>
-    )
+          /> */}
+          <PlanComparison 
+            features={features}
+            heading="Why Choose CarePass Platinum?"
+            title="CarePass Platinum Plan"
+          />
+          <HealthcareEcosystem />
+          {/* <BenefitsBreakdownPlatinum onBuyNow={handleBuyNow} /> */}
+          <BenefitsCard
+            payment={10000}
+            benefitsWorth={300000}
+            healthcareServices={healthcareServices}
+            insuranceDetails={insuranceDetails}
+            validity="1 year"
+            ageLimit="18 to 60 years"
+            coverage="Self, spouse, and two children"
+          />
+          <TrustedPartnersSection />
+          <HowItWorksPlatinum onBuyNow={handleBuyNow} />
+          <ContactUsSection />
+          <FooterSection />
+      </>
+  )
 }
 
 export default SuperTopUpPage

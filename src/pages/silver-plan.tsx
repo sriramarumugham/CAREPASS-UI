@@ -10,7 +10,7 @@ import useCartStore from "../store/cart-store";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../utils/routes";
 import { silverPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
-import { BenefitsBreakdownSilver, CarePassBenefitsSilver, CarePassSilverSteps, HealthcareEcosystem } from "../components/extras";
+import { BenefitsBreakdownSilver, CarePassBenefitsSilver, CarePassSilverSteps, HealthcareEcosystem, PlanComparison } from "../components/extras";
 import { FaUserDoctor } from "react-icons/fa6";
 import { GiMedicines } from "react-icons/gi";
 import { FaClinicMedical, FaTooth } from "react-icons/fa";
@@ -57,7 +57,6 @@ const SilverPlanPage = () => {
         },
     ];
 
-
     const data = [
         {
             feature: "Cost",
@@ -96,6 +95,44 @@ const SilverPlanPage = () => {
         }
     ];
 
+    const features = [
+        { 
+          name: 'Cost', 
+          main: '₹5,000 only', 
+          other: 'Higher, less coverage' 
+        },
+        { 
+          name: 'Coverage', 
+          main: '₹10,000, primary care', 
+          other: 'Lower, fewer services' 
+        },
+        { 
+          name: 'Accessibility', 
+          main: 'E-wallet, scan & pay', 
+          other: 'Physical coupons, inconvenient' 
+        },
+        { 
+          name: 'Digital Experience', 
+          main: 'Web & app access', 
+          other: 'Limited or unavailable' 
+        },
+        { 
+          name: 'Bundled Services', 
+          main: 'Consults, diagnostics, etc.', 
+          other: 'Less comprehensive' 
+        },
+        { 
+          name: 'Additional Offerings', 
+          main: 'Wellness App, extensive services', 
+          other: 'Basic OPD, fewer extras' 
+        },
+        { 
+          name: 'Customer Support', 
+          main: 'Support through Email, Chat & Call.', 
+          other: 'Limited medium of communication, slower responses' 
+        }
+      ];
+
     return (
         <>
             <Navbar />
@@ -127,11 +164,16 @@ const SilverPlanPage = () => {
 
             <ResponsiveGrid gridItems={silverPlanGrid} heading='CarePass Silver Plan' />
 
-            <TableTemplate
+            {/* <TableTemplate
                 columns={columns}
                 data={data}
                 sharedValues={[]}
                 heading="Why Choose CarePass Silver?"
+            /> */}
+            <PlanComparison 
+              features={features}
+              heading="Why Choose CarePass Silver?"
+              title="CarePass Silver"
             />
             <HealthcareEcosystem />
             <CarePassBenefitsSilver />
