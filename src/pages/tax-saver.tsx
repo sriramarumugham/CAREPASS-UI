@@ -17,7 +17,7 @@ import { MdOutlineMobileFriendly } from "react-icons/md";
 import { GiMedicines } from "react-icons/gi";
 import { RiDiscountPercentFill } from "react-icons/ri";
 import { taxSaverGrid, ResponsiveGrid } from "../utils/plan-benifits";
-import { BenefitsBreakdownTaxSaver, CarePassBenefitsTaxSaver, HealthcareEcosystem, HowItWorksTaxSaver, PlanComparison, WhyChooseCarePassTaxSaver } from "../components/extras"
+import { BenefitsBreakdown, CarePassBenefitsTaxSaver, HealthcareEcosystem, HowItWorksTaxSaver, PlanComparison, WhyChooseCarePassTaxSaver } from "../components/extras"
 
 
 const TaxSaverPage = () => {
@@ -79,6 +79,53 @@ const TaxSaverPage = () => {
       }
     ];
 
+    const breakdownBenefits = [
+      {
+        service: "Annual Health checks",
+        amount: "8,000",
+        subItems: [
+          { service: "Comprehensive screenings", amount: "" },
+          { service: "Early disease detection and prevention", amount: "" },
+        ],
+      },
+      {
+        service: "Unlimited Tele-consultation",
+        amount: "2,400",
+        subItems: [
+          { service: "Convenient access to medical experts, endlessly!", amount: "" },
+        ],
+      },
+      {
+        service: "Application Access",
+        amount: "2,000",
+        subItems: [
+          { service: "Exclusive health and wellness tools", amount: "" },
+          { service: "Personalised advice", amount: "" },
+        ],
+      },
+      {
+        service: "Tax Benefit under 80D",
+        amount: "5,000",
+        subItems: [
+          { service: "Deduction under Section 80D", amount: "" },
+          { service: "Validity: 1 year, renewable", amount: "" },
+        ],
+      },
+      {
+        service: "Discounts on Pharmacy",
+        amount: "Up to 18%",
+        subItems: [
+          { service: "Savings on medication and health products, and more", amount: "" },
+        ],
+      },
+    ];
+  
+    const additionalBenefits = [
+      { service: 'Super Top-Up for Hospitalization', amount: '15,00,000/ 25,00,000' },
+      { service: 'Health Insurance', amount: '3,00,000/ 5,00,000' },
+      { service: 'Tax Benefits Under 80D', amount: '15,000' }
+    ];
+
     return (
         <>
             <Navbar />
@@ -109,17 +156,22 @@ const TaxSaverPage = () => {
             </div>
 
             <ResponsiveGrid gridItems={taxSaverGrid} heading='CarePass Tax Saver' />
-            <CarePassBenefitsTaxSaver />
-            {/* <ReusableTableComponent111122
-                title="Why Choose CarePass Tax Saver?"
-                tableData={tableData}/> */}
             <PlanComparison 
               features={features}
               heading="Why Choose CarePass Tax Saver?"
               title="CarePass Tax Saver (₹5,000)"
             />
-            <HealthcareEcosystem />
-            <BenefitsBreakdownTaxSaver onBuyNow={handleBuyNow} />
+            <BenefitsBreakdown
+              youPay="5,000"
+              benefitsAmount="17,000+"
+              title1="Here's what the plan covers"
+              savings="Savings: ₹12,400 (74% off)"
+              benefits1={breakdownBenefits}
+              onBuyNow={handleBuyNow}
+            />
+            <CarePassBenefitsTaxSaver />
+            
+            {/* <HealthcareEcosystem /> */}
             <WhyChooseCarePassTaxSaver />
             <HowItWorksTaxSaver onBuyNow={handleBuyNow} />
             <TrustedPartnersSection />

@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom'
 
 import SilverHeart from '../assets/gold-plan.png'
 import { goldPlanGrid, ResponsiveGrid } from '../utils/plan-benifits'
-import { BenefitsBreakdownGold, HealthcareEcosystem, HowItWorksGold, WellnessApp, PlanComparison } from '../components/extras'
+import { BenefitsBreakdown, HealthcareEcosystem, HowItWorksGold, WellnessApp, PlanComparison } from '../components/extras'
 import { FaHeartbeat, FaClinicMedical, FaTooth } from "react-icons/fa";
 import { IoGlasses } from "react-icons/io5";
 import { FaUserDoctor, FaShieldHeart } from "react-icons/fa6";
@@ -120,6 +120,57 @@ const GoldPlan = () => {
         }
       ];
 
+      const breakdownBenefits = [
+        {
+          service: "Preventive Care",
+          amount: "8,000",
+          subItems: [
+            { service: "Preventive Health Check", amount: "" }
+          ],
+        },
+        {
+          service: "Primary Care",
+          amount: "15,400",
+          subItems: [
+            { service: "Doctor Consultation", amount: "12,400" },
+            { service: "Doctor-Prescribed Medicines", amount: "6,000" },
+            { service: "Doctor-Prescribed Diagnostic", amount: "7,000" },
+          ],
+        },
+        {
+          service: "Specialty Care",
+          amount: "7,000",
+          subItems: [
+            { service: "Dental Care", amount: "4,200" },
+            { service: "Vision Care", amount: "2,800" },
+          ],
+        },
+        {
+          service: "Digital Health",
+          amount: "2,000",
+          subItems: [
+            { service: "App Access", amount: "" },
+          ],
+        },
+      ];
+
+      const breakdownBenefitsTwo = [
+        {
+          service: "Insurance Coverage",
+          amount: "2,50,000",
+          subItems: [
+            { service: "Critical Illness Insurance", amount: "2,50,000" }
+          ],
+        },
+        {
+          service: "Tax Benefits",
+          amount: "15,000",
+          subItems: [
+            { service: "Section 80D Deduction", amount: "15,000" },
+          ],
+        }
+      ];
+
     return (
         <>
             <Navbar />
@@ -154,22 +205,24 @@ const GoldPlan = () => {
             </div>
 
             <ResponsiveGrid gridItems={goldPlanGrid} heading='CarePass Gold Plan' />
-
-            {/* <TableTemplate
-                columns={columns}
-                data={data}
-                sharedValues={[]}
-                heading="Why Choose CarePass Gold?"
-            /> */}
             <PlanComparison 
               features={features}
               heading="Why Choose CarePass Gold?"
               title="Our CarePass Gold Plan"
             />
+            <BenefitsBreakdown
+              youPay="10,000"
+              benefitsAmount="3,00,000+"
+              title1="Medical Services"
+              title2="Insurance & Financial Benefits"
+              benefits1={breakdownBenefits}
+              benefits2={breakdownBenefitsTwo}
+              showFooter={true}
+              onBuyNow={handleBuyNow}
+            />
             <HealthcareEcosystem />
             <WellnessApp />
             <TrustedPartnersSection />
-            <BenefitsBreakdownGold onBuyNow={handleBuyNow} />
             <HowItWorksGold onBuyNow={handleBuyNow} />
             <ContactUsSection />
             <FooterSection />

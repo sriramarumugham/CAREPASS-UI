@@ -10,7 +10,7 @@ import useCartStore from "../store/cart-store";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../utils/routes";
 import { silverPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
-import { BenefitsBreakdownSilver, CarePassBenefitsSilver, CarePassSilverSteps, HealthcareEcosystem, PlanComparison } from "../components/extras";
+import { BenefitsBreakdown, CarePassBenefitsSilver, CarePassSilverSteps, HealthcareEcosystem, PlanComparison } from "../components/extras";
 import { FaUserDoctor } from "react-icons/fa6";
 import { GiMedicines } from "react-icons/gi";
 import { FaClinicMedical, FaTooth } from "react-icons/fa";
@@ -133,10 +133,59 @@ const SilverPlanPage = () => {
         }
       ];
 
+      const breakdownBenefits = [
+        {
+          service: "Doctor Consultations",
+          amount: "10,000",
+          subItems: [
+            { service: "In-clinic visits", amount: "" },
+            { service: "Online consultations, and more.", amount: "" },
+          ],
+        },
+        {
+          service: "Doctor-Prescribed Medicines",
+          amount: "6,000",
+          subItems: [
+            { service: "Coverage for prescribed medications", amount: "" },
+            { service: "Regular medication support, and more.", amount: "" },
+          ],
+        },
+        {
+          service: "Doctor-Prescribed Diagnostics",
+          amount: "7,000",
+          subItems: [
+            { service: "Medical tests and screenings", amount: "" },
+            { service: "Laboratory investigations, etc.", amount: "" },
+          ],
+        },
+        {
+          service: "Dental Care",
+          amount: "4,200",
+          subItems: [
+            { service: "Routine dental procedures", amount: "" },
+            { service: "Professional dental services, and more.", amount: "" },
+          ],
+        },
+        {
+          service: "Vision Care",
+          amount: "2,800",
+          subItems: [
+            { service: "Vision health services", amount: "" },
+            { service: "Optical care support.", amount: "" },
+          ],
+        },
+        {
+          service: "Tax Benefit under 80D",
+          amount: "5,000",
+          subItems: [
+            { service: "Deduction under Section 80D", amount: "" },
+          ],
+        },
+      ];
+
     return (
         <>
             <Navbar />
-
             <div
                 className={`w-full px-[20px] rounded-md py-[50px] min-h-[450px] h-auto ${themeColors.sectionBg} flex flex-col lg:flex-row items-center justify-evenly gap-5`}
                 style={{ backgroundImage: `url(${Gradient})` }}
@@ -163,21 +212,22 @@ const SilverPlanPage = () => {
             </div>
 
             <ResponsiveGrid gridItems={silverPlanGrid} heading='CarePass Silver Plan' />
-
-            {/* <TableTemplate
-                columns={columns}
-                data={data}
-                sharedValues={[]}
-                heading="Why Choose CarePass Silver?"
-            /> */}
             <PlanComparison 
               features={features}
               heading="Why Choose CarePass Silver?"
               title="CarePass Silver"
             />
+            <BenefitsBreakdown
+              youPay="5,000"
+              benefitsAmount="30,000+"
+              title1="Extensive Benefits"
+              savings="Savings: ₹25,000+ (83% off)"
+              benefits1={breakdownBenefits}
+              showFooter={true}
+              onBuyNow={handleBuyNow}
+            />
             <HealthcareEcosystem />
             <CarePassBenefitsSilver />
-            <BenefitsBreakdownSilver onBuyNow={handleBuyNow} />
             <TrustedPartnersSection />
             <CarePassSilverSteps />
             <ContactUsSection />
