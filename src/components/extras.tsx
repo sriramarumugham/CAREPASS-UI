@@ -5,14 +5,15 @@ import TopRightSvg from '../assets/top-right.svg';
 import { GiWeightLiftingUp } from "react-icons/gi";
 import { CiDiscount1, CiMobile1 } from "react-icons/ci";
 import { RiDiscountPercentFill } from "react-icons/ri";
-import { TbReceiptTax } from "react-icons/tb";
-import { FaUserDoctor } from "react-icons/fa6";
-import { BsHouseHeartFill } from "react-icons/bs";
+import { TbReceiptTax, TbRosetteDiscountCheckFilled, TbDiscount } from "react-icons/tb";
+import { FaUserDoctor, FaPeopleRoof, FaPeopleGroup } from "react-icons/fa6";
+import { BsHouseHeartFill, BsFillPatchCheckFill } from "react-icons/bs";
 import { MdHealthAndSafety, MdOutlineSupportAgent, MdOutlineMedicalServices, MdOutlineFamilyRestroom, MdOutlineSavings } from "react-icons/md";
-import { FaUsers, FaUserMd, FaDollarSign, FaClipboardList, FaTag, FaStethoscope, FaHeartbeat, FaAppleAlt, FaBookMedical } from 'react-icons/fa';
+import { FaUsers, FaUserMd, FaDollarSign, FaClipboardList, FaTag, FaStethoscope, FaHeartbeat, FaAppleAlt, FaBookMedical, FaRegDotCircle } from 'react-icons/fa';
 import { FiShield } from "react-icons/fi";
 import { useState } from 'react';
 import FourDoctor from '../assets/fourDoctors.svg';
+import { PiHandCoinsFill } from "react-icons/pi";
 
 export const Section2 = () => {
     return (
@@ -1263,11 +1264,11 @@ export const Section7 = () => {
     ];
   
     return (
-      <div className="py-16 px-6 md:px-12 bg-gradient-to-br from-purple-50 to-white">
+      <div className="py-16 px-6 md:px-12 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold text-center text-purple-800 mb-12 transition-all hover:scale-105 duration-300">
+          <p className="text-2xl sm:text-3xl font-semibold text-deepPurple text-center mb-5">
             Unlock a healthier tomorrow with exclusive benefits of CarePass
-          </h1>
+          </p>
   
           <div className="space-y-16">
             {benefits.map((benefit, index) => (
@@ -1301,7 +1302,7 @@ export const Section7 = () => {
           </div>
   
           <div className="text-center mt-16">
-            <p className="text-2xl font-semibold text-purple-800 transform transition-all duration-300 hover:scale-110">
+            <p className="text-2xl font-semibold text-purple-800 transform">
               Join the CarePass Family Today!
             </p>
           </div>
@@ -1396,8 +1397,8 @@ export const Section7 = () => {
 
   export const PlanComparison = ({features, heading, title}) => {  
     return (
-      <div className="pt-[50px] pb-[50px]" style={{ background: '#FCF9FF' }}>
-        <h2 className="text-2xl font-bold text-deepPurple mb-8 text-center">{heading}</h2>
+      <div className="pt-[50px] pb-[50px]" style={{ background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)' }}>
+        <p className="text-2xl sm:text-3xl font-semibold text-deepPurple text-center mb-5">{heading}</p>
         <div className="max-w-[1200px] mx-auto w-full p-[20px] flex flex-col md:flex-row items-center justify-center md:items-start gap-12">
           {/* Left Section with Image */}
           <div className="max-w-[300px] w-full flex-shrink-0 flex items-center justify-center pt-[50px]">
@@ -1901,3 +1902,126 @@ export const ComparisonDemo = () => {
     />
   );
 }
+
+export const BenefitsBreakdown = ({ youPay, benefitsAmount, title1, title2, savings, benefits1, benefits2, showFooter, onBuyNow }) => {
+
+  return (
+    <div className="py-12 px-6 md:px-12 bg-[#FCF9FF]">
+      <div className="max-w-[1200px] mx-auto w-full p-6">
+      <p className="text-2xl sm:text-3xl font-semibold text-deepPurple text-center mb-5">Breakdown of benefits</p>
+        
+        {/* Top Cards */}
+        <div className="flex justify-center gap-4 mb-8">
+          <div className="flex items-center gap-2 px-6 py-3 rounded-full border border-purple-200 bg-white">
+            <PiHandCoinsFill className="text-purple-600 w-5 h-5" />
+            <span>You Pay ₹{youPay}</span>
+          </div>
+          <div className="flex items-center gap-2 px-6 py-3 rounded-full border border-purple-200 bg-white">
+            <TbRosetteDiscountCheckFilled className="text-purple-600 w-5 h-5" />
+            <span>Get Benefits Worth ₹{benefitsAmount}</span>
+          </div>
+          {savings ?
+            <div className="flex items-center gap-2 px-6 py-3 rounded-full border border-purple-200 bg-white">
+              <TbDiscount className="text-purple-600 w-5 h-5" />
+              <span>{savings}</span>
+            </div>
+            :
+            null
+          }
+          
+        </div>
+
+        {/* Benefits Section 1 */}
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold mb-4 text-center">{title1}</h3>
+          <div className="border rounded-lg p-6 border-purple-200 bg-white">
+            {benefits1.map((item, index) => (
+              <div key={index} className="border-b last:border-b-0">
+                <div className="flex justify-between items-center py-3">
+                  <span className="text-gray-700 font-medium">{item.service}</span>
+                  <span className="font-medium">₹ {item.amount}</span>
+                </div>
+                {item.subItems && (
+                  <div className="pl-6 mb-3">
+                    {item.subItems.map((subItem, subIndex) => (
+                      <div 
+                        key={subIndex} 
+                        className={`flex items-center justify-between py-2 border-b last:border-b-0`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <FaRegDotCircle className="w-4 h-4 text-purple-600" />
+                          <span className="text-gray-600">{subItem.service}</span>
+                        </div>
+                        {subItem.amount ? <span className="text-gray-600">₹ {subItem.amount}</span> : null}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Benefits Section 2 */}
+        {benefits2 ?
+          <div className="mb-8">
+            <h3 className="text-lg font-semibold mb-4 text-center">{title2}</h3>
+            <div className="border rounded-lg p-6 border-purple-200 bg-white">
+            {benefits2.map((item, index) => (
+              <div key={index} className="border-b last:border-b-0">
+                <div className="flex justify-between items-center py-3">
+                  <span className="text-gray-700 font-medium">{item.service}</span>
+                  <span className="font-medium">₹ {item.amount}</span>
+                </div>
+                {item.subItems && (
+                  <div className="pl-6 mb-3">
+                    {item.subItems.map((subItem, subIndex) => (
+                      <div 
+                        key={subIndex} 
+                        className={`flex items-center justify-between py-2 border-b last:border-b-0`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <FaRegDotCircle className="w-4 h-4 text-purple-600" />
+                          <span className="text-gray-600">{subItem.service}</span>
+                        </div>
+                        {subItem.amount ? <span className="text-gray-600">₹ {subItem.amount}</span> : null}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            </div>
+          </div>
+          :
+          null
+        }
+
+        {/* Buy Now Button */}
+        <button onClick={onBuyNow} className="w-full bg-purple-800 text-white py-4 rounded-lg mb-6 hover:bg-purple-700 transition-colors">
+          Buy Now
+        </button>
+
+        {/* Footer Info */}
+        {showFooter ?
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+            <div className="flex items-center gap-2">
+              <BsFillPatchCheckFill className="text-purple-600 w-4 h-4" />
+              <span>Validity: 1 year</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <FaPeopleGroup className="text-purple-600 w-4 h-4" />
+              <span>Age Limit: 18 to 60 years</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <FaPeopleRoof className="text-purple-600 w-4 h-4" />
+              <span>Coverage: Self, spouse, and two children</span>
+            </div>
+          </div>
+          :
+          null
+        }
+      </div>
+    </div>
+  );
+};

@@ -11,7 +11,7 @@ import useCartStore from "../store/cart-store";
 import { useNavigate } from "react-router-dom";
 import platinum_image from '../assets/carepass_platinum.png';
 import { platinumPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
-import { BenefitsBreakdownPlatinum, HealthcareEcosystem, HowItWorksPlatinum, PlanComparison, BenefitsCard } from "../components/extras";
+import { BenefitsBreakdown, HealthcareEcosystem, HowItWorksPlatinum, PlanComparison, BenefitsCard } from "../components/extras";
 import { FaClinicMedical, FaTooth } from "react-icons/fa";
 import { IoGlasses } from "react-icons/io5";
 import { FaUserDoctor, FaShieldHeart } from "react-icons/fa6";
@@ -99,20 +99,57 @@ const SuperTopUpPage = () => {
   const productName = "CarePass Platinum";
   const price = 15000;
 
-  const healthcareServices = [
-    { name: "Preventive Health Check", amount: 8000 },
-    { name: "App Access", amount: 2000 },
-    { name: "Doctor-Prescribed Medicines", amount: 6000 },
-    { name: "Doctor-Prescribed Diagnostics", amount: 7000 },
-    { name: "Dental Care", amount: 4200 },
-    { name: "Vision Care", amount: 2800 },
-    { name: "Critical Illness", amount: 2250000 },
+  const breakdownBenefits = [
+    {
+      service: "Preventive Care",
+      amount: "8,000",
+      subItems: [
+        { service: "Preventive Health Check", amount: "" }
+      ],
+    },
+    {
+      service: "Primary Care",
+      amount: "15,400",
+      subItems: [
+        { service: "Doctor Consultation", amount: "12,400" },
+        { service: "Doctor-Prescribed Medicines", amount: "6,000" },
+        { service: "Doctor-Prescribed Diagnostic", amount: "7,000" },
+      ],
+    },
+    {
+      service: "Specialty Care",
+      amount: "7,000",
+      subItems: [
+        { service: "Dental Care", amount: "4,200" },
+        { service: "Vision Care", amount: "2,800" },
+      ],
+    },
+    {
+      service: "Digital Health",
+      amount: "2,000",
+      subItems: [
+        { service: "App Access", amount: "" },
+      ],
+    },
   ];
 
-  const insuranceDetails = [
-    { name: "Super Top-Up for Hospitalization", amount: "15,00,000 / 25,00,000" },
-    { name: "Health Insurance", amount: "3,00,000 / 5,00,000" },
-    { name: "Tax Benefits Under 80D", amount: 15000 },
+  const breakdownBenefitsTwo = [
+    {
+      service: "Insurance Coverage",
+      amount: "20,50,000 / ₹ 32,50,000",
+      subItems: [
+        { service: "Critical Illness Coverage", amount: "2,50,000" },
+        { service: "Health Insurance", amount: "3,00,000 / ₹ 5,00,000" },
+        { service: "Super Top-Up", amount: "15,00,000 / ₹ 25,00,000" },
+      ],
+    },
+    {
+      service: "Tax Benefits",
+      amount: "15,000",
+      subItems: [
+        { service: "Section 80D Deduction", amount: "15,000" },
+      ],
+    }
   ];
 
   const handleBuyNow = () => {
@@ -155,29 +192,22 @@ const SuperTopUpPage = () => {
           </div>
 
           <ResponsiveGrid gridItems={platinumPlanGrid} heading='CarePass Platinum Plan' />
-          {/* <TableTemplate
-              columns={columns}
-              data={data}
-              sharedValues={[]}
-              heading="Why Choose CarePass Platinum?
-"
-          /> */}
           <PlanComparison 
             features={features}
             heading="Why Choose CarePass Platinum?"
             title="CarePass Platinum Plan"
           />
-          <HealthcareEcosystem />
-          {/* <BenefitsBreakdownPlatinum onBuyNow={handleBuyNow} /> */}
-          <BenefitsCard
-            payment={10000}
-            benefitsWorth={300000}
-            healthcareServices={healthcareServices}
-            insuranceDetails={insuranceDetails}
-            validity="1 year"
-            ageLimit="18 to 60 years"
-            coverage="Self, spouse, and two children"
+          <BenefitsBreakdown
+            youPay="15,000"
+            benefitsAmount="32,00,000+"
+            title1="Medical Services"
+            title2="Insurance & Financial Benefits"
+            benefits1={breakdownBenefits}
+            benefits2={breakdownBenefitsTwo}
+            showFooter={true}
+            onBuyNow={handleBuyNow}
           />
+          <HealthcareEcosystem />
           <TrustedPartnersSection />
           <HowItWorksPlatinum onBuyNow={handleBuyNow} />
           <ContactUsSection />
