@@ -17,6 +17,7 @@ import { Toaster } from 'react-hot-toast';
 import ContactUs from './pages/contact-us'
 import AboutUs from './pages/about-us'
 import FAQPage from './pages/faq';
+import Products from './pages/products';
 
 
 
@@ -39,6 +40,7 @@ function App() {
             <Route path={ROUTES.SILVER_PLAN} element={<SilverPlanPage />} />
             <Route path={ROUTES.GOLD_PLAN} element={<GoldPlan />} />
             <Route path={ROUTES.SUPER_TOPUP} element={<SuperTopUpPage />} />
+            <Route path={ROUTES.PRODUCTS} element={<Products />} />
           </Routes>
           <Toaster />
         </BrowserRouter>

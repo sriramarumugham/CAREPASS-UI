@@ -431,7 +431,7 @@ const TotalPrice: React.FC<{
 
     return (
         <div className="p-4 bg-gray-200 rounded-md">
-            <Disclosure as="div" className="block     lg:hidden  " key={1} defaultOpen={false}>
+            <Disclosure as="div" className="block lg:hidden" key={1} defaultOpen={false}>
                 {({ open }) => (
                     <>
                         <Disclosure.Button className="group flex w-full items-center justify-between">
