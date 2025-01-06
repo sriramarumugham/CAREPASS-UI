@@ -541,7 +541,7 @@ export const Section7 = () => {
     return (
       <div className="px-[20px] flex items-center justify-center">
         <div className="flex flex-col max-w-[1200px] py-[30px] md:py-[30px] gap-4 md:gap-12">
-          <p className="font-bold text-xl md:text-4xl mx-auto">
+          <p className="font-bold text-xl md:text-4xl mx-auto text-black">
             Why Choose CarePass?
           </p>
           <div>
@@ -550,9 +550,9 @@ export const Section7 = () => {
                 <ul className="space-y-6">
                   {benefits.map((benefit, index) => (
                     <li key={index} className="flex items-center space-x-4">
-                      <span>{benefit.icon}</span>
+                      <span className="text-black">{benefit.icon}</span>
                       <div>
-                        <h2 className="text-xl font-semibold text-deepPurple">
+                        <h2 className="text-xl font-semibold text-black">
                           {benefit.title}
                         </h2>
                         <p className="text-gray-700">{benefit.description}</p>
@@ -1860,7 +1860,7 @@ export const Section8 = () => {
 export const ProductCards = () => {
   const products = [
     {
-      title: "Tax Saver",
+      title: "CarePass Tax Saver",
       description: [
         "Annual health check-ups and Unlimited Tele-Consultations with ₹5,000 digital wallet.",
         "Unlock benefits worth over ₹17,000+.",
@@ -1869,7 +1869,7 @@ export const ProductCards = () => {
       Icon: CiDiscount1
     },
     {
-      title: "Silver Plan",
+      title: "CarePass Silver Plan",
       description: [
         "Comprehensive primary care services with a ₹10,000 digital wallet for doctor consultations, diagnostics, pharmacy, and more.",
         "Unlock benefits worth over ₹30,000+.",
@@ -1878,7 +1878,7 @@ export const ProductCards = () => {
       Icon: MdHealthAndSafety
     },
     {
-      title: "Gold Plan",
+      title: "CarePass Gold Plan",
       description: [
         "Includes Critical illness coverage of ₹2,50,000 and a ₹15,000 digital wallet for Annual Health Checks and Primary Care services.",
         "Unlock benefits worth over ₹2,50,000+.",
@@ -1887,7 +1887,7 @@ export const ProductCards = () => {
       Icon: FaHeartbeat
     },
     {
-      title: "Platinum Plan",
+      title: "CarePass Platinum Plan",
       description: [
         "The ultimate protection plan with ₹2,50,000 critical illness coverage, ₹15,000 digital wallet, base health coverage, and super top-up coverage of ₹25,00,000.",
         "Unlock benefits worth over ₹30,00,000+.",
@@ -1917,11 +1917,11 @@ export const ProductCards = () => {
                 <IconComponent className="w-32 h-32 text-purple-900 mr-4" />
               </div>
               
-              <h2 className="text-xl font-bold text-purple-900 mb-4 relative z-10">
+              <h2 className="text-xl font-bold text-black-900 mb-4 relative z-10">
                 {product.title}
               </h2>
               
-              <div className="text-gray-700 space-y-2 mb-6 relative z-10">
+              <div className="text-black-700 space-y-2 mb-6 relative z-10">
                 {product.description.map((line, i) => (
                   <p key={i}>{line}</p>
                 ))}
