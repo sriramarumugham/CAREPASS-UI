@@ -1,18 +1,17 @@
 
-import { PlanDetails, TableTemplate } from './tax-saver'
+import { PlanDetails } from './tax-saver'
 import TrustedPartnersSection from '../components/trusted-partners'
 import ContactUsSection from '../components/contact-us'
 import FooterSection from '../components/footer'
 import Gradient from '../assets/gradient.png'
 import Navbar from '../components/nav-bar'
-import { ColumnDef } from '@tanstack/react-table'
 import { ROUTES } from '../utils/routes'
 import useCartStore from '../store/cart-store'
 import { useNavigate } from 'react-router-dom'
 
 import SilverHeart from '../assets/gold-plan.png'
 import { goldPlanGrid, ResponsiveGrid } from '../utils/plan-benifits'
-import { BenefitsBreakdown, HealthcareEcosystem, HowItWorksGold, WellnessApp, PlanComparison } from '../components/extras'
+import { BenefitsBreakdown, HealthcareEcosystem, HowItWorks, AboutUsOurWellnessApp, PlanComparison } from '../components/extras'
 import { FaHeartbeat, FaClinicMedical, FaTooth } from "react-icons/fa";
 import { IoGlasses } from "react-icons/io5";
 import { FaUserDoctor, FaShieldHeart } from "react-icons/fa6";
@@ -27,52 +26,27 @@ const themeColors = {
     cardBg: "bg-white",
 };
 
-
-const columns: ColumnDef<any>[] = [
+  const steps = [
     {
-        accessorKey: "feature",
-        header: "Feature / Aspect",
-        cell: (info) => <p className="font-bold">{info.getValue()}</p>,
+      title: "Register the beneficiary details and purchase the product",
+      description: ""
     },
     {
-        accessorKey: "carePass",
-        header: "Our CarePass Gold Plan",
-        cell: (info) => info.getValue(),
+      title: "Receive a Wallet amount of 15,000 to avail the benefits of CarePass Tax Saver and CarePass Silver plans.",
+      description: ""
     },
     {
-        accessorKey: "others",
-        header: "Similar Products in the Market",
-        cell: (info) => info.getValue(),
-    },
-];
-
-
-const data = [
-    {
-      feature: "You Pay",
-      carePass: "₹10,000",
-      others: "Premiums are usually higher or provide less comprehensive coverage for a similar price",
+      title: "Get Critical illness coverage of 2,50,000.",
+      description: ""
     },
     {
-      feature: "Coverage",
-      carePass: "Comprehensive coverage including preventive care, primary care services, and critical illness protection",
-      others: "No comparable product offering this level of coverage",
+      title: "Avail benefits under Section 80D.",
+      description: ""
     },
     {
-      feature: "Financial Security",
-      carePass: "Includes critical illness coverage, reducing the financial burden of unexpected medical costs and allowing users to manage health expenses without added stress",
-      others: "Financial support is often limited to hospitalization or specific conditions",
-    },
-    {
-      feature: "Network Access",
-      carePass: "Access to a large network of doctors, diagnostic centers, hospitals, and clinics via the Wellness App",
-      others: "Network access may be smaller or less integrated",
-    },
-    {
-      feature: "Cost-Effectiveness",
-      carePass: "Combines multiple benefits into one cost-effective plan, offering excellent value",
-      others: "Typically focuses on basic OPD benefits with fewer additional services",
-    },
+        title: "Exclusive discounts on the APP: Enjoy savings on pharmacy and wellness store purchases, diagnostic tests, gym memberships, wellness programs and more. (T&C apply).",
+        description: ""
+      }
   ];
 
 
@@ -221,9 +195,10 @@ const GoldPlan = () => {
               onBuyNow={handleBuyNow}
             />
             <HealthcareEcosystem />
-            <WellnessApp />
+            {/* <WellnessApp /> */}
+            <AboutUsOurWellnessApp />
+            <HowItWorks onBuyNow={handleBuyNow} steps={steps} />
             <TrustedPartnersSection />
-            <HowItWorksGold onBuyNow={handleBuyNow} />
             <ContactUsSection />
             <FooterSection />
         </>

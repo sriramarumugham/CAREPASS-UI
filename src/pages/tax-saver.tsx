@@ -17,7 +17,7 @@ import { MdOutlineMobileFriendly } from "react-icons/md";
 import { GiMedicines } from "react-icons/gi";
 import { RiDiscountPercentFill } from "react-icons/ri";
 import { taxSaverGrid, ResponsiveGrid } from "../utils/plan-benifits";
-import { BenefitsBreakdown, CarePassBenefitsTaxSaver, HealthcareEcosystem, HowItWorksTaxSaver, PlanComparison, WhyChooseCarePassTaxSaver } from "../components/extras"
+import { BenefitsBreakdown, CarePassBenefitsTaxSaver, AboutUsOurWellnessApp, HowItWorks, PlanComparison } from "../components/extras"
 
 
 const TaxSaverPage = () => {
@@ -120,10 +120,27 @@ const TaxSaverPage = () => {
       },
     ];
   
-    const additionalBenefits = [
-      { service: 'Super Top-Up for Hospitalization', amount: '15,00,000/ 25,00,000' },
-      { service: 'Health Insurance', amount: '3,00,000/ 5,00,000' },
-      { service: 'Tax Benefits Under 80D', amount: '15,000' }
+    const steps = [
+      {
+        title: "Purchase our Tax Saver Product",
+        description: ""
+      },
+      {
+        title: "Receive ₹5,000 wallet amount for AHC",
+        description: ""
+      },
+      {
+        title: "Avail unlimited teleconsultations",
+        description: ""
+      },
+      {
+        title: "Claim tax benefits under Section 80D",
+        description: ""
+      },
+      {
+        title: "Exclusive discounts on the APP: Enjoy savings on pharmacy and wellness store purchases, diagnostic tests, gym memberships, wellness programs and more. (T&C apply).",
+        description: ""
+      }
     ];
 
     return (
@@ -169,11 +186,12 @@ const TaxSaverPage = () => {
               benefits1={breakdownBenefits}
               onBuyNow={handleBuyNow}
             />
+            <AboutUsOurWellnessApp />
             <CarePassBenefitsTaxSaver />
             
             {/* <HealthcareEcosystem /> */}
-            <WhyChooseCarePassTaxSaver />
-            <HowItWorksTaxSaver onBuyNow={handleBuyNow} />
+            {/* <WhyChooseCarePassTaxSaver /> */}
+            <HowItWorks onBuyNow={handleBuyNow} steps={steps} />
             <TrustedPartnersSection />
             <ContactUsSection />
             <FooterSection />
