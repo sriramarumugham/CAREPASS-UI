@@ -2,8 +2,8 @@ import HeartGrafti from '../assets/hert-grafti.svg';
 import AboutUsThree from '../assets/about-us-3.png';
 import DownloadApp from '../assets/download_app.png';
 import TopRightSvg from '../assets/top-right.svg';
-import { GiWeightLiftingUp } from "react-icons/gi";
-import { CiDiscount1, CiMobile1 } from "react-icons/ci";
+import { GiWeightLiftingUp, GiLifeSupport } from "react-icons/gi";
+import { CiDiscount1, CiMobile1, CiHeart } from "react-icons/ci";
 import { RiDiscountPercentFill } from "react-icons/ri";
 import { TbReceiptTax, TbRosetteDiscountCheckFilled, TbDiscount } from "react-icons/tb";
 import { FaUserDoctor, FaPeopleRoof, FaPeopleGroup, FaShieldHeart } from "react-icons/fa6";
@@ -15,8 +15,9 @@ import { FiShield } from "react-icons/fi";
 import { useState } from 'react';
 import FourDoctor from '../assets/fourDoctors.svg';
 import { PiHandCoinsFill } from "react-icons/pi";
-import { GiLifeSupport } from "react-icons/gi";
 import { BiSupport } from "react-icons/bi";
+import { LuHeartPulse } from "react-icons/lu";
+import AboutUsTwo from '../assets/about-us-2.png';
 
 export const Section2 = () => {
     return (
@@ -2102,3 +2103,166 @@ export const BenefitsBreakdown = ({ youPay, benefitsAmount, title1, title2, savi
     </div>
   );
 };
+
+export const ProductsIntro = () => {
+  return (
+    <div className="px-[20px] flex items-center justify-center" style={{ background: "linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)" }}>
+      <div className="flex flex-col max-w-[1200px] py-[30px] md:py-[30px] gap-4 md:gap-12">
+        {/* Center-Aligned "Our Products" Title */}
+        <p className="font-bold text-xl md:text-4xl mx-auto text-center">
+          Our Products
+        </p>
+        <div>
+          <div className="flex flex-col md:flex-row gap-4 md:gap-9">
+            {/* Responsive Image Section */}
+            <img
+            src={AboutUsTwo}
+            alt="Health & Wellness"
+            className="w-full max-w-[500px]"
+          />
+            <div className="flex flex-col gap-3">
+              <p className="leading-9 mt-20 text-justify">
+                At CarePass, we offer a range of health plans designed to cater to the diverse needs of individuals and families.
+              </p>
+              <br />
+              <p className="leading-9 text-justify">
+                Our products provide comprehensive insurance coverage that not only protects you in emergencies but also prioritizes preventive care, while offering tax savings benefits.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export const CarePassTable = () => {
+  const features = [
+    {
+      name: "CarePass Tax Saver",
+      label: "Tax Saver",
+      icon: CiHeart,
+      iconColor: "#6B7280",
+      features: [
+        { text: "E-wallet. ₹5,000 for AHC.", strike: false },
+        { text: "Annual Health checks", strike: false },
+        { text: "Unlimited Tele consultations", strike: false },
+        { text: "Wellness APP benefits: Discounted Gym memberships, Pharmacy & Health checks, etc.", strike: false },
+        { text: "In-clinic Doctor consultation", strike: true },
+        { text: "Pharmacy", strike: true },
+        { text: "Dental Care", strike: true },
+        { text: "Vision Care", strike: true },
+        { text: "Critical Illness Coverage", strike: true },
+        { text: "Base Insurance coverage", strike: true },
+        { text: "Super Top up- Insurance coverage", strike: true },
+      ],
+    },
+    {
+      name: "CarePass Silver Plan",
+      label: "Silver",
+      icon: LuHeartPulse,
+      iconColor: "#9CA3AF",
+      features: [
+        { text: "E-wallet. ₹10,000 with pre-defined sub limits", strike: false },
+        { text: "In-clinic Doctor consultation", strike: false },
+        { text: "RX. Pharmacy", strike: false },
+        { text: "RX. Diagnostic test", strike: false },
+        { text: "Dental Care", strike: false },
+        { text: "Vision Care", strike: false },
+        { text: "Wellness APP benefits: Discounted Gym memberships, Pharmacy & Health checks, etc.", strike: false },
+        { text: "Annual Health checks", strike: true },
+        { text: "Critical Illness Coverage", strike: true },
+        { text: "Base Insurance coverage", strike: true },
+        { text: "Super Top up- Insurance coverage", strike: true },
+      ],
+    },
+    {
+      name: "CarePass Gold Plan",
+      label: "Gold",
+      icon: FaShieldHeart,
+      iconColor: "#EAB308",
+      features: [
+        { text: "E-wallet. ₹15,000 for AHC & Primary care", strike: false },
+        { text: "Annual Health checks", strike: false },
+        { text: "Unlimited Tele consultations", strike: false },
+        { text: "Wellness APP benefits: Discounted Gym memberships, Pharmacy & Health checks, etc.", strike: false },
+        { text: "In-clinic Doctor consultation", strike: false },
+        { text: "Rx. Pharmacy", strike: false },
+        { text: "Dental Care", strike: false },
+        { text: "Vision Care", strike: false },
+        { text: "Critical Illness Coverage", strike: false },
+        { text: "Base Insurance coverage", strike: true },
+        { text: "Super Top up- Insurance coverage", strike: true },
+      ],
+    },
+    {
+      name: "CarePass Platinum Plan",
+      label: "Platinum",
+      icon: GiLifeSupport,
+      iconColor: "#7C3AED",
+      features: [
+        { text: "E-wallet. ₹15,000 for AHC & Primary care", strike: false },
+        { text: "Annual Health checks", strike: false },
+        { text: "Unlimited Tele consultations", strike: false },
+        { text: "In-clinic Doctor consultation", strike: false },
+        { text: "Pharmacy", strike: false },
+        { text: "Dental Care", strike: false },
+        { text: "Vision Care", strike: false },
+        { text: "Critical Illness Coverage", strike: false },
+        { text: "Base Insurance coverage", strike: false },
+        { text: "Super Top up- Insurance coverage", strike: false },
+        { text: "Wellness APP benefits: Discounted Gym memberships, Pharmacy & Health checks, etc.", strike: false },
+      ],
+    },
+  ];
+
+  return (
+    <div className="pt-12 pb-12" style={{ background: "#FCF9FF" }}>
+      <div className="max-w-6xl mx-auto w-full p-5">
+        <div className='px-[20px] flex items-center justify-center mb-10'>
+          <p className="font-bold text-xl md:text-4xl mx-auto">Explore our offerings below: </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {features.map((plan, columnIndex) => (
+            <div
+              key={columnIndex}
+              className="border border-gray-200 rounded-lg bg-white transform transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:border-2 hover:border-purple-800 relative z-10"
+            >
+              <div className="p-6 border-b border-gray-200 flex flex-col items-center gap-4">
+                <div className="w-16 h-16 rounded-full bg-purple-50 flex items-center justify-center">
+                  <plan.icon
+                    size={32}
+                    color={plan.iconColor}
+                    className="stroke-2"
+                  />
+                </div>
+                <div className="text-center">
+                  <h3 className="font-medium text-gray-600">{plan.name}</h3>
+                </div>
+              </div>
+              {plan.features.map((feature, rowIndex) => (
+                <div
+                  key={rowIndex}
+                  className={`min-h-[80px] flex items-center justify-center p-4 text-center ${
+                    rowIndex !== plan.features.length - 1
+                      ? "border-b border-gray-200"
+                      : ""
+                  }`}
+                >
+                  <p
+                    className={`text-gray-800 ${
+                      feature.strike ? "line-through" : ""
+                    }`}
+                  >
+                    {feature.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
