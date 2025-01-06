@@ -17,10 +17,10 @@ const Home = () => {
             <BenifitsSection />
             <AboutUsSection showViewMore={true} />
             <TrustedPartnersSection />
-            {/* <HomePageSection1 /> */}
-            <WellnessAppBenefits />
-            <WhyChooseCarePass />
             <AboutUsOurWellnessApp />
+            {/* <HomePageSection1 /> */}
+            {/* <WellnessAppBenefits /> */}
+            <WhyChooseCarePass />
             <ProductCards />
             {/* <HealthControlCTA />
             <HomePageSection2 /> */}

@@ -11,14 +11,14 @@ import { IoGlasses } from "react-icons/io5";
 
 const Statistics = () => {
     const stats = [
+        { logo: Medicine, number: 35000, description: 'Pharmacies for easy access to medication', icon: false },
         { logo: Stetescope, number: 25000, description: 'Doctors for in-clinic consultations', icon: false },
         { logo: Stetescope, number: 8000, description: 'Doctors for online teleconsultation', icon: true, iconName: FaUserDoctor },
-        { logo: Dumbell, number: 5500, description: 'Gyms for fitness and wellness', icon: false },
         { logo: Dumbell, number: 8000, description: 'Diagnostic Centers for home sample collection', icon: true, iconName: FaClinicMedical },
+        { logo: Dumbell, number: 5500, description: 'Gyms for fitness and wellness', icon: false },
         { logo: Stetescope, number: 5000, description: 'Dentists for comprehensive dental care', icon: true, iconName: FaTooth },
-        { logo: Medicine, number: 35000, description: 'Pharmacies for easy access to medication', icon: false },
+        { logo: Dumbell, number: 400, description: 'Coverage across 400+ cities', icon: true, iconName: FaMapMarkerAlt },
         { logo: Lab, number: 300, description: 'Vision Care Stores for eye health services', icon: true, iconName: IoGlasses },
-        { logo: Dumbell, number: 400, description: 'Coverage across 400+ cities', icon: true, iconName: FaMapMarkerAlt }
       ];      
 
     return (

@@ -45,7 +45,7 @@ import {
     return (
       <div className="p-[30px] gap-[10px] md:gap-[44px] flex md:flex-col items-center justify-between">
         <p className="text-xl md:text-3xl font-bold text-center">
-          CarePass Benefits for End Users
+          CarePass Benefits
         </p>
         <img
           src={HeartGrafti}
@@ -86,15 +86,33 @@ import {
   
   const BenifitsSection = () => {
     return (
-      <div className="w-full px-[20px] flex items-center justify-center bg-[#F7F3FB]">
-        <div className="flex max-w-[1200px] flex-col md:flex-row gap-4 md:gap-6 items-center justify-center md:py-[50px]">
-          <BenifitsHeader />
+      <div className="w-full px-[20px] flex flex-col items-center justify-center bg-[#F7F3FB]">
+        {/* Title Section */}
+        <div className="py-[20px]">
+          <p className="text-xl md:text-3xl font-bold text-center pt-5">
+            CarePass Benefits
+          </p>
+        </div>
+  
+        {/* Benefits Section */}
+        <div className="flex max-w-[1200px] flex-col md:flex-row gap-4 md:gap-6 items-center justify-center md:py-[20px]">
+          {/* Image Section */}
+          <div className="p-[30px] gap-[10px] md:gap-[44px] flex md:flex-col items-center justify-between">
+            <img
+              src={HeartGrafti}
+              className="md:w-[310px] md:h-[270px] w-[150px] h-[130px]"
+              alt="Heart Grafti"
+            />
+          </div>
+  
+          {/* Benefits List */}
           <BenifitsList benifits={healthBenefits} />
           <BenifitsList benifits={additionalBenefits} />
         </div>
       </div>
     );
   };
+  
   
   export default BenifitsSection;
   
