@@ -6,14 +6,17 @@ import { GiWeightLiftingUp } from "react-icons/gi";
 import { CiDiscount1, CiMobile1 } from "react-icons/ci";
 import { RiDiscountPercentFill } from "react-icons/ri";
 import { TbReceiptTax, TbRosetteDiscountCheckFilled, TbDiscount } from "react-icons/tb";
-import { FaUserDoctor, FaPeopleRoof, FaPeopleGroup } from "react-icons/fa6";
+import { FaUserDoctor, FaPeopleRoof, FaPeopleGroup, FaShieldHeart } from "react-icons/fa6";
 import { BsHouseHeartFill, BsFillPatchCheckFill } from "react-icons/bs";
 import { MdHealthAndSafety, MdOutlineSupportAgent, MdOutlineMedicalServices, MdOutlineFamilyRestroom, MdOutlineSavings } from "react-icons/md";
-import { FaUsers, FaUserMd, FaDollarSign, FaClipboardList, FaTag, FaStethoscope, FaHeartbeat, FaAppleAlt, FaBookMedical, FaRegDotCircle } from 'react-icons/fa';
+import { FaUsers, FaUserMd, FaDollarSign, FaClipboardList, FaTag, FaStethoscope, FaHeartbeat, FaAppleAlt, FaBookMedical, FaRegDotCircle
+, FaHospital} from 'react-icons/fa';
 import { FiShield } from "react-icons/fi";
 import { useState } from 'react';
 import FourDoctor from '../assets/fourDoctors.svg';
 import { PiHandCoinsFill } from "react-icons/pi";
+import { GiLifeSupport } from "react-icons/gi";
+import { BiSupport } from "react-icons/bi";
 
 export const Section2 = () => {
     return (
@@ -1221,43 +1224,43 @@ export const Section7 = () => {
           },
           {
             text: "Flexibility: Book, reschedule, and customize consultations",
-            icon: <FaUsers className="w-5 h-5 text-purple-500" />
+            icon: <FaUserDoctor className="w-5 h-5 text-purple-500" />
           },
           {
             text: "Tax Savings: Maximize benefits under Section 80D",
-            icon: <FaUsers className="w-5 h-5 text-purple-500" />
+            icon: <TbReceiptTax className="w-5 h-5 text-purple-500" />
           },
           {
             text: "Digital Convenience: User-friendly app and secure storage",
-            icon: <FaUsers className="w-5 h-5 text-purple-500" />
+            icon: <CiMobile1 className="w-5 h-5 text-purple-500" />
           },
           {
             text: "Unbeatable Discounts: Save big on health services and products",
-            icon: <FaUsers className="w-5 h-5 text-purple-500" />
+            icon: <CiDiscount1 className="w-5 h-5 text-purple-500" />
           },
         ],
       },
       {
         category: "Expert Support",
-        icon: <FaUsers className="w-8 h-8 text-purple-600" />,
+        icon: <BiSupport className="w-8 h-8 text-purple-600" />,
         items: [
           {
             text: "Dedicated Team: Personalized care from passionate professionals",
-            icon: <FaUsers className="w-5 h-5 text-purple-500" />
+            icon: <GiLifeSupport className="w-5 h-5 text-purple-500" />
           },
           {
             text: "24/7 Help & Support: Seamless connectivity via phone, email, and chat",
-            icon: <FaUsers className="w-5 h-5 text-purple-500" />
+            icon: <MdOutlineSupportAgent className="w-5 h-5 text-purple-500" />
           },
         ],
       },
       {
         category: "Limitless Wellness",
-        icon: <FaUsers className="w-8 h-8 text-purple-600" />,
+        icon: <FaShieldHeart className="w-8 h-8 text-purple-600" />,
         items: [
           {
             text: "Wellness App: Access a vast network of health services and products",
-            icon: <FaUsers className="w-5 h-5 text-purple-500" />
+            icon: <CiMobile1 className="w-5 h-5 text-purple-500" />
           },
         ],
       },
@@ -1621,40 +1624,114 @@ export const Section7 = () => {
     );
   };
   
-  export const HowItWorksTaxSaver = ({ onBuyNow }) => {
-    const steps = [
-      "Purchase our Tax Saver Product",
-      "Receive ₹5,000 wallet amount for PHC",
-      "Avail unlimited teleconsultation",
-      "Claim tax benefits under Section 80D",
-      "Enjoy discounts on pharmacy purchases and diagnostic tests",
-    ];
-  
+  export const HowItWorks = ({ onBuyNow, steps }) => {
+    const [videoOpen, setVideoOpen] = useState(false);
+    const [activeStep, setActiveStep] = useState(null);
+
+    const handleVideoOpen = () => {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'video/*';
+      input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const videoUrl = URL.createObjectURL(file);
+          setVideoOpen(true);
+        }
+      };
+      input.click();
+    };
+
     return (
-      <div className="py-12 px-6 md:px-12"
-      style={{
-        background: '#FCF9FF',
-    }}>
-        <h1 className="text-3xl md:text-4xl font-bold text-center text-deepPurple mb-8">
-          How it Works
-        </h1>
-  
-        <div className="space-y-8 max-w-4xl mx-auto">
-          <ul className="list-decimal list-inside space-y-4 text-lg text-gray-700">
-            {steps.map((step, index) => (
-              <li key={index} className="flex items-start">
-                <span className="mr-2">-</span>
-                <span>{step}</span>
-              </li>
-            ))}
-          </ul>
+      <div className="relative py-12 bg-[#FCF9FF]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-center text-deepPurple mb-12">
+            How it Works
+          </h1>
+
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            {/* Left side: Content */}
+            <div className="space-y-4">
+              {steps.map((step, index) => (
+                <div
+                  key={index}
+                  className="transform transition-all duration-300"
+                  onMouseEnter={() => setActiveStep(index)}
+                  onMouseLeave={() => setActiveStep(null)}
+                >
+                  <div 
+                    className={`
+                      p-6 rounded-lg bg-white shadow-md 
+                      ${activeStep === index ? 'border-l-4 border-purple-500 translate-x-2' : ''}
+                      transition-all duration-300
+                    `}
+                  >
+                    <div className="flex items-center gap-4">
+                      <span className="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-semibold">
+                        {index + 1}
+                      </span>
+                      <div>
+                        <h3 className="font-semibold text-lg text-gray-800">
+                          {step.title}
+                        </h3>
+                        <p className="text-gray-600 mt-1">
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              <div className="mt-8 pt-4">
+                <button 
+                  onClick={onBuyNow} 
+                  className="w-full bg-deepPurple text-white py-3 px-8 rounded-lg text-lg font-semibold 
+                    hover:bg-purple-700 transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1"
+                >
+                  Buy Now
+                </button>
+              </div>
+            </div>
+
+            {/* Right side: Video */}
+            <div className="sticky top-8">
+              <div className="aspect-video bg-purple-200 rounded-xl overflow-hidden shadow-lg">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <button
+                    onClick={handleVideoOpen}
+                    className="p-6"
+                  >
+                    <iframe 
+                      src="https://drive.google.com/file/d/1bF6cerGu_0Gh-_PsySWyQg1yECQcLs_F/preview"
+                      className="w-full h-[290px] w-[515px] rounded-lg"
+                      allow="autoplay"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-  
-        <div className="text-center mt-8">
-          <button onClick={onBuyNow} className="bg-deepPurple text-white py-2 px-6 rounded-lg text-lg font-semibold hover:bg-purple-700 transition">
-            Buy Now
-          </button>
-        </div>
+
+        {/* Video Modal */}
+        {videoOpen && (
+          <div className="fixed inset-0 bg-black/75 flex items-center justify-center z-50">
+            <div className="bg-white p-4 rounded-lg max-w-4xl w-full mx-4">
+              <div className="flex justify-end mb-2">
+                <button 
+                  onClick={() => setVideoOpen(false)}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  Close
+                </button>
+              </div>
+              <div className="aspect-video bg-black rounded">
+                <p className="text-white text-center py-20">Video Player</p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   };

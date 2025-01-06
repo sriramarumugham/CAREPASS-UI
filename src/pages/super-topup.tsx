@@ -1,17 +1,16 @@
 import Navbar from "../components/nav-bar";
-import { PlanDetails, TableTemplate } from "./tax-saver";
-import { FaCheckCircle, FaHeartbeat, FaLaptopMedical, FaPrescriptionBottleAlt, FaUserShield } from "react-icons/fa";
+import { PlanDetails } from "./tax-saver";
+import { FaCheckCircle, FaHeartbeat } from "react-icons/fa";
 import TrustedPartnersSection from "../components/trusted-partners";
 import ContactUsSection from "../components/contact-us";
 import FooterSection from "../components/footer";
 import Gradient from '../assets/gradient.png'
-import { ColumnDef } from "@tanstack/react-table";
 import { ROUTES } from "../utils/routes";
 import useCartStore from "../store/cart-store";
 import { useNavigate } from "react-router-dom";
 import platinum_image from '../assets/carepass_platinum.png';
 import { platinumPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
-import { BenefitsBreakdown, HealthcareEcosystem, HowItWorksPlatinum, PlanComparison, BenefitsCard } from "../components/extras";
+import { BenefitsBreakdown, HealthcareEcosystem, HowItWorks, PlanComparison, AboutUsOurWellnessApp } from "../components/extras";
 import { FaClinicMedical, FaTooth } from "react-icons/fa";
 import { IoGlasses } from "react-icons/io5";
 import { FaUserDoctor, FaShieldHeart } from "react-icons/fa6";
@@ -29,59 +28,6 @@ const SuperTopUpPage = () => {
         sectionBg: "bg-cover bg-center",
         cardBg: "bg-white",
     };
-
-
-    const columns: ColumnDef<typeof any>[] = [
-        {
-            accessorKey: "feature",
-            header: "Feature/Aspect",
-            cell: (info) => <p className="font-bold">{info.getValue()}</p>,
-        },
-        {
-            accessorKey: "carePass",
-            header: "CarePass Platinum Plan",
-            cell: (info) => info.getValue(),
-        },
-        {
-            accessorKey: "others",
-            header: "Others",
-            cell: (info) => info.getValue(),
-        },
-    ];
-
-
-    const data = [
-        {
-          feature: "You Pay",
-          carePass: "₹15,000",
-          others: "Premiums are often higher or offer less comprehensive coverage at a similar price.",
-        },
-        {
-          feature: "Coverage",
-          carePass: "Extensive coverage including preventive care, primary care services, critical illness, and super top-up coverage with base coverage.",
-          others: "No similar product with this extensive range is available in the market.",
-        },
-        {
-          feature: "Extended Financial Protection",
-          carePass: "Up to ₹2.5 lakhs for major medical expenses and critical illnesses.",
-          others: "Typically lower sum insured (SI) or higher premiums for additional coverage.",
-        },
-        {
-          feature: "Peace of Mind",
-          carePass: "Consolidates multiple benefits into one plan, simplifying management.",
-          others: "Requires managing multiple policies, leading to more complexity.",
-        },
-        {
-          feature: "Flexibility & Customization",
-          carePass: "Offers flexible top-up limits, wide network access, and customizable service options.",
-          others: "Limited flexibility, often fewer customization options.",
-        },
-        {
-          feature: "Cost-Effectiveness",
-          carePass: "Combines numerous benefits into one affordable, value-packed plan.",
-          others: "Less cost-effective when purchasing separate products.",
-        },
-      ];
 
   const features = [
     { name: 'You Pay', main: '₹15,000 Only', other: 'Higher premiums, less coverage' },
@@ -157,6 +103,33 @@ const SuperTopUpPage = () => {
       navigate(ROUTES.CART, { relative: 'path' })
   };
 
+  const steps = [
+    {
+      title: "Register the beneficiary details and purchase the product.",
+      description: ""
+    },
+    {
+      title: "Receive a Wallet amount of 15,000 and avail the benefits of CarePass tax saver and Carepass silver plan.",
+      description: ""
+    },
+    {
+      title: "Get Critical illness coverage of ₹2,50,000",
+      description: ""
+    },
+    {
+      title: "Get Base Insurance coverage and Super top up coverage up to ₹30,00,000",
+      description: ""
+    },
+    {
+      title: "Avail benefits under Section 80D",
+      description: ""
+    },
+    {
+      title: "Exclusive discounts on the app: Enjoy savings on pharmacy and wellness store purchases, diagnostic tests, gym memberships, wellness programs and more. (T&C apply).",
+      description: ""
+    }
+  ];
+
   return (
       <>
           <Navbar />
@@ -208,8 +181,9 @@ const SuperTopUpPage = () => {
             onBuyNow={handleBuyNow}
           />
           <HealthcareEcosystem />
+          <AboutUsOurWellnessApp />
+          <HowItWorks onBuyNow={handleBuyNow} steps={steps} />
           <TrustedPartnersSection />
-          <HowItWorksPlatinum onBuyNow={handleBuyNow} />
           <ContactUsSection />
           <FooterSection />
       </>
