@@ -155,17 +155,7 @@ const GoldPlan = () => {
             >
                 <PlanDetails
                     heading="CarePass Gold"
-                    description={[
-                        { text: 'Preventive Health Check: ₹8,000', icon: <FaHeartbeat /> },
-                        { text: "Doctor Consultation: ₹12,400", icon: <FaUserDoctor /> },
-                        { text: "App Access: ₹2,000", icon: <MdOutlineMobileFriendly /> },
-                        { text: "Medicines: ₹6,000 ", icon: <GiMedicines /> },
-                        { text: 'Diagnostic: ₹7,000', icon: <FaClinicMedical /> },
-                        { text: 'Dental Care: ₹4,200', icon: <FaTooth /> },
-                        { text: 'Vision Care: ₹2,800', icon: <IoGlasses /> },
-                        { text: 'Critical Illness: ₹2,50,000', icon: <FaShieldHeart /> },
-                        { text: 'Tax Benefits Under 80D: ₹10,000', icon: <RiDiscountPercentFill /> },
-                    ]}
+                    description="Comprehensive coverage: CarePass Tax Saver + CarePass Silver + Critical Illness Insurance"
                     pay="₹10,000"
                     values=" ₹3,00,000+"
                     price="₹10,000"
@@ -174,16 +164,10 @@ const GoldPlan = () => {
                     themeColors={themeColors}
                     imgSrc={SilverHeart}
                     onBuyNow={handleBuyNow}
-
                 />
             </div>
 
             <ResponsiveGrid gridItems={goldPlanGrid} heading='CarePass Gold Plan' />
-            <PlanComparison 
-              features={features}
-              heading="Why Choose CarePass Gold?"
-              title="Our CarePass Gold Plan"
-            />
             <BenefitsBreakdown
               youPay="10,000"
               benefitsAmount="3,00,000+"
@@ -192,13 +176,18 @@ const GoldPlan = () => {
               benefits1={breakdownBenefits}
               benefits2={breakdownBenefitsTwo}
               showFooter={true}
-              onBuyNow={handleBuyNow}
+              showCoverage={true}
             />
-            <HealthcareEcosystem />
+            <PlanComparison 
+              features={features}
+              heading="Why Choose CarePass Gold?"
+              title="Our CarePass Gold Plan"
+            />
+            {/* <HealthcareEcosystem /> */}
             {/* <WellnessApp /> */}
             <AboutUsOurWellnessApp />
-            <HowItWorks onBuyNow={handleBuyNow} steps={steps} />
             <TrustedPartnersSection />
+            <HowItWorks onBuyNow={handleBuyNow} steps={steps} />
             <ContactUsSection />
             <FooterSection />
         </>

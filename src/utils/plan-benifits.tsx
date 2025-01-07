@@ -8,47 +8,47 @@ import headphone from '../assets/GOLD/headphone.svg';
 import hand from '../assets/GOLD/hand.svg';
 import tag from '../assets/GOLD/tag.svg';
 import { MdOutlineMobileFriendly, MdHealthAndSafety, MdFamilyRestroom } from "react-icons/md";
-import { FaHospital, FaUserShield, FaHeartbeat } from "react-icons/fa";
+import { FaUserShield, FaHeartbeat, FaRegHospital } from "react-icons/fa";
 import { BsQrCodeScan } from "react-icons/bs";
 import { FaPersonCircleCheck } from "react-icons/fa6";
-import { GiWeightLiftingUp } from "react-icons/gi";
-import { RiDiscountPercentLine, RiDiscountPercentFill } from "react-icons/ri";
+import { RiDiscountPercentFill } from "react-icons/ri";
 import { GiHealthNormal } from "react-icons/gi";
-
+import { IoPersonAddOutline } from "react-icons/io5";
+import { CiDumbbell } from "react-icons/ci";
 
 export const goldPlanGrid = [
     { iconSrc: Wallet, description: "E-wallet ₹15,000. (₹5,000: Annual Health Checks, ₹10,000: Primary care Services)", icon: false },
     { iconSrc: Rewards, description: "Tax benefits under 80-D", icon: false },
     { iconSrc: Tax, description: "Critical Insurance (CI) cover ₹2,50,000", icon: true, iconName: MdHealthAndSafety },
-    { iconSrc: Tax, description: "​Add additional beneficiary for CI coverage at a very minimal cost", icon: true, iconName: FaHeartbeat },
+    { iconSrc: Tax, description: "Add additional beneficiary for CI coverage at a very minimal cost", icon: true, iconName: FaHeartbeat },
     { iconSrc: Tax, description: "Exclusive discounts on Diagnostic and Pharmacy.", icon: true, iconName: RiDiscountPercentFill },
     { iconSrc: Tax, description: "Comprehensive Family Protection: (Include- Self, spouse, 2 children)", icon: true, iconName: MdFamilyRestroom },
-    { iconSrc: discount, description: "Premium Hospitals Network", icon: true, iconName: FaHospital },
-    { iconSrc: tag, description: "Discounted Gym Memberships", icon: true, iconName: GiWeightLiftingUp },
+    { iconSrc: discount, description: "Premium Hospitals Network", icon: true, iconName: FaRegHospital },
+    { iconSrc: tag, description: "Discounted Gym Memberships", icon: true, iconName: CiDumbbell },
     { iconSrc: Pharmacy, description: "Scan & Pay Option", icon: true, iconName: BsQrCodeScan },
-    { iconSrc: tag, description: "Access to India's Largest healthcare ecosystem.", icon: true, iconName: GiHealthNormal },
     { iconSrc: hand, description: "The Wellness corner Platinum Access", icon: true, iconName: MdOutlineMobileFriendly }
 ];
 
 export const taxSaverGrid = [
-    { iconSrc: Wallet, description: "E-Wallet ₹5,000", icon: false },
-    { iconSrc: headphone, description: "Unlimited Tele-Consults", icon: false },
-    { iconSrc: Rewards, description: "Tax Benefits", icon: false },
-    { iconSrc: Tax, description: "Exclusive Discounts", icon: false },
-    { iconSrc: Pharmacy, description: "Floater Benefits", icon: false },
-    { iconSrc: discount, description: "Premium Hospital Choice", icon: true, iconName: FaHospital },
-    { iconSrc: tag, description: "Gym Membership Discounts", icon: true, iconName: GiWeightLiftingUp },
-    { iconSrc: hand, description: "Wellness App Benefits", icon: true, iconName: MdOutlineMobileFriendly }
+    { iconSrc: Wallet, description: "E-wallet 5000 for AHC", icon: false },
+    { iconSrc: headphone, description: "Unlimited -Teleconsultations", icon: false },
+    { iconSrc: Tax, description: "Tax benefits under 80-D", icon: false },
+    { iconSrc: Pharmacy, description: "Exclusive discounts on Diagnostics and Pharmacy", icon: false },
+    { iconSrc: Pharmacy, description: "Floater benefits (Include: Self, Spouse, 2 children, Parents and In-Laws)", icon: true, iconName: IoPersonAddOutline },
+    { iconSrc: discount, description: "Premium Hospitals Network.", icon: true, iconName: FaRegHospital },
+    { iconSrc: tag, description: "Discounted Gym memberships", icon: true, iconName: CiDumbbell },
+    { iconSrc: hand, description: "The Wellness Corner platinum Access", icon: true, iconName: MdOutlineMobileFriendly }
 ];
 
 export const silverPlanGrid = [
-    { iconSrc: Wallet, description: "E-Wallet ₹10,000", icon: false },
-    { iconSrc: Tax, description: "Tax Benefits (80-D)", icon: false },
-    { iconSrc: Pharmacy, description: "Floater Benefits", icon: false },
+    { iconSrc: Wallet, description: "E-wallet 10,000 for Primary Care Services", icon: false },
+    { iconSrc: Tax, description: "Tax benefits under 80-D", icon: false },
+    { iconSrc: Pharmacy, description: "Exclusive discounts on Diagnostics and Pharmacy", icon: false },
+    { iconSrc: Pharmacy, description: "Floater benefits (Include: Self, Spouse, 2 children)", icon: true, iconName: IoPersonAddOutline },
+    { iconSrc: Pharmacy, description: "Premium Hospitals Network", icon: true, iconName: FaRegHospital },
+    { iconSrc: tag, description: "Discounted Gym memberships", icon: true, iconName: CiDumbbell },
     { iconSrc: Tax, description: "Scan & Pay Option", icon: true, iconName: BsQrCodeScan },
-    { iconSrc: Pharmacy, description: "Premium Hospital Discounts", icon: true, iconName: FaHospital },
-    { iconSrc: tag, description: "Gym Membership Discounts", icon: true, iconName: GiWeightLiftingUp },
-    { iconSrc: hand, description: "Wellness App Benefits", icon: true, iconName: MdOutlineMobileFriendly }
+    { iconSrc: hand, description: "The Wellness Corner Platinum Access", icon: true, iconName: MdOutlineMobileFriendly }
 ];
 
 export const platinumPlanGrid = [
@@ -59,10 +59,9 @@ export const platinumPlanGrid = [
     { iconSrc: Tax, description: "Super Top-Up Cover (₹15 Lacs/₹25 Lacs)", icon: true, iconName: FaPersonCircleCheck },
     { iconSrc: Tax, description: "Exclusive discounts on Diagnostic and Pharmacy.", icon: true, iconName: RiDiscountPercentFill },
     { iconSrc: Tax, description: "Comprehensive Family Protection: (Include- Self, spouse, 2 children)", icon: true, iconName: MdFamilyRestroom },
-    { iconSrc: Tax, description: "Premium Hospitals Network", icon: true, iconName: FaHospital },
-    { iconSrc: tag, description: "Dscounted Gym memberships", icon: true, iconName: GiWeightLiftingUp },
+    { iconSrc: Tax, description: "Premium Hospitals Network", icon: true, iconName: FaRegHospital },
+    { iconSrc: tag, description: "Dscounted Gym memberships", icon: true, iconName: CiDumbbell },
     { iconSrc: Pharmacy, description: "Scan & Pay Option", icon: true, iconName: BsQrCodeScan },
-    { iconSrc: tag, description: "Access to India's Largest healthcare ecosystem.", icon: true, iconName: GiHealthNormal },
     { iconSrc: hand, description: "The Wellness Corner Platinum Access", icon: true, iconName: MdOutlineMobileFriendly }
 ];
 

@@ -10,10 +10,6 @@ import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../utils/routes";
 import { silverPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
 import { BenefitsBreakdown, AboutUsOurWellnessApp, HealthcareEcosystem, PlanComparison, HowItWorks } from "../components/extras";
-import { FaUserDoctor } from "react-icons/fa6";
-import { GiMedicines } from "react-icons/gi";
-import { FaClinicMedical, FaTooth } from "react-icons/fa";
-import { IoGlasses } from "react-icons/io5";
 
 const SilverPlanPage = () => {
 
@@ -153,13 +149,7 @@ const SilverPlanPage = () => {
             >
                 <PlanDetails
                     heading="CarePass Silver"
-                    description={[
-                        { text: "Doctor Consultations (In-clinic & Online): ₹10,000", icon: <FaUserDoctor /> },
-                        { text: 'Medicines: ₹6,000', icon: <GiMedicines /> },
-                        { text: 'Diagnostics: ₹7,000', icon: <FaClinicMedical /> },
-                        { text: "Dental Care: ₹4,200", icon: <FaTooth /> },
-                        { text: 'Vision Care: ₹2,800', icon: <IoGlasses /> },
-                    ]}
+                    description="Get an e-Wallet Amount of Rs. 10,000 For Comprehensive Primary Care Services!"
                     pay="₹5,000"
                     values="₹30,000+"
                     price="₹5,000"
@@ -168,30 +158,30 @@ const SilverPlanPage = () => {
                     themeColors={themeColors}
                     imgSrc={SilverHeart}
                     onBuyNow={handleBuyNow}
-
+                    isSilverPlan={true}
                 />
             </div>
 
             <ResponsiveGrid gridItems={silverPlanGrid} heading='CarePass Silver Plan' />
+            <BenefitsBreakdown
+              youPay="5,000"
+              benefitsAmount="30,000+"
+              title1="Extensive Benefits"
+              savings="₹25,000+ (83% off)"
+              benefits1={breakdownBenefits}
+              showFooter={true}
+              showCoverage={false}
+            />
             <PlanComparison 
               features={features}
               heading="Why Choose CarePass Silver?"
               title="CarePass Silver"
             />
-            <BenefitsBreakdown
-              youPay="5,000"
-              benefitsAmount="30,000+"
-              title1="Extensive Benefits"
-              savings="Savings: ₹25,000+ (83% off)"
-              benefits1={breakdownBenefits}
-              showFooter={true}
-              onBuyNow={handleBuyNow}
-            />
-            <HealthcareEcosystem />
+            {/* <HealthcareEcosystem /> */}
             <AboutUsOurWellnessApp />
             {/* <CarePassBenefitsSilver /> */}
-            <HowItWorks onBuyNow={handleBuyNow} steps={steps} />
             <TrustedPartnersSection />
+            <HowItWorks onBuyNow={handleBuyNow} steps={steps} />
             {/* <CarePassSilverSteps /> */}
             <ContactUsSection />
             <FooterSection />
