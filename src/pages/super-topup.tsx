@@ -1,6 +1,5 @@
 import Navbar from "../components/nav-bar";
 import { PlanDetails } from "./tax-saver";
-import { FaCheckCircle, FaHeartbeat } from "react-icons/fa";
 import TrustedPartnersSection from "../components/trusted-partners";
 import ContactUsSection from "../components/contact-us";
 import FooterSection from "../components/footer";
@@ -11,14 +10,6 @@ import { useNavigate } from "react-router-dom";
 import platinum_image from '../assets/carepass_platinum.png';
 import { platinumPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
 import { BenefitsBreakdown, HealthcareEcosystem, HowItWorks, PlanComparison, AboutUsOurWellnessApp } from "../components/extras";
-import { FaClinicMedical, FaTooth } from "react-icons/fa";
-import { IoGlasses } from "react-icons/io5";
-import { FaUserDoctor, FaShieldHeart } from "react-icons/fa6";
-import { RiDiscountPercentFill } from "react-icons/ri";
-import { MdOutlineMobileFriendly, MdHealthAndSafety } from "react-icons/md";
-import { GiMedicines } from "react-icons/gi";
-import { TbHealthRecognition } from "react-icons/tb";
-
 
 const SuperTopUpPage = () => {
 
@@ -139,20 +130,7 @@ const SuperTopUpPage = () => {
           >
               <PlanDetails
                   heading="CarePass Platinum"
-                  description={[
-                    { text: 'Preventive Health Check: ₹8,000', icon: <FaHeartbeat /> },
-                    { text: "Doctor Consultation: ₹12,400", icon: <FaUserDoctor /> },
-                    { text: "App Access: ₹2,000", icon: <MdOutlineMobileFriendly /> },
-                    { text: "Medicines: ₹6,000 ", icon: <GiMedicines /> },
-                    { text: 'Diagnostic: ₹7,000', icon: <FaClinicMedical /> },
-                    { text: 'Dental Care: ₹4,200', icon: <FaTooth /> },
-                    { text: 'Vision Care: ₹2,800', icon: <IoGlasses /> },
-                    { text: 'Critical Illness: ₹2,50,000', icon: <FaShieldHeart /> },
-                    { text: 'Health Insurance Benefits', icon: <MdHealthAndSafety /> },
-                    { text: 'Super Top-Up: ₹15,00,000/ ₹25,00,000', icon: <FaCheckCircle /> },
-                    { text: 'Health Insurance: ₹3,00,000/₹5,00,000', icon: <TbHealthRecognition /> },
-                    { text: 'Tax Benefits Under 80D: ₹15,000', icon: <RiDiscountPercentFill /> },
-                ]}
+                  description="Comprehensive Coverage: CarePass Tax Saver + CarePass Silver + Critical Illness Insurance + Super Top-up Insurance with Base Insurance"
                   pay="₹15,000"
                   values="₹28,00,000+"
                   price="₹15,000"
@@ -165,11 +143,6 @@ const SuperTopUpPage = () => {
           </div>
 
           <ResponsiveGrid gridItems={platinumPlanGrid} heading='CarePass Platinum Plan' />
-          <PlanComparison 
-            features={features}
-            heading="Why Choose CarePass Platinum?"
-            title="CarePass Platinum Plan"
-          />
           <BenefitsBreakdown
             youPay="15,000"
             benefitsAmount="32,00,000+"
@@ -178,12 +151,17 @@ const SuperTopUpPage = () => {
             benefits1={breakdownBenefits}
             benefits2={breakdownBenefitsTwo}
             showFooter={true}
-            onBuyNow={handleBuyNow}
+            showCoverage={true}
           />
-          <HealthcareEcosystem />
+          <PlanComparison 
+            features={features}
+            heading="Why Choose CarePass Platinum?"
+            title="CarePass Platinum Plan"
+          />
+          {/* <HealthcareEcosystem /> */}
           <AboutUsOurWellnessApp />
-          <HowItWorks onBuyNow={handleBuyNow} steps={steps} />
           <TrustedPartnersSection />
+          <HowItWorks onBuyNow={handleBuyNow} steps={steps} />
           <ContactUsSection />
           <FooterSection />
       </>

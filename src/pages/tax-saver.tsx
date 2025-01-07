@@ -4,21 +4,18 @@ import FooterSection from "../components/footer"
 import Navbar from "../components/nav-bar"
 import Gradient from '../assets/gradient.png'
 import { FC } from "react"
-import { ReusableTable } from "../components/tables/table"
-import { ColumnDef } from "@tanstack/react-table";
-import FourDoctor from '../assets/fourDoctors.svg';
 import useCartStore from "../store/cart-store";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../utils/routes";
 import './Hero.css';
 import HeartPatient from '../assets/family-gold.png'
-import { FaHeartbeat, FaLaptopMedical } from "react-icons/fa";
-import { MdOutlineMobileFriendly } from "react-icons/md";
-import { GiMedicines } from "react-icons/gi";
-import { RiDiscountPercentFill } from "react-icons/ri";
 import { taxSaverGrid, ResponsiveGrid } from "../utils/plan-benifits";
-import { BenefitsBreakdown, CarePassBenefitsTaxSaver, AboutUsOurWellnessApp, HowItWorks, PlanComparison } from "../components/extras"
-
+import { BenefitsBreakdown, AboutUsOurWellnessApp, HowItWorks, PlanComparison } from "../components/extras";
+import { FaUserDoctor } from "react-icons/fa6";
+import { PiSunglassesThin } from "react-icons/pi";
+import { TbDental } from "react-icons/tb";
+import { GiMedicines } from "react-icons/gi";
+import { FaDiagnoses } from "react-icons/fa";
 
 const TaxSaverPage = () => {
     const themeColors = {
@@ -155,13 +152,7 @@ const TaxSaverPage = () => {
                 heading="CarePass Tax Saver Plan"
                 pay="₹5,000"
                 values="₹17,000+"
-                description={[
-                    { text: "Annual Health checks (₹8,000)", icon: <FaHeartbeat /> },
-                    { text: "Unlimited Tele-consultation (₹2,400)", icon: <FaLaptopMedical /> },
-                    { text: "Application Access (₹2,000)", icon: <MdOutlineMobileFriendly /> },
-                    { text: "Tax Benefit under 80D (₹5,000)", icon: <RiDiscountPercentFill /> },
-                    { text: "Discounts on Pharmacy (up to 18%)", icon: <GiMedicines /> },
-                ]}
+                description="The Ultimate Health Bundle: Annual Health Checks, Unlimited Tele-Consults & Exclusive Discounts! "
                 price="₹5,000"
                 ageLimit="18-60 years"
                 validity="1 year"
@@ -173,26 +164,27 @@ const TaxSaverPage = () => {
             </div>
 
             <ResponsiveGrid gridItems={taxSaverGrid} heading='CarePass Tax Saver' />
+            <BenefitsBreakdown
+              youPay="5,000"
+              benefitsAmount="17,000+"
+              title1="Here's what the plan covers"
+              savings="₹12,400 (74% off)"
+              benefits1={breakdownBenefits}
+              showFooter={true}
+              showCoverage={false}
+            />
             <PlanComparison 
               features={features}
               heading="Why Choose CarePass Tax Saver?"
               title="CarePass Tax Saver (₹5,000)"
             />
-            <BenefitsBreakdown
-              youPay="5,000"
-              benefitsAmount="17,000+"
-              title1="Here's what the plan covers"
-              savings="Savings: ₹12,400 (74% off)"
-              benefits1={breakdownBenefits}
-              onBuyNow={handleBuyNow}
-            />
             <AboutUsOurWellnessApp />
-            <CarePassBenefitsTaxSaver />
+            {/* <CarePassBenefitsTaxSaver /> */}
             
             {/* <HealthcareEcosystem /> */}
             {/* <WhyChooseCarePassTaxSaver /> */}
-            <HowItWorks onBuyNow={handleBuyNow} steps={steps} />
             <TrustedPartnersSection />
+            <HowItWorks onBuyNow={handleBuyNow} steps={steps} />
             <ContactUsSection />
             <FooterSection />
         </>
@@ -207,7 +199,7 @@ interface PlanDetailsProps {
     heading: string;
     pay: string;
     values: string;
-    description: string;
+    description: string | { icon: JSX.Element; text: string }[];
     price: string;
     ageLimit: string;
     validity: string;
@@ -218,6 +210,7 @@ interface PlanDetailsProps {
     imgSrc: string;
     onBuyNow: () => void;
     isTaxSaver: boolean;
+    isSilverPlan: boolean
 }
 
 export const PlanDetails: FC<PlanDetailsProps> = ({
@@ -232,7 +225,35 @@ export const PlanDetails: FC<PlanDetailsProps> = ({
     imgSrc,
     onBuyNow,
     isTaxSaver,
+    isSilverPlan
   }) => {
+    const silverPlanIcons = [
+      {
+        icon: <FaUserDoctor size={24} className="text-deepPurple" />,
+        title: "Doctor Consultations (In-clinic & Online)",
+        value: "₹10,000",
+      },
+      {
+        icon: <FaDiagnoses size={24} className="text-deepPurple" />,
+        title: "Diagnostics covered till",
+        value: "₹5,000",
+      },
+      {
+        icon: <GiMedicines size={24} className="text-deepPurple" />,
+        title: "Pharmacy Purchases worth up to",
+        value: "₹5,000",
+      },
+      {
+        icon: <TbDental size={24} className="text-deepPurple" />,
+        title: "Dental Care up to",
+        value: "₹3,000",
+      },
+      {
+        icon: <PiSunglassesThin size={24} className="text-deepPurple" />,
+        title: "Vision Care Products up to",
+        value: "₹2,000",
+      },
+    ];
     return (
       <div
         className={`flex flex-col mt-8 items-center md:flex-row w-full max-w-[1200px] ${themeColors.background} m-auto shadow-lg rounded-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl`}
@@ -254,7 +275,7 @@ export const PlanDetails: FC<PlanDetailsProps> = ({
         <div className="p-[40px] flex flex-col items-center w-full">
           {/* Content */}
           <div className="flex flex-col items-center w-full">
-            <p className="text-xl font-bold md:text-3xl text-center text-deepPurple">
+            <p className="text-xl font-bold md:text-xl text-center text-deepPurple border border-1 border-[#A689B0] rounded-[25px] px-[10px]">
               {heading}
             </p>
   
@@ -284,26 +305,55 @@ export const PlanDetails: FC<PlanDetailsProps> = ({
               </div>
             </div>
   
-            {/* Description as a simple two-column grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-              {description.map((item, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <div className="text-deepPurple">{item.icon}</div>
-                  <p className="text-gray-700">{item.text}</p>
+          {/* Description */}
+          <div className="mt-6 w-full">
+            {typeof description === "string" ? (
+              <p className="text-black-700 text-center">{description}</p>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {description.map((item, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <div className="text-deepPurple">{item.icon}</div>
+                    <p className="text-black-700">{item.text}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+            {/* Healthcare Services Section */}
+            {isSilverPlan ?
+              <div className="mt-6 w-full">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                  {silverPlanIcons.map((service, index) => (
+                    <div 
+                      key={index} 
+                      className="flex flex-col items-center text-center p-4 bg-purple-50 rounded-lg"
+                    >
+                      <div className="w-12 h-12 bg-purple-200 border-white rounded-full flex items-center justify-center mb-2">
+                        {service.icon}
+                      </div>
+                      <p className="text-sm mb-1">{service.title}</p>
+                      <p className="text-deepPurple font-bold">
+                        {service.value}
+                        {index === 0 && <span className="text-xs align-top">*</span>}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+              :
+              null
+            }
   
             {/* Price, Age Limit, Validity */}
             <div className="flex flex-col md:flex-row mt-6 gap-4 text-base md:text-lg">
               <p className="font-semibold">
                 Price: <span className="text-deepPurple">{price}</span>
               </p>
-              {!isTaxSaver && (
-                <p className="font-semibold">
-                  Age Limit: <span className="text-deepPurple">{ageLimit}</span>
-                </p>
-              )}
+              <p className="font-semibold">
+                Age Limit: <span className="text-deepPurple">{isTaxSaver ? 'No Age Limit' : ageLimit}</span>
+              </p>
               <p className="font-semibold">
                 Validity: <span className="text-deepPurple">{validity}</span>
               </p>
@@ -319,54 +369,5 @@ export const PlanDetails: FC<PlanDetailsProps> = ({
           </div>
         </div>
       </div>
-    );
-};
-
-interface TableTemplateProps<T> {
-  heading: string;
-  data: T[];
-  columns: ColumnDef<T, any>[];
-  sharedValues?: any[];
-}
-
-const tableData = {
-  headers: ["Feature", "Others", "CarePass Tax Saver (₹5,000)"],
-  rows: [
-    ["Cost", "Higher pricing, limited network", "Access to India's largest healthcare network"],
-    ["Coverage", "Basic services only", "Comprehensive health checks + Teleconsultations"],
-    ["Accessibility", "Physical coupons required", "Digital e-wallet with flexible plans"],
-    ["Digital Platform", "Limited digital features", "Full web & App functionality"],
-    ["Family Benefits", "Individual plans only", "Extended family coverage"],
-    ["Value Adds", "Few or no discounts", "Multi-category discounts (tests, pharmacy, AHC)"],
-    ["Support", "Limited communication channels", "24/7 omni-channel support"],
-  ],
-};
-
-export const TableTemplate = <T,>({ heading, data, columns, sharedValues }: TableTemplateProps<T>) => {
-    return (
-        <div className="pt-[100px]" style={{ background: '#FCF9FF', }}>
-            <h2 className="text-2xl font-bold text-deepPurple mb-4 text-center">{heading}</h2>
-            <div className=" max-w-[1200px] mx-auto w-full p-[20px] flex  flex-col md:flex-row items-center justify-center md:items-center ">
-                {/* Left Section with Image */}
-                <div className="max-w-[412px] w-full flex-shrink-0">
-                    <img
-                        src={FourDoctor}
-                        alt="Table Image"
-                        className="w-full object-cover rounded-lg"
-                    />
-                </div>
-                {/* Right Section with Table */}
-                <div className="flex-1 w-full">
-                    <ReusableTable
-                        data={data}
-                        columns={columns}
-                        sharedValues={sharedValues}
-                        headerStyles="bg-deepPurple text-white"
-                        footerStyles="bg-deepPurple text-white"
-                    />
-                </div>
-
-            </div>
-        </div>
     );
 };

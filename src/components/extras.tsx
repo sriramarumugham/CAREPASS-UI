@@ -18,6 +18,12 @@ import { PiHandCoinsFill } from "react-icons/pi";
 import { BiSupport } from "react-icons/bi";
 import { LuHeartPulse } from "react-icons/lu";
 import AboutUsTwo from '../assets/about-us-2.png';
+import TaxSaver from '../assets/Tax.png';
+import Silver from '../assets/Silver.png';
+import Gold from '../assets/Gold.png';
+import Platinum from '../assets/Platinum.png';
+import YouPay from '../assets/Give.png';
+import YouGet from '../assets/Take.png';
 
 export const Section2 = () => {
     return (
@@ -319,14 +325,15 @@ export const AboutSection3 = () => {
       <div className="flex flex-col md:flex-row max-w-[1200px] gap-8">
         <div className="md:w-1/3 flex justify-center">
         <img
-                        src={HeartGrafti}
-                        alt="Care Across India"
-                        className="w-full object-fit max-w-[300px]"
-                    />
+              src={HeartGrafti}
+              alt="Care Across India"
+              className="w-full object-fit max-w-[300px]"
+          />
         </div>
 
         <div className="flex flex-col md:w-2/3 gap-6">
-          <h2 className="text-purple-900 text-2xl font-light md:text-3xl md:leading-8">
+          
+          <h2 className="text-black-900 text-2xl font-bold md:text-3xl md:leading-8">
             Why Choose CarePass?
           </h2>
 
@@ -336,11 +343,11 @@ export const AboutSection3 = () => {
               return (
                 <div key={index} className="flex items-start gap-4">
                   <div className="mt-1">
-                    <IconComponent className="w-6 h-6 text-purple-900" />
+                    <IconComponent className="w-6 h-6 text-black-900" />
                   </div>
                   <div>
                     <p className="text-base md:text-md leading-7">
-                      <span className="text-purple-900 font-semibold">
+                      <span className="text-black-900 font-semibold">
                         {feature.title}:{' '}
                       </span>
                       {feature.description}
@@ -518,7 +525,8 @@ export const Section7 = () => {
       },
       {
         title: "Lowest Premiums:",
-        description: "Exceptional value with Gold and Platinum plans at the most competitive rates.",
+        description:
+          "Exceptional value with Gold and Platinum plans at the most competitive rates.",
         icon: <FaDollarSign className="text-deepPurple text-3xl" />,
       },
       {
@@ -528,70 +536,76 @@ export const Section7 = () => {
       },
       {
         title: "Health Benefits and Exclusive Savings:",
-        description: "Enjoy exclusive savings on Annual Health checks, Pharmacy purchases, diagnostic tests from premium hospitals, and more.",
+        description:
+          "Enjoy exclusive savings on Annual Health checks, Pharmacy purchases, diagnostic tests from premium hospitals, and more.",
         icon: <FaTag className="text-deepPurple text-3xl" />,
       },
       {
         title: "Tax Benefits:",
-        description: "Take advantage of tax benefits under Section 80D, providing additional savings on your healthcare costs.",
+        description:
+          "Take advantage of tax benefits under Section 80D, providing additional savings on your healthcare costs.",
         icon: <RiDiscountPercentFill className="text-deepPurple text-3xl" />,
       },
     ];
   
     return (
       <div className="px-[20px] flex items-center justify-center">
-        <div className="flex flex-col max-w-[1200px] py-[30px] md:py-[30px] gap-4 md:gap-12">
+        <div className="flex flex-col max-w-[1200px] py-[30px] md:py-[30px] gap-6">
           <p className="font-bold text-xl md:text-4xl mx-auto text-black">
             Why Choose CarePass?
           </p>
-          <div>
-            <div className="flex flex-col md:flex-row gap-4 md:gap-12">
-              <div className="flex flex-col gap-3">
-                <ul className="space-y-6">
-                  {benefits.map((benefit, index) => (
-                    <li key={index} className="flex items-center space-x-4">
-                      <span className="text-black">{benefit.icon}</span>
-                      <div>
-                        <h2 className="text-xl font-semibold text-black">
-                          {benefit.title}
-                        </h2>
-                        <p className="text-gray-700">{benefit.description}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="border-2 border-gray-200 rounded-md overflow-hidden cursor-pointer hover:border-gray-400 transition-colors">
-                <iframe 
-                  src="https://drive.google.com/file/d/1bF6cerGu_0Gh-_PsySWyQg1yECQcLs_F/preview"
-                  className="w-full h-[480px] rounded-lg border-2 border-gray-200 cursor-pointer hover:border-gray-300 transition-colors"
-                  allow="autoplay"
-                  onClick={() => setIsExpanded(true)}
-                />
-              </div>
+          <div className="flex flex-col md:flex-row gap-6">
+            {/* Content Section */}
+            <div className="flex-1 flex flex-col gap-4">
+              <ul className="space-y-6">
+                {benefits.map((benefit, index) => (
+                  <li key={index} className="flex items-center space-x-4">
+                    <span className="text-black">{benefit.icon}</span>
+                    <div>
+                      <h2 className="text-xl font-semibold text-black">
+                        {benefit.title}
+                      </h2>
+                      <p className="text-gray-700">{benefit.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+  
+            {/* Video Section */}
+            <div className="flex-1 border-2 border-gray-200 rounded-md overflow-hidden cursor-pointer hover:border-gray-400 transition-colors">
+              <iframe
+                src="https://drive.google.com/file/d/1bF6cerGu_0Gh-_PsySWyQg1yECQcLs_F/preview"
+                className="w-full h-[300px] md:h-[400px] lg:h-[480px]"
+                allow="autoplay"
+                onClick={() => setIsExpanded(true)}
+              />
             </div>
           </div>
         </div>
+  
+        {/* Full-Screen Video Modal */}
         {isExpanded && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="relative w-full max-w-4xl">
-            <button 
-              onClick={() => setIsExpanded(false)}
-              className="absolute -top-10 right-0 text-white hover:text-gray-200"
-            >
-              <X size={24} />
-            </button>
-            <iframe 
-              src="https://drive.google.com/file/d/1bF6cerGu_0Gh-_PsySWyQg1yECQcLs_F/preview"
-              className="w-full h-[600px] rounded-lg"
-              allow="autoplay"
-            />
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <div className="relative w-full max-w-4xl">
+              <button
+                onClick={() => setIsExpanded(false)}
+                className="absolute -top-10 right-0 text-white hover:text-gray-200"
+              >
+                <X size={24} />
+              </button>
+              <iframe
+                src="https://drive.google.com/file/d/1bF6cerGu_0Gh-_PsySWyQg1yECQcLs_F/preview"
+                className="w-full h-[600px] rounded-lg"
+                allow="autoplay"
+              />
+            </div>
           </div>
-        </div>
-      )}
+        )}
       </div>
     );
   };
+  
 
   export const HealthControlCTA = () => {
     return (
@@ -1402,8 +1416,8 @@ export const Section7 = () => {
   export const PlanComparison = ({features, heading, title}) => {  
     return (
       <div className="pt-[50px] pb-[50px]" style={{ background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)' }}>
-        <p className="text-2xl sm:text-3xl font-semibold text-deepPurple text-center mb-5">{heading}</p>
-        <div className="max-w-[1200px] mx-auto w-full p-[20px] flex flex-col md:flex-row items-center justify-center md:items-start gap-12">
+        <p className="text-3xl md:text-4xl font-bold text-center text-black mb-12">{heading}</p>
+        <div className="max-w-[1200px] mx-auto w-full flex flex-col md:flex-row items-center justify-center md:items-start gap-12">
           {/* Left Section with Image */}
           <div className="max-w-[300px] w-full flex-shrink-0 flex items-center justify-center pt-[50px]">
             <img
@@ -1418,8 +1432,8 @@ export const Section7 = () => {
             <div className="flex justify-center items-start gap-1">
               {/* Feature Names Column */}
               <div className="w-1/3 border border-gray-200 rounded-lg bg-white">
-                <div className="h-16 flex items-center p-4 border-b border-gray-200">
-                  <h3 className="font-medium text-gray-600">Feature/Aspect</h3>
+                <div className="h-16 flex items-center p-4 border-b border-gray-200 bg-[#EBEDF0]">
+                  <h3 className="font-medium text-black-600">Feature/Aspect</h3>
                 </div>
                 {features.map((feature, index) => (
                   <div 
@@ -1428,13 +1442,13 @@ export const Section7 = () => {
                       index !== features.length - 1 ? 'border-b border-gray-200' : ''
                     }`}
                   >
-                    <p className="text-gray-600">{feature.name}</p>
+                    <p className="text-black-600 font-bold">{feature.name}</p>
                   </div>
                 ))}
               </div>
   
               {/* Main Plan Column */}
-              <div className="w-1/3 transform transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl rounded-lg bg-white border-2 border-deepPurple">
+              <div className="w-1/3 transform transition-all duration-300 scale-105 shadow-2xl hover:-translate-y-2 hover:scale-110 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] rounded-lg bg-white border-2 border-deepPurple">
                 <div className="h-16 flex flex-col items-center justify-center bg-deepPurple rounded-t-lg transition-colors duration-300 hover:bg-indigo-800">
                   <div className="flex items-center gap-2">
                     <span className="text-white animate-pulse">★</span>
@@ -1450,15 +1464,15 @@ export const Section7 = () => {
                       index !== features.length - 1 ? 'border-b border-gray-200' : ''
                     }`}
                   >
-                    <p className="text-gray-800">{feature.main}</p>
+                    <p className="text-black-600">{feature.main}</p>
                   </div>
                 ))}
               </div>
   
               {/* Other Column */}
               <div className="w-1/3 border border-gray-200 rounded-lg bg-white">
-                <div className="h-16 flex items-center p-4 border-b border-gray-200">
-                  <h3 className="font-medium text-gray-600">Other</h3>
+                <div className="h-16 flex items-center p-4 border-b border-gray-200 bg-[#EBEDF0]">
+                  <h3 className="font-medium text-black-600">Other</h3>
                 </div>
                 {features.map((feature, index) => (
                   <div 
@@ -1467,7 +1481,7 @@ export const Section7 = () => {
                       index !== features.length - 1 ? 'border-b border-gray-200' : ''
                     }`}
                   >
-                    <p className="text-gray-600">{feature.other}</p>
+                    <p className="text-black-600">{feature.other}</p>
                   </div>
                 ))}
               </div>
@@ -1646,9 +1660,7 @@ export const Section7 = () => {
     return (
       <div className="relative py-12 bg-[#FCF9FF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-center text-deepPurple mb-12">
-            How it Works
-          </h1>
+          <p className="text-3xl md:text-4xl font-bold text-center text-black mb-12">How it Works</p>
 
           <div className="grid md:grid-cols-2 gap-12 items-start">
             {/* Left side: Content */}
@@ -1767,10 +1779,8 @@ export const AboutUsOurWellnessApp = () => {
 
   return (
     <div className="py-12 px-6 md:px-12" style={{ background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)' }}>
-      <h1 className="text-3xl md:text-4xl font-bold text-center text-purple-900 mb-8">
-        About Our Wellness App
-      </h1>
-      <div className="py-12 md:py-16 flex items-center justify-center px-[20px]">
+      <p className="text-3xl md:text-4xl font-bold text-center text-black mb-12">About Our Wellness App</p>
+      <div className="py-12 md:py-4 flex items-center justify-center px-[20px]">
       <div className="flex flex-col md:flex-row w-full max-w-[1200px] gap-8">
           {/* Text Section */}
           <div className="flex items-center justify-center flex-col md:w-1/2 gap-4">
@@ -1781,9 +1791,9 @@ export const AboutUsOurWellnessApp = () => {
                 return (
                   <li key={index} className="flex items-start gap-4">
                     <div className="mt-1">
-                      <IconComponent className="w-6 h-6 text-purple-900" />
+                      <IconComponent className="w-6 h-6 text-black-900" />
                     </div>
-                    <span className="text-lg text-gray-700">
+                    <span className="text-lg text-black-700">
                       <strong>{boldText}:</strong> {restText}
                     </span>
                   </li>
@@ -1803,7 +1813,7 @@ export const AboutUsOurWellnessApp = () => {
       </div>
       </div>
       <div className="text-center mt-8">
-        <p className="text-lg text-gray-800 font-semibold">
+        <p className="text-lg text-black-800 font-semibold">
           Healthy. Happy. Covered.
         </p>
       </div>
@@ -1866,7 +1876,7 @@ export const ProductCards = () => {
         "Unlock benefits worth over ₹17,000+.",
       ],
       link: "/tax-saver",
-      Icon: CiDiscount1
+      Icon: TaxSaver
     },
     {
       title: "CarePass Silver Plan",
@@ -1875,7 +1885,7 @@ export const ProductCards = () => {
         "Unlock benefits worth over ₹30,000+.",
       ],
       link: "/silver-plan",
-      Icon: MdHealthAndSafety
+      Icon: Silver
     },
     {
       title: "CarePass Gold Plan",
@@ -1884,7 +1894,7 @@ export const ProductCards = () => {
         "Unlock benefits worth over ₹2,50,000+.",
       ],
       link: "/gold-plan",
-      Icon: FaHeartbeat
+      Icon: Gold
     },
     {
       title: "CarePass Platinum Plan",
@@ -1893,7 +1903,7 @@ export const ProductCards = () => {
         "Unlock benefits worth over ₹30,00,000+.",
       ],
       link: "/super-top-up",
-      Icon: MdOutlineMedicalServices
+      Icon: Platinum
     },
   ];
 
@@ -1901,7 +1911,7 @@ export const ProductCards = () => {
     <div className="py-12 px-4 md:px-12" style={{
       background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)',
   }}>
-      <h1 className="text-3xl font-bold text-center text-purple-900 mb-8">
+      <h1 className="text-3xl font-bold text-center text-black-900 mb-8">
         Explore Our Products
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1914,7 +1924,12 @@ export const ProductCards = () => {
             >
               {/* Background Icon */}
               <div className="absolute top-0 right-0 w-full h-full flex justify-end items-center opacity-15 group-hover:opacity-40 transition-opacity duration-300">
-                <IconComponent className="w-32 h-32 text-purple-900 mr-4" />
+                {/* <IconComponent className="w-32 h-32 text-purple-900 mr-4" /> */}
+                <img
+                  src={product.Icon}
+                  alt={`${product.title} icon`}
+                  className="w-32 h-32 mr-3"
+                />
               </div>
               
               <h2 className="text-xl font-bold text-black-900 mb-4 relative z-10">
@@ -1981,27 +1996,39 @@ export const ComparisonDemo = () => {
   );
 }
 
-export const BenefitsBreakdown = ({ youPay, benefitsAmount, title1, title2, savings, benefits1, benefits2, showFooter, onBuyNow }) => {
-
+export const BenefitsBreakdown = ({ youPay, benefitsAmount, title1, title2, savings, benefits1, benefits2, showFooter, showCoverage }) => {
   return (
-    <div className="py-12 px-6 md:px-12 bg-[#FCF9FF]">
-      <div className="max-w-[1200px] mx-auto w-full p-6">
+    <div className="py-4 px-6 md:px-12" style={{ background: "linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)" }}>
+      <div className="max-w-[900px] mx-auto w-full p-6">
       <p className="text-2xl sm:text-3xl font-semibold text-deepPurple text-center mb-5">Breakdown of benefits</p>
         
         {/* Top Cards */}
         <div className="flex justify-center gap-4 mb-8">
           <div className="flex items-center gap-2 px-6 py-3 rounded-full border border-purple-200 bg-white">
-            <PiHandCoinsFill className="text-purple-600 w-5 h-5" />
-            <span>You Pay ₹{youPay}</span>
+            {/* <YouPay className="text-purple-600 w-5 h-5" /> */}
+            <img
+              src={YouPay}
+              alt="you pay"
+              className="object-contain pr-4"
+            />
+            <span>You Pay <br /><span className="text-deepPurple font-bold">₹{youPay}</span></span>
           </div>
           <div className="flex items-center gap-2 px-6 py-3 rounded-full border border-purple-200 bg-white">
-            <TbRosetteDiscountCheckFilled className="text-purple-600 w-5 h-5" />
-            <span>Get Benefits Worth ₹{benefitsAmount}</span>
+            <img
+              src={YouGet}
+              alt="you get"
+              className="object-contain pr-4"
+            />
+            <span>Get Benefits Worth <br /><span className="text-deepPurple font-bold">₹{benefitsAmount}</span></span>
           </div>
           {savings ?
             <div className="flex items-center gap-2 px-6 py-3 rounded-full border border-purple-200 bg-white">
-              <TbDiscount className="text-purple-600 w-5 h-5" />
-              <span>{savings}</span>
+              <img
+                src={YouGet}
+                alt="you get"
+                className="object-contain pr-4"
+              />
+              <span>Savings: <br /><span className="text-deepPurple font-bold">{savings}</span></span>
             </div>
             :
             null
@@ -2016,8 +2043,8 @@ export const BenefitsBreakdown = ({ youPay, benefitsAmount, title1, title2, savi
             {benefits1.map((item, index) => (
               <div key={index} className="border-b last:border-b-0">
                 <div className="flex justify-between items-center py-3">
-                  <span className="text-gray-700 font-medium">{item.service}</span>
-                  <span className="font-medium">₹ {item.amount}</span>
+                  <span className="text-black-800 font-medium">{item.service}</span>
+                  <span className="text-black-800 font-medium ml-auto">₹ {item.amount}</span>
                 </div>
                 {item.subItems && (
                   <div className="pl-6 mb-3">
@@ -2028,9 +2055,9 @@ export const BenefitsBreakdown = ({ youPay, benefitsAmount, title1, title2, savi
                       >
                         <div className="flex items-center gap-2">
                           <FaRegDotCircle className="w-4 h-4 text-purple-600" />
-                          <span className="text-gray-600">{subItem.service}</span>
+                          <span className="text-black-600">{subItem.service}</span>
                         </div>
-                        {subItem.amount ? <span className="text-gray-600">₹ {subItem.amount}</span> : null}
+                        {subItem.amount ? <span className="text-black-600">₹ {subItem.amount}</span> : null}
                       </div>
                     ))}
                   </div>
@@ -2048,7 +2075,7 @@ export const BenefitsBreakdown = ({ youPay, benefitsAmount, title1, title2, savi
             {benefits2.map((item, index) => (
               <div key={index} className="border-b last:border-b-0">
                 <div className="flex justify-between items-center py-3">
-                  <span className="text-gray-700 font-medium">{item.service}</span>
+                  <span className="text-black-700 font-medium">{item.service}</span>
                   <span className="font-medium">₹ {item.amount}</span>
                 </div>
                 {item.subItems && (
@@ -2060,9 +2087,9 @@ export const BenefitsBreakdown = ({ youPay, benefitsAmount, title1, title2, savi
                       >
                         <div className="flex items-center gap-2">
                           <FaRegDotCircle className="w-4 h-4 text-purple-600" />
-                          <span className="text-gray-600">{subItem.service}</span>
+                          <span className="text-black-600">{subItem.service}</span>
                         </div>
-                        {subItem.amount ? <span className="text-gray-600">₹ {subItem.amount}</span> : null}
+                        {subItem.amount ? <span className="text-black-600">₹ {subItem.amount}</span> : null}
                       </div>
                     ))}
                   </div>
@@ -2075,26 +2102,26 @@ export const BenefitsBreakdown = ({ youPay, benefitsAmount, title1, title2, savi
           null
         }
 
-        {/* Buy Now Button */}
-        <button onClick={onBuyNow} className="w-full bg-purple-800 text-white py-4 rounded-lg mb-6 hover:bg-purple-700 transition-colors">
-          Buy Now
-        </button>
-
         {/* Footer Info */}
         {showFooter ?
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-black-600">
             <div className="flex items-center gap-2">
               <BsFillPatchCheckFill className="text-purple-600 w-4 h-4" />
-              <span>Validity: 1 year</span>
+              <span className="text-black-600">Validity: <span className="text-black-600 font-bold">1 year</span></span>
             </div>
             <div className="flex items-center gap-2">
               <FaPeopleGroup className="text-purple-600 w-4 h-4" />
-              <span>Age Limit: 18 to 60 years</span>
+              <span className="text-black-600">Age Limit: {showCoverage ? <span className="text-black-600 font-bold">18 to 60 years</span> : 
+              <span className="text-black-600 font-bold">No Age Limit</span>}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <FaPeopleRoof className="text-purple-600 w-4 h-4" />
-              <span>Coverage: Self, spouse, and two children</span>
-            </div>
+            {showCoverage ?
+              <div className="flex items-center gap-2">
+                <FaPeopleRoof className="text-purple-600 w-4 h-4" />
+                <span className="text-black-600">Coverage: <span className="text-black-600 font-bold">Self, spouse, and two children</span></span>
+              </div>
+              :
+              null
+            }
           </div>
           :
           null
@@ -2141,8 +2168,7 @@ export const CarePassTable = () => {
     {
       name: "CarePass Tax Saver",
       label: "Tax Saver",
-      icon: CiHeart,
-      iconColor: "#6B7280",
+      iconImage: TaxSaver,
       features: [
         { text: "E-wallet. ₹5,000 for AHC.", strike: false },
         { text: "Annual Health checks", strike: false },
@@ -2160,8 +2186,7 @@ export const CarePassTable = () => {
     {
       name: "CarePass Silver Plan",
       label: "Silver",
-      icon: LuHeartPulse,
-      iconColor: "#9CA3AF",
+      iconImage: Silver, // Replace with your image path
       features: [
         { text: "E-wallet. ₹10,000 with pre-defined sub limits", strike: false },
         { text: "In-clinic Doctor consultation", strike: false },
@@ -2179,8 +2204,7 @@ export const CarePassTable = () => {
     {
       name: "CarePass Gold Plan",
       label: "Gold",
-      icon: FaShieldHeart,
-      iconColor: "#EAB308",
+      iconImage: Gold, // Replace with your image path
       features: [
         { text: "E-wallet. ₹15,000 for AHC & Primary care", strike: false },
         { text: "Annual Health checks", strike: false },
@@ -2198,8 +2222,7 @@ export const CarePassTable = () => {
     {
       name: "CarePass Platinum Plan",
       label: "Platinum",
-      icon: GiLifeSupport,
-      iconColor: "#7C3AED",
+      iconImage: Platinum, // Replace with your image path
       features: [
         { text: "E-wallet. ₹15,000 for AHC & Primary care", strike: false },
         { text: "Annual Health checks", strike: false },
@@ -2219,8 +2242,8 @@ export const CarePassTable = () => {
   return (
     <div className="pt-12 pb-12" style={{ background: "#FCF9FF" }}>
       <div className="max-w-6xl mx-auto w-full p-5">
-        <div className='px-[20px] flex items-center justify-center mb-10'>
-          <p className="font-bold text-xl md:text-4xl mx-auto">Explore our offerings below: </p>
+        <div className="px-[20px] flex items-center justify-center mb-10">
+          <p className="font-bold text-xl md:text-4xl mx-auto">Explore our offerings below</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {features.map((plan, columnIndex) => (
@@ -2229,11 +2252,11 @@ export const CarePassTable = () => {
               className="border border-gray-200 rounded-lg bg-white transform transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:border-2 hover:border-purple-800 relative z-10"
             >
               <div className="p-6 border-b border-gray-200 flex flex-col items-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-purple-50 flex items-center justify-center">
-                  <plan.icon
-                    size={32}
-                    color={plan.iconColor}
-                    className="stroke-2"
+                <div className="w-25 h-25 rounded-full flex items-center justify-center">
+                  <img
+                    src={plan.iconImage}
+                    alt={`${plan.label} icon`}
+                    className="w-24 h-24"
                   />
                 </div>
                 <div className="text-center">
@@ -2265,4 +2288,5 @@ export const CarePassTable = () => {
     </div>
   );
 };
+
 
