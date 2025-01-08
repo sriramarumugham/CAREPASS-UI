@@ -159,6 +159,7 @@ const SilverPlanPage = () => {
                     imgSrc={SilverHeart}
                     onBuyNow={handleBuyNow}
                     isSilverPlan={true}
+                    isTaxSaver={true}
                 />
             </div>
 

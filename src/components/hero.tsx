@@ -12,7 +12,6 @@ import silver_image from '../assets/carepass_silver.png';
 import gold_image from '../assets/carepass_gold.png';
 import platinum_image from '../assets/carepass_platinum.png';
 import { Carousel } from "@material-tailwind/react";
-import useCartStore from "../store/cart-store";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../utils/routes";
 import { GiMedicines } from "react-icons/gi";
@@ -20,8 +19,12 @@ import { FaUserDoctor } from "react-icons/fa6";
 import { TbDental } from "react-icons/tb";
 import { FaDiagnoses } from "react-icons/fa";
 import { PiSunglassesThin } from "react-icons/pi";
+import { CiDiscount1 } from "react-icons/ci";
+import { RiHandCoinLine } from "react-icons/ri";
+import { IoWalletOutline } from "react-icons/io5";
+import { FaRegHospital } from "react-icons/fa";
 
-const AnimatedBenifites = () => {
+const AnimatedBenifites11 = () => {
 
     const Benifits = [
         {
@@ -70,35 +73,103 @@ const AnimatedBenifites = () => {
     );
 }
 
-const products = [
-    {
-        productId: "product2",
-        productName: "CarePass Silver",
-        price: 5000
-    },
-    {
-        productId: "product3",
-        productName: "CarePass Gold",
-        price: 10000
-    },
-    {
-        productId: "product4",
-        productName: "CarePass Platinum",
-        price: 15000
-    }
-]
+const AnimatedBenefits = () => {
+    const benefits = [
+        {
+            icon: <CiDiscount1 className="w-4 h-4" />,
+            description: 'Tax benefit under 80D',
+            position: 'top-20 left-1/4'
+        },
+        {
+            icon: <GiMedicines className="w-4 h-4" />,
+            description: 'Discounts on Pharmacy Purchase',
+            position: 'top-[35%] right-0'
+        },
+        {
+            icon: <FaUserDoctor className="w-4 h-4" />,
+            description: 'Unlimited Tele-consultation',
+            position: 'top-1/2 right-0'
+        },
+        {
+            icon: <IoWalletOutline className="w-4 h-4" />,
+            description: 'Wallet mount ₹5000 for PHC',
+            position: 'bottom-1/4 right-0'
+        },
+        {
+            icon: <FaRegHospital className="w-4 h-4" />,
+            description: 'Follow up HC for dependents up to 60% Discounts',
+            position: 'bottom-12 left-1/2'
+        },
+        {
+            icon: <RiHandCoinLine className="w-4 h-4" />,
+            description: 'Earn Rewards and TRU coins',
+            position: 'bottom-12 left-0'
+        },
+    ];
+
+    const [activeIndices, setActiveIndices] = useState([0]);
+    const [fade, setFade] = useState({});
+
+    useEffect(() => {
+        // Initialize all benefits with opacity 0
+        const initialFade = benefits.reduce((acc, _, index) => {
+            acc[index] = 'opacity-0';
+            return acc;
+        }, {});
+        setFade(initialFade);
+
+        // Sequence to show benefits one by one
+        let currentIndex = 0;
+        const interval = setInterval(() => {
+            setFade(prev => ({
+                ...prev,
+                [currentIndex]: 'opacity-100'
+            }));
+            currentIndex = (currentIndex + 1) % benefits.length;
+            
+            // Once all benefits are shown, keep them visible
+            if (currentIndex === 0) {
+                clearInterval(interval);
+            }
+        }, 800);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div className="relative w-full h-full">
+            {/* Mascot Image Container */}
+            <div className="relative">
+                <img
+                    src={MascotGif}
+                    className="w-full max-w-[663px] max-h-[521px] md:w-auto md:max-w-[663px] relative md:left-[-100px]"
+                    alt="Hero Image"
+                />
+                
+                {/* Benefits positioned around the image */}
+                {benefits.map((benefit, index) => (
+                    <div
+                        key={index}
+                        className={`absolute ${benefit.position} ${fade[index]} transition-opacity duration-500`}
+                    >
+                        <div className="bg-white rounded-lg shadow-md p-3 flex gap-3 items-center min-w-[237px] min-h-[48px] max-w-[237px]">
+                            <div className="text-deepPurple">
+                                {benefit.icon}
+                            </div>
+                            <p className="font-extralight text-xs">
+                                {benefit.description}
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
 
 const HeroSection = () => {
 
-    const { addToCart } = useCartStore();
     const navigate = useNavigate();
-
-    const handleBuyNow = (index: number) => {
-        const product = products[index];
-        const { productId, productName, price } = product
-        addToCart({ productId, productName, price });
-        navigate(ROUTES.CART, { relative: 'path' })
-    };
 
     const handleNavigation = (route: string) => {
         navigate(route, { relative: 'path' })
@@ -107,7 +178,7 @@ const HeroSection = () => {
     const Plan1 = () => {
         return (
             <div className="px-[20px] py-[20px] flex flex-col lg:flex-row items-center justify-center gap-2 ">
-                <div className="relative">
+                {/* <div className="relative">
                     <img
                         src={MascotGif}
                         className="w-full max-w-[663px] max-h-[521px] md:w-auto md:max-w-[663px] relative md:left-[-100px]"
@@ -116,6 +187,10 @@ const HeroSection = () => {
                     <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 md:left-[30%] md:bottom-20 md:transform-none">
                         <AnimatedBenifites />
                     </div>
+                </div> */}
+
+                <div className="relative">
+                    <AnimatedBenefits />
                 </div>
     
                 <div className="bg-white rounded-xl max-w-[521px] px-[20px] md:px-[10px] py-[13px]  lg:p-9 flex flex-col gap-[10px] h-fit">

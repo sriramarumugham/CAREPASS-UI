@@ -46,7 +46,7 @@ const SuperTopUpPage = () => {
     },
     {
       service: "Primary Care",
-      amount: "15,400",
+      amount: "25,400",
       subItems: [
         { service: "Doctor Consultation", amount: "12,400" },
         { service: "Doctor-Prescribed Medicines", amount: "6,000" },
