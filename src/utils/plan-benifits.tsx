@@ -12,7 +12,6 @@ import { FaUserShield, FaHeartbeat, FaRegHospital } from "react-icons/fa";
 import { BsQrCodeScan } from "react-icons/bs";
 import { FaPersonCircleCheck } from "react-icons/fa6";
 import { RiDiscountPercentFill } from "react-icons/ri";
-import { GiHealthNormal } from "react-icons/gi";
 import { IoPersonAddOutline } from "react-icons/io5";
 import { CiDumbbell } from "react-icons/ci";
 

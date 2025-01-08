@@ -1,23 +1,16 @@
 
-import { PlanDetails } from './tax-saver'
-import TrustedPartnersSection from '../components/trusted-partners'
-import ContactUsSection from '../components/contact-us'
-import FooterSection from '../components/footer'
-import Gradient from '../assets/gradient.png'
-import Navbar from '../components/nav-bar'
-import { ROUTES } from '../utils/routes'
-import useCartStore from '../store/cart-store'
-import { useNavigate } from 'react-router-dom'
-
-import SilverHeart from '../assets/gold-plan.png'
-import { goldPlanGrid, ResponsiveGrid } from '../utils/plan-benifits'
-import { BenefitsBreakdown, HealthcareEcosystem, HowItWorks, AboutUsOurWellnessApp, PlanComparison } from '../components/extras'
-import { FaHeartbeat, FaClinicMedical, FaTooth } from "react-icons/fa";
-import { IoGlasses } from "react-icons/io5";
-import { FaUserDoctor, FaShieldHeart } from "react-icons/fa6";
-import { RiDiscountPercentFill } from "react-icons/ri";
-import { MdOutlineMobileFriendly } from "react-icons/md";
-import { GiMedicines } from "react-icons/gi";
+import { PlanDetails } from './tax-saver';
+import TrustedPartnersSection from '../components/trusted-partners';
+import ContactUsSection from '../components/contact-us';
+import FooterSection from '../components/footer';
+import Gradient from '../assets/gradient.png';
+import Navbar from '../components/nav-bar';
+import { ROUTES } from '../utils/routes';
+import useCartStore from '../store/cart-store';
+import { useNavigate } from 'react-router-dom';
+import SilverHeart from '../assets/gold-plan.png';
+import { goldPlanGrid, ResponsiveGrid } from '../utils/plan-benifits';
+import { BenefitsBreakdown, HowItWorks, AboutUsOurWellnessApp, PlanComparison } from '../components/extras';
 
 const themeColors = {
     primary: "text-deepPurple",
@@ -104,7 +97,7 @@ const GoldPlan = () => {
         },
         {
           service: "Primary Care",
-          amount: "15,400",
+          amount: "25,400",
           subItems: [
             { service: "Doctor Consultation", amount: "12,400" },
             { service: "Doctor-Prescribed Medicines", amount: "6,000" },
