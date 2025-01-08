@@ -11,7 +11,7 @@ import platinum_image from '../assets/carepass_platinum.png';
 import { platinumPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
 import { BenefitsBreakdown, HealthcareEcosystem, HowItWorks, PlanComparison, AboutUsOurWellnessApp } from "../components/extras";
 
-const SuperTopUpPage = () => {
+const PlatinumPlan = () => {
 
     const themeColors = {
         primary: "text-deepPurple",
@@ -26,7 +26,8 @@ const SuperTopUpPage = () => {
     { name: 'Extended Financial Protection', main: '₹2.5L+ for major expenses', other: 'Lower SI or higher premiums' },
     { name: 'Peace of Mind', main: 'All-in-one, simplified plan', other: 'Multiple policies, complex management' },
     { name: 'Flexibility & Customization', main: 'Customizable, flexible top-ups', other: 'Limited flexibility, fewer options' },
-    { name: 'Cost-Effectiveness', main: 'Affordable, value-packed benefits', other: 'Less value for separate products' }
+    { name: 'Cost-Effectiveness', main: 'Affordable, value-packed benefits', other: 'Less value for separate products' },
+    { name: 'Support', main: 'Omni-channel support', other: 'Limited communication channels' }
   ];
 
   const { addToCart } = useCartStore();
@@ -39,14 +40,14 @@ const SuperTopUpPage = () => {
   const breakdownBenefits = [
     {
       service: "Preventive Care",
-      amount: "8,000",
+      amount: "",
       subItems: [
-        { service: "Preventive Health Check", amount: "" }
+        { service: "Preventive Health Check", amount: "8,000" }
       ],
     },
     {
       service: "Primary Care",
-      amount: "25,400",
+      amount: "",
       subItems: [
         { service: "Doctor Consultation", amount: "12,400" },
         { service: "Doctor-Prescribed Medicines", amount: "6,000" },
@@ -55,7 +56,7 @@ const SuperTopUpPage = () => {
     },
     {
       service: "Specialty Care",
-      amount: "7,000",
+      amount: "",
       subItems: [
         { service: "Dental Care", amount: "4,200" },
         { service: "Vision Care", amount: "2,800" },
@@ -63,9 +64,9 @@ const SuperTopUpPage = () => {
     },
     {
       service: "Digital Health",
-      amount: "2,000",
+      amount: "",
       subItems: [
-        { service: "App Access", amount: "" },
+        { service: "App Access", amount: "2,000" },
       ],
     },
   ];
@@ -73,7 +74,7 @@ const SuperTopUpPage = () => {
   const breakdownBenefitsTwo = [
     {
       service: "Insurance Coverage",
-      amount: "20,50,000 / ₹ 32,50,000",
+      amount: "",
       subItems: [
         { service: "Critical Illness Coverage", amount: "2,50,000" },
         { service: "Health Insurance", amount: "3,00,000 / ₹ 5,00,000" },
@@ -82,7 +83,7 @@ const SuperTopUpPage = () => {
     },
     {
       service: "Tax Benefits",
-      amount: "15,000",
+      amount: "",
       subItems: [
         { service: "Section 80D Deduction", amount: "15,000" },
       ],
@@ -168,4 +169,4 @@ const SuperTopUpPage = () => {
   )
 }
 
-export default SuperTopUpPage
+export default PlatinumPlan

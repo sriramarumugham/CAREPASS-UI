@@ -183,7 +183,7 @@ const FieldArraySection: React.FC<{
                 onClick={appendBeneficiary}
                 className={`p-2 border rounded px-4 transition 
     ${fields.length >= field?.maxCount ?
-                        'bg-gray-300 text-gray-500 cursor-not-allowed' :
+                        'bg-gray-300 text-black-500 cursor-not-allowed' :
                         'border-deepPurple text-deepPurple bg-white hover:bg-deepPurple hover:text-white'}`}
                 disabled={fields.length >= field?.maxCount}
             >
@@ -329,12 +329,12 @@ export const Checkout = () => {
                                         {({ open }) => (
                                             <>
                                                 <DisclosureButton className="group flex w-full items-center justify-between">
-                                                    <span className={`text-sm font-medium ${open ? 'text-gray-800' : 'text-gray-600'}`}>
+                                                    <span className={`text-sm font-medium ${open ? 'text-black-800' : 'text-black-600'}`}>
                                                         {filteredProd?.productName} (x{item.quantity})
                                                     </span>
                                                     <ChevronDownIcon className={`size-5 fill-gray-600 transition-transform ${open ? 'rotate-180' : ''}`} />
                                                 </DisclosureButton>
-                                                <DisclosurePanel className="mt-2 text-sm text-gray-700 bg-gray-100 p-4 rounded-md">
+                                                <DisclosurePanel className="mt-2 text-sm text-black-700 bg-gray-100 p-4 rounded-md">
                                                     {[...Array(item.quantity)].map((_, index) => (
                                                         <DynamicForm
                                                             key={`${item.productId}-${index}`} // Unique key
@@ -435,12 +435,12 @@ const TotalPrice: React.FC<{
                 {({ open }) => (
                     <>
                         <Disclosure.Button className="group flex w-full items-center justify-between">
-                            <span className={`text-sm font-medium ${open ? 'text-gray-800' : 'text-gray-600'}`}>
+                            <span className={`text-sm font-medium ${open ? 'text-black-800' : 'text-black-600'}`}>
                                 <h3 className="font-light">Total: ₹{totalPrice}</h3>
                             </span>
                             <ChevronDownIcon className={`size-5 fill-gray-600 transition-transform ${open ? 'rotate-180' : ''}`} />
                         </Disclosure.Button>
-                        <Disclosure.Panel className="mt-2 text-sm text-gray-700 bg-gray-100 p-4 rounded-md" >
+                        <Disclosure.Panel className="mt-2 text-sm text-black-700 bg-gray-100 p-4 rounded-md" >
                             {products.map((product) => {
                                 const productTotal = calculateTotalPrice([product], formData, productData);
                                 return (

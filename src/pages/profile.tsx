@@ -33,7 +33,7 @@ const Tabs: React.FC<TabsComponentProps> = ({
                         onClick={() => setActiveTab(index)}
                         className={`flex-1 py-2 text-center ${activeTab === index
                             ? 'border-b-2 border-deepPurple text-deepPurple font-bold'
-                            : 'text-gray-10 hover:text-deepPurple'
+                            : 'text-black-10 hover:text-deepPurple'
                             }`}
                     >
                         {tab.title} {tab?.count}
@@ -90,8 +90,8 @@ const ActivePlans: React.FC<ActivePlansProps> = ({ plans }) => {
                             </div>
                             <div>
                                 <h2 className="text-lg font-semibold">{plan.userDetails.fullName}</h2>
-                                <p className="text-sm text-gray-700">{plan.userDetails.primaryEmail}</p>
-                                <p className="text-sm text-gray-700">{plan.userDetails.primaryMobile}</p>
+                                <p className="text-sm text-black-700">{plan.userDetails.primaryEmail}</p>
+                                <p className="text-sm text-black-700">{plan.userDetails.primaryMobile}</p>
                             </div>
                         </div>
 
@@ -122,8 +122,8 @@ const ActivePlans: React.FC<ActivePlansProps> = ({ plans }) => {
                                 <p className="font-semibold">Beneficiaries:</p>
                                 {plan.userDetails.beneficiaries.map((beneficiary, idx) => (
                                     <div key={idx} className="mt-1">
-                                        <p className="text-sm text-gray-700">{`Name: ${beneficiary.fullName}, Age: ${beneficiary.age}, Relation: ${beneficiary.relation}`}</p>
-                                        {beneficiary.city && <p className="text-sm text-gray-700">City: {beneficiary.city}</p>}
+                                        <p className="text-sm text-black-700">{`Name: ${beneficiary.fullName}, Age: ${beneficiary.age}, Relation: ${beneficiary.relation}`}</p>
+                                        {beneficiary.city && <p className="text-sm text-black-700">City: {beneficiary.city}</p>}
                                     </div>
                                 ))}
                             </div>
@@ -150,37 +150,37 @@ const OrderHistory: React.FC<ActivePlansProps> = ({ plans }) => {
                     >
                         <div className="flex justify-between gap-4">
                             <div className="flex-1">
-                                <p className="font-semibold text-sm text-gray-600">Purchase Date:</p>
-                                <p className="text-gray-800">{new Date(plan.purchasedDate).toLocaleDateString()}</p>
+                                <p className="font-semibold text-sm text-black-600">Purchase Date:</p>
+                                <p className="text-black-800">{new Date(plan.purchasedDate).toLocaleDateString()}</p>
                             </div>
                             <div className="flex-1">
-                                <p className="font-semibold text-sm text-gray-600">Transaction ID:</p>
-                                <p className="text-gray-800">{plan.transactionId}</p>
+                                <p className="font-semibold text-sm text-black-600">Transaction ID:</p>
+                                <p className="text-black-800">{plan.transactionId}</p>
                             </div>
                         </div>
 
                         <div className="flex justify-between gap-4">
                             <div className="flex-1">
-                                <p className="font-semibold text-sm text-gray-600">Primary User:</p>
-                                <p className="text-gray-800">{plan.userDetails.fullName}</p>
+                                <p className="font-semibold text-sm text-black-600">Primary User:</p>
+                                <p className="text-black-800">{plan.userDetails.fullName}</p>
                             </div>
                             <div className="flex-1">
-                                <p className="font-semibold text-sm text-gray-600">Plan ID:</p>
-                                <p className="text-gray-800">{plan.planId}</p>
+                                <p className="font-semibold text-sm text-black-600">Plan ID:</p>
+                                <p className="text-black-800">{plan.planId}</p>
                             </div>
                         </div>
 
                         <div className="pt-4  border-t border-gray-300 mt-4">
-                            <p className="font-semibold text-sm text-gray-600">Product Name:</p>
-                            <p className="text-gray-800">{plan.productName}</p>
+                            <p className="font-semibold text-sm text-black-600">Product Name:</p>
+                            <p className="text-black-800">{plan.productName}</p>
                         </div>
 
                         <div className="flex flex-col gap-4 mt-4  border-t border-gray-300">
-                            <p className="font-semibold text-sm mt-4  text-gray-600">Price Details:</p>
+                            <p className="font-semibold text-sm mt-4  text-black-600">Price Details:</p>
                             {plan.priceDetails.map((priceDetail, index) => (
                                 <div key={index} className="bg-teal-100  rounded-md shadow-sm">
-                                    <p className="font-semibold text-sm text-gray-600">Price:</p>
-                                    <p className="text-gray-800">{`₹${priceDetail.price}`}</p>
+                                    <p className="font-semibold text-sm text-black-600">Price:</p>
+                                    <p className="text-black-800">{`₹${priceDetail.price}`}</p>
                                 </div>
                             ))}
                         </div>
@@ -237,7 +237,7 @@ const Profile = () => {
                         </div>
                         <div>
                             <h1 className="text-deepPurple">{user?.user?.fullName}</h1>
-                            <p className="text-gray-800">{user?.user?.email}</p>
+                            <p className="text-black-800">{user?.user?.email}</p>
                         </div>
                     </div>
 

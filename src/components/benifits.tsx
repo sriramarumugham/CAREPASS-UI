@@ -76,7 +76,7 @@ import {
               variants={itemVariants}
             >
               <benefit.icon className="text-deepPurple text-xl md:text-2xl" />
-              <p className="font-medium text-gray-700">{benefit.text}</p>
+              <p className="font-medium text-black-700">{benefit.text}</p>
             </motion.li>
           ))}
         </motion.ul>

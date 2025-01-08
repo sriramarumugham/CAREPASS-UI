@@ -41,13 +41,13 @@ const TaxSaverPage = () => {
     const features = [
       { 
         name: 'Cost', 
-        main: 'Access to India"s largest healthcare network', 
-        other: 'Higher pricing, limited network' 
+        main: '₹5,000 only', 
+        other: 'Higher, less coverage' 
       },
       { 
         name: 'Coverage', 
         main: 'Comprehensive health checks + Teleconsultations', 
-        other: 'Basic services only' 
+        other: 'Only Health Check-ups' 
       },
       { 
         name: 'Accessibility', 
@@ -71,7 +71,7 @@ const TaxSaverPage = () => {
       },
       { 
         name: 'Support', 
-        main: '24/7 omni-channel support', 
+        main: 'Omni-channel support', 
         other: 'Limited communication channels' 
       }
     ];
@@ -352,7 +352,7 @@ export const PlanDetails: FC<PlanDetailsProps> = ({
                 Price: <span className="text-deepPurple">{price}</span>
               </p>
               <p className="font-semibold">
-                Age Limit: <span className="text-deepPurple">{isTaxSaver ? 'No Age Limit' : ageLimit}</span>
+                Age Limit: <span className="text-deepPurple">{isTaxSaver ? 'No Limit' : ageLimit}</span>
               </p>
               <p className="font-semibold">
                 Validity: <span className="text-deepPurple">{validity}</span>

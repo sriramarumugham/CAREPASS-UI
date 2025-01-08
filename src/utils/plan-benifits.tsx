@@ -17,9 +17,9 @@ import { CiDumbbell } from "react-icons/ci";
 
 export const goldPlanGrid = [
     { iconSrc: Wallet, description: "E-wallet ₹15,000. (₹5,000: Annual Health Checks, ₹10,000: Primary care Services)", icon: false },
-    { iconSrc: Rewards, description: "Tax benefits under 80-D", icon: false },
+    { iconSrc: Tax, description: "Tax benefits under 80-D", icon: false },
     { iconSrc: Tax, description: "Critical Insurance (CI) cover ₹2,50,000", icon: true, iconName: MdHealthAndSafety },
-    { iconSrc: Tax, description: "Add additional beneficiary for CI coverage at a very minimal cost", icon: true, iconName: FaHeartbeat },
+    { iconSrc: Tax, description: "Add additional beneficiary for CI coverage at a very minimal cost", icon: true, iconName: IoPersonAddOutline },
     { iconSrc: Tax, description: "Exclusive discounts on Diagnostic and Pharmacy.", icon: true, iconName: RiDiscountPercentFill },
     { iconSrc: Tax, description: "Comprehensive Family Protection: (Include- Self, spouse, 2 children)", icon: true, iconName: MdFamilyRestroom },
     { iconSrc: discount, description: "Premium Hospitals Network", icon: true, iconName: FaRegHospital },
@@ -52,7 +52,7 @@ export const silverPlanGrid = [
 
 export const platinumPlanGrid = [
     { iconSrc: Wallet, description: "E-wallet worth ₹ 15,000. (₹5,000: Annual Health Checks, ₹10,000: Primary care benefits)  ", icon: false },
-    { iconSrc: Rewards, description: "Tax benefits under 80-D.", icon: false },
+    { iconSrc: Tax, description: "Tax benefits under 80-D.", icon: false },
     { iconSrc: Tax, description: "Critical Insurance (CI) cover ₹2,50,000", icon: true, iconName: MdHealthAndSafety },
     { iconSrc: Tax, description: "Base Insurance Cover (₹3L/₹5L)", icon: true, iconName: FaUserShield },
     { iconSrc: Tax, description: "Super Top-Up Cover (₹15 Lacs/₹25 Lacs)", icon: true, iconName: FaPersonCircleCheck },
@@ -100,7 +100,7 @@ const GridItem: FC<GridItemProps> = ({ iconSrc, description, icon, iconName }) =
             className="w-[60px] h-[60px] transition-transform duration-300 hover:scale-110"
           />
         )}
-        <p className="text-sm text-center text-gray-700 transition-colors duration-300 hover:text-deepPurple">
+        <p className="text-sm text-center text-black-700 transition-colors duration-300 hover:text-deepPurple">
           {description}
         </p>
       </div>

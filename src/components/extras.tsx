@@ -10,7 +10,7 @@ import { FaUserDoctor, FaPeopleRoof, FaPeopleGroup, FaShieldHeart } from "react-
 import { BsHouseHeartFill, BsFillPatchCheckFill } from "react-icons/bs";
 import { MdHealthAndSafety, MdOutlineSupportAgent, MdOutlineMedicalServices, MdOutlineFamilyRestroom, MdOutlineSavings } from "react-icons/md";
 import { FaUsers, FaUserMd, FaDollarSign, FaClipboardList, FaTag, FaStethoscope, FaHeartbeat, FaAppleAlt, FaBookMedical, FaRegDotCircle
-, FaHospital} from 'react-icons/fa';
+, FaHospital, FaPlay } from 'react-icons/fa';
 import { FiShield } from "react-icons/fi";
 import { useState } from 'react';
 import FourDoctor from '../assets/fourDoctors.svg';
@@ -24,6 +24,10 @@ import Gold from '../assets/Gold.png';
 import Platinum from '../assets/Platinum.png';
 import YouPay from '../assets/Give.png';
 import YouGet from '../assets/Take.png';
+import AboutOurWellnessApp from '../assets/about_our_wellness_app.png';
+import WhyChooseCarePassVideoThumbnail from '../assets/why_choose_CarePass.png';
+import HowItWorksVideoThumbnail from '../assets/how_it_works.png';
+import { X } from "react-icons/fi"; 
 
 export const Section2 = () => {
     return (
@@ -319,24 +323,27 @@ export const AboutSection3 = () => {
   ];
 
   return (
-    <div className="px-6 py-10 flex items-center justify-center" style={{
-      background: '#FCF9FF',
-  }}>
-      <div className="flex flex-col md:flex-row max-w-[1200px] gap-8">
-        <div className="md:w-1/3 flex justify-center">
-        <img
-              src={HeartGrafti}
-              alt="Care Across India"
-              className="w-full object-fit max-w-[300px]"
+    <div
+      className="px-6 py-10 flex flex-col items-center justify-center"
+      style={{
+        background: "#FCF9FF",
+      }}
+    >
+      {/* Center-aligned heading */}
+      <h2 className="text-black-900 text-2xl font-bold md:text-3xl md:leading-8 text-center mb-6">
+        Why Choose CarePass?
+      </h2>
+
+      <div className="flex flex-col md:flex-row max-w-[1200px] gap-8 items-center">
+        <div className="md:w-1/2 flex justify-center">
+          <img
+            src={WhyChooseCarePassVideoThumbnail}
+            alt="Care Across India"
+            className="w-full object-contain max-w-[600px]"
           />
         </div>
 
-        <div className="flex flex-col md:w-2/3 gap-6">
-          
-          <h2 className="text-black-900 text-2xl font-bold md:text-3xl md:leading-8">
-            Why Choose CarePass?
-          </h2>
-
+        <div className="flex flex-col md:w-1/2 gap-6">
           <div className="space-y-6">
             {features.map((feature, index) => {
               const IconComponent = feature.icon;
@@ -357,15 +364,18 @@ export const AboutSection3 = () => {
               );
             })}
           </div>
-
-          <p className="text-base md:text-md leading-7 mt-4">
-          At CarePass, we’re not just offering health insurance; we’re providing a complete healthcare solution that’s tailored to your unique needs.
-          </p>
         </div>
       </div>
+
+      {/* Center-aligned bottom text */}
+      <p className="text-base md:text-md leading-7 mt-8 text-center max-w-[800px]">
+        At CarePass, we’re not just offering health insurance; we’re providing a complete healthcare solution that’s tailored to your unique needs.
+      </p>
     </div>
   );
 };
+
+
 
 export const Section6 = () => {
     return (
@@ -493,7 +503,7 @@ export const Section7 = () => {
                       <div className='flex flex-col gap-3'>
                           <ul className="space-y-6">
                               {benefits.map((benefit, index) => (
-                                  <li key={index} className="flex items-center space-x-4 text-lg text-gray-700">
+                                  <li key={index} className="flex items-center space-x-4 text-lg text-black-700">
                                       <benefit.icon className="text-deepPurple text-2xl" />
                                       <span>{benefit.text}</span>
                                   </li>
@@ -502,7 +512,7 @@ export const Section7 = () => {
                       </div>
                   </div>
               </div>
-              <p className="text-lg text-gray-800 text-center">
+              <p className="text-lg text-black-800 text-center">
                   Download the <span className="font-semibold text-deepPurple">Wellness Corner App</span> to get started.
               </p>
           </div>
@@ -511,7 +521,6 @@ export const Section7 = () => {
   };
 
   export const WhyChooseCarePass = () => {
-    const [isExpanded, setIsExpanded] = useState(false);
     const benefits = [
       {
         title: "Complete Family Coverage:",
@@ -548,6 +557,8 @@ export const Section7 = () => {
       },
     ];
   
+    const videoUrl = "https://drive.google.com/file/d/1bF6cerGu_0Gh-_PsySWyQg1yECQcLs_F/preview";
+  
     return (
       <div className="px-[20px] flex items-center justify-center">
         <div className="flex flex-col max-w-[1200px] py-[30px] md:py-[30px] gap-6">
@@ -565,47 +576,34 @@ export const Section7 = () => {
                       <h2 className="text-xl font-semibold text-black">
                         {benefit.title}
                       </h2>
-                      <p className="text-gray-700">{benefit.description}</p>
+                      <p className="text-black-700">{benefit.description}</p>
                     </div>
                   </li>
                 ))}
               </ul>
             </div>
   
-            {/* Video Section */}
-            <div className="flex-1 border-2 border-gray-200 rounded-md overflow-hidden cursor-pointer hover:border-gray-400 transition-colors">
-              <iframe
-                src="https://drive.google.com/file/d/1bF6cerGu_0Gh-_PsySWyQg1yECQcLs_F/preview"
-                className="w-full h-[300px] md:h-[400px] lg:h-[480px]"
-                allow="autoplay"
-                onClick={() => setIsExpanded(true)}
+            {/* Video Thumbnail Section */}
+            <div
+              className="flex-1 border-2 border-gray-200 rounded-md overflow-hidden cursor-pointer hover:border-gray-400 transition-colors relative"
+              onClick={() => window.open(videoUrl, "_blank")}
+            >
+              <img
+                src={WhyChooseCarePassVideoThumbnail}
+                alt="Why Choose CarePass Video Thumbnail"
+                className="w-full h-[300px] md:h-[400px] lg:h-[480px] object-cover"
               />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                <button className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+                  <FaPlay className="text-deepPurple text-4xl" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
-  
-        {/* Full-Screen Video Modal */}
-        {isExpanded && (
-          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-            <div className="relative w-full max-w-4xl">
-              <button
-                onClick={() => setIsExpanded(false)}
-                className="absolute -top-10 right-0 text-white hover:text-gray-200"
-              >
-                <X size={24} />
-              </button>
-              <iframe
-                src="https://drive.google.com/file/d/1bF6cerGu_0Gh-_PsySWyQg1yECQcLs_F/preview"
-                className="w-full h-[600px] rounded-lg"
-                allow="autoplay"
-              />
-            </div>
-          </div>
-        )}
       </div>
     );
   };
-  
 
   export const HealthControlCTA = () => {
     return (
@@ -677,10 +675,10 @@ export const Section7 = () => {
         <h1 className="text-3xl md:text-4xl font-bold text-center text-deepPurple mb-8">
           Get Access to India's Biggest Healthcare Ecosystem
         </h1>
-        <p className="text-xl text-center text-gray-700 font-semibold mb-8">
+        <p className="text-xl text-center text-black-700 font-semibold mb-8">
           50,000+ Experts, 1,00,000+ Locations
         </p>
-        <ul className="list-disc list-inside text-lg text-gray-700 space-y-4 mx-auto max-w-3xl">
+        <ul className="list-disc list-inside text-lg text-black-700 space-y-4 mx-auto max-w-3xl">
         {data.map((item, index) => (
           <li key={index} className="text-left">
             <span className="font-semibold text-deepPurple">{item.title}:</span>{" "}
@@ -734,7 +732,7 @@ export const Section7 = () => {
         <h1 className="text-3xl md:text-4xl font-bold text-center text-deepPurple mb-8">
           About Our Wellness App
         </h1>
-        <ul className="list-disc list-inside text-lg text-gray-700 space-y-4 mx-auto max-w-3xl">
+        <ul className="list-disc list-inside text-lg text-black-700 space-y-4 mx-auto max-w-3xl">
           {points.map((point, index) => (
             <li key={index} className="text-left">
               <span className="font-semibold text-deepPurple">{point.title}:</span>{" "}
@@ -788,7 +786,7 @@ export const Section7 = () => {
         <h1 className="text-3xl md:text-4xl font-bold text-center text-deepPurple mb-8">
           Breakdown of Benefits
         </h1>
-        <div className="text-center text-lg text-gray-800 mb-8">
+        <div className="text-center text-lg text-black-800 mb-8">
           <p className="font-semibold">You Pay: ₹10,000</p>
           <p className="font-semibold">Get Benefits Worth: ₹3,00,000+</p>
         </div>
@@ -798,7 +796,7 @@ export const Section7 = () => {
               <h2 className="text-xl font-bold text-deepPurple mb-4">
                 {benefit.category}
               </h2>
-              <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
+              <ul className="list-disc list-inside text-lg text-black-700 space-y-2">
                 {benefit.items.map((item, idx) => (
                   <li key={idx} className="flex justify-between">
                     <span>{item.name}</span>
@@ -809,7 +807,7 @@ export const Section7 = () => {
             </div>
           ))}
         </div>
-        <div className="text-lg text-gray-800 mt-8 max-w-xl mx-auto space-y-2">
+        <div className="text-lg text-black-800 mt-8 max-w-xl mx-auto space-y-2">
           <p>
             <span className="font-bold">Age Limit:</span> 18 to 60 years
           </p>
@@ -863,7 +861,7 @@ export const Section7 = () => {
         <h1 className="text-3xl md:text-4xl font-bold text-center text-deepPurple mb-8">
           Breakdown of Benefits
         </h1>
-        <div className="text-center text-lg text-gray-800 mb-8">
+        <div className="text-center text-lg text-black-800 mb-8">
           <p className="font-semibold">You Pay: ₹10,000</p>
           <p className="font-semibold">Get Benefits Worth: ₹3,00,000+</p>
         </div>
@@ -873,7 +871,7 @@ export const Section7 = () => {
               <h2 className="text-xl font-bold text-deepPurple mb-4">
                 {benefit.category}
               </h2>
-              <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
+              <ul className="list-disc list-inside text-lg text-black-700 space-y-2">
                 {benefit.items.map((item, idx) => (
                   <li key={idx} className="flex justify-between">
                     <span>{item.name}</span>
@@ -884,7 +882,7 @@ export const Section7 = () => {
             </div>
           ))}
         </div>
-        <div className="text-lg text-gray-800 mt-8 max-w-xl mx-auto space-y-2">
+        <div className="text-lg text-black-800 mt-8 max-w-xl mx-auto space-y-2">
           <p>
             <span className="font-bold">Age Limit:</span> 18 to 60 years
           </p>
@@ -934,7 +932,7 @@ export const Section7 = () => {
         <h1 className="text-3xl md:text-4xl font-bold text-center text-deepPurple mb-8">
           Breakdown of Benefits
         </h1>
-        <div className="text-center text-lg text-gray-800 mb-8">
+        <div className="text-center text-lg text-black-800 mb-8">
           <p className="font-semibold">You Pay: ₹5,000</p>
           <p className="font-semibold">Get Benefits Worth: ₹30,000+</p>
         </div>
@@ -944,7 +942,7 @@ export const Section7 = () => {
               <h2 className="text-xl font-bold text-deepPurple mb-4">
                 {benefit.category}
               </h2>
-              <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
+              <ul className="list-disc list-inside text-lg text-black-700 space-y-2">
                 {benefit.items.map((item, idx) => (
                   <li key={idx} className="flex justify-between">
                     <span>{item.name}</span>
@@ -955,7 +953,7 @@ export const Section7 = () => {
             </div>
           ))}
         </div>
-        <div className="text-lg text-gray-800 mt-8 max-w-xl mx-auto space-y-2">
+        <div className="text-lg text-black-800 mt-8 max-w-xl mx-auto space-y-2">
           <p>
             <span className="font-bold">Age Limit:</span> 18 to 60 years
           </p>
@@ -1019,7 +1017,7 @@ export const Section7 = () => {
         <h1 className="text-3xl md:text-4xl font-bold text-center text-deepPurple mb-8">
           Breakdown of Benefits
         </h1>
-        <div className="text-center text-lg text-gray-800 mb-8">
+        <div className="text-center text-lg text-black-800 mb-8">
           <p className="font-semibold">You Pay: ₹5,000</p>
           <p className="font-semibold">Get Benefits Worth: ₹17,400</p>
           <p className="font-semibold">Savings: ₹12,400 (74% off)</p>
@@ -1030,7 +1028,7 @@ export const Section7 = () => {
               <h2 className="text-xl font-bold text-deepPurple mb-4">
                 {benefit.category}
               </h2>
-              <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
+              <ul className="list-disc list-inside text-lg text-black-700 space-y-2">
                 {benefit.items.map((item, idx) => (
                   <li key={idx} className="flex justify-between">
                     <span>{item.name}</span>
@@ -1041,7 +1039,7 @@ export const Section7 = () => {
             </div>
           ))}
         </div>
-        <div className="text-lg text-gray-800 mt-8 max-w-xl mx-auto space-y-2">
+        <div className="text-lg text-black-800 mt-8 max-w-xl mx-auto space-y-2">
           <p>
             <span className="font-bold">Age Limit:</span> 18 to 60 years
           </p>
@@ -1090,8 +1088,8 @@ export const Section7 = () => {
         <div className="space-y-8 max-w-3xl mx-auto">
           {steps.map((step, index) => (
             <div key={index} className="flex items-start">
-              <div className="text-lg text-gray-700 mr-4">Step {index + 1}:</div>
-              <div className="text-lg text-gray-700">
+              <div className="text-lg text-black-700 mr-4">Step {index + 1}:</div>
+              <div className="text-lg text-black-700">
                 <strong>{step.title}</strong>: {step.description}
               </div>
             </div>
@@ -1147,8 +1145,8 @@ export const Section7 = () => {
         <div className="space-y-8 max-w-3xl mx-auto">
           {steps.map((step, index) => (
             <div key={index} className="flex items-start">
-              <div className="text-lg text-gray-700 mr-4">Step {index + 1}:</div>
-              <div className="text-lg text-gray-700">
+              <div className="text-lg text-black-700 mr-4">Step {index + 1}:</div>
+              <div className="text-lg text-black-700">
                 <strong>{step.title}</strong>: {step.description}
               </div>
             </div>
@@ -1206,7 +1204,7 @@ export const Section7 = () => {
               <h2 className="text-2xl font-semibold text-deepPurple mb-4">
                 {benefit.category}
               </h2>
-              <ul className="list-disc list-inside space-y-2 text-lg text-gray-700">
+              <ul className="list-disc list-inside space-y-2 text-lg text-black-700">
                 {benefit.items.map((item, idx) => (
                   <li key={idx} className="flex items-start">
                     <span className="mr-2">-</span>
@@ -1309,7 +1307,7 @@ export const Section7 = () => {
                       <div className="flex-shrink-0 transform transition-all duration-300 group-hover:scale-110">
                         {item.icon}
                       </div>
-                      <span className="text-gray-700 text-lg group-hover:text-purple-800 transition-colors duration-300">
+                      <span className="text-black-700 text-lg group-hover:text-purple-800 transition-colors duration-300">
                         {item.text}
                       </span>
                     </div>
@@ -1349,7 +1347,7 @@ export const Section7 = () => {
         </h1>
   
         <div className="max-w-4xl mx-auto">
-          <ul className="list-disc pl-6 space-y-4 text-lg text-gray-700">
+          <ul className="list-disc pl-6 space-y-4 text-lg text-black-700">
             {steps.map((step, index) => (
               <li key={index}>
                 <strong className="font-semibold text-deepPurple">{step.title}:</strong> {step.description}
@@ -1359,8 +1357,8 @@ export const Section7 = () => {
         </div>
   
         <div className="text-center mt-8">
-          <p className="text-lg font-semibold text-gray-800 mb-4">Join the Thousands of Satisfied Clients</p>
-          <p className="text-xl text-gray-600">Transform your healthcare experience with CarePass Silver.</p>
+          <p className="text-lg font-semibold text-black-800 mb-4">Join the Thousands of Satisfied Clients</p>
+          <p className="text-xl text-black-600">Transform your healthcare experience with CarePass Silver.</p>
           <div className="mt-6">
             <p className="text-xl font-semibold text-deepPurple">
               Get Started Now
@@ -1432,13 +1430,13 @@ export const Section7 = () => {
             <div className="flex justify-center items-start gap-1">
               {/* Feature Names Column */}
               <div className="w-1/3 border border-gray-200 rounded-lg bg-white">
-                <div className="h-16 flex items-center p-4 border-b border-gray-200 bg-[#EBEDF0]">
+                <div className="h-16 flex items-center p-4 border-b border-gray-200 bg-[#EBEDF0] justify-center">
                   <h3 className="font-medium text-black-600">Feature/Aspect</h3>
                 </div>
                 {features.map((feature, index) => (
                   <div 
                     key={index} 
-                    className={`h-20 flex items-center p-4 ${
+                    className={`h-20 flex items-center justify-center p-4 ${
                       index !== features.length - 1 ? 'border-b border-gray-200' : ''
                     }`}
                   >
@@ -1471,7 +1469,7 @@ export const Section7 = () => {
   
               {/* Other Column */}
               <div className="w-1/3 border border-gray-200 rounded-lg bg-white">
-                <div className="h-16 flex items-center p-4 border-b border-gray-200 bg-[#EBEDF0]">
+                <div className="h-16 flex items-center p-4 border-b border-gray-200 bg-[#EBEDF0] justify-center">
                   <h3 className="font-medium text-black-600">Other</h3>
                 </div>
                 {features.map((feature, index) => (
@@ -1525,8 +1523,8 @@ export const Section7 = () => {
                   key={index}
                   className={`border-t ${index === 0 ? "border-t-0" : "border-gray-200"} bg-gray-${index % 2 === 0 ? "50" : "100"}`}
                 >
-                  <td className="p-4 text-gray-700 font-medium">{service.name}</td>
-                  <td className="p-4 text-gray-700 font-medium text-right">₹{service.amount}</td>
+                  <td className="p-4 text-black-700 font-medium">{service.name}</td>
+                  <td className="p-4 text-black-700 font-medium text-right">₹{service.amount}</td>
                 </tr>
               ))}
             </tbody>
@@ -1542,8 +1540,8 @@ export const Section7 = () => {
                   key={index}
                   className={`border-t ${index === 0 ? "border-t-0" : "border-gray-200"} bg-gray-${index % 2 === 0 ? "50" : "100"}`}
                 >
-                  <td className="p-4 text-gray-700 font-medium">{detail.name}</td>
-                  <td className="p-4 text-gray-700 font-medium text-right">₹{detail.amount}</td>
+                  <td className="p-4 text-black-700 font-medium">{detail.name}</td>
+                  <td className="p-4 text-black-700 font-medium text-right">₹{detail.amount}</td>
                 </tr>
               ))}
             </tbody>
@@ -1551,7 +1549,7 @@ export const Section7 = () => {
         </div>
   
         <div className="flex justify-between items-center bg-purple-50 p-4 rounded-lg">
-          <div className="text-gray-700">
+          <div className="text-black-700">
             <div>Validity: <span className="font-medium">{validity}</span></div>
             <div>Age Limit: <span className="font-medium">{ageLimit}</span></div>
             <div>Coverage: <span className="font-medium">{coverage}</span></div>
@@ -1612,13 +1610,13 @@ export const Section7 = () => {
           Why Choose CarePass?
         </h1>
   
-        <p className="text-lg text-center text-gray-700 mb-12">
+        <p className="text-lg text-center text-black-700 mb-12">
           Unlock Extra Savings with Our CarePass Tax Saver
         </p>
   
         <div className="space-y-8 max-w-4xl mx-auto">
           <h2 className="text-2xl font-semibold text-deepPurple mb-4">Key Features</h2>
-          <ul className="list-disc list-inside space-y-4 text-lg text-gray-700">
+          <ul className="list-disc list-inside space-y-4 text-lg text-black-700">
             {features.map((feature, index) => (
               <li key={index} className="flex items-start">
                 <span className="mr-2">-</span>
@@ -1640,42 +1638,25 @@ export const Section7 = () => {
   };
   
   export const HowItWorks = ({ onBuyNow, steps }) => {
-    const [videoOpen, setVideoOpen] = useState(false);
-    const [activeStep, setActiveStep] = useState(null);
-
-    const handleVideoOpen = () => {
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = 'video/*';
-      input.onchange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-          const videoUrl = URL.createObjectURL(file);
-          setVideoOpen(true);
-        }
-      };
-      input.click();
-    };
-
+    const videoUrl = "https://drive.google.com/file/d/1bF6cerGu_0Gh-_PsySWyQg1yECQcLs_F/preview";
+  
     return (
       <div className="relative py-12 bg-[#FCF9FF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Heading */}
           <p className="text-3xl md:text-4xl font-bold text-center text-black mb-12">How it Works</p>
-
+  
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Left side: Content */}
+            {/* Left Section: Steps */}
             <div className="space-y-4">
               {steps.map((step, index) => (
                 <div
                   key={index}
                   className="transform transition-all duration-300"
-                  onMouseEnter={() => setActiveStep(index)}
-                  onMouseLeave={() => setActiveStep(null)}
                 >
                   <div 
                     className={`
                       p-6 rounded-lg bg-white shadow-md 
-                      ${activeStep === index ? 'border-l-4 border-purple-500 translate-x-2' : ''}
                       transition-all duration-300
                     `}
                   >
@@ -1684,10 +1665,10 @@ export const Section7 = () => {
                         {index + 1}
                       </span>
                       <div>
-                        <h3 className="font-semibold text-lg text-gray-800">
+                        <h3 className="font-semibold text-lg text-black-800">
                           {step.title}
                         </h3>
-                        <p className="text-gray-600 mt-1">
+                        <p className="text-black-600 mt-1">
                           {step.description}
                         </p>
                       </div>
@@ -1695,7 +1676,7 @@ export const Section7 = () => {
                   </div>
                 </div>
               ))}
-
+  
               <div className="mt-8 pt-4">
                 <button 
                   onClick={onBuyNow} 
@@ -1706,45 +1687,29 @@ export const Section7 = () => {
                 </button>
               </div>
             </div>
-
-            {/* Right side: Video */}
-            <div className="sticky top-8">
-              <div className="aspect-video bg-purple-200 rounded-xl overflow-hidden shadow-lg">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <button
-                    onClick={handleVideoOpen}
-                    className="p-6"
-                  >
-                    <iframe 
-                      src="https://drive.google.com/file/d/1bF6cerGu_0Gh-_PsySWyQg1yECQcLs_F/preview"
-                      className="w-full h-[290px] w-[515px] rounded-lg"
-                      allow="autoplay"
-                    />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Video Modal */}
-        {videoOpen && (
-          <div className="fixed inset-0 bg-black/75 flex items-center justify-center z-50">
-            <div className="bg-white p-4 rounded-lg max-w-4xl w-full mx-4">
-              <div className="flex justify-end mb-2">
-                <button 
-                  onClick={() => setVideoOpen(false)}
-                  className="text-gray-500 hover:text-gray-700"
-                >
-                  Close
+  
+            {/* Right Section: Video Thumbnail */}
+{/* Right Section: Video Thumbnail and Text */}
+<div className="space-y-4">
+            <div
+              className="flex-1 border-2 border-gray-200 rounded-md overflow-hidden cursor-pointer hover:border-gray-400 transition-colors relative"
+              onClick={() => window.open(videoUrl, "_blank")}
+            >
+              <img
+                src={HowItWorksVideoThumbnail}
+                alt="How it works Video Thumbnail"
+                className="w-full h-[300px] md:h-[400px] lg:h-[480px] object-cover"
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                <button className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+                  <FaPlay className="text-deepPurple text-4xl" />
                 </button>
               </div>
-              <div className="aspect-video bg-black rounded">
-                <p className="text-white text-center py-20">Video Player</p>
-              </div>
             </div>
+            <p className="text-black-700 text-md font-bold">Disclaimer: Information above is just for reference. Kindly read T & C of products thoroughly, Do refer to IRDAI guidelines for policy  and tax exemption conditions.</p>
           </div>
-        )}
+          </div>
+        </div>
       </div>
     );
   };
@@ -1805,7 +1770,7 @@ export const AboutUsOurWellnessApp = () => {
           {/* Image Section */}
           <div className="md:w-1/2 flex justify-center items-center">
               <img
-                  src={HeartGrafti}
+                  src={AboutOurWellnessApp}
                   alt="Health & Wellness"
                   className="w-full max-w-[500px]"
               />
@@ -1814,7 +1779,7 @@ export const AboutUsOurWellnessApp = () => {
       </div>
       <div className="text-center mt-8">
         <p className="text-lg text-black-800 font-semibold">
-          Healthy. Happy. Covered.
+          Download The wellness Corner APP using the scanner provided above
         </p>
       </div>
     </div>
@@ -1902,7 +1867,7 @@ export const ProductCards = () => {
         "The ultimate protection plan with ₹2,50,000 critical illness coverage, ₹15,000 digital wallet, base health coverage, and super top-up coverage of ₹25,00,000.",
         "Unlock benefits worth over ₹30,00,000+.",
       ],
-      link: "/super-top-up",
+      link: "/platinum-plan",
       Icon: Platinum
     },
   ];
@@ -2044,7 +2009,7 @@ export const BenefitsBreakdown = ({ youPay, benefitsAmount, title1, title2, savi
               <div key={index} className="border-b last:border-b-0">
                 <div className="flex justify-between items-center py-3">
                   <span className="text-black-800 font-medium">{item.service}</span>
-                  <span className="text-black-800 font-medium ml-auto">₹ {item.amount}</span>
+                  {item.amount ? <span className="text-black-800 font-medium ml-auto">₹ {item.amount}</span> : null}
                 </div>
                 {item.subItems && (
                   <div className="pl-6 mb-3">
@@ -2076,7 +2041,8 @@ export const BenefitsBreakdown = ({ youPay, benefitsAmount, title1, title2, savi
               <div key={index} className="border-b last:border-b-0">
                 <div className="flex justify-between items-center py-3">
                   <span className="text-black-700 font-medium">{item.service}</span>
-                  <span className="font-medium">₹ {item.amount}</span>
+                  {/* <span className="font-medium">₹ {item.amount}</span> */}
+                  {item.amount ? <span className="text-black-800 font-medium ml-auto">₹ {item.amount}</span> : null}
                 </div>
                 {item.subItems && (
                   <div className="pl-6 mb-3">
@@ -2112,16 +2078,12 @@ export const BenefitsBreakdown = ({ youPay, benefitsAmount, title1, title2, savi
             <div className="flex items-center gap-2">
               <FaPeopleGroup className="text-purple-600 w-4 h-4" />
               <span className="text-black-600">Age Limit: {showCoverage ? <span className="text-black-600 font-bold">18 to 60 years</span> : 
-              <span className="text-black-600 font-bold">No Age Limit</span>}</span>
+              <span className="text-black-600 font-bold">No Limit</span>}</span>
             </div>
-            {showCoverage ?
-              <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
                 <FaPeopleRoof className="text-purple-600 w-4 h-4" />
                 <span className="text-black-600">Coverage: <span className="text-black-600 font-bold">Self, spouse, and two children</span></span>
-              </div>
-              :
-              null
-            }
+            </div>
           </div>
           :
           null
@@ -2134,25 +2096,26 @@ export const BenefitsBreakdown = ({ youPay, benefitsAmount, title1, title2, savi
 export const ProductsIntro = () => {
   return (
     <div className="px-[20px] flex items-center justify-center" style={{ background: "linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)" }}>
-      <div className="flex flex-col max-w-[1200px] py-[30px] md:py-[30px] gap-4 md:gap-12">
+      <div className="flex flex-col max-w-[1200px] py-[16px] md:py-[20px] gap-3 md:gap-6">
         {/* Center-Aligned "Our Products" Title */}
-        <p className="font-bold text-xl md:text-4xl mx-auto text-center">
+        <p className="font-bold text-xl md:text-3xl mx-auto text-center">
           Our Products
         </p>
         <div>
-          <div className="flex flex-col md:flex-row gap-4 md:gap-9">
-            {/* Responsive Image Section */}
-            <img
-            src={AboutUsTwo}
-            alt="Health & Wellness"
-            className="w-full max-w-[500px]"
-          />
-            <div className="flex flex-col gap-3">
-              <p className="leading-9 mt-20 text-justify">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-6 items-center">
+            {/* Responsive Image Section - Reduced size */}
+            <div className="w-full md:w-2/5">
+              <img
+                src={AboutUsTwo}
+                alt="Health & Wellness"
+                className="w-full max-h-[280px] object-cover"
+              />
+            </div>
+            <div className="flex flex-col gap-2 md:w-3/5">
+              <p className="leading-6 md:leading-7 text-justify">
                 At CarePass, we offer a range of health plans designed to cater to the diverse needs of individuals and families.
               </p>
-              <br />
-              <p className="leading-9 text-justify">
+              <p className="leading-6 md:leading-7 text-justify">
                 Our products provide comprehensive insurance coverage that not only protects you in emergencies but also prioritizes preventive care, while offering tax savings benefits.
               </p>
             </div>
@@ -2169,6 +2132,7 @@ export const CarePassTable = () => {
       name: "CarePass Tax Saver",
       label: "Tax Saver",
       iconImage: TaxSaver,
+      link: "/tax-saver",
       features: [
         { text: "E-wallet. ₹5,000 for AHC.", strike: false },
         { text: "Annual Health checks", strike: false },
@@ -2186,7 +2150,8 @@ export const CarePassTable = () => {
     {
       name: "CarePass Silver Plan",
       label: "Silver",
-      iconImage: Silver, // Replace with your image path
+      iconImage: Silver,
+      link: "/silver-plan",
       features: [
         { text: "E-wallet. ₹10,000 with pre-defined sub limits", strike: false },
         { text: "In-clinic Doctor consultation", strike: false },
@@ -2204,7 +2169,8 @@ export const CarePassTable = () => {
     {
       name: "CarePass Gold Plan",
       label: "Gold",
-      iconImage: Gold, // Replace with your image path
+      iconImage: Gold,
+      link: "/gold-plan",
       features: [
         { text: "E-wallet. ₹15,000 for AHC & Primary care", strike: false },
         { text: "Annual Health checks", strike: false },
@@ -2222,7 +2188,8 @@ export const CarePassTable = () => {
     {
       name: "CarePass Platinum Plan",
       label: "Platinum",
-      iconImage: Platinum, // Replace with your image path
+      iconImage: Platinum,
+      link: "/platinum-plan",
       features: [
         { text: "E-wallet. ₹15,000 for AHC & Primary care", strike: false },
         { text: "Annual Health checks", strike: false },
@@ -2260,7 +2227,7 @@ export const CarePassTable = () => {
                   />
                 </div>
                 <div className="text-center">
-                  <h3 className="font-medium text-gray-600">{plan.name}</h3>
+                  <h3 className="font-bold text-black-800">{plan.name}</h3>
                 </div>
               </div>
               {plan.features.map((feature, rowIndex) => (
@@ -2268,12 +2235,12 @@ export const CarePassTable = () => {
                   key={rowIndex}
                   className={`min-h-[80px] flex items-center justify-center p-4 text-center ${
                     rowIndex !== plan.features.length - 1
-                      ? "border-b border-gray-200"
+                      ? "border-b border-black-200"
                       : ""
                   }`}
                 >
                   <p
-                    className={`text-gray-800 ${
+                    className={`text-black-800 ${
                       feature.strike ? "line-through" : ""
                     }`}
                   >
@@ -2281,6 +2248,15 @@ export const CarePassTable = () => {
                   </p>
                 </div>
               ))}
+              {/* Know More Link */}
+              <div className="p-4 text-center border-t border-gray-200">
+                  <a 
+                    href={plan.link}
+                    className="text-purple-900 font-semibold underline hover:text-purple-700 transition relative z-10"
+                  >
+                    Know More
+                  </a>
+                </div>
             </div>
           ))}
         </div>
@@ -2288,5 +2264,3 @@ export const CarePassTable = () => {
     </div>
   );
 };
-
-

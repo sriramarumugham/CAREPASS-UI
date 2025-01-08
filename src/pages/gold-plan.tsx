@@ -84,20 +84,25 @@ const GoldPlan = () => {
           name: 'Cost-Effectiveness', 
           main: '​​Unmatched, all-inclusive coverage​ ', 
           other: 'Limited or less comprehensive' 
+        },
+        { 
+          name: 'Support', 
+          main: 'Omni-channel support', 
+          other: 'Limited communication channels' 
         }
       ];
 
       const breakdownBenefits = [
         {
           service: "Preventive Care",
-          amount: "8,000",
+          amount: "",
           subItems: [
-            { service: "Preventive Health Check", amount: "" }
+            { service: "Preventive Health Check", amount: "8000" }
           ],
         },
         {
           service: "Primary Care",
-          amount: "25,400",
+          amount: "",
           subItems: [
             { service: "Doctor Consultation", amount: "12,400" },
             { service: "Doctor-Prescribed Medicines", amount: "6,000" },
@@ -106,7 +111,7 @@ const GoldPlan = () => {
         },
         {
           service: "Specialty Care",
-          amount: "7,000",
+          amount: "",
           subItems: [
             { service: "Dental Care", amount: "4,200" },
             { service: "Vision Care", amount: "2,800" },
@@ -114,9 +119,9 @@ const GoldPlan = () => {
         },
         {
           service: "Digital Health",
-          amount: "2,000",
+          amount: "",
           subItems: [
-            { service: "App Access", amount: "" },
+            { service: "App Access", amount: "2,000" },
           ],
         },
       ];
@@ -124,14 +129,14 @@ const GoldPlan = () => {
       const breakdownBenefitsTwo = [
         {
           service: "Insurance Coverage",
-          amount: "2,50,000",
+          amount: "",
           subItems: [
             { service: "Critical Illness Insurance", amount: "2,50,000" }
           ],
         },
         {
           service: "Tax Benefits",
-          amount: "15,000",
+          amount: "",
           subItems: [
             { service: "Section 80D Deduction", amount: "15,000" },
           ],

@@ -21,7 +21,7 @@ export default function Sidebar({ open, setOpen, children }: { open: boolean, se
                                     <button
                                         type="button"
                                         onClick={() => setOpen(false)}
-                                        className="relative rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                                        className="relative rounded-md text-black-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
                                     >
                                         <span className="absolute -inset-2.5" />
                                         <span className="sr-only">Close panel</span>
