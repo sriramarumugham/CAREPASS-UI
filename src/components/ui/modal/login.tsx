@@ -120,7 +120,7 @@ const LoginModal = ({ handleClose }: LoginModalProps) => {
 
             <div className=" flex items-center justify-center my-5">
                 <div className="flex-grow border-t border-gray-300 mr-2"></div>
-                <span className="mx-2 text-gray-500">or</span>
+                <span className="mx-2 text-black-500">or</span>
                 <div className="flex-grow border-t border-gray-300 ml-2"></div>
             </div>
 
@@ -161,14 +161,14 @@ const RegisterUser = ({ createUser }: LoginStepsProps) => {
             <h2 className="text-2xl font-bold mb-4 text-deepPurple text-center">Register</h2>
 
             <div className="mb-4 w-[100%]" >
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fullName">
+                <label className="block text-black-700 text-sm font-bold mb-2" htmlFor="fullName">
                     Name
                 </label>
                 <input
                     type="text"
                     placeholder="Name goes here..."
                     {...register('fullName')}
-                    className={`shadow appearance-none border rounded w-[100%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.name ? 'border-red-500' : ''
+                    className={`shadow appearance-none border rounded w-[100%] py-2 px-3 text-black-700 leading-tight focus:outline-none focus:shadow-outline ${errors.name ? 'border-red-500' : ''
                         }`}
                 />
                 {errors.fullName && (
@@ -177,14 +177,14 @@ const RegisterUser = ({ createUser }: LoginStepsProps) => {
             </div>
 
             <div className="mb-4 w-full">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                <label className="block text-black-700 text-sm font-bold mb-2" htmlFor="email">
                     Email
                 </label>
                 <input
                     type="email"
                     placeholder="Email goes here..."
                     {...register('email')}
-                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.email ? 'border-red-500' : ''
+                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-black-700 leading-tight focus:outline-none focus:shadow-outline ${errors.email ? 'border-red-500' : ''
                         }`}
                 />
                 {errors.email && (
@@ -193,14 +193,14 @@ const RegisterUser = ({ createUser }: LoginStepsProps) => {
             </div>
 
             <div className="mb-6 w-full">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phoneNumber">
+                <label className="block text-black-700 text-sm font-bold mb-2" htmlFor="phoneNumber">
                     Phone Number
                 </label>
                 <input
                     type="text"
                     placeholder="Phone Number goes here..."
                     {...register('phoneNumber')}
-                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.phoneNumber ? 'border-red-500' : ''
+                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-black-700 leading-tight focus:outline-none focus:shadow-outline ${errors.phoneNumber ? 'border-red-500' : ''
                         }`}
                 />
                 {errors.phoneNumber && (
@@ -256,14 +256,14 @@ const GetOtp = ({ getOtp, loading }: any) => {
             <h2 className="text-2xl font-bold mb-4 text-deepPurple text-center">Login</h2>
 
             <div className="mb-4 w-full">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                <label className="block text-black-700 text-sm font-bold mb-2" htmlFor="email">
                     Email
                 </label>
                 <input
                     type="email"
                     placeholder="Enter your email..."
                     {...register('email')}
-                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.email ? 'border-red-500' : ''
+                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-black-700 leading-tight focus:outline-none focus:shadow-outline ${errors.email ? 'border-red-500' : ''
                         }`}
                 />
                 {errors.email && (
@@ -346,7 +346,7 @@ const EnterOtp = ({ handleClose, email, resentOTP }: { handleClose: () => void, 
             <h2 className="text-2xl font-bold mb-4 text-deepPurple text-center">Login</h2>
 
             <div className="mb-4 w-full">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="otp">
+                <label className="block text-black-700 text-sm font-bold mb-2" htmlFor="otp">
                     Enter OTP
                 </label>
                 <input
@@ -354,7 +354,7 @@ const EnterOtp = ({ handleClose, email, resentOTP }: { handleClose: () => void, 
                     maxLength={6}
                     placeholder="Enter 6-digit OTP"
                     {...register('otp')}
-                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.otp ? 'border-red-500' : ''}`}
+                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-black-700 leading-tight focus:outline-none focus:shadow-outline ${errors.otp ? 'border-red-500' : ''}`}
                 />
                 {errors.otp && (
                     <span className="text-red-500 text-xs italic">{errors?.otp?.message}</span>
@@ -376,7 +376,7 @@ const EnterOtp = ({ handleClose, email, resentOTP }: { handleClose: () => void, 
                     Didn't receive OTP? Resend
                 </div>
 
-                <div className="text-sm text-gray-500 mb-2">
+                <div className="text-sm text-black-500 mb-2">
                     OTP expires in <strong>{formatTime(timeLeft)}</strong> minutes.
                 </div>
             </div>

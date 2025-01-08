@@ -1,21 +1,20 @@
 
-import './App.css'
-
-import { Route, Routes, BrowserRouter } from "react-router-dom"
-import Home from './pages/home'
-import { ROUTES } from './utils/routes'
+import './App.css';
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import Home from './pages/home';
+import { ROUTES } from './utils/routes';
 import { CheckoutPage } from './pages/checkout';
-import PaymentStatusPage from './pages/payment-status'
-import ProfilePage from './pages/profile'
-import { CartPage } from './pages/cart'
-import SilverPlanPage from './pages/silver-plan'
-import GoldPlan from './pages/gold-plan'
-import TaxSaverPage from './pages/tax-saver'
-import SuperTopUpPage from './pages/super-topup'
-import PageWrapper from './utils/framer-motion'
+import PaymentStatusPage from './pages/payment-status';
+import ProfilePage from './pages/profile';
+import { CartPage } from './pages/cart';
+import SilverPlanPage from './pages/silver-plan';
+import GoldPlan from './pages/gold-plan';
+import TaxSaverPage from './pages/tax-saver';
+import PlatinumPlan from './pages/platinum-plan';
+import PageWrapper from './utils/framer-motion';
 import { Toaster } from 'react-hot-toast';
-import ContactUs from './pages/contact-us'
-import AboutUs from './pages/about-us'
+import ContactUs from './pages/contact-us';
+import AboutUs from './pages/about-us';
 import FAQPage from './pages/faq';
 import Products from './pages/products';
 
@@ -39,7 +38,7 @@ function App() {
             <Route path={ROUTES.TAX_SAVER} element={<TaxSaverPage />} />
             <Route path={ROUTES.SILVER_PLAN} element={<SilverPlanPage />} />
             <Route path={ROUTES.GOLD_PLAN} element={<GoldPlan />} />
-            <Route path={ROUTES.SUPER_TOPUP} element={<SuperTopUpPage />} />
+            <Route path={ROUTES.SUPER_TOPUP} element={<PlatinumPlan />} />
             <Route path={ROUTES.PRODUCTS} element={<Products />} />
           </Routes>
           <Toaster />

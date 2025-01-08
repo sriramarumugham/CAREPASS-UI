@@ -7,7 +7,7 @@ const FAQPage = () => {
     const Faqs = ({ heading, content }) => {
         return (
             <div className="pt-[30px] pb-[50px] flex flex-col items-center justify-center">
-                <h1 className="text-2xl font-bold text-gray-800">{heading}</h1>
+                <h1 className="text-2xl font-bold text-black-800">{heading}</h1>
                 <Accordion items={content} />
             </div>
         );

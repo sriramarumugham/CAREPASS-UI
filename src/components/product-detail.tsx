@@ -52,7 +52,7 @@ export const ProductDetail = ({ productId }: { productId: string }) => {
     return (
         <div className="bg-white p-5 rounded-3xl  shadow-lg min-w-96">
             <h2 className="text-xl font-semibold mb-4">{productName}</h2>
-            <p className="text-gray-600 mb-4">{productDescription}</p>
+            <p className="text-black-600 mb-4">{productDescription}</p>
             <p className="text-lg font-bold text-deepPurple">Price: ₹{price}</p>
             <div className="flex  items-center justify-between mt-4 " >
 

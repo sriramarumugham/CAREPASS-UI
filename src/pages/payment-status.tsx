@@ -29,7 +29,7 @@ const Countdown = ({ initialCount, onComplete }: CountdownProps) => {
     }, [count, onComplete]);
 
     return (
-        <p className="text-center text-sm text-gray-500 mt-4">
+        <p className="text-center text-sm text-black-500 mt-4">
             Redirecting to profile page in {count}.
         </p>
     );
@@ -61,7 +61,7 @@ const SuccessScreen = ({ amount }: { amount: number }) => {
             >
                 Payment Success!
             </h1>
-            <p className="text-gray-600 text-center text-base font-medium leading-5 mt-2">
+            <p className="text-black-600 text-center text-base font-medium leading-5 mt-2">
                 <span className="whitespace-nowrap">
                     Congratulation!
                 </span>{" "}
@@ -88,7 +88,7 @@ const FailureScreen = () => {
             >
                 Payment Failure!
             </h1>
-            <p className="text-gray-600 text-center text-base font-medium leading-5 mt-2">
+            <p className="text-black-600 text-center text-base font-medium leading-5 mt-2">
                 Sorry there was an issue processing your payment
             </p>
         </header>
@@ -110,7 +110,7 @@ const LoadingScreen = () => {
             >
                 Loading
             </h1>
-            <p className="text-gray-600 text-center text-base font-medium leading-5 mt-2">
+            <p className="text-black-600 text-center text-base font-medium leading-5 mt-2">
                 getting payment details
             </p>
         </header>

@@ -81,7 +81,7 @@ const Cart = ({ openLogin }: { openLogin: () => void, openPersonalInformation?: 
                                 <ChevronDownIcon className={`w-5 h-5 transform transition-transform ${open ? 'rotate-180' : ''}`} />
                             </Disclosure.Button>
 
-                            <Disclosure.Panel className="p-2 text-gray-700">
+                            <Disclosure.Panel className="p-2 text-black-700">
                                 {cart.map((item: CartItem) => (
                                     <div key={item.productId} className="flex justify-between">
                                         <p className="font-normal">{item.quantity} x {item.productName}</p>

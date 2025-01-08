@@ -65,9 +65,9 @@ const SilverPlanPage = () => {
           other: 'Basic OPD, fewer extras' 
         },
         { 
-          name: 'Customer Support', 
-          main: 'Support through Email, Chat & Call.', 
-          other: 'Limited medium of communication, slower responses' 
+          name: 'Support', 
+          main: 'Omni-channel support', 
+          other: 'Limited communication channels' 
         }
       ];
 

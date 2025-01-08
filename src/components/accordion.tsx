@@ -13,7 +13,7 @@ const Accordion = ({ items }) => {
         <div key={index} className="border-b border-gray-200">
           <button
             onClick={() => toggleAccordion(index)}
-            className="w-full flex justify-between items-center py-4 text-left text-gray-800 hover:text-purple-600 focus:outline-none"
+            className="w-full flex justify-between items-center py-4 text-left text-black-800 hover:text-purple-600 focus:outline-none"
           >
             <span className="font-medium">{item.title}</span>
             <svg
@@ -34,7 +34,7 @@ const Accordion = ({ items }) => {
             </svg>
           </button>
           {activeIndex === index && (
-            <div className="py-2 px-4 text-gray-600">
+            <div className="py-2 px-4 text-black-600">
               {item.content}
             </div>
           )}
