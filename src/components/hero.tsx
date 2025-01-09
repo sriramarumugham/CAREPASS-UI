@@ -190,7 +190,12 @@ const HeroSection = () => {
                 </div> */}
 
                 <div className="relative">
-                    <AnimatedBenefits />
+                    {/* <AnimatedBenefits /> */}
+                    <img
+                        src={MascotGif}
+                        className="w-full max-w-[663px] max-h-[521px] md:w-auto md:max-w-[663px] relative md:left-[-100px]"
+                        alt="Hero Image"
+                    />
                 </div>
     
                 <div className="bg-white rounded-xl max-w-[521px] px-[20px] md:px-[10px] py-[13px]  lg:p-9 flex flex-col gap-[10px] h-fit">

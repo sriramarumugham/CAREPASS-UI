@@ -41,7 +41,7 @@ const SilverPlanPage = () => {
         },
         { 
           name: 'Coverage', 
-          main: '₹10,000, primary care', 
+          main: '₹10,000 primary care', 
           other: 'Lower, fewer services' 
         },
         { 

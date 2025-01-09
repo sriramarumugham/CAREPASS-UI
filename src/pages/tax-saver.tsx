@@ -176,7 +176,7 @@ const TaxSaverPage = () => {
             <PlanComparison 
               features={features}
               heading="Why Choose CarePass Tax Saver?"
-              title="CarePass Tax Saver (₹5,000)"
+              title="CarePass Tax Saver"
             />
             <AboutUsOurWellnessApp />
             {/* <CarePassBenefitsTaxSaver /> */}
