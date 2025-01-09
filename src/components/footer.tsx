@@ -14,7 +14,7 @@ const FooterSection = () => {
 
                         <img src={LogoPng1} className="w-auto h-[13px] md:h-[21px] object-contain" />
                     </div>
-                    <p className='text-white hidden md:block text-sm font-light text-center'>Copyright © 2024 CAREPASS. All rights reserved.</p>
+                    <p className='text-white hidden md:block text-sm font-light text-center'>Copyright © 2025 CAREPASS. All rights reserved.</p>
                     <div className='flex items-center justify-center gap-5'>
                         <img src={Facebook} alt='facebook' className='w-[24px] h-[24px]' style={{ filter: 'brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)' }} />
                         <img src={Instagram} alt='Instagram' className='w-[24px] h-[24px]' style={{ filter: 'brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)' }} />
@@ -22,7 +22,7 @@ const FooterSection = () => {
 
                     </div>
                 </div>
-                <div className="md:hidden text-white text-sm font-light text-center"><p>Copyright © 2024 CAREPASS. All rights reserved.</p></div>
+                <div className="md:hidden text-white text-sm font-light text-center"><p>Copyright © 2025 CAREPASS. All rights reserved.</p></div>
             </div>
         </div>
     )

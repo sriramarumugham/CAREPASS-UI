@@ -1,14 +1,15 @@
-
-
-
 import Phone from '../assets/pohone.svg';
 import Email from '../assets/email.svg';
 import ArrowRight from '../assets/contact-arrow-right.svg';
 import Arrowleft from '../assets/contact-us-arrow-left.svg';
-
-
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../utils/routes";
 
 const ContactUsSection = () => {
+    const navigate = useNavigate();
+    const handleNavigation = (route: string) => {
+        navigate(route, { relative: 'path' })
+    }
     return (
         <div className="w-full flex items-center justify-center px-[20px] "
             style={{
@@ -42,12 +43,13 @@ const ContactUsSection = () => {
 
                         <div className='flex gap-5'>
                             <img src={Email} alt='Email' />
-                            <p className='font-semibold text-sm underline text-deepPurple '>lnfo@123.com</p>
+                            <p className='font-semibold text-sm underline text-deepPurple '>support@carepass.in</p>
 
                         </div>
 
                         <div className='flex gap-5'>
                             <button
+                                onClick={() => handleNavigation(ROUTES.CONTACT_US)}
                                 className="gap-2 px-3 py-2  w-fit  border border-1 border-deepPurple rounded-md   mx-auto md:m-0 flex items-center">
                                 <p className='text-deepPurple text-sm font-semibold '>Partner with us</p>
                             </button>

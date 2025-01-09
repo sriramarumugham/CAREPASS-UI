@@ -1413,23 +1413,25 @@ export const Section7 = () => {
 
   export const PlanComparison = ({features, heading, title}) => {  
     return (
-      <div className="pt-[50px] pb-[50px]" style={{ background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)' }}>
+      <div className="pt-12 pb-12 w-full" style={{ background: 'linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)' }}>
         <p className="text-3xl md:text-4xl font-bold text-center text-black mb-12">{heading}</p>
-        <div className="max-w-[1200px] mx-auto w-full flex flex-col md:flex-row items-center justify-center md:items-start gap-12">
+        <div className="max-w-7xl mx-auto px-4 w-full grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Left Section with Image */}
-          <div className="max-w-[300px] w-full flex-shrink-0 flex items-center justify-center pt-[50px]">
-            <img
-              src={FourDoctor}
-              alt="Table Image"
-              className="w-full object-cover rounded-lg"
-            />
+          <div className="md:col-span-4 flex items-center justify-center">
+            <div className="w-full max-w-md md:max-w-full sticky top-8">
+              <img
+                src={WhyChooseCarePassVideoThumbnail}
+                alt="Table Image"
+                className="w-full h-auto object-cover"
+              />
+            </div>
           </div>
   
           {/* Right Section with Table */}
-          
-            <div className="flex justify-center items-start gap-1">
+          <div className="md:col-span-8">
+            <div className="flex flex-col md:flex-row justify-center items-start gap-1">
               {/* Feature Names Column */}
-              <div className="w-1/3 border border-gray-200 rounded-lg bg-white">
+              <div className="w-full md:w-1/3 border border-gray-200 rounded-lg bg-white">
                 <div className="h-16 flex items-center p-4 border-b border-gray-200 bg-[#EBEDF0] justify-center">
                   <h3 className="font-medium text-black-600">Feature/Aspect</h3>
                 </div>
@@ -1446,7 +1448,7 @@ export const Section7 = () => {
               </div>
   
               {/* Main Plan Column */}
-              <div className="w-1/3 transform transition-all duration-300 scale-105 shadow-2xl hover:-translate-y-2 hover:scale-110 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] rounded-lg bg-white border-2 border-deepPurple">
+              <div className="w-full md:w-1/3 transform transition-all duration-300 scale-105 shadow-2xl hover:-translate-y-2 hover:scale-110 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] rounded-lg bg-white border-2 border-deepPurple">
                 <div className="h-16 flex flex-col items-center justify-center bg-deepPurple rounded-t-lg transition-colors duration-300 hover:bg-indigo-800">
                   <div className="flex items-center gap-2">
                     <span className="text-white animate-pulse">★</span>
@@ -1468,7 +1470,7 @@ export const Section7 = () => {
               </div>
   
               {/* Other Column */}
-              <div className="w-1/3 border border-gray-200 rounded-lg bg-white">
+              <div className="w-full md:w-1/3 border border-gray-200 rounded-lg bg-white">
                 <div className="h-16 flex items-center p-4 border-b border-gray-200 bg-[#EBEDF0] justify-center">
                   <h3 className="font-medium text-black-600">Other</h3>
                 </div>
@@ -1484,7 +1486,7 @@ export const Section7 = () => {
                 ))}
               </div>
             </div>
-          
+          </div>
         </div>
       </div>
     );
