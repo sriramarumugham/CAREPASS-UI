@@ -126,7 +126,7 @@ const AnimatedBenefits = () => {
                 [currentIndex]: 'opacity-100'
             }));
             currentIndex = (currentIndex + 1) % benefits.length;
-            
+
             // Once all benefits are shown, keep them visible
             if (currentIndex === 0) {
                 clearInterval(interval);
@@ -145,7 +145,7 @@ const AnimatedBenefits = () => {
                     className="w-full max-w-[663px] max-h-[521px] md:w-auto md:max-w-[663px] relative md:left-[-100px]"
                     alt="Hero Image"
                 />
-                
+
                 {/* Benefits positioned around the image */}
                 {benefits.map((benefit, index) => (
                     <div
@@ -197,17 +197,17 @@ const HeroSection = () => {
                         alt="Hero Image"
                     />
                 </div>
-    
+
                 <div className="bg-white rounded-xl max-w-[521px] px-[20px] md:px-[10px] py-[13px]  lg:p-9 flex flex-col gap-[10px] h-fit">
                     <div className="border border-1 border-black rounded-[25px] px-[10px] w-fit">
                         <p className="text-black font-bold">CarePass Tax Saver Plan</p>
                     </div>
                     <div className="flex flex-col gap-[20px] mb-5">
                         <p className="text-2xl font-bold text-deepPurple">Package Price: ₹5,000 <br />
-                        Actual Value of Benefits: ₹17,000+
+                            Actual Value of Benefits: ₹17,000+
                         </p>
                         <p className="font-light text-[#A689B0]">
-                            The Ultimate Health Bundle: Annual Health Checks, Unlimited Tele-Consults & Exclusive Discounts! 
+                            The Ultimate Health Bundle: Annual Health Checks, Unlimited Tele-Consults & Exclusive Discounts!
                         </p>
 
                         <Button onClick={() => handleNavigation(ROUTES.TAX_SAVER)} className="inline-flex items-center gap-2 rounded-3xl justify-center  w-full lg:w-fit px-9 bg-deepPurple  py-2 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-purple-950 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
@@ -216,49 +216,48 @@ const HeroSection = () => {
                     </div>
                 </div>
             </div>
-    
+
         )
     }
 
     const Plan2 = () => {
         const silverPlanIcons = [
             {
-              icon: <FaUserDoctor size={24} className="text-deepPurple" />,
-              title: "Doctor Consultations (In-clinic & Online)",
-              value: "₹10,000",
+                icon: <FaUserDoctor size={24} className="text-deepPurple" />,
+                title: "Doctor Consultations (In-clinic & Online)",
+                value: "₹10,000",
             },
             {
-              icon: <FaDiagnoses size={24} className="text-deepPurple" />,
-              title: "Diagnostics covered till",
-              value: "₹5,000",
+                icon: <FaDiagnoses size={24} className="text-deepPurple" />,
+                title: "Diagnostics covered till",
+                value: "₹5,000",
             },
             {
-              icon: <GiMedicines size={24} className="text-deepPurple" />,
-              title: "Pharmacy Purchases worth up to",
-              value: "₹5,000",
+                icon: <GiMedicines size={24} className="text-deepPurple" />,
+                title: "Pharmacy Purchases worth up to",
+                value: "₹5,000",
             },
             {
-              icon: <TbDental size={24} className="text-deepPurple" />,
-              title: "Dental Care up to",
-              value: "₹3,000",
+                icon: <TbDental size={24} className="text-deepPurple" />,
+                title: "Dental Care up to",
+                value: "₹3,000",
             },
             {
-              icon: <PiSunglassesThin size={24} className="text-deepPurple" />,
-              title: "Vision Care Products up to",
-              value: "₹2,000",
+                icon: <PiSunglassesThin size={24} className="text-deepPurple" />,
+                title: "Vision Care Products up to",
+                value: "₹2,000",
             },
-          ];
+        ];
         return (
             <div className="px-[20px] mt-[10px] mt-[45px] py-[20px] flex flex-col lg:flex-row items-center justify-center gap-2">
                 <div className="relative ml-[25px]">
                     <img
                         src={silver_image}
-                        className="w-full max-w-[400px] max-h-[400px] md:w-auto md:max-w-[521px] relative md:left-[-100px]"
+                        className="w-full max-w-[400px] max-h-[400px] md:w-auto md:max-w-[521px] relative md:left-[-100px] object-contain"
                         alt="CarePass Silver"
-                        className="object-contain"
                     />
                 </div>
-    
+
                 <div className="bg-white rounded-xl max-w-[650px] px-[20px] md:px-[10px] py-[13px] lg:p-9 flex flex-col gap-[10px] h-fit">
                     <div className="border border-1 border-black rounded-[25px] px-[10px] w-fit">
                         <p className="text-black font-bold">CarePass Silver</p>
@@ -270,21 +269,21 @@ const HeroSection = () => {
                         </p>
                         <div className="w-full">
                             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                            {silverPlanIcons.map((service, index) => (
-                                <div 
-                                key={index} 
-                                className="flex flex-col items-center text-center p-4 bg-purple-50 rounded-lg"
-                                >
-                                <div className="w-12 h-12 bg-purple-200 border-white rounded-full flex items-center justify-center mb-2">
-                                    {service.icon}
-                                </div>
-                                <p className="text-sm mb-1">{service.title}</p>
-                                <p className="text-deepPurple font-bold">
-                                    {service.value}
-                                    {index === 0 && <span className="text-xs align-top">*</span>}
-                                </p>
-                                </div>
-                            ))}
+                                {silverPlanIcons.map((service, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex flex-col items-center text-center p-4 bg-purple-50 rounded-lg"
+                                    >
+                                        <div className="w-12 h-12 bg-purple-200 border-white rounded-full flex items-center justify-center mb-2">
+                                            {service.icon}
+                                        </div>
+                                        <p className="text-sm mb-1">{service.title}</p>
+                                        <p className="text-deepPurple font-bold">
+                                            {service.value}
+                                            {index === 0 && <span className="text-xs align-top">*</span>}
+                                        </p>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                         <Button onClick={() => handleNavigation(ROUTES.SILVER_PLAN)} className="inline-flex items-center gap-2 rounded-3xl justify-center  w-full lg:w-fit px-9 bg-deepPurple  py-2 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-purple-950 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
@@ -292,9 +291,9 @@ const HeroSection = () => {
                         </Button>
                     </div>
                 </div>
-    
+
             </div>
-    
+
         )
     }
 
@@ -310,7 +309,7 @@ const HeroSection = () => {
                         height="521"
                     />
                 </div>
-    
+
                 <div className="bg-white rounded-xl max-w-[521px] px-[20px] md:px-[10px] py-[13px] lg:p-9 flex flex-col gap-[10px] h-fit">
                     <div className="border border-1 border-black rounded-[25px] px-[10px] w-fit">
                         <p className="text-black font-bold">CarePass Gold</p>
@@ -318,16 +317,16 @@ const HeroSection = () => {
                     <div className="flex flex-col gap-[20px] mb-5">
                         <p className="text-2xl font-bold text-deepPurple">Pay just ₹10,000 and receive benefits valued at ₹3,00,000+ </p>
                         <p className="font-light text-[#A689B0]">
-                            Comprehensive coverage: CarePass Tax Saver + CarePass Silver + Critical Illness Insurance 
+                            Comprehensive coverage: CarePass Tax Saver + CarePass Silver + Critical Illness Insurance
                         </p>
                         <Button onClick={() => handleNavigation(ROUTES.GOLD_PLAN)} className="inline-flex items-center gap-2 rounded-3xl justify-center  w-full lg:w-fit px-9 bg-deepPurple  py-2 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-purple-950 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
                             Know more
                         </Button>
                     </div>
                 </div>
-    
+
             </div>
-    
+
         )
     }
 
@@ -341,7 +340,7 @@ const HeroSection = () => {
                         alt="CarePass Silver"
                     />
                 </div>
-    
+
                 <div className="bg-white rounded-xl max-w-[521px] px-[20px] md:px-[10px] py-[13px]  lg:p-9 flex flex-col gap-[10px] h-fit" >
                     <div className="border border-1 border-black rounded-[25px] px-[10px] w-fit">
                         <p className="text-black font-bold">CarePass Platinum</p>
@@ -349,16 +348,16 @@ const HeroSection = () => {
                     <div className="flex flex-col gap-[20px] mb-5">
                         <p className="text-2xl font-bold text-deepPurple">Pay just ₹15,000 and receive benefits valued at ₹28,00,000 </p>
                         <p className="font-light text-[#A689B0]">
-                        Comprehensive Coverage: CarePass Tax Saver + CarePass Silver + Critical Illness Insurance + Super Top-up Insurance with Base Insurance 
+                            Comprehensive Coverage: CarePass Tax Saver + CarePass Silver + Critical Illness Insurance + Super Top-up Insurance with Base Insurance
                         </p>
                         <Button onClick={() => handleNavigation(ROUTES.SUPER_TOPUP)} className="inline-flex items-center gap-2 rounded-3xl justify-center  w-full lg:w-fit px-9 bg-deepPurple  py-2 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-purple-950 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
                             Know more
                         </Button>
                     </div>
                 </div>
-    
+
             </div>
-    
+
         )
     }
 
@@ -375,38 +374,38 @@ const HeroSection = () => {
                 loop='true'
                 prevArrow={({ handlePrev }) => (
                     <button
-                      onClick={handlePrev}
-                      className="absolute top-1/2 left-4 transform -translate-y-1/2 p-2 rounded-full bg-white-200 shadow-md hover:bg-gray-200"
+                        onClick={handlePrev}
+                        className="absolute top-1/2 left-4 transform -translate-y-1/2 p-2 rounded-full bg-white-200 shadow-md hover:bg-gray-200"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={2}
-                        stroke="currentColor"
-                        className="w-6 h-6 text-black"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                      </svg>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="w-6 h-6 text-black"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
                     </button>
-                  )}
-                  nextArrow={({ handleNext }) => (
+                )}
+                nextArrow={({ handleNext }) => (
                     <button
-                      onClick={handleNext}
-                      className="absolute top-1/2 right-4 transform -translate-y-1/2 p-2 rounded-full bg-white-200 shadow-md hover:bg-gray-200"
+                        onClick={handleNext}
+                        className="absolute top-1/2 right-4 transform -translate-y-1/2 p-2 rounded-full bg-white-200 shadow-md hover:bg-gray-200"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={2}
-                        stroke="currentColor"
-                        className="w-6 h-6 text-black"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                      </svg>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="w-6 h-6 text-black"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
                     </button>
-                  )}
+                )}
             >
                 <Plan1 />
                 <Plan2 />
