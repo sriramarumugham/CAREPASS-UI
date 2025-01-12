@@ -119,7 +119,7 @@ const CriticalIllnessBeneficiary: React.FC<{
     };
 
     return (
-        <div className="py-2">
+        <div className="py-2 px-2">
 
             {/* Beneficiary List */}
             {fields.map(
@@ -184,7 +184,7 @@ const renderField = (field: Field, fieldName: string, register: any, control: an
         case 'email':
         case 'number':
             return (
-                <div key={field.name} className="mb-4">
+                <div key={field.name} className="mb-4 px-2">
                     <label>{field.label}</label>
                     <input
                         {...register(fieldName, {
@@ -201,7 +201,7 @@ const renderField = (field: Field, fieldName: string, register: any, control: an
             );
         case 'select':
             return (
-                <div key={field.name} className="mb-4">
+                <div key={field.name} className="mb-4 px-2">
                     <label>{field.label}</label>
                     <select
                         disabled={isDisabled}
@@ -232,7 +232,7 @@ const renderField = (field: Field, fieldName: string, register: any, control: an
             );
         case 'switch':
             return (
-                <div className="mb-4 flex flex-col gap-3">
+                <div className="mb-4 flex flex-col gap-3 px-2">
 
                     <label className="mr-4">Are you applying for yourself?</label>
                     <div className='flex items-center gap-3'>
@@ -254,7 +254,7 @@ const renderField = (field: Field, fieldName: string, register: any, control: an
             );
         case 'radio':
             return (
-                <div key={field.name} className="mb-4">
+                <div key={field.name} className="mb-4 px-2">
                     <label>{field.label}</label>
                     <div className="flex flex-col">
                         {field.options?.map((option) => (
@@ -322,8 +322,8 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
         <>
             {/* <h2>{product.productName}</h2> */}
             {product.formSchema.map((section) => (
-                <div key={section.sectionTitle} className='flex flex-col gap-2 pb-5  '>
-                    <div className='bg-deepPurple text-white py-2 text-center mb-5'>
+                <div key={section.sectionTitle} className='flex flex-col gap-2   border-[5px] pb-5 border-deepPurple '>
+                    <div className='bg-deepPurple text-white py-2 text-center mb-5 '>
                         <h3 className=''>{section.sectionTitle}</h3>
                     </div>
                     {section.fields.map((field) => {
@@ -439,7 +439,7 @@ const FieldArraySection: React.FC<{
     };
 
     return (
-        <div className="flex flex-col gap-4 py-2">
+        <div className="flex flex-col gap-4 py-2 px-2">
             <label>{field.label}</label>
             {fields.map((item, index) => (
                 <div key={item.id} className="border p-2 mb-2">
@@ -645,7 +645,7 @@ export const Checkout = () => {
                                                     </span>
                                                     <ChevronDownIcon className={`size-5 fill-gray-600 transition-transform ${open ? 'rotate-180' : ''}`} />
                                                 </DisclosureButton>
-                                                <DisclosurePanel className="mt-2 text-sm text-black-700 bg-gray-100 p-4 rounded-md">
+                                                <DisclosurePanel className="mt-2 text-sm text-black-700 p-4 rounded-md">
                                                     {[...Array(item.quantity)].map((_, index) => (
                                                         <DynamicForm
                                                             key={`${item.productId}-${index}`} // Unique key
