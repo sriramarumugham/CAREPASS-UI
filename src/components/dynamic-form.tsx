@@ -28,10 +28,9 @@ interface DynamicFormProps {
     control: any;
     formIndex: any;
     setValue: any
+    trigger: any
 
 }
-
-
 
 
 
@@ -43,10 +42,16 @@ const CriticalIllnessBeneficiary: React.FC<{
     sourceFieldName: string;
     maxCount: number;
 }> = ({ control, register, setValue, fieldName, sourceFieldName, maxCount }) => {
-    const { fields, append, update, remove } = useFieldArray({
+    const { fields, append, update } = useFieldArray({
         control,
         name: fieldName,
     });
+
+    const [newBeneficiaryName, setNewBeneficiaryName] = useState<string>('');
+    const [newBeneficiaryRelation, setNewBeneficiaryRelation] = useState<string>('SELF');
+
+    const { getUser } = useUserStore();
+    const userDetails = getUser() as { user?: { fullName: string; email: string; phoneNumber: string } };
 
     const watchedBeneficiaries = useWatch({
         control,
@@ -55,76 +60,125 @@ const CriticalIllnessBeneficiary: React.FC<{
 
 
     const syncedBeneficiaries = useRef(new Set<string>());
+    const selectedCount = fields.filter((field) => field.isSelected).length;
+
 
     useEffect(() => {
+        // Add the user's name with relation "SELF" to the list by default
+        const userFullName = userDetails?.user?.fullName || 'Default User';
+        if (userFullName && !syncedBeneficiaries.current.has(userFullName)) {
+            append({ isSelected: false, fullName: userFullName, relation: 'SELF' });
+            syncedBeneficiaries.current.add(userFullName);
+        }
+
         if (!watchedBeneficiaries?.length) return;
 
         const currentFullNames = fields.map((field) => field.fullName);
 
-        watchedBeneficiaries.forEach((beneficiary: any, index: number) => {
-            const { fullName = "N/A" } = beneficiary;
+        // Filter to include only complete beneficiaries
+
+        const completeBeneficiaries = watchedBeneficiaries.filter(
+            (beneficiary: any) => beneficiary.isSaved === true
+        );
+
+        completeBeneficiaries.forEach((beneficiary: any) => {
+            const { fullName, relation } = beneficiary;
 
             if (!syncedBeneficiaries.current.has(fullName)) {
                 if (!currentFullNames.includes(fullName)) {
-                    append({ isSelected: false, fullName });
+                    append({ isSelected: false, fullName, relation: relation || 'OTHER' });
                 }
                 syncedBeneficiaries.current.add(fullName);
             }
-
-            if (fields[index]?.fullName !== fullName) {
-                update(index, { ...fields[index], fullName });
-            }
         });
-
-        // Remove excess beneficiaries
-        if (fields.length > watchedBeneficiaries.length) {
-            for (let i = fields.length - 1; i >= watchedBeneficiaries.length; i--) {
-                remove(i);
-            }
-        }
-    }, [watchedBeneficiaries, append, remove, update, fields]);
+    }, [watchedBeneficiaries, append, fields, userDetails]);
 
     const handleCheckboxChange = (index: number) => {
+        if (!fields[index]) return;
         const updatedValue = !fields[index]?.isSelected;
 
+        if (updatedValue && selectedCount >= maxCount) {
+            alert(`You can select up to ${maxCount} beneficiaries.`);
+            return;
+        }
 
         update(index, {
             ...fields[index],
             isSelected: updatedValue,
         });
-
-        // console.log("Value updated to:", updatedValue);
     };
-    // console.log("FIELDS__", fields?.[0])
+
+    const handleAddBeneficiary = () => {
+        const trimmedName = newBeneficiaryName.trim();
+        if (trimmedName === '' || syncedBeneficiaries.current.has(trimmedName)) return;
+
+        append({ isSelected: false, fullName: trimmedName, relation: newBeneficiaryRelation });
+        syncedBeneficiaries.current.add(trimmedName);
+        setNewBeneficiaryName('');
+        setNewBeneficiaryRelation('SELF');
+    };
 
     return (
-        <div className='py-2'>
-            {/* <h3 className="text-lg font-semibold">Critical Illness Beneficiary</h3> */}
-            {fields.map((field, index) => (
-                <div key={field.id} className="flex items-center gap-4 mb-4 border p-4 rounded-md">
-                    <input
-                        type="checkbox"
-                        {...register(`${fieldName}[${index}].isSelected`)}
-                        checked={fields[index]?.isSelected || false}
-                        onChange={() => handleCheckboxChange(index)}
-                        className="w-5 h-5"
-                    />
-                    <div className="flex-1">
-                        <p className="font-semibold">{field.fullName || "N/A"}</p>
-                    </div>
-                </div>
-            ))}
+        <div className="py-2">
+
+            {/* Beneficiary List */}
+            {fields.map(
+                (field, index) =>
+                    field.fullName && (
+                        <div
+                            key={field.id}
+                            className="flex items-center gap-4 mb-4 border p-4 rounded-md"
+                        >
+                            <input
+                                type="checkbox"
+                                {...register(`${fieldName}[${index}].isSelected`)}
+                                checked={fields[index]?.isSelected || false}
+                                onChange={() => handleCheckboxChange(index)}
+                                className="w-5 h-5"
+                            />
+                            <div className="flex-1">
+                                <p className="font-semibold">{field.fullName}</p>
+                            </div>
+                        </div>
+                    )
+            )}
+            {/* Add Beneficiary Input */}
+
+            <div className="flex flex-col gap-4 items-center mb-4">
+                <input
+                    type="text"
+                    value={newBeneficiaryName}
+                    onChange={(e) => setNewBeneficiaryName(e.target.value)}
+                    placeholder="Enter beneficiary name"
+                    className="w-full p-2 border disabled:cursor-not-allowed "
+                />
+                <select
+                    value={newBeneficiaryRelation}
+                    onChange={(e) => setNewBeneficiaryRelation(e.target.value)}
+
+                    className="w-full p-2 border  disabled:cursor-not-allowed"
+                >
+                    <option value="SELF">Self</option>
+                    <option value="FATHER">Father</option>
+                    <option value="MOTHER">Mother</option>
+                    <option value="SPOUSE">Spouse</option>
+                    <option value="CHILD">Child</option>
+                </select>
+                <button
+                    type="button"
+                    onClick={handleAddBeneficiary}
+                    className="p-2 border rounded w-full px-4 transition border-deepPurple text-deepPurple bg-white hover:bg-deepPurple hover:text-white "
+                    disabled={!newBeneficiaryName.trim()}
+                >
+                    + Add Beneficiary
+                </button>
+            </div>
         </div>
     );
 };
 
 
-
-
-
-
-
-const renderField = (field: Field, fieldName: string, register: any, control: any, isSelf?: boolean, setIsSelf?: any, isDisabled?: boolean) => {
+const renderField = (field: Field, fieldName: string, register: any, control: any, trigger: any, setValue: any, isSelf?: boolean, setIsSelf?: any, isDisabled?: boolean) => {
     switch (field.type) {
         case 'text':
         case 'email':
@@ -150,8 +204,9 @@ const renderField = (field: Field, fieldName: string, register: any, control: an
                 <div key={field.name} className="mb-4">
                     <label>{field.label}</label>
                     <select
+                        disabled={isDisabled}
                         {...register(fieldName, { required: field.required && `${field.label} is required` })}
-                        className="w-full p-2 border"
+                        className="w-full p-2 border  disabled:cursor-not-allowed"
                     >
                         <option value="">Select {field.label}</option>
                         {field.options?.map((option) => (
@@ -170,7 +225,9 @@ const renderField = (field: Field, fieldName: string, register: any, control: an
                     field={field}
                     control={control}
                     register={register}
+                    trigger={trigger}
                     fieldName={fieldName}
+                    setValue={setValue}
                 />
             );
         case 'switch':
@@ -222,7 +279,7 @@ const renderField = (field: Field, fieldName: string, register: any, control: an
 };
 
 
-const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, formIndex, setValue }) => {
+const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, formIndex, setValue, trigger }) => {
 
     const [isSelf, setIsSelf] = useState(true);
 
@@ -240,9 +297,9 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
             // product3.0.beneficiaries[0].fullName
             // "product3.0.beneficiaries[1].fullName"
             // console.log("product3.0.beneficiaries[0].fullName__", product3.0.beneficiaries[0].fullName);
-            if (product.productId != "product1") {
-                setValue(`${product.productId}.${formIndex}.beneficiaries[0].fullName`, userDetails?.user?.fullName);
-            }
+            // if (product.productId != "product1") {
+            //     setValue(`${product.productId}.${formIndex}.beneficiaries[0].fullName`, userDetails?.user?.fullName);
+            // }
 
             // setValue(`${product.productId}.${formIndex}.beneficiaries[0].fullName`, userDetails?.user?.fullName);
 
@@ -251,7 +308,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
             setValue(`${product.productId}.${formIndex}.primaryEmail`, "");
             setValue(`${product.productId}.${formIndex}.primaryMobile`, "");
 
-            setValue(`${product.productId}.${formIndex}.beneficiaries[0].fullName`, "");
+            // setValue(`${product.productId}.${formIndex}.beneficiaries[0].fullName`, "");
 
         }
     }, [isSelf, product.productId, formIndex, setValue]);
@@ -275,6 +332,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
                             return (<CriticalIllnessBeneficiary
                                 key={field.name}
                                 control={control}
+                                trigger={trigger}
                                 register={register}
                                 setValue={setValue}
                                 maxCount={field.maxCount || 3}
@@ -284,7 +342,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
                             />)
                         }
                         else {
-                            return renderField(field, `${product.productId}.${formIndex}.${field.name}`, register, control, isSelf, setIsSelf) // Updated field name
+                            return renderField(field, `${product.productId}.${formIndex}.${field.name}`, register, control, trigger, setValue, isSelf, setIsSelf) // Updated field name
                         }
                     }
                     )}
@@ -294,26 +352,29 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
     );
 };
 
+
 const FieldArraySection: React.FC<{
     field: Field;
     control: any;
     register: any;
+    trigger: any; // Add trigger to props
     fieldName: string;
-}> = ({ field, control, register, fieldName }) => {
-    const { fields, append, remove } = useFieldArray({
+    setValue: any
+}> = ({ field, control, register, trigger, fieldName, setValue }) => {
+    const { fields, append, remove, update } = useFieldArray({
         control,
         name: fieldName,
     });
 
-    const initialized = useRef(false);
+    console.log("filed__", field)
 
     const [isSaved, setIsSaved] = useState<boolean[]>([]);
+    const [errors, setErrors] = useState<{ [key: number]: string[] }>({});
 
     useEffect(() => {
-        if (!initialized.current && fields.length === 0) {
-            append({});
-            setIsSaved([false]);
-            initialized.current = true;
+        if (fields.length === 0) {
+            // append({});
+            // setIsSaved([false]);
         } else if (fields.length > isSaved.length) {
             setIsSaved((prev) => [...prev, false]);
         }
@@ -328,13 +389,53 @@ const FieldArraySection: React.FC<{
         if (fields.length > 1) {
             remove(index);
             setIsSaved((prev) => prev.filter((_, i) => i !== index));
+            setErrors((prev) => {
+                const updatedErrors = { ...prev };
+                delete updatedErrors[index];
+                return updatedErrors;
+            });
         }
     };
 
-    const toggleSave = (index: number) => {
+    const validateFields = async (index: number): Promise<boolean> => {
+        const fieldNames = field.fields?.map(
+            (subField) => `${fieldName}[${index}].${subField.name}`
+        ) || [];
+        const result = await trigger(fieldNames);
+        return result;
+    };
+
+    const toggleSave = async (index: number) => {
+        const isValid = await validateFields(index);
+        if (!isValid) {
+            setErrors((prev) => ({
+                ...prev,
+                [index]: ['Please fill in all required fields.'],
+            }));
+            return;
+        }
+        console.log("BEFORE", fields[index])
+
+
+        setValue(`${fieldName}[${index}].isSaved`, !isSaved[index], {
+            shouldDirty: true, // Marks the field as dirty
+            shouldValidate: false, // Skip validation on toggle
+        });
+
+
+
+        console.log("AFTER", fields[index])
+
+
+
         setIsSaved((prev) =>
             prev.map((saved, i) => (i === index ? !saved : saved))
         );
+        setErrors((prev) => {
+            const updatedErrors = { ...prev };
+            delete updatedErrors[index];
+            return updatedErrors;
+        });
     };
 
     return (
@@ -348,11 +449,18 @@ const FieldArraySection: React.FC<{
                             `${fieldName}[${index}].${subField.name}`,
                             register,
                             control,
+                            trigger,
+                            setValue,
                             false,
                             undefined,
                             isSaved[index]
                         )
                     )}
+                    {errors[index]?.map((error, i) => (
+                        <p key={i} className="text-red-500 text-sm">
+                            {error}
+                        </p>
+                    ))}
                     <div className="flex justify-between mt-2">
                         {!isSaved[index] ? (
                             <button
@@ -387,10 +495,10 @@ const FieldArraySection: React.FC<{
                 type="button"
                 onClick={appendBeneficiary}
                 className={`p-2 border rounded px-4 transition 
-                    ${fields.length >= field?.maxCount
-                        ? 'bg-gray-300 text-black-500 cursor-not-allowed'
+        ${fields.length >= field?.maxCount || isSaved.includes(false)
+                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                         : 'border-deepPurple text-deepPurple bg-white hover:bg-deepPurple hover:text-white'}`}
-                disabled={fields.length >= field?.maxCount}
+                disabled={fields.length >= field?.maxCount || isSaved.includes(false)}
             >
                 + Add Beneficiary
             </button>
@@ -398,10 +506,8 @@ const FieldArraySection: React.FC<{
     );
 };
 
-
-
 export const Checkout = () => {
-    const { control, register, handleSubmit, watch, setValue } = useForm();
+    const { control, register, handleSubmit, watch, setValue, trigger } = useForm();
     const formData = watch();
     const { cart } = useCartStore();
     // const { products } = useProductStore();
@@ -548,6 +654,7 @@ export const Checkout = () => {
                                                             control={control}
                                                             formIndex={index} // Pass the index
                                                             setValue={setValue}
+                                                            trigger={trigger}
                                                         />
                                                     ))}
                                                 </DisclosurePanel>
@@ -608,7 +715,6 @@ const calculateTotalPrice = (products, formData, productData) => {
         return total + productTotal;
     }, 0);
 };
-
 
 const TotalPrice: React.FC<{
     products: CartItem[];
@@ -699,18 +805,18 @@ const transformFormData = (formData, productData, cart) => {
         const productFormData = formData[product.productId] || [];
 
         productFormData.forEach(item => {
-            // Filter and transform `criticalIllnessBeneficiary`
-            const transformedBeneficiaries = Array.isArray(item.criticalIllnessBeneficiary)
-                ? item.criticalIllnessBeneficiary.map(({ fullName, isSelected }) => ({
-                    fullName,
-                    isSelected,
-                }))
+            // Filter and transform `criticalIllnessBeneficiary` to include only selected beneficiaries
+            const selectedBeneficiaries = Array.isArray(item.criticalIllnessBeneficiary)
+                ? item.criticalIllnessBeneficiary
+                    .filter(beneficiary => beneficiary.isSelected) // Include only selected beneficiaries
+                    .map(({ fullName, relation }) => ({
+                        fullName, // Include only fullName
+                        isSelected: true,
+                        relation
+                    }))
                 : [];
 
-            // Count only selected beneficiaries
-            const selectedBeneficiariesCount = transformedBeneficiaries.filter(beneficiary => beneficiary.isSelected).length;
-
-            const totalBeneficiaryCost = selectedBeneficiariesCount * pricePerBeneficiary; // Only add for selected beneficiaries
+            const totalBeneficiaryCost = selectedBeneficiaries.length * pricePerBeneficiary; // Cost for selected beneficiaries
 
             // Add price details for each user
             priceDetails.push({
@@ -718,7 +824,7 @@ const transformFormData = (formData, productData, cart) => {
                 userDetails: {
                     productId: product.productId,
                     ...item,
-                    criticalIllnessBeneficiary: transformedBeneficiaries, // Replace with transformed array
+                    criticalIllnessBeneficiary: selectedBeneficiaries, // Include only selected beneficiaries
                 },
             });
         });
@@ -734,6 +840,7 @@ const transformFormData = (formData, productData, cart) => {
 
     return {
         formDetails: priceDetails,
-        totalPrice: totalPrice
+        totalPrice: totalPrice,
     };
 };
+
