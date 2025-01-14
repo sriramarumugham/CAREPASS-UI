@@ -41,7 +41,8 @@ const CriticalIllnessBeneficiary: React.FC<{
     fieldName: string;
     sourceFieldName: string;
     maxCount: number;
-}> = ({ control, register, setValue, fieldName, sourceFieldName, maxCount }) => {
+    isSelf: boolean;
+}> = ({ control, register, setValue, fieldName, sourceFieldName, maxCount, isSelf }) => {
     const { fields, append, update } = useFieldArray({
         control,
         name: fieldName,
@@ -66,9 +67,22 @@ const CriticalIllnessBeneficiary: React.FC<{
     useEffect(() => {
         // Add the user's name with relation "SELF" to the list by default
         const userFullName = userDetails?.user?.fullName || 'Default User';
-        if (userFullName && !syncedBeneficiaries.current.has(userFullName)) {
-            append({ isSelected: false, fullName: userFullName, relation: 'SELF' });
-            syncedBeneficiaries.current.add(userFullName);
+
+        if (isSelf) {
+            if (userFullName && !syncedBeneficiaries.current.has(userFullName)) {
+                append({ isSelected: false, fullName: userFullName, relation: 'SELF' });
+                syncedBeneficiaries.current.add(userFullName);
+            }
+
+        }
+        else {
+            const selfIndex = fields.findIndex(
+                (field) => field?.fullName === userFullName && field?.relation === 'SELF'
+            );
+            if (selfIndex !== -1) {
+                syncedBeneficiaries.current.delete(userFullName);
+                update(selfIndex, undefined);
+            }
         }
 
         if (!watchedBeneficiaries?.length) return;
@@ -91,7 +105,7 @@ const CriticalIllnessBeneficiary: React.FC<{
                 syncedBeneficiaries.current.add(fullName);
             }
         });
-    }, [watchedBeneficiaries, append, fields, userDetails]);
+    }, [watchedBeneficiaries, append, fields, userDetails, isSelf]);
 
     const handleCheckboxChange = (index: number) => {
         if (!fields[index]) return;
@@ -296,7 +310,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
             // setValue(`${product.productId}.${formIndex}.primaryMobile`, userDetails?.user?.phoneNumber);
             // product3.0.beneficiaries[0].fullName
             // "product3.0.beneficiaries[1].fullName"
-            // console.log("product3.0.beneficiaries[0].fullName__", product3.0.beneficiaries[0].fullName);
+            // // console.log("product3.0.beneficiaries[0].fullName__", product3.0.beneficiaries[0].fullName);
             // if (product.productId != "product1") {
             //     setValue(`${product.productId}.${formIndex}.beneficiaries[0].fullName`, userDetails?.user?.fullName);
             // }
@@ -322,7 +336,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
         <>
             {/* <h2>{product.productName}</h2> */}
             {product.formSchema.map((section) => (
-                <div key={section.sectionTitle} className='flex flex-col gap-2   border-[5px] pb-5 border-deepPurple '>
+                <div key={section.sectionTitle} className='flex flex-col gap-2   border-[5px] pb-5 border-deepPurple mb-5 '>
                     <div className='bg-deepPurple text-white py-2 text-center mb-5 '>
                         <h3 className=''>{section.sectionTitle}</h3>
                     </div>
@@ -338,7 +352,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
                                 maxCount={field.maxCount || 3}
                                 fieldName={criticalIllnessFieldName}
                                 sourceFieldName={baseBeneficiariesFieldName}
-
+                                isSelf={isSelf}
                             />)
                         }
                         else {
@@ -366,7 +380,7 @@ const FieldArraySection: React.FC<{
         name: fieldName,
     });
 
-    console.log("filed__", field)
+    // // console.log("filed__", field)
 
     const [isSaved, setIsSaved] = useState<boolean[]>([]);
     const [errors, setErrors] = useState<{ [key: number]: string[] }>({});
@@ -414,7 +428,7 @@ const FieldArraySection: React.FC<{
             }));
             return;
         }
-        console.log("BEFORE", fields[index])
+        // // console.log("BEFORE", fields[index])
 
 
         setValue(`${fieldName}[${index}].isSaved`, !isSaved[index], {
@@ -424,7 +438,7 @@ const FieldArraySection: React.FC<{
 
 
 
-        console.log("AFTER", fields[index])
+        // // console.log("AFTER", fields[index])
 
 
 
@@ -517,7 +531,7 @@ export const Checkout = () => {
             queryKey: ['products'],
             queryFn: async () => {
                 const data = await getProductsApi();
-                console.log("data___", data);
+                // console.log("data___", data);
                 return data?.products; // Return the products directly
             },
         }
@@ -540,8 +554,8 @@ export const Checkout = () => {
         },
         onSuccess: (response: any) => {
             const razorpayOrderDetails = response.data;
-            console.log("razorpay_order_detilas---", razorpayOrderDetails);
-            console.log("razorPay_id", RAZORPAY_ID)
+            // console.log("razorpay_order_detilas---", razorpayOrderDetails);
+            // console.log("razorPay_id", RAZORPAY_ID)
             const options = {
                 key: "rzp_test_wyq9rnIM0s8LOR",
                 amount: 100,
@@ -583,8 +597,8 @@ export const Checkout = () => {
             setOpen(true);
             return;
         }
-        console.log('Current Form Data:', formData, data);
-        console.log("cart__", cart);
+        // console.log('Current Form Data:', formData, data);
+        // console.log("cart__", cart);
         let isValid = true;
         const alerts: string[] = []; // Collect alerts
 
@@ -613,9 +627,9 @@ export const Checkout = () => {
             return; // Exit if validation fails
         }
 
-        console.log('Combined Form Data:', data);
+        // console.log('Combined Form Data:', data);
         const result = transformFormData(formData, products, cart);
-        console.log("Transformed Data:", result);
+        // console.log("Transformed Data:", result);
         mutate(result);
     };
 
@@ -697,7 +711,7 @@ const calculateTotalPrice = (products, formData, productData) => {
             ? formData[product.productId].reduce((count, item) => {
                 // Count only selected beneficiaries
                 const selectedCount = Array.isArray(item.criticalIllnessBeneficiary)
-                    ? item.criticalIllnessBeneficiary.filter(beneficiary => beneficiary.isSelected).length
+                    ? item.criticalIllnessBeneficiary.filter(beneficiary => beneficiary?.isSelected)?.length
                     : 0;
                 return count + selectedCount;
             }, 0)
