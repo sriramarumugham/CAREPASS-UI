@@ -15,7 +15,7 @@ import Instagram from '../assets/instagram.svg';
 import Facebook from '../assets/facebook.svg';
 import ArrowDown from '../assets/arrow-down.svg'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 
@@ -155,46 +155,51 @@ const SideBarContent = () => {
     )
 }
 
+
+
 function ProductListDesktop() {
-
-    const navigate = useNavigate()
-
-
-
+    const navigate = useNavigate();
+    
     const handleNavigation = (route: string) => {
-        navigate(route, { relative: 'path' })
-    }
+        navigate(route, { relative: 'path' });
+    };
 
     return (
-        <Popover className="relative  ">
-            <PopoverButton className="focus:outline-none" >
-                <div className='flex gap-2'>
-                    <a className="font-light focus:font-bold  active:outline-none   outline-none ">Products</a><img className='flex' src={ArrowDown}></img>
-                </div>
+        <div className="relative group">
+            <div className="flex gap-2 cursor-pointer">
+                <NavHashLink to="/products" className="font-light group-hover:font-bold">Products</NavHashLink>
+                <img className="flex transition-transform group-hover:rotate-180" src={ArrowDown} alt="arrow" />
+            </div>
 
-            </PopoverButton>
-            <PopoverPanel anchor="bottom" className="flex flex-col bg-white rounded-md border border-[#F4BED1] p-[16px] w-[268px] mt-3">
-                <ul className='flex flex-col gap-[10px] w-full'>
-                    {products.map((product, index: number) => (
-                        <>
+            {/* Added a phantom div to extend hover area between trigger and menu */}
+            <div className="absolute h-3 w-full" />
 
-                            <div className='gap-[4px] cursor-pointer'
+            {/* Dropdown menu - added z-50 and adjusted positioning */}
+            <div className="absolute z-50 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white rounded-md border border-[#F4BED1] p-4 w-[268px] mt-3 shadow-lg">
+                <ul className="flex flex-col gap-[10px] w-full">
+                    {products.map((product, index) => (
+                        <React.Fragment key={product.name}>
+                            <div 
+                                className="gap-[4px] cursor-pointer hover:bg-gray-50 p-2 rounded-md transition-colors"
                                 onClick={() => handleNavigation(product.route)}
                             >
-                                <p className='text-deepPurple text-sm'>{product.name}</p>
-                                <p className='font-extralight text-xs' > {product.description}</p>
+                                <p className="text-deepPurple text-sm">{product.name}</p>
+                                <p className="font-extralight text-xs">{product.description}</p>
                             </div>
 
                             {index < products.length - 1 && (
                                 <div className="border border-1 rounded-lg border-[#F4BED1]"></div>
                             )}
-                        </>
+                        </React.Fragment>
                     ))}
                 </ul>
-            </PopoverPanel>
-        </Popover>
-    )
+            </div>
+        </div>
+    );
 }
+
+
+
 const Navbar = () => {
 
     const [openSidebar, setOpenSideBar] = useState(false);
@@ -215,15 +220,15 @@ const Navbar = () => {
 
 
                 <ul className="hidden lg:flex space-x-4 text-deepPurple">
-                    <li><NavHashLink to="/" className=" font-light focus:font-bold focus:underline-offset-4  focus:underline">Home</NavHashLink></li>
-                    <li><NavHashLink to="/about-us" className="font-light focus:font-bold  focus:underline-offset-4  focus:underline">About Us</NavHashLink></li>
+                    <li><NavHashLink to="/" className=" font-light focus:font-bold focus:underline-offset-4 focus:underline">Home</NavHashLink></li>
+                    <li><NavHashLink to="/about-us" className="font-light focus:font-bold  focus:underline-offset-4 focus:underline">About Us</NavHashLink></li>
 
                     <li>
                         <ProductListDesktop />
                     </li>
 
-                    <li><NavHashLink to="/faq" className="font-light focus:font-bold focus:underline-offset-4  focus:underline">FAQ</NavHashLink></li>
-                    <li><NavHashLink to="/contact-us" className="font-light focus:font-bold focus:underline-offset-4  focus:underline ">Contact Us</NavHashLink></li>
+                    <li><NavHashLink to="/faq" className="font-light focus:font-bold focus:underline-offset-4 focus:underline">FAQ</NavHashLink></li>
+                    <li><NavHashLink to="/contact-us" className="font-light focus:font-bold focus:underline-offset-4 focus:underline ">Contact Us</NavHashLink></li>
                 </ul>
 
                 <div className='hidden items-center justify-center lg:flex gap-3'>

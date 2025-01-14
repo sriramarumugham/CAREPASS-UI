@@ -2128,6 +2128,35 @@ export const ProductsIntro = () => {
   );
 }
 
+export const ProductsIntroTwo = () => {
+  return (
+    <div className="px-[20px] flex items-center justify-center" style={{ background: "linear-gradient(180deg, #FCF9FF 0%, #FFFFFF 100%)" }}>
+      <div className="flex flex-col max-w-[1200px] py-[16px] md:py-[20px] gap-3 md:gap-6">
+        <div>
+          <div className="flex flex-col md:flex-row gap-3 md:gap-6 items-center">
+            {/* Responsive Image Section - Reduced size */}
+            <div className="w-full md:w-2/5">
+              <img
+                src={AboutUsTwo}
+                alt="Health & Wellness"
+                className="w-full max-h-[280px] object-cover"
+              />
+            </div>
+            <div className="flex flex-col gap-2 md:w-3/5">
+              <p className="leading-6 md:leading-7 text-justify">
+                At CarePass, we offer a range of health plans designed to cater to the diverse needs of individuals and families.
+              </p>
+              <p className="leading-6 md:leading-7 text-justify">
+                Our products provide comprehensive insurance coverage that not only protects you in emergencies but also prioritizes preventive care, while offering tax savings benefits.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export const CarePassTable = () => {
   const features = [
     {
