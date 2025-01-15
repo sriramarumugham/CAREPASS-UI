@@ -5,17 +5,17 @@ import TopRightSvg from '../assets/top-right.svg';
 import { GiWeightLiftingUp, GiLifeSupport } from "react-icons/gi";
 import { CiDiscount1, CiMobile1, CiHeart } from "react-icons/ci";
 import { RiDiscountPercentFill } from "react-icons/ri";
-import { TbReceiptTax, TbRosetteDiscountCheckFilled, TbDiscount } from "react-icons/tb";
+import { TbReceiptTax, TbRosetteDiscountCheckFilled, TbDiscount, TbShieldHeart } from "react-icons/tb";
 import { FaUserDoctor, FaPeopleRoof, FaPeopleGroup, FaShieldHeart } from "react-icons/fa6";
 import { BsHouseHeartFill, BsFillPatchCheckFill } from "react-icons/bs";
-import { MdHealthAndSafety, MdOutlineSupportAgent, MdOutlineMedicalServices, MdOutlineFamilyRestroom, MdOutlineSavings } from "react-icons/md";
+import { MdHealthAndSafety, MdOutlineSupportAgent, MdOutlineMedicalServices, MdOutlineFamilyRestroom, MdOutlineSavings, MdMobileFriendly, MdSupportAgent } from "react-icons/md";
 import { FaUsers, FaUserMd, FaDollarSign, FaClipboardList, FaTag, FaStethoscope, FaHeartbeat, FaAppleAlt, FaBookMedical, FaRegDotCircle
 , FaHospital, FaPlay } from 'react-icons/fa';
 import { FiShield } from "react-icons/fi";
 import { useState } from 'react';
 import FourDoctor from '../assets/fourDoctors.svg';
 import { PiHandCoinsFill } from "react-icons/pi";
-import { BiSupport } from "react-icons/bi";
+import { BiSupport, BiRupee } from "react-icons/bi";
 import { LuHeartPulse } from "react-icons/lu";
 import AboutUsTwo from '../assets/about-us-2.png';
 import TaxSaver from '../assets/Tax.png';
@@ -554,6 +554,78 @@ export const Section7 = () => {
         description:
           "Take advantage of tax benefits under Section 80D, providing additional savings on your healthcare costs.",
         icon: <RiDiscountPercentFill className="text-deepPurple text-3xl" />,
+      },
+    ];
+  
+    const videoUrl = "https://drive.google.com/file/d/1bF6cerGu_0Gh-_PsySWyQg1yECQcLs_F/preview";
+  
+    return (
+      <div className="px-[20px] flex items-center justify-center">
+        <div className="flex flex-col max-w-[1200px] py-[30px] md:py-[30px] gap-6">
+          <p className="font-bold text-xl md:text-4xl mx-auto text-black">
+            Why Choose CarePass?
+          </p>
+          <div className="flex flex-col md:flex-row gap-6">
+            {/* Content Section */}
+            <div className="flex-1 flex flex-col gap-4">
+              <ul className="space-y-6">
+                {benefits.map((benefit, index) => (
+                  <li key={index} className="flex items-center space-x-4">
+                    <span className="text-black">{benefit.icon}</span>
+                    <div>
+                      <h2 className="text-xl font-semibold text-black">
+                        {benefit.title}
+                      </h2>
+                      <p className="text-black-700">{benefit.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+  
+            {/* Video Thumbnail Section */}
+            <div
+              className="flex-1 border-2 border-gray-200 rounded-md overflow-hidden cursor-pointer hover:border-gray-400 transition-colors relative"
+              onClick={() => window.open(videoUrl, "_blank")}
+            >
+              <img
+                src={WhyChooseCarePassVideoThumbnail}
+                alt="Why Choose CarePass Video Thumbnail"
+                className="w-full h-[300px] md:h-[400px] lg:h-[480px] object-cover"
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                <button className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+                  <FaPlay className="text-deepPurple text-4xl" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  export const WhyChooseCarePassAboutUs = () => {
+    const benefits = [
+      {
+        title: "Comprehensive Coverage:",
+        description: "Each product is designed to meet a variety of health needs.",
+        icon: <TbShieldHeart className="text-deepPurple text-3xl" />,
+      },
+      {
+        title: "Affordable Premiums:",
+        description: "Enjoy extensive coverage without breaking the bank.",
+        icon: <BiRupee className="text-deepPurple text-3xl" />,
+      },
+      {
+        title: "User-Friendly Technology:",
+        description: "Manage your health easily through our Wellness Corner App.",
+        icon: <MdMobileFriendly className="text-deepPurple text-3xl" />,
+      },
+      {
+        title: "Dedicated Support:",
+        description: "Our team is here for you 24/7, ensuring you get the assistance you need.",
+        icon: <MdSupportAgent className="text-deepPurple text-3xl" />,
       },
     ];
   
