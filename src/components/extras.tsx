@@ -653,6 +653,9 @@ export const Section7 = () => {
                   </li>
                 ))}
               </ul>
+              <p className="text-xl font-semibold text-black">Take Charge of Your Health Today!</p>
+              <p className="text-black-700">Discover the perfect health plan for you and your family. Explore our plans and experience the peace of mind that comes with being protected by CarePass.
+               </p>
             </div>
   
             {/* Video Thumbnail Section */}
