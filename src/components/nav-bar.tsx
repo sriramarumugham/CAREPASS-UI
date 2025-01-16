@@ -1,6 +1,5 @@
 
-import LogoPng1 from '../assets/logo.png';
-
+import LogoPng1 from '../assets/footer-logo.png';
 import HamMenuSvg from '../assets/ham-menu.svg';
 import CartSvg from '../assets/cart.svg';
 import ProfileSvg from '../assets/profile.svg';
@@ -13,13 +12,10 @@ import Logo from '../assets/logo.svg';
 import Youtube from '../assets/youtube.svg';
 import Instagram from '../assets/instagram.svg';
 import Facebook from '../assets/facebook.svg';
-import ArrowDown from '../assets/arrow-down.svg'
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
+import ArrowDown from '../assets/arrow-down.svg';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
-
-
 import classNames from 'classnames';
 import LoginModal from './ui/modal/login';
 import { Modal } from './ui/modal/modal';
@@ -27,7 +23,6 @@ import Sidebar from './ui/modal/sidebar';
 import { useUserStore } from '../store/user-store';
 import { ROUTES } from '../utils/routes';
 import useCartStore from '../store/cart-store';
-
 
 const products = [
     { name: 'CarePass Tax Saver', img: TaxSaverSvg, route: ROUTES.TAX_SAVER },
@@ -39,13 +34,12 @@ const products = [
 const ProductsListMobile = () => {
 
     const navigate = useNavigate()
-
     const handleNavigation = (route: string) => {
         navigate(route, { relative: 'path' })
     }
     return (
         <div className="w-full flex flex-col gap-2">
-            <p className=''>Products</p>
+            <NavHashLink to="/products">Products</NavHashLink>
             {products.map((product, index) => (
                 <div key={index} className="flex w-full  relative py-[6px] px-[17px] items-center gap-[17px] "
                     onClick={() => handleNavigation(product.route)}
@@ -83,7 +77,7 @@ const SignupSigning = (className: { className?: string }) => {
             ) : null}
             <div
                 role="button"
-                onClick={user?.token ? navigateToProfile : handleLogin} // Move onClick to the parent div
+                onClick={user?.token ? navigateToProfile : handleLogin}
                 className={classNames('border border-deepPurple rounded-3xl flex items-center gap-3 px-4 py-2 cursor-pointer w-fit', className)}>
                 <img src={ProfileSvg} alt="Profile" />
                 <p className='text-deepPurple font-thin'>
@@ -198,8 +192,6 @@ function ProductListDesktop() {
     );
 }
 
-
-
 const Navbar = () => {
 
     const [openSidebar, setOpenSideBar] = useState(false);
@@ -208,14 +200,13 @@ const Navbar = () => {
     }
 
     const { cart } = useCartStore(); // Assuming cart is an array of items
-
     const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
     return (
         <>
-            <div className="max-w-[1200px] m-auto px-[20px] md:px-[5px] w-full py-3 md:py-6 flex items-center justify-between  ">
+            <div className="max-w-[1200px] m-auto px-[20px] md:px-[5px] w-full py-3 md:py-6 flex items-center justify-between">
                 <Link to="/">
-                    <img src={LogoPng1} className={'w-[66px] mt-[5px] h-[14px]  md:h-[32px] md:w-[143px]'} />
+                    <img src={LogoPng1} />
                 </Link>
 
 
