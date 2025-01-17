@@ -161,7 +161,7 @@ function ProductListDesktop() {
     return (
         <div className="relative group">
             <div className="flex gap-2 cursor-pointer">
-                <NavHashLink to="/products" className="font-light group-hover:font-bold">Products</NavHashLink>
+                <NavHashLink to="/products" className="font-light focus:font-bold focus:underline-offset-4 focus:underline">Products</NavHashLink>
                 <img className="flex transition-transform group-hover:rotate-180" src={ArrowDown} alt="arrow" />
             </div>
 
@@ -212,7 +212,7 @@ const Navbar = () => {
 
                 <ul className="hidden lg:flex space-x-4 text-deepPurple">
                     <li><NavHashLink to="/" className=" font-light focus:font-bold focus:underline-offset-4 focus:underline">Home</NavHashLink></li>
-                    <li><NavHashLink to="/about-us" className="font-light focus:font-bold  focus:underline-offset-4 focus:underline">About Us</NavHashLink></li>
+                    <li><NavHashLink to="/about-us" className="font-light focus:font-bold focus:underline-offset-4 focus:underline">About Us</NavHashLink></li>
 
                     <li>
                         <ProductListDesktop />
