@@ -772,7 +772,7 @@ export const AboutUsOurWellnessApp = () => {
       </div>
       <div className="text-center mt-8">
         <p className="text-lg text-black-800 font-semibold">
-          Download The wellness Corner APP using the scanner provided above
+          Download The wellness Corner App using the scanner provided above
         </p>
       </div>
     </div>
@@ -1092,8 +1092,8 @@ export const CarePassTable = () => {
       features: [
         { text: "E-wallet. ₹10,000 with pre-defined sub limits", strike: false },
         { text: "In-clinic Doctor consultation", strike: false },
-        { text: "RX. Pharmacy", strike: false },
-        { text: "RX. Diagnostic test", strike: false },
+        { text: "Rx. Pharmacy", strike: false },
+        { text: "Rx. Diagnostic test", strike: false },
         { text: "Dental Care", strike: false },
         { text: "Vision Care", strike: false },
         { text: "Wellness APP benefits: Discounted Gym memberships, Pharmacy & Health checks, etc.", strike: false },
