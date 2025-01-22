@@ -4,11 +4,11 @@ import HamMenuSvg from '../assets/ham-menu.svg';
 import CartSvg from '../assets/cart.svg';
 import ProfileSvg from '../assets/profile.svg';
 import PhoneSvg from '../assets/pohone.svg';
-import TaxSaverSvg from '../assets/tax-saver.svg';
-import SilverPlan from '../assets/silver-plan.svg'
-import GoldPlan from '../assets/gold-plan.svg'
-import ArrowRight from '../assets/arrow-right.svg'
-import Logo from '../assets/logo.svg';
+import TaxSaverSvg from '../assets/Tax.png';
+import SilverPlan from '../assets/Silver.png';
+import GoldPlan from '../assets/Gold.png';
+import Platinum from '../assets/Platinum.png';
+import ArrowRight from '../assets/arrow-right.svg';
 import Youtube from '../assets/youtube.svg';
 import Instagram from '../assets/instagram.svg';
 import Facebook from '../assets/facebook.svg';
@@ -28,7 +28,7 @@ const products = [
     { name: 'CarePass Tax Saver', img: TaxSaverSvg, route: ROUTES.TAX_SAVER },
     { name: 'CarePass Silver Plan', img: SilverPlan, route: ROUTES.SILVER_PLAN },
     { name: 'CarePass Gold Plan', img: GoldPlan, route: ROUTES.GOLD_PLAN },
-    { name: 'CarePass Platinum Plan', img: GoldPlan, route: ROUTES.SUPER_TOPUP }
+    { name: 'CarePass Platinum Plan', img: Platinum, route: ROUTES.SUPER_TOPUP }
 ];
 
 const ProductsListMobile = () => {
@@ -44,7 +44,7 @@ const ProductsListMobile = () => {
                 <div key={index} className="flex w-full  relative py-[6px] px-[17px] items-center gap-[17px] "
                     onClick={() => handleNavigation(product.route)}
                 >
-                    <img src={product.img} alt={product.name} />
+                    <img src={product.img} alt={product.name} width='20' height='20' />
                     <div className="h-full">
                         <div><p className="text-[#353535]">{product.name}</p></div>
                         <div><p className="text-[#353535]">{product.description}</p></div>
@@ -100,10 +100,10 @@ const MobileSidebarFooter = () => {
 
     ]
     return (
-        <div className='w-full h-[42px] flex items-end justify-between'>
+        <div className='w-full h-[44px] flex justify-between'>
 
-            <img src={Logo} className='w-[66px] h-[14px]' />
-            <div className=' flex items-center  gap-5'>
+            <img src={LogoPng1} className='w-[166px] h-[44px]' />
+            <div className='flex items-center gap-5'>
                 {links.map((link, index: number) => (
                     <img key={index} src={link.logo} />
                 ))}
