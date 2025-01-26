@@ -173,8 +173,8 @@ const CriticalIllnessBeneficiary: React.FC<{
                     className="w-full p-2 border  disabled:cursor-not-allowed"
                 >
                     <option value="SELF">Self</option>
-                    <option value="FATHER">Father</option>
-                    <option value="MOTHER">Mother</option>
+                    {/* <option value="FATHER">Father</option>
+                    <option value="MOTHER">Mother</option> */}
                     <option value="SPOUSE">Spouse</option>
                     <option value="CHILD">Child</option>
                 </select>
@@ -711,7 +711,7 @@ const calculateTotalPrice = (products, formData, productData) => {
             ? formData[product.productId].reduce((count, item) => {
                 // Count only selected beneficiaries
                 const selectedCount = Array.isArray(item.criticalIllnessBeneficiary)
-                    ? item.criticalIllnessBeneficiary.filter(beneficiary => beneficiary?.isSelected)?.length
+                    ? item.criticalIllnessBeneficiary.filter(beneficiary => (beneficiary?.isSelected) && (beneficiary.relation != "SELF"))?.length
                     : 0;
                 return count + selectedCount;
             }, 0)
@@ -846,7 +846,7 @@ const transformFormData = (formData, productData, cart) => {
         // Accumulate total price
         totalPrice += productTotal + productFormData.reduce((sum, item) => {
             const selectedBeneficiariesCount = Array.isArray(item.criticalIllnessBeneficiary)
-                ? item.criticalIllnessBeneficiary.filter(beneficiary => beneficiary.isSelected).length
+                ? item.criticalIllnessBeneficiary.filter(beneficiary => (beneficiary.isSelected) && (beneficiary.relation != "SELF")).length
                 : 0;
             return sum + (selectedBeneficiariesCount * pricePerBeneficiary);
         }, 0);

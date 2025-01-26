@@ -51,6 +51,11 @@ type Beneficiary = {
     relation: string;
     city?: string;
 };
+type CriticalIllnessBeneficiary = {
+    fullName: string;
+    isSelected: boolean;
+    relation: string;
+}
 
 type Plan = {
     planId: string;
@@ -62,6 +67,10 @@ type Plan = {
         primaryEmail: string;
         primaryMobile: string;
         beneficiaries: Beneficiary[];
+        criticalIllnessBeneficiary?: CriticalIllnessBeneficiary[]
+        superTopUpInsurance?: string;
+        sumAssured?: string;
+
     };
     productName: string;
     priceDetails: { price: number }[];
@@ -119,13 +128,32 @@ const ActivePlans: React.FC<ActivePlansProps> = ({ plans }) => {
 
                         {plan.userDetails.beneficiaries.length > 0 && (
                             <div className="bg-lightBlue-100 p-3 rounded-md">
-                                <p className="font-semibold">Beneficiaries:</p>
+                                <p className="font-semibold">CarePass Silver Beneficiaries:</p>
                                 {plan.userDetails.beneficiaries.map((beneficiary, idx) => (
                                     <div key={idx} className="mt-1">
                                         <p className="text-sm text-black-700">{`Name: ${beneficiary.fullName}, Age: ${beneficiary.age}, Relation: ${beneficiary.relation}`}</p>
                                         {beneficiary.city && <p className="text-sm text-black-700">City: {beneficiary.city}</p>}
                                     </div>
                                 ))}
+                            </div>
+                        )}
+
+                        {plan.userDetails?.criticalIllnessBeneficiary && plan.userDetails?.criticalIllnessBeneficiary?.length > 0 && (
+                            <div className="bg-lightBlue-100 p-3 rounded-md">
+                                <p className="font-semibold">Critical Illness Beneficiaries:</p>
+                                {plan.userDetails.beneficiaries.map((beneficiary, idx) => (
+                                    <div key={idx} className="mt-1">
+                                        <p className="text-sm text-black-700">{`Name: ${beneficiary.fullName}, Relation: ${beneficiary.relation}`}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
+                        {plan.userDetails?.superTopUpInsurance && (
+                            <div className="bg-lightBlue-100 p-3 rounded-md">
+                                <p className="font-semibold">Super Top Up Insurance:</p>
+                                <p className="text-sm text-black-700">{`Sum assured:${plan.userDetails?.sumAssured}`}</p>
+                                <p className="text-sm text-black-700">{`Super Top-up Insurance:${plan.userDetails?.superTopUpInsurance}`}</p>
                             </div>
                         )}
                     </div>
@@ -143,9 +171,9 @@ const OrderHistory: React.FC<ActivePlansProps> = ({ plans }) => {
 
             {plans?.length == 0 || !plans && <EmptyList heading="No orders history found!" />}
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                {plans?.map((plan) => (
+                {plans?.map((plan, index) => (
                     <div
-                        key={plan.transactionId}
+                        key={plan.transactionId || index}
                         className="bg-white p-6 rounded-lg shadow-md flex flex-col gap-4"
                     >
                         <div className="flex justify-between gap-4">
