@@ -13,7 +13,6 @@ import { openPayModal } from '../utils/razorpay';
 import { BASE_URL, RAZORPAY_ID } from '../data/api-endpoints';
 import toast from 'react-hot-toast';
 
-
 interface Field {
     name: string;
     label: string;
@@ -31,8 +30,6 @@ interface DynamicFormProps {
     trigger: any
 
 }
-
-
 
 const CriticalIllnessBeneficiary: React.FC<{
     control: any;
@@ -191,7 +188,6 @@ const CriticalIllnessBeneficiary: React.FC<{
     );
 };
 
-
 const renderField = (field: Field, fieldName: string, register: any, control: any, trigger: any, setValue: any, isSelf?: boolean, setIsSelf?: any, isDisabled?: boolean) => {
     switch (field.type) {
         case 'text':
@@ -292,15 +288,11 @@ const renderField = (field: Field, fieldName: string, register: any, control: an
     }
 };
 
-
 const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, formIndex, setValue, trigger }) => {
 
     const [isSelf, setIsSelf] = useState(true);
-
     const { getUser } = useUserStore();
-
     const userDetails = getUser() as { user?: { fullName: string, email: string, phoneNumber: string } };
-
 
     useEffect(() => {
         if (isSelf) {
@@ -365,7 +357,6 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
         </>
     );
 };
-
 
 const FieldArraySection: React.FC<{
     field: Field;
@@ -537,11 +528,8 @@ export const Checkout = () => {
         }
     );
 
-
     const products = data;
-
-
-
+    console.log(products, 'mahantesh');
 
     const { getUser } = useUserStore();
 
@@ -857,4 +845,3 @@ const transformFormData = (formData, productData, cart) => {
         totalPrice: totalPrice,
     };
 };
-
