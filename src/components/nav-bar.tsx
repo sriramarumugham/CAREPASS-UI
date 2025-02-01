@@ -140,7 +140,7 @@ const SideBarContent = () => {
             <div className='mt-auto'>
                 <div className='flex gap-4'>
                     <img src={PhoneSvg} alt="Contact" />
-                    <p className='font-bold text-deepPurple'>+1800-123-4567</p>
+                    <p className='font-bold text-deepPurple'>+91- 9660 503 504</p>
                 </div>
                 <Border />
                 <MobileSidebarFooter />
@@ -237,7 +237,7 @@ const Navbar = () => {
 
                     <div className='border border-deepPurple rounded-3xl flex items-center w-fit gap-3 px-4 py-2'>
                         <img src={PhoneSvg} alt="Contact" />
-                        <p className='text-deepPurple font-bold'>+1800-123-4567</p>
+                        <p className='text-deepPurple font-bold'>+91 - 9660 503 504</p>
                     </div>
                 </div>
 

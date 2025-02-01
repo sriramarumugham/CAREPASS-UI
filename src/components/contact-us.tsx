@@ -37,7 +37,7 @@ const ContactUsSection = () => {
                     <div className="  rounded-xl    h-fit    w-full md:w-fit   flex flex-col md:flex-row  md:min-h-full  items-center justify-center gap-5 md:gap-[40px] ">
                         <div className='flex gap-5 items-center '>
                             <img src={Phone} alt='phone' className='w-[12px] h-[12px]' />
-                            <p className='text-deepPurple font-semibold '> +1800-123-4567</p>
+                            <p className='text-deepPurple font-semibold '>+91 - 9660 503 504</p>
 
                         </div>
 
