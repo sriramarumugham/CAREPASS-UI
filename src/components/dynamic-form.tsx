@@ -10,7 +10,7 @@ import { useUserStore } from '../store/user-store';
 import { Modal } from './ui/modal/modal';
 import LoginModal from './ui/modal/login';
 import { openPayModal } from '../utils/razorpay';
-import { BASE_URL, RAZORPAY_ID } from '../data/api-endpoints';
+import { BASE_URL } from '../data/api-endpoints';
 import toast from 'react-hot-toast';
 
 interface Field {
@@ -39,7 +39,7 @@ const CriticalIllnessBeneficiary: React.FC<{
     sourceFieldName: string;
     maxCount: number;
     isSelf: boolean;
-}> = ({ control, register, setValue, fieldName, sourceFieldName, maxCount, isSelf }) => {
+}> = ({ control, register, setValue, fieldName, sourceFieldName, maxCount, isSelf, benificiaryFullName }) => {
     const { fields, append, update } = useFieldArray({
         control,
         name: fieldName,
@@ -48,66 +48,36 @@ const CriticalIllnessBeneficiary: React.FC<{
     const [newBeneficiaryName, setNewBeneficiaryName] = useState<string>('');
     const [newBeneficiaryRelation, setNewBeneficiaryRelation] = useState<string>('SELF');
 
-    const { getUser } = useUserStore();
-    const userDetails = getUser() as { user?: { fullName: string; email: string; phoneNumber: string } };
 
-    const watchedBeneficiaries = useWatch({
-        control,
-        name: sourceFieldName,
-    });
 
+
+    const watchedUserName = useWatch({ control, name: benificiaryFullName });
+    console.log('watchedUserName____', watchedUserName)
 
     const syncedBeneficiaries = useRef(new Set<string>());
     const selectedCount = fields.filter((field) => field.isSelected).length;
 
-
     useEffect(() => {
-        // Add the user's name with relation "SELF" to the list by default
-        const userFullName = userDetails?.user?.fullName || 'Default User';
+        if (!watchedUserName) return;
 
-        if (isSelf) {
-            if (userFullName && !syncedBeneficiaries.current.has(userFullName)) {
-                append({ isSelected: false, fullName: userFullName, relation: 'SELF' });
-                syncedBeneficiaries.current.add(userFullName);
+        const existingSelfIndex = fields.findIndex((field) => field.relation === "SELF");
+
+        if (existingSelfIndex !== -1) {
+            if (fields[existingSelfIndex].fullName !== watchedUserName) {
+                update(existingSelfIndex, { ...fields[existingSelfIndex], fullName: watchedUserName });
             }
-
+        } else if (!syncedBeneficiaries.current.has(watchedUserName)) {
+            syncedBeneficiaries.current.add(watchedUserName);
+            append({ isSelected: true, fullName: watchedUserName, relation: "SELF", isDisabled: true });
         }
-        else {
-            const selfIndex = fields.findIndex(
-                (field) => field?.fullName === userFullName && field?.relation === 'SELF'
-            );
-            if (selfIndex !== -1) {
-                syncedBeneficiaries.current.delete(userFullName);
-                update(selfIndex, undefined);
-            }
-        }
+    }, [watchedUserName]); // Remove append/update from dependencies to avoid loops.
 
-        if (!watchedBeneficiaries?.length) return;
-
-        const currentFullNames = fields.map((field) => field.fullName);
-
-        // Filter to include only complete beneficiaries
-
-        const completeBeneficiaries = watchedBeneficiaries.filter(
-            (beneficiary: any) => beneficiary.isSaved === true
-        );
-
-        completeBeneficiaries.forEach((beneficiary: any) => {
-            const { fullName, relation } = beneficiary;
-
-            if (!syncedBeneficiaries.current.has(fullName)) {
-                if (!currentFullNames.includes(fullName)) {
-                    append({ isSelected: false, fullName, relation: relation || 'OTHER' });
-                }
-                syncedBeneficiaries.current.add(fullName);
-            }
-        });
-    }, [watchedBeneficiaries, append, fields, userDetails, isSelf]);
 
     const handleCheckboxChange = (index: number) => {
         if (!fields[index]) return;
         const updatedValue = !fields[index]?.isSelected;
 
+        // TODO here some issue in the selection and price increase for the  last one
         if (updatedValue && selectedCount >= maxCount) {
             alert(`You can select up to ${maxCount} beneficiaries.`);
             return;
@@ -143,9 +113,10 @@ const CriticalIllnessBeneficiary: React.FC<{
                             <input
                                 type="checkbox"
                                 {...register(`${fieldName}[${index}].isSelected`)}
-                                checked={fields[index]?.isSelected || false}
+                                checked={fields[index]?.isSelected || fields[index]?.isDisabled || false}
                                 onChange={() => handleCheckboxChange(index)}
                                 className="w-5 h-5"
+                                disabled={fields[index]?.isDisabled || false}
                             />
                             <div className="flex-1">
                                 <p className="font-semibold">{field.fullName}</p>
@@ -169,7 +140,7 @@ const CriticalIllnessBeneficiary: React.FC<{
 
                     className="w-full p-2 border  disabled:cursor-not-allowed"
                 >
-                    <option value="SELF">Self</option>
+                    {/* <option value="SELF">Self</option> */}
                     {/* <option value="FATHER">Father</option>
                     <option value="MOTHER">Mother</option> */}
                     <option value="SPOUSE">Spouse</option>
@@ -321,7 +292,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
 
     const baseBeneficiariesFieldName = `${product.productId}.${formIndex}.beneficiaries`;
     const criticalIllnessFieldName = `${product.productId}.${formIndex}.criticalIllnessBeneficiary`;
-
+    const benificiaryFullName = `${product.productId}.${formIndex}.fullName`;
 
 
     return (
@@ -345,6 +316,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
                                 fieldName={criticalIllnessFieldName}
                                 sourceFieldName={baseBeneficiariesFieldName}
                                 isSelf={isSelf}
+                                benificiaryFullName={benificiaryFullName}
                             />)
                         }
                         else {
