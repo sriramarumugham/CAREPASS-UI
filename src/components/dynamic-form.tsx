@@ -52,7 +52,7 @@ const CriticalIllnessBeneficiary: React.FC<{
 
 
     const watchedUserName = useWatch({ control, name: benificiaryFullName });
-    console.log('watchedUserName____', watchedUserName)
+
 
     const syncedBeneficiaries = useRef(new Set<string>());
     const selectedCount = fields.filter((field) => field.isSelected).length;
@@ -143,6 +143,7 @@ const CriticalIllnessBeneficiary: React.FC<{
                     {/* <option value="SELF">Self</option> */}
                     {/* <option value="FATHER">Father</option>
                     <option value="MOTHER">Mother</option> */}
+                    <option value="">Select</option>
                     <option value="SPOUSE">Spouse</option>
                     <option value="CHILD">Child</option>
                 </select>
@@ -294,6 +295,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
     const criticalIllnessFieldName = `${product.productId}.${formIndex}.criticalIllnessBeneficiary`;
     const benificiaryFullName = `${product.productId}.${formIndex}.fullName`;
 
+    const superTopupFieldName = `${product.productId}.${formIndex}.platinumBeneficiary`;
 
     return (
         <>
@@ -305,7 +307,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
                     </div>
                     {section.fields.map((field) => {
 
-                        if (field?.name == "criticalIllnessBeneficiary") {
+                        if (["criticalIllnessBeneficiary", "platinumBeneficiary"].includes(field?.name)) {
                             return (<CriticalIllnessBeneficiary
                                 key={field.name}
                                 control={control}
@@ -313,7 +315,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ product, register, control, f
                                 register={register}
                                 setValue={setValue}
                                 maxCount={field.maxCount || 3}
-                                fieldName={criticalIllnessFieldName}
+                                fieldName={field?.name == "criticalIllnessBeneficiary" ? criticalIllnessFieldName : superTopupFieldName}
                                 sourceFieldName={baseBeneficiariesFieldName}
                                 isSelf={isSelf}
                                 benificiaryFullName={benificiaryFullName}
@@ -501,7 +503,6 @@ export const Checkout = () => {
     );
 
     const products = data;
-    console.log(products, 'mahantesh');
 
     const { getUser } = useUserStore();
 
@@ -683,8 +684,20 @@ const calculateTotalPrice = (products, formData, productData) => {
         // Price per selected beneficiary
         const pricePerBeneficiary = Number(productDetails.pricePerCriticalIllnessBeneficiary) || 0;
 
+        const pricePerSuperTopUpBeniciary = Number(productDetails?.pricePerSuperTopupBeneficiary) || 0;
+
+
+        const selectedSuperTpupBeneficiary = formData && Array.isArray(formData[product?.productId]) ? formData[product?.productId].reduce((count, item) => {
+
+            const selectedCount = Array.isArray(item.platinumBeneficiary) ? item.platinumBeneficiary.filter(beneficiary => {
+                return (beneficiary.isSelected && beneficiary.relation != "SELF");
+            })?.length : 0
+            return selectedCount;
+        }, 0) : 0;
+
+
         // Calculate the total cost for this product
-        const productTotal = (price * quantity) + (selectedBeneficiariesCount * pricePerBeneficiary);
+        const productTotal = (price * quantity) + (selectedBeneficiariesCount * pricePerBeneficiary) + (selectedSuperTpupBeneficiary * pricePerSuperTopUpBeniciary);
 
         return total + productTotal;
     }, 0);
@@ -772,10 +785,13 @@ const transformFormData = (formData, productData, cart) => {
 
         const pricePerBeneficiary = Number(productInfo.pricePerCriticalIllnessBeneficiary) || 0;
 
+        const pricePerSuperTopUpBeniciary = Number(productInfo?.pricePerSuperTopupBeneficiary) || 0;
+
+
         // Calculate total price for the current product
         const productTotal = price * quantity; // Base product total
 
-        // Push to priceDetails for each user in formData
+        // Push to priceDetails for each user in formData3
         const productFormData = formData[product.productId] || [];
 
         productFormData.forEach(item => {
@@ -790,15 +806,26 @@ const transformFormData = (formData, productData, cart) => {
                     }))
                 : [];
 
+
+            const selectedSuperTopUpBeneficiaries = Array.isArray(item.platinumBeneficiary) ? item.platinumBeneficiary.filter(beneficiary => beneficiary.isSelected).map(({ fullName, relation }) => ({
+                fullName,
+                isSelected: true,
+                relation
+            })) : [];
+
+
+
             const totalBeneficiaryCost = selectedBeneficiaries.length * pricePerBeneficiary; // Cost for selected beneficiaries
+            const superTopUpBeneficiaryCost = selectedSuperTopUpBeneficiaries.length * pricePerSuperTopUpBeniciary;
 
             // Add price details for each user
             priceDetails.push({
-                priceDetails: { price: price + totalBeneficiaryCost }, // Include total product price and beneficiary costs
+                priceDetails: { price: price + totalBeneficiaryCost + superTopUpBeneficiaryCost }, // Include total product price and beneficiary costs
                 userDetails: {
                     productId: product.productId,
                     ...item,
                     criticalIllnessBeneficiary: selectedBeneficiaries, // Include only selected beneficiaries
+                    superTopUpBeneficiary: selectedSuperTopUpBeneficiaries
                 },
             });
         });
@@ -810,6 +837,14 @@ const transformFormData = (formData, productData, cart) => {
                 : 0;
             return sum + (selectedBeneficiariesCount * pricePerBeneficiary);
         }, 0);
+
+
+
+        totalPrice += productFormData.reduce((sum, item) => {
+            const selectedSuperTopupbeneficieryCount = Array.isArray(item.platinumBeneficiary) ? item.platinumBeneficiary.filter(beneficiary => (beneficiary.isSelected) && (beneficiary.relation != "SELF")).length : 0;
+            return sum + (selectedSuperTopupbeneficieryCount * pricePerSuperTopUpBeniciary);
+        }, 0);
+
     });
 
     return {

@@ -68,6 +68,7 @@ type Plan = {
         primaryMobile: string;
         beneficiaries: Beneficiary[];
         criticalIllnessBeneficiary?: CriticalIllnessBeneficiary[]
+        superTopUpBeneficiary?: CriticalIllnessBeneficiary[],
         superTopUpInsurance?: string;
         sumAssured?: string;
 
@@ -141,7 +142,7 @@ const ActivePlans: React.FC<ActivePlansProps> = ({ plans }) => {
                         {plan.userDetails?.criticalIllnessBeneficiary && plan.userDetails?.criticalIllnessBeneficiary?.length > 0 && (
                             <div className="bg-lightBlue-100 p-3 rounded-md">
                                 <p className="font-semibold">Critical Illness Beneficiaries:</p>
-                                {plan.userDetails.beneficiaries.map((beneficiary, idx) => (
+                                {plan.userDetails.criticalIllnessBeneficiary.map((beneficiary, idx) => (
                                     <div key={idx} className="mt-1">
                                         <p className="text-sm text-black-700">{`Name: ${beneficiary.fullName}, Relation: ${beneficiary.relation}`}</p>
                                     </div>
@@ -156,6 +157,18 @@ const ActivePlans: React.FC<ActivePlansProps> = ({ plans }) => {
                                 <p className="text-sm text-black-700">{`Super Top-up Insurance:${plan.userDetails?.superTopUpInsurance}`}</p>
                             </div>
                         )}
+
+                        {plan.userDetails?.superTopUpBeneficiary && plan.userDetails?.superTopUpBeneficiary?.length > 0 && (
+                            <div className="bg-lightBlue-100 p-3 rounded-md">
+                                <p className="font-semibold">Plathinum  Beneficiaries:</p>
+                                {plan.userDetails.superTopUpBeneficiary.map((beneficiary, idx) => (
+                                    <div key={idx} className="mt-1">
+                                        <p className="text-sm text-black-700">{`Name: ${beneficiary.fullName}, Relation: ${beneficiary.relation}`}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
                     </div>
                 ))}
             </div>
