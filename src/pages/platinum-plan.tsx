@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Navbar from "../components/nav-bar";
 import { PlanDetails } from "./tax-saver";
 import TrustedPartnersSection from "../components/trusted-partners";
@@ -9,10 +10,10 @@ import useCartStore from "../store/cart-store";
 import { useNavigate } from "react-router-dom";
 import platinum_image from '../assets/carepass_platinum.png';
 import { platinumPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
-import { BenefitsBreakdown, HealthcareEcosystem, HowItWorks, PlanComparison, AboutUsOurWellnessApp } from "../components/extras";
+import { BenefitsBreakdown, ComingSoonPopup, HowItWorks, PlanComparison, AboutUsOurWellnessApp } from "../components/extras";
 
 const PlatinumPlan = () => {
-
+  const [showPopup, setShowPopup] = useState(false);
     const themeColors = {
         primary: "text-deepPurple",
         background: "bg-[#FCF9FF]",  // Light background color for the card
@@ -91,8 +92,9 @@ const PlatinumPlan = () => {
   ];
 
   const handleBuyNow = () => {
-      addToCart({ productId, productName, price });
-      navigate(ROUTES.CART, { relative: 'path' })
+      // addToCart({ productId, productName, price });
+      // navigate(ROUTES.CART, { relative: 'path' })
+      setShowPopup(true);
   };
 
   const steps = [
@@ -165,6 +167,12 @@ const PlatinumPlan = () => {
           <HowItWorks onBuyNow={handleBuyNow} steps={steps} />
           <ContactUsSection />
           <FooterSection />
+          {/* Coming Soon Popup */}
+          <ComingSoonPopup
+            isOpen={showPopup} 
+            onClose={() => setShowPopup(false)}
+            title="Platinum Plan"
+          />
       </>
   )
 }

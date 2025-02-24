@@ -1201,3 +1201,37 @@ export const CarePassTable = () => {
     </div>
   );
 };
+
+export const ComingSoonPopup = ({ isOpen, onClose, title }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white rounded-lg p-6 max-w-md mx-4 shadow-xl">
+        <div className="flex justify-between items-start">
+          <h3 className="text-lg font-semibold text-gray-900">{title} Coming Soon</h3>
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700 focus:outline-none"
+          >
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div className="mt-4">
+          <p className="text-gray-700">The {title} is coming soon! Please call us for more details.</p>
+          <p className="text-gray-900 font-medium mt-2">📞 +91 - 9660 503 504</p>
+        </div>
+        <div className="mt-6">
+          <button
+            onClick={onClose}
+            className="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};

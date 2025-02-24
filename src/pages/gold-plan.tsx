@@ -1,4 +1,5 @@
 
+import React, { useState } from 'react';
 import { PlanDetails } from './tax-saver';
 import TrustedPartnersSection from '../components/trusted-partners';
 import ContactUsSection from '../components/contact-us';
@@ -10,7 +11,7 @@ import useCartStore from '../store/cart-store';
 import { useNavigate } from 'react-router-dom';
 import SilverHeart from '../assets/gold-plan.png';
 import { goldPlanGrid, ResponsiveGrid } from '../utils/plan-benifits';
-import { BenefitsBreakdown, HowItWorks, AboutUsOurWellnessApp, PlanComparison } from '../components/extras';
+import { BenefitsBreakdown, HowItWorks, AboutUsOurWellnessApp, PlanComparison, ComingSoonPopup } from '../components/extras';
 
 const themeColors = {
     primary: "text-deepPurple",
@@ -45,7 +46,7 @@ const themeColors = {
 
 const GoldPlan = () => {
 
-
+  const [showPopup, setShowPopup] = useState(false);
     const { addToCart } = useCartStore();
     const navigate = useNavigate();
 
@@ -55,8 +56,9 @@ const GoldPlan = () => {
     const price = 10000;
 
     const handleBuyNow = () => {
-        addToCart({ productId, productName, price });
-        navigate(ROUTES.CART, { relative: 'path' })
+        // addToCart({ productId, productName, price });
+        // navigate(ROUTES.CART, { relative: 'path' })
+        setShowPopup(true);
     };
 
     const features = [
@@ -188,6 +190,12 @@ const GoldPlan = () => {
             <HowItWorks onBuyNow={handleBuyNow} steps={steps} />
             <ContactUsSection />
             <FooterSection />
+            {/* Coming Soon Popup */}
+            <ComingSoonPopup 
+              isOpen={showPopup} 
+              onClose={() => setShowPopup(false)}
+              title="Gold Plan"
+            />
         </>
     )
 }
