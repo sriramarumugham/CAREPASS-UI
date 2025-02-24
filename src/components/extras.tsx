@@ -1209,7 +1209,7 @@ export const ComingSoonPopup = ({ isOpen, onClose, title }) => {
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 max-w-md mx-4 shadow-xl">
         <div className="flex justify-between items-start">
-          <h3 className="text-lg font-semibold text-gray-900">{title} Coming Soon</h3>
+          <h3 className="text-lg font-semibold text-gray-900">Coming Soon</h3>
           <button
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700 focus:outline-none"
