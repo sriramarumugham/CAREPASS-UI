@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import ContactUsSection from "../components/contact-us";
 import FooterSection from "../components/footer";
 import Navbar from "../components/nav-bar";
@@ -9,19 +10,19 @@ import useCartStore from "../store/cart-store";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../utils/routes";
 import { silverPlanGrid, ResponsiveGrid } from "../utils/plan-benifits";
-import { BenefitsBreakdown, AboutUsOurWellnessApp, HealthcareEcosystem, PlanComparison, HowItWorks } from "../components/extras";
+import { BenefitsBreakdown, AboutUsOurWellnessApp, ComingSoonPopup, PlanComparison, HowItWorks } from "../components/extras";
 
 const SilverPlanPage = () => {
+  const [showPopup, setShowPopup] = useState(false);
+  const themeColors = {
+      primary: "text-deepPurple",
+      background: "bg-[#FCF9FF]",  // Light background color for the card
+      sectionBg: "bg-cover bg-center",
+      cardBg: "bg-white",
+  };
 
-    const themeColors = {
-        primary: "text-deepPurple",
-        background: "bg-[#FCF9FF]",  // Light background color for the card
-        sectionBg: "bg-cover bg-center",
-        cardBg: "bg-white",
-    };
-
-    const { addToCart } = useCartStore();
-    const navigate = useNavigate();
+  const { addToCart } = useCartStore();
+  const navigate = useNavigate();
 
 
     const productId = "product2";
@@ -29,8 +30,9 @@ const SilverPlanPage = () => {
     const price = 5000;
 
     const handleBuyNow = () => {
-        addToCart({ productId, productName, price });
-        navigate(ROUTES.CART, { relative: 'path' })
+        // addToCart({ productId, productName, price });
+        // navigate(ROUTES.CART, { relative: 'path' })
+        setShowPopup(true);
     };
 
     const features = [
@@ -186,7 +188,11 @@ const SilverPlanPage = () => {
             {/* <CarePassSilverSteps /> */}
             <ContactUsSection />
             <FooterSection />
-
+            <ComingSoonPopup 
+              isOpen={showPopup} 
+              onClose={() => setShowPopup(false)}
+              title="Silver Plan"
+            />
         </>
     )
 }

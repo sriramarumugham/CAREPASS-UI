@@ -11,7 +11,7 @@ const ContactUs = () => {
         {
             title: "Customer Support",
             email: "support@carepass.in",
-            phone: "+91-XXXXXXXXXX",
+            phone: "+91 - 9660 503 504",
             availableHours: "24/7",
             description: 'For immediate assistance, reach out to our dedicated support team'
         }
